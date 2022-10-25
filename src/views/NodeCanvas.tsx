@@ -19,7 +19,7 @@ export default function NodeCanvas({ dropped }: { dropped: boolean }) {
   return (
     <div
       ref={setNodeRef}
-      className={`${isOver ? "border-green-700" : null} border-2 h-full`}
+      className={`${isOver ? "border-green-400" : null} border-4 h-full`}
     >
       <ReactFlow
         className=""
