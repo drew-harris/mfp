@@ -1,8 +1,8 @@
 export const enum MCNodeType {
-  resource = "Resource",
-  craftable = "Craftable",
-  output = "Output",
-  custom = "Custom",
+  resource = "resource",
+  craftable = "craftable",
+  output = "output",
+  custom = "custom",
 }
 
 export interface MCItemBase {
@@ -21,12 +21,11 @@ export interface MCOutputItem extends MCItemBase {
   dataType: MCNodeType.output;
 }
 
-export interface MCNode {
-  inputs: MCNode[];
-}
+export type MCNode = MCResourceNode;
 
 export type MCItem = MCResourceItem | MCOutputItem;
 
-export interface MCResource extends MCResourceItem, MCNode {
+export interface MCResourceNode extends MCResourceItem {
   outputRate: number;
+  id: string;
 }
