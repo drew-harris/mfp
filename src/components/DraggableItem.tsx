@@ -1,5 +1,6 @@
 import { useDraggable } from "@dnd-kit/core";
 import { MCItem, MCNodeType } from "../types/MCNodes";
+import { SpriteDisplay } from "./SpriteDisplay";
 
 interface DraggableItemProps {
   item: MCItem;
@@ -29,7 +30,7 @@ export default function DraggableItem({ item }: DraggableItemProps) {
       className={`border-4 ${isOutput}  flex flex-col items-center border-mc-700 p-3`}
     >
       <div>{item.title}</div>
-      <img src={item.imageUrl || "/grass.png"}></img>
+      <SpriteDisplay spriteIndex={item.spriteIndex} />
     </div>
   );
 }

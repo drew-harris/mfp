@@ -7,7 +7,7 @@ export const enum MCNodeType {
 
 export interface MCItemBase {
   title: string;
-  imageUrl: string | null;
+  spriteIndex: number;
   dataType: MCNodeType;
   itemId: number;
 }

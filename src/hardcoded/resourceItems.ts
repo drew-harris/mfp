@@ -3,28 +3,28 @@ import { MCNodeType, MCOutputItem, MCResourceItem } from "../types/MCNodes";
 export const resourceItems: MCResourceItem[] = [
   {
     dataType: MCNodeType.resource,
-    imageUrl: "/grass.png",
+    spriteIndex: 1,
     itemId: 1,
     title: "Grass",
   },
   {
     dataType: MCNodeType.resource,
-    imageUrl: "/grass.png",
+    spriteIndex: 2,
     itemId: 2,
     title: "Dirt",
   },
   {
     dataType: MCNodeType.resource,
-    imageUrl: null,
+    spriteIndex: 16,
     itemId: 3,
-    title: "Redstone",
+    title: "Lava",
   },
 ];
 
 export const outputItems: MCOutputItem[] = [
   {
     dataType: MCNodeType.output,
-    imageUrl: "/grass.png",
+    spriteIndex: 1,
     itemId: 1,
     title: "Grass",
   },

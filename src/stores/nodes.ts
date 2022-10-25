@@ -31,7 +31,7 @@ export const nodeStore = create<RFState>((set, get) => ({
       data: {
         dataType: MCNodeType.resource,
         id: "firstnode",
-        imageUrl: "/grass.png",
+        spriteIndex: 1,
         itemId: 1,
         outputRate: 23,
         title: "Grass",
