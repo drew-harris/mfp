@@ -3,7 +3,13 @@ import { useState } from "react";
 import { Node, ReactFlowProvider } from "reactflow";
 import { useStore } from "zustand";
 import { nodeStore } from "./stores/nodes";
-import { MCItem, MCNode, MCNodeType, MCResourceNode } from "./types/MCNodes";
+import {
+  MCItem,
+  MCNode,
+  MCNodeType,
+  MCOutputNode,
+  MCResourceNode,
+} from "./types/MCNodes";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 
@@ -16,20 +22,29 @@ function App() {
     if (event.over && event.over.id === "droppable") {
       console.log(event.active.data.current?.item);
       const itemInfo = event.active.data.current?.item as MCItem;
-      // If resource
+      let data;
+
       if (itemInfo.dataType === MCNodeType.resource) {
-        const node: Node<MCResourceNode> = {
+        data = {
+          ...itemInfo,
+          outputRate: 0,
+        };
+      } else if (itemInfo.dataType === MCNodeType.output) {
+        data = {
+          ...itemInfo,
+          outputRate: 0,
+        };
+      }
+
+      if (data) {
+        const node: Node<MCNode> = {
           id: event.delta.x.toString(),
           position: {
             x: 30,
             y: 40,
           },
+          data,
           type: itemInfo.dataType,
-          data: {
-            ...itemInfo,
-            outputRate: 0,
-            id: event.delta.x.toString(),
-          },
         };
         addNode(node);
       }

@@ -1,4 +1,4 @@
-import { MCNodeType, MCResourceItem } from "../types/MCNodes";
+import { MCNodeType, MCOutputItem, MCResourceItem } from "../types/MCNodes";
 
 export const resourceItems: MCResourceItem[] = [
   {
@@ -18,5 +18,14 @@ export const resourceItems: MCResourceItem[] = [
     imageUrl: null,
     itemId: 3,
     title: "Redstone",
+  },
+];
+
+export const outputItems: MCOutputItem[] = [
+  {
+    dataType: MCNodeType.output,
+    imageUrl: "/grass.png",
+    itemId: 1,
+    title: "Grass",
   },
 ];

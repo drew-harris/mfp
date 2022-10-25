@@ -1,7 +1,5 @@
-import { MCItem } from "../types/MCNodes";
-import { useSpring, animated } from "@react-spring/web";
-import { useDrag } from "@use-gesture/react";
-import { useDraggable, useDroppable } from "@dnd-kit/core";
+import { useDraggable } from "@dnd-kit/core";
+import { MCItem, MCNodeType } from "../types/MCNodes";
 
 interface DraggableItemProps {
   item: MCItem;
@@ -9,7 +7,7 @@ interface DraggableItemProps {
 
 export default function DraggableItem({ item }: DraggableItemProps) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: item.itemId,
+    id: item.itemId + item.dataType,
     data: { item },
   });
 
@@ -19,16 +17,19 @@ export default function DraggableItem({ item }: DraggableItemProps) {
       }
     : undefined;
 
+  // TODO: use cva to change background
+  const isOutput =
+    item.dataType === MCNodeType.output ? "bg-orange-500" : "bg-green-500";
   return (
     <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
       style={style}
-      className="border-4 bg-mc-400 flex flex-col items-center border-mc-700 p-3"
+      className={`border-4 ${isOutput}  flex flex-col items-center border-mc-700 p-3`}
     >
       <div>{item.title}</div>
-      <img src="/grass.png"></img>
+      <img src={item.imageUrl || "/grass.png"}></img>
     </div>
   );
 }

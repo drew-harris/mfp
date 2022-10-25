@@ -55,8 +55,12 @@ export const nodeStore = create<RFState>((set, get) => ({
     });
   },
   onConnect: (connection: Connection) => {
+    console.log(connection);
     set({
-      edges: addEdge(connection, get().edges),
+      edges: addEdge(
+        { ...connection, animated: true, style: { strokeWidth: "4px" } },
+        get().edges
+      ),
     });
   },
 
