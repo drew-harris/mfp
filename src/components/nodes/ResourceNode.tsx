@@ -1,6 +1,5 @@
 import { Handle, Position } from "reactflow";
 import { MCNode } from "../../types/MCNodes";
-
 interface ResourceNodeProps {
   data: MCNode;
 }

@@ -19,7 +19,7 @@ export default function DraggableItem({ item }: DraggableItemProps) {
 
   // TODO: use cva to change background
   const isOutput =
-    item.dataType === MCNodeType.output ? "bg-orange-500" : "bg-green-500";
+    item.dataType === MCNodeType.output ? "bg-orange-200" : "bg-green-300";
   return (
     <div
       ref={setNodeRef}

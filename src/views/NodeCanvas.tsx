@@ -1,13 +1,13 @@
 import { useDroppable } from "@dnd-kit/core";
 import { useMemo } from "react";
-import ReactFlow, { Node, useReactFlow } from "reactflow";
+import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
 import { useStore } from "zustand";
 import OutputNode from "../components/nodes/OutputNode";
 import ResourceNode from "../components/nodes/ResourceNode";
 import { nodeStore } from "../stores/nodes";
 
-export default function NodeCanvas({ dropped }: { dropped: boolean }) {
+export default function NodeCanvas() {
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect } =
     useStore(nodeStore);
 
@@ -16,7 +16,7 @@ export default function NodeCanvas({ dropped }: { dropped: boolean }) {
   });
 
   const nodeTypes = useMemo(
-    () => ({ resource: ResourceNode, output: OutputNode }),
+    () => ({ resource: ResourceNode, "custom-output": OutputNode }),
     []
   );
 
@@ -28,7 +28,6 @@ export default function NodeCanvas({ dropped }: { dropped: boolean }) {
       } border-4 h-full`}
     >
       <ReactFlow
-        className=""
         nodeTypes={nodeTypes}
         nodes={nodes}
         edges={edges}

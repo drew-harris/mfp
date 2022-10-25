@@ -1,7 +1,7 @@
 export const enum MCNodeType {
   resource = "resource",
   craftable = "craftable",
-  output = "output",
+  output = "custom-output",
   custom = "custom",
 }
 
