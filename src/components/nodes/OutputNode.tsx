@@ -16,7 +16,7 @@ export default function OutputNode({ data }: OutputNodeProps) {
         <Handle
           type="target"
           position={Position.Left}
-          style={{ transform: "scale(2.6)" }}
+          style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
         ></Handle>
       </div>
     </>
