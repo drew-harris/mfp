@@ -3,7 +3,7 @@ import { outputItems, resourceItems } from "../hardcoded/resourceItems";
 export default function ItemPicker() {
   return (
     <>
-      <div className="grid p-2 grid-cols-3 gap-2">
+      <div className="grid z-20 p-2 grid-cols-6 gap-1">
         {resourceItems.map((item) => (
           <DraggableItem item={item} key={item.itemId} />
         ))}

@@ -1,25 +1,41 @@
 import { MCNodeType, MCOutputItem, MCResourceItem } from "../types/MCNodes";
 
-export const resourceItems: MCResourceItem[] = [
-  {
-    dataType: MCNodeType.resource,
-    spriteIndex: 1,
-    itemId: 1,
-    title: "Grass",
-  },
-  {
-    dataType: MCNodeType.resource,
-    spriteIndex: 2,
-    itemId: 2,
-    title: "Dirt",
-  },
-  {
-    dataType: MCNodeType.resource,
-    spriteIndex: 16,
-    itemId: 3,
-    title: "Lava",
-  },
+const blockNames = [
+  "Stone",
+  "Grass",
+  "Dirt",
+  "Cobblestone",
+  "Oak Planks",
+  "Dark Planks",
+  "Birch Planks",
+  "Jungle Planks",
+  "Oak Sapling",
+  "Dark Sapling",
+  "Birch Sapling",
+  "Jungle Sapling",
+  "Bedrock",
+  "Water",
+  "?",
+  "Lava",
+  "Lava",
+  "Sand",
+  "Gravel",
+  "Gold Ore",
+  "Iron Ore",
+  "Coal Ore",
+  "Oak Logs",
+  "Dark Logs",
+  "Birch Logs",
 ];
+
+export const resourceItems: MCResourceItem[] = blockNames.map((name, index) => {
+  return {
+    dataType: MCNodeType.resource,
+    itemId: index,
+    spriteIndex: index,
+    title: name,
+  };
+});
 
 export const outputItems: MCOutputItem[] = [
   {

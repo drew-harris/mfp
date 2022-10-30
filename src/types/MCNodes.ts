@@ -20,8 +20,6 @@ export interface MCOutputItem extends MCItemBase {
   dataType: MCNodeType.output;
 }
 
-export type MCNode = MCResourceNode | MCOutputNode;
-
 export type MCItem = MCResourceItem | MCOutputItem;
 
 export interface MCResourceNode extends MCResourceItem {
@@ -31,3 +29,5 @@ export interface MCResourceNode extends MCResourceItem {
 export interface MCOutputNode extends MCOutputItem {
   outputRate: number;
 }
+
+export type MCNode = MCResourceNode | MCOutputNode;

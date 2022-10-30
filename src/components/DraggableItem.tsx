@@ -12,22 +12,16 @@ export default function DraggableItem({ item }: DraggableItemProps) {
     data: { item },
   });
 
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined;
-
   // TODO: use cva to change background
   const isOutput =
     item.dataType === MCNodeType.output ? "bg-orange-200" : "bg-green-300";
+
   return (
     <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      style={style}
-      className={`border-4 ${isOutput}  flex flex-col items-center border-mc-700 p-3`}
+      className={`border-4 ${isOutput} z-50 flex flex-col items-center border-mc-700 p-3`}
     >
       <div>{item.title}</div>
       <SpriteDisplay spriteIndex={item.spriteIndex} />
