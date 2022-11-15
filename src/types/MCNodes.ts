@@ -3,6 +3,7 @@ export const enum MCNodeType {
   craftable = "craftable",
   output = "custom-output",
   custom = "custom",
+  splitter = "splitter",
 }
 
 export interface MCItem {
@@ -16,20 +17,23 @@ export interface MCPickerItem extends MCItem {
 }
 export interface MCResourceNode {
   item: MCItem;
-  outputRate: number;
   dataType: MCNodeType;
   id: string;
 }
 
 export interface MCOutputNode {
   item: MCItem;
-  outputRate: number;
   dataType: MCNodeType;
   id: string;
 }
 
+export interface MCSplitterNode {
+  dataType: MCNodeType;
+}
+
 export interface MCEdge {
   item: MCItem;
+  outputRate: number;
 }
 
 export type MCNode = MCResourceNode | MCOutputNode;

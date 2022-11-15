@@ -12,6 +12,12 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
     nodeStore,
     (store) => store.setResourceOutputRate
   );
+
+  const outputRate = useStore(
+    nodeStore,
+    (store) =>
+      store.edges.find((edge) => edge.source === data.id)?.data?.outputRate
+  );
   return (
     <>
       <div className="p-1 bg-lime-500  shadow  text-white">
@@ -28,7 +34,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
             onChange={(event) =>
               setOutputRate(data.id, parseInt(event.target.value) || 0)
             }
-            value={data.outputRate}
+            value={outputRate}
           />
           <div className="text-gray-400 text-xs">/ Hour</div>
           <Handle

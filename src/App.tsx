@@ -10,7 +10,7 @@ import { Node, ReactFlowProvider } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
 import { nodeStore } from "./stores/nodes";
-import { MCNode, MCPickerItem } from "./types/MCNodes";
+import { MCNode, MCNodeType, MCPickerItem } from "./types/MCNodes";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 
@@ -27,9 +27,7 @@ function App() {
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
     if (event.over && event.over.id === "droppable") {
-      console.log(event.active.data.current?.item);
       const itemInfo = event.active.data.current?.item as MCPickerItem;
-
       const node: Node<MCNode> = {
         id: event.delta.x.toString(),
         position: {
@@ -44,7 +42,6 @@ function App() {
           },
           dataType: itemInfo.dataType,
           id: event.delta.x.toString(),
-          outputRate: 0,
         },
         type: itemInfo.dataType,
       };

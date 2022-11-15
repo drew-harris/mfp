@@ -1,9 +1,9 @@
 import { useDraggable } from "@dnd-kit/core";
-import { MCItem, MCNodeType } from "../types/MCNodes";
+import { MCItem, MCNodeType, MCPickerItem } from "../types/MCNodes";
 import { SpriteDisplay } from "./SpriteDisplay";
 
 interface DraggableItemProps {
-  item: MCItem;
+  item: MCPickerItem;
 }
 
 export default function DraggableItem({ item }: DraggableItemProps) {

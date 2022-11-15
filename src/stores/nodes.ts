@@ -37,7 +37,6 @@ export const nodeStore = create<RFState>((set, get) => ({
           itemId: 1,
           title: "Grass",
         },
-        outputRate: 23,
       },
       id: "firstnode",
       position: {
@@ -46,7 +45,7 @@ export const nodeStore = create<RFState>((set, get) => ({
       },
     },
   ],
-  edges: [] as Edge<MCNode>[],
+  edges: [],
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
@@ -72,6 +71,7 @@ export const nodeStore = create<RFState>((set, get) => ({
           animated: true,
           data: {
             item: sourceNode?.data.item,
+            outputRate: 0,
           },
           style: { strokeWidth: "4px" },
         } as Edge<MCEdge>,
@@ -89,33 +89,20 @@ export const nodeStore = create<RFState>((set, get) => ({
 
   // TODO: Make recursive
   setResourceOutputRate: (id: string, newRate: number) => {
-    const nodes = get().nodes;
-    let updateIds: string[] = [];
-    get().edges.forEach((edge) => {
-      if (edge.source === id) {
-        updateIds = nodes
-          .filter((node) => node.id === edge.source || node.id === edge.target)
-          .map((node) => node.id);
-      }
-    });
-
-    const newNodes = nodes.map((node) => {
-      if (updateIds.includes(node.id)) {
-        return {
-          ...node,
-          data: {
-            ...node.data,
-            outputRate: newRate,
-          },
-        };
-      } else {
-        return {
-          ...node,
-        };
-      }
-    });
+    console.log("setting output rate");
     set({
-      nodes: newNodes,
+      edges: get().edges.map((edge) => {
+        if (edge.source === id && edge?.data?.item) {
+          return {
+            ...edge,
+            data: {
+              item: edge.data.item,
+              outputRate: newRate,
+            },
+          };
+        }
+        return edge;
+      }),
     });
   },
 }));

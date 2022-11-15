@@ -1,4 +1,6 @@
 import { Handle, Position } from "reactflow";
+import { useStore } from "zustand";
+import { nodeStore } from "../../stores/nodes";
 import { MCOutputNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 
@@ -7,6 +9,11 @@ interface OutputNodeProps {
 }
 
 export default function OutputNode({ data }: OutputNodeProps) {
+  const outputRate = useStore(
+    nodeStore,
+    (state) =>
+      state.edges.find((edge) => edge.target === data.id)?.data?.outputRate
+  );
   return (
     <>
       <div className="p-1 bg-cyan-300  shadow  text-white">
@@ -20,7 +27,7 @@ export default function OutputNode({ data }: OutputNodeProps) {
           <input
             className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
             placeholder="Per-Hour Rate"
-            value={data.outputRate}
+            value={outputRate}
           />
           <div className="text-gray-400 text-xs">/ Hour</div>
           <Handle
