@@ -1,4 +1,4 @@
-import { MCNodeType, MCOutputItem, MCResourceItem } from "../types/MCNodes";
+import { MCNodeType, MCOutputNode, MCPickerItem } from "../types/MCNodes";
 
 const blockNames = [
   "Stone",
@@ -28,7 +28,7 @@ const blockNames = [
   "Birch Logs",
 ];
 
-export const resourceItems: MCResourceItem[] = blockNames.map((name, index) => {
+export const resourceItems: MCPickerItem[] = blockNames.map((name, index) => {
   return {
     dataType: MCNodeType.resource,
     itemId: index,
@@ -37,7 +37,7 @@ export const resourceItems: MCResourceItem[] = blockNames.map((name, index) => {
   };
 });
 
-export const outputItems: MCOutputItem[] = blockNames.map((name, index) => {
+export const outputItems: MCPickerItem[] = blockNames.map((name, index) => {
   return {
     dataType: MCNodeType.output,
     itemId: index,

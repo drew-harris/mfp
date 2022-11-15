@@ -20,7 +20,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
           <SpriteDisplay
             className="mb-5"
             size={56}
-            spriteIndex={data.spriteIndex}
+            spriteIndex={data.item.spriteIndex}
           />
           <input
             className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
@@ -40,7 +40,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
               className="text-[4px] -translate-x-2 -translate-y-[1.2px]"
               style={{ direction: "rtl" }}
             >
-              {data.title}
+              {data.item.title}
             </div>
           </Handle>
         </div>

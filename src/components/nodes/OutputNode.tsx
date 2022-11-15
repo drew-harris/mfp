@@ -15,11 +15,12 @@ export default function OutputNode({ data }: OutputNodeProps) {
           <SpriteDisplay
             className="mb-5"
             size={56}
-            spriteIndex={data.spriteIndex}
+            spriteIndex={data.item.spriteIndex}
           />
           <input
             className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
             placeholder="Per-Hour Rate"
+            value={data.outputRate}
           />
           <div className="text-gray-400 text-xs">/ Hour</div>
           <Handle
@@ -28,7 +29,7 @@ export default function OutputNode({ data }: OutputNodeProps) {
             style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
           >
             <div className="text-[4px] translate-x-2 -translate-y-[1.2px]">
-              {data.title}
+              {data.item.title}
             </div>
           </Handle>
         </div>

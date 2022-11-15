@@ -5,31 +5,31 @@ export const enum MCNodeType {
   custom = "custom",
 }
 
-export interface MCItemBase {
+export interface MCItem {
   title: string;
   spriteIndex: number;
-  dataType: MCNodeType;
   itemId: number;
 }
 
-export interface MCResourceItem extends MCItemBase {
-  dataType: MCNodeType.resource;
+export interface MCPickerItem extends MCItem {
+  dataType: MCNodeType;
 }
-
-export interface MCOutputItem extends MCItemBase {
-  dataType: MCNodeType.output;
-}
-
-export type MCItem = MCResourceItem | MCOutputItem;
-
-export interface MCResourceNode extends MCResourceItem {
+export interface MCResourceNode {
+  item: MCItem;
   outputRate: number;
+  dataType: MCNodeType;
   id: string;
 }
 
-export interface MCOutputNode extends MCOutputItem {
+export interface MCOutputNode {
+  item: MCItem;
   outputRate: number;
+  dataType: MCNodeType;
   id: string;
+}
+
+export interface MCEdge {
+  item: MCItem;
 }
 
 export type MCNode = MCResourceNode | MCOutputNode;

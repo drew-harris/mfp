@@ -12,11 +12,11 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
 } from "reactflow";
-import { MCNode, MCNodeType } from "../types/MCNodes";
+import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 
 type RFState = {
   nodes: Node<MCNode>[];
-  edges: Edge[];
+  edges: Edge<MCEdge>[];
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
@@ -32,19 +32,21 @@ export const nodeStore = create<RFState>((set, get) => ({
       data: {
         dataType: MCNodeType.resource,
         id: "firstnode",
-        spriteIndex: 1,
-        itemId: 1,
+        item: {
+          spriteIndex: 1,
+          itemId: 1,
+          title: "Grass",
+        },
         outputRate: 23,
-        title: "Grass",
       },
-      id: "grass1",
+      id: "firstnode",
       position: {
         x: 40,
         y: 30,
       },
     },
   ],
-  edges: [],
+  edges: [] as Edge<MCNode>[],
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
@@ -56,9 +58,23 @@ export const nodeStore = create<RFState>((set, get) => ({
     });
   },
   onConnect: (connection: Connection) => {
+    console.log(connection);
+    const nodes = get().nodes;
+    const sourceNode = nodes.find((node) => node.id === connection.source);
+    const targetNode = nodes.find((node) => node.id === connection.target);
+    if (sourceNode?.data.item.itemId !== targetNode?.data.item.itemId) {
+      return;
+    }
     set({
       edges: addEdge(
-        { ...connection, animated: true, style: { strokeWidth: "4px" } },
+        {
+          ...connection,
+          animated: true,
+          data: {
+            item: sourceNode?.data.item,
+          },
+          style: { strokeWidth: "4px" },
+        } as Edge<MCEdge>,
         get().edges
       ),
     });
@@ -71,11 +87,20 @@ export const nodeStore = create<RFState>((set, get) => ({
     });
   },
 
+  // TODO: Make recursive
   setResourceOutputRate: (id: string, newRate: number) => {
     const nodes = get().nodes;
-    // TODO: Avoid creating a copy
+    let updateIds: string[] = [];
+    get().edges.forEach((edge) => {
+      if (edge.source === id) {
+        updateIds = nodes
+          .filter((node) => node.id === edge.source || node.id === edge.target)
+          .map((node) => node.id);
+      }
+    });
+
     const newNodes = nodes.map((node) => {
-      if (node.data.id === id) {
+      if (updateIds.includes(node.id)) {
         return {
           ...node,
           data: {

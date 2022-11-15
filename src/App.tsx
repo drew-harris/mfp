@@ -10,7 +10,7 @@ import { Node, ReactFlowProvider } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
 import { nodeStore } from "./stores/nodes";
-import { MCItem, MCNode, MCNodeType } from "./types/MCNodes";
+import { MCNode, MCPickerItem } from "./types/MCNodes";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 
@@ -28,33 +28,27 @@ function App() {
     setActive(null);
     if (event.over && event.over.id === "droppable") {
       console.log(event.active.data.current?.item);
-      const itemInfo = event.active.data.current?.item as MCItem;
-      let data;
+      const itemInfo = event.active.data.current?.item as MCPickerItem;
 
-      if (itemInfo.dataType === MCNodeType.resource) {
-        data = {
-          ...itemInfo,
-          outputRate: 0,
-        };
-      } else if (itemInfo.dataType === MCNodeType.output) {
-        data = {
-          ...itemInfo,
-          outputRate: 0,
-        };
-      }
-
-      if (data) {
-        const node: Node<MCNode> = {
-          id: event.delta.x.toString(),
-          position: {
-            x: 30,
-            y: 40,
+      const node: Node<MCNode> = {
+        id: event.delta.x.toString(),
+        position: {
+          x: 30,
+          y: 40,
+        },
+        data: {
+          item: {
+            itemId: itemInfo.itemId,
+            spriteIndex: itemInfo.spriteIndex,
+            title: itemInfo.title,
           },
-          data,
-          type: itemInfo.dataType,
-        };
-        addNode(node);
-      }
+          dataType: itemInfo.dataType,
+          id: event.delta.x.toString(),
+          outputRate: 0,
+        },
+        type: itemInfo.dataType,
+      };
+      addNode(node);
       setIsDropped(true);
     }
   }
