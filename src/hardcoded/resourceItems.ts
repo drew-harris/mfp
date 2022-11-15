@@ -37,11 +37,11 @@ export const resourceItems: MCResourceItem[] = blockNames.map((name, index) => {
   };
 });
 
-export const outputItems: MCOutputItem[] = [
-  {
+export const outputItems: MCOutputItem[] = blockNames.map((name, index) => {
+  return {
     dataType: MCNodeType.output,
-    spriteIndex: 1,
-    itemId: 1,
-    title: "Grass",
-  },
-];
+    itemId: index,
+    spriteIndex: index,
+    title: name,
+  };
+});

@@ -1,4 +1,6 @@
 import { Handle, Position } from "reactflow";
+import { useStore } from "zustand";
+import { nodeStore } from "../../stores/nodes";
 import { MCNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 interface ResourceNodeProps {
@@ -6,9 +8,13 @@ interface ResourceNodeProps {
 }
 
 export default function ResourceNode({ data }: ResourceNodeProps) {
+  const setOutputRate = useStore(
+    nodeStore,
+    (store) => store.setResourceOutputRate
+  );
   return (
     <>
-      <div className="p-1 bg-lime-500 border-4 shadow border-mc-200 text-white">
+      <div className="p-1 bg-lime-500  shadow  text-white">
         <div className="text-black text-center">Resource</div>
         <div className="bg-gray-100 px-8 py-4  text-black flex items-center flex-col">
           <SpriteDisplay
@@ -19,6 +25,10 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
           <input
             className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
             placeholder="Per-Hour Rate"
+            onChange={(event) =>
+              setOutputRate(data.id, parseInt(event.target.value) || 0)
+            }
+            value={data.outputRate}
           />
           <div className="text-gray-400 text-xs">/ Hour</div>
           <Handle

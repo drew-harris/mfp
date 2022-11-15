@@ -21,6 +21,7 @@ export default function DraggableItem({ item }: DraggableItemProps) {
       ref={setNodeRef}
       {...listeners}
       {...attributes}
+      // style={{ ...style }}
       className={`border-4 ${isOutput} z-50 flex flex-col items-center border-mc-700 p-3`}
     >
       <div>{item.title}</div>

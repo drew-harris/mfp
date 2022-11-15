@@ -24,10 +24,12 @@ export type MCItem = MCResourceItem | MCOutputItem;
 
 export interface MCResourceNode extends MCResourceItem {
   outputRate: number;
+  id: string;
 }
 
 export interface MCOutputNode extends MCOutputItem {
   outputRate: number;
+  id: string;
 }
 
 export type MCNode = MCResourceNode | MCOutputNode;
