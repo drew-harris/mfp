@@ -89,7 +89,6 @@ export const nodeStore = create<RFState>((set, get) => ({
 
   // TODO: Make recursive
   setResourceOutputRate: (id: string, newRate: number) => {
-    console.log("setting output rate");
     set({
       edges: get().edges.map((edge) => {
         if (edge.source === id && edge?.data?.item) {
