@@ -87,21 +87,39 @@ export const nodeStore = create<RFState>((set, get) => ({
     });
   },
 
-  // TODO: Make recursive
   setResourceOutputRate: (id: string, newRate: number) => {
-    set({
-      edges: get().edges.map((edge) => {
-        if (edge.source === id && edge?.data?.item) {
-          return {
-            ...edge,
-            data: {
-              item: edge.data.item,
-              outputRate: newRate,
-            },
-          };
-        }
-        return edge;
-      }),
-    });
+    const setRateForOutputEdges = (sourceId: string, newRate: number) => {
+      console.log(`Setting rates for id: ${sourceId} `);
+      const edges = get().edges;
+      set({
+        edges: edges.map((edge) => {
+          if (!edge.data?.item) {
+            return edge;
+          }
+          if (edge.source === sourceId) {
+            return {
+              ...edge,
+              data: {
+                ...edge.data,
+                outputRate: newRate,
+              },
+            };
+          } else {
+            return edge;
+          }
+        }),
+      });
+
+      // Get all new source nodes
+      const newSourceIds = edges
+        .filter((edge) => edge.source === sourceId)
+        .map((edge) => edge.target);
+
+      for (id in newSourceIds) {
+        setRateForOutputEdges(id, newRate);
+      }
+    };
+
+    setRateForOutputEdges(id, newRate);
   },
 }));
