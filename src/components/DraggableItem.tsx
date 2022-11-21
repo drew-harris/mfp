@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import { MCItem, MCNodeType, MCPickerItem } from "../types/MCNodes";
+import { DraggableData, MCNodeType, MCPickerItem } from "../types/MCNodes";
 import { SpriteDisplay } from "./SpriteDisplay";
 
 interface DraggableItemProps {
@@ -9,7 +9,7 @@ interface DraggableItemProps {
 export default function DraggableItem({ item }: DraggableItemProps) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: item.itemId + item.dataType,
-    data: { item },
+    data: { item, type: item.dataType } as DraggableData,
   });
 
   // TODO: use cva to change background

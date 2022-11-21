@@ -12,7 +12,7 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
 } from "reactflow";
-import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
+import { MCEdge, MCNode, MCNodeType, MCSplitterNode } from "../types/MCNodes";
 
 type RFState = {
   nodes: Node<MCNode>[];
@@ -22,6 +22,7 @@ type RFState = {
   onConnect: OnConnect;
   addNode: (node: Node<MCNode>) => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
+  setRatioForSplitter: (id: string, newPartCount: number) => void;
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -61,7 +62,16 @@ export const nodeStore = create<RFState>((set, get) => ({
     const nodes = get().nodes;
     const sourceNode = nodes.find((node) => node.id === connection.source);
     const targetNode = nodes.find((node) => node.id === connection.target);
-    if (sourceNode?.data.item.itemId !== targetNode?.data.item.itemId) {
+    if (!targetNode || !sourceNode) {
+      return;
+    }
+    console.log(targetNode);
+    if (
+      !targetNode?.data &&
+      targetNode?.data.item &&
+      sourceNode?.data?.item?.itemId !== targetNode?.data?.item.itemId
+    ) {
+      console.log("RETURNING EARLY");
       return;
     }
     set({
@@ -78,6 +88,25 @@ export const nodeStore = create<RFState>((set, get) => ({
         get().edges
       ),
     });
+    if (targetNode.data.dataType === MCNodeType.splitter) {
+      set({
+        nodes: get().nodes.map((node) => {
+          if (
+            node.id === targetNode.id &&
+            node.data.dataType === MCNodeType.splitter
+          ) {
+            return {
+              ...node,
+              data: {
+                ...(node.data as MCSplitterNode),
+                item: sourceNode.data.item,
+              },
+            };
+          }
+          return node;
+        }),
+      });
+    }
   },
 
   addNode: (node: Node<MCNode>) => {
@@ -90,6 +119,19 @@ export const nodeStore = create<RFState>((set, get) => ({
   setResourceOutputRate: (id: string, newRate: number) => {
     const setRateForOutputEdges = (sourceId: string, newRate: number) => {
       console.log(`Setting rates for id: ${sourceId} `);
+      const possibleSplitter = get().nodes.find(
+        (node) =>
+          node.data.dataType === MCNodeType.splitter && node.id === sourceId
+      ) as Node<MCSplitterNode> | undefined;
+
+      let possibleSplitterValue: number | undefined;
+      if (possibleSplitter) {
+        console.log("POSSIBLE", possibleSplitter);
+        possibleSplitterValue = possibleSplitter
+          ? possibleSplitter.data.ratio[0] * newRate
+          : newRate;
+      }
+
       const edges = get().edges;
       set({
         edges: edges.map((edge) => {
@@ -101,7 +143,7 @@ export const nodeStore = create<RFState>((set, get) => ({
               ...edge,
               data: {
                 ...edge.data,
-                outputRate: newRate,
+                outputRate: possibleSplitterValue || newRate,
               },
             };
           } else {
@@ -115,11 +157,32 @@ export const nodeStore = create<RFState>((set, get) => ({
         .filter((edge) => edge.source === sourceId)
         .map((edge) => edge.target);
 
-      for (id in newSourceIds) {
-        setRateForOutputEdges(id, newRate);
-      }
+      console.log("NEXT SOURCE IDS", newSourceIds);
+
+      newSourceIds.forEach((id) => setRateForOutputEdges(id, newRate));
     };
 
     setRateForOutputEdges(id, newRate);
+  },
+
+  setRatioForSplitter(id: string, newPartCount: number) {
+    const newValue = 1 / newPartCount;
+    console.log("NEW VALUE", newValue);
+    set({
+      nodes: get().nodes.map((node) => {
+        if (node.id === id) {
+          return {
+            ...node,
+            data: {
+              ...node.data,
+              ratio: [...Array(newPartCount)].map(() =>
+                parseFloat(newValue.toFixed(1))
+              ),
+            },
+          };
+        }
+        return node;
+      }),
+    });
   },
 }));

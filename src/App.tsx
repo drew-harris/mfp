@@ -10,7 +10,13 @@ import { Node, ReactFlowProvider } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
 import { nodeStore } from "./stores/nodes";
-import { MCNode, MCNodeType, MCPickerItem } from "./types/MCNodes";
+import {
+  DraggableData,
+  MCNode,
+  MCNodeType,
+  MCPickerItem,
+  MCSplitterNode,
+} from "./types/MCNodes";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 
@@ -27,6 +33,27 @@ function App() {
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
     if (event.over && event.over.id === "droppable") {
+      const data = event.active.data.current as DraggableData;
+      if (data.type === MCNodeType.splitter) {
+        console.log("Creating splitter.");
+        const node: Node<MCSplitterNode> = {
+          id: event.delta.x.toString(),
+          position: {
+            x: 30,
+            y: 40,
+          },
+          data: {
+            ratio: [1],
+            dataType: MCNodeType.splitter,
+            id: event.delta.x.toString(),
+          },
+          type: data.type,
+        };
+        addNode(node);
+        setIsDropped(true);
+        return;
+      }
+
       const itemInfo = event.active.data.current?.item as MCPickerItem;
       const node: Node<MCNode> = {
         id: event.delta.x.toString(),

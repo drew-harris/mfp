@@ -5,6 +5,7 @@ import "reactflow/dist/style.css";
 import { useStore } from "zustand";
 import OutputNode from "../components/nodes/OutputNode";
 import ResourceNode from "../components/nodes/ResourceNode";
+import SplitterNode from "../components/nodes/SplitterNode";
 import { nodeStore } from "../stores/nodes";
 
 export default function NodeCanvas() {
@@ -16,7 +17,11 @@ export default function NodeCanvas() {
   });
 
   const nodeTypes = useMemo(
-    () => ({ resource: ResourceNode, "custom-output": OutputNode }),
+    () => ({
+      resource: ResourceNode,
+      "custom-output": OutputNode,
+      splitter: SplitterNode,
+    }),
     []
   );
 
