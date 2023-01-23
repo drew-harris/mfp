@@ -62,7 +62,10 @@ interface TaskCardProps {
 
 const TaskCard = ({ task, setTask }: TaskCardProps) => {
   return (
-    <div onClick={() => setTask(task)} className="p-4 cursor-pointer bg-mc-200">
+    <div
+      onClick={() => setTask(task)}
+      className="p-4 mt-3 cursor-pointer bg-mc-200"
+    >
       <div className="font-bold">{task.title}</div>
     </div>
   );

@@ -12,6 +12,24 @@ export const allTasks: Task[] = [
         itemId: 2,
         perHour: 20,
       },
+    ],
+
+    nodeRequirements: [
+      {
+        nodeType: MCNodeType.output,
+        amount: 1,
+      },
+    ],
+  },
+  {
+    title: "Lots of Items",
+    id: "dirt-2",
+    description: "We need lots of everything",
+    itemRequirements: [
+      {
+        itemId: 2,
+        perHour: 20,
+      },
       {
         itemId: 3,
         perHour: 40,
