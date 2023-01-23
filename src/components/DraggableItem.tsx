@@ -22,7 +22,10 @@ export default function DraggableItem({ item }: DraggableItemProps) {
       {...listeners}
       {...attributes}
       // style={{ ...style }}
-      className={`border-4 ${isOutput} z-50 flex flex-col items-center border-mc-700 p-3`}
+      className={`border-4 ${isOutput} flex flex-col items-center border-mc-700 p-3`}
+      style={{
+        zIndex: 288,
+      }}
     >
       <div>{item.title}</div>
       <SpriteDisplay spriteIndex={item.spriteIndex} />

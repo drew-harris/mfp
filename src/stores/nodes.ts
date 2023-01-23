@@ -11,16 +11,17 @@ import {
   OnConnect,
   applyNodeChanges,
   applyEdgeChanges,
+  Viewport,
 } from "reactflow";
 import { MCEdge, MCNode, MCNodeType, MCSplitterNode } from "../types/MCNodes";
 
 type RFState = {
   nodes: Node<MCNode>[];
   edges: Edge<MCEdge>[];
+  viewport: Viewport;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
-  updateTree: (sourceId: string) => void;
   addNode: (node: Node<MCNode>) => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
   setRatioForSplitter: (id: string, newPartCount: number) => void;
@@ -58,6 +59,11 @@ export const nodeStore = create<RFState>((set, get) => ({
       edges: applyEdgeChanges(changes, get().edges),
     });
   },
+  viewport: {
+    zoom: 1,
+    x: 0,
+    y: 0,
+  },
   onConnect: (connection: Connection) => {
     console.log(connection);
     const nodes = get().nodes;
@@ -72,7 +78,6 @@ export const nodeStore = create<RFState>((set, get) => ({
       targetNode?.data.item &&
       sourceNode?.data?.item?.itemId !== targetNode?.data?.item.itemId
     ) {
-      console.log("RETURNING EARLY");
       return;
     }
     set({
@@ -166,10 +171,6 @@ export const nodeStore = create<RFState>((set, get) => ({
     };
 
     setRateForOutputEdges(id, newRate);
-  },
-
-  updateTree(sourceId: string) {
-    const nodes = get().nodes;
   },
 
   setRatioForSplitter(id: string, newPartCount: number) {
