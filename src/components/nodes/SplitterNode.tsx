@@ -16,7 +16,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   const updateNodeInternals = useUpdateNodeInternals();
   return (
     <>
-      <div className="p-1 bg-cyan-300  shadow  text-white">
+      <div className="p-1 bg-orange-300  shadow  text-white">
         <div className="text-black text-center">Splitter</div>
         <div className="bg-gray-100 px-8 py-4  text-black flex items-center flex-col">
           {data.item && (
@@ -27,6 +27,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
             />
           )}
           <div className="text-gray-400 text-xs">Output Count</div>
+          <div className="text-gray-400 text-xs">{data.id}</div>
           <input
             className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
             placeholder="Ratio"
@@ -45,24 +46,21 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
               {data?.item?.title}
             </div>
           </Handle>
-          {data.ratio.map((part, index) => {
-            updateNodeInternals(data.id);
-            return (
-              <Handle
-                id={index.toString()}
-                key={index}
-                type="source"
-                position={Position.Right}
-                style={{
-                  transform: `scale(2.6) translate(0px, ${8.5 * index - 4}px)`,
-                }}
-              >
-                <div className="scale text-[4px] -translate-x-2 -translate-y-[1.2px]">
-                  {part}
-                </div>
-              </Handle>
-            );
-          })}
+          {data.ratio.map((part, index) => (
+            <Handle
+              id={index.toString()}
+              key={index}
+              type="source"
+              position={Position.Right}
+              style={{
+                transform: `scale(2.6) translate(0px, ${8.5 * index - 4}px)`,
+              }}
+            >
+              <div className="scale text-[4px] -translate-x-2 -translate-y-[1.2px]">
+                {part}
+              </div>
+            </Handle>
+          ))}
         </div>
       </div>
     </>

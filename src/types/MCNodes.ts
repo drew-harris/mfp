@@ -1,5 +1,3 @@
-import { UseDraggableArguments } from "@dnd-kit/core";
-
 export const enum MCNodeType {
   resource = "resource",
   craftable = "craftable",
@@ -31,7 +29,7 @@ export interface MCOutputNode {
 
 export interface MCSplitterNode {
   id: string;
-  dataType: MCNodeType.splitter;
+  dataType: MCNodeType;
   item?: MCItem;
   ratio: number[];
 }

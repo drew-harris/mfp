@@ -1,5 +1,4 @@
 import { useDroppable } from "@dnd-kit/core";
-import { useMemo } from "react";
 import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
 import { useStore } from "zustand";
@@ -8,6 +7,12 @@ import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
 import { nodeStore } from "../stores/nodes";
 
+const nodeTypes = {
+  resource: ResourceNode,
+  "custom-output": OutputNode,
+  splitter: SplitterNode,
+};
+
 export default function NodeCanvas() {
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect } =
     useStore(nodeStore);
@@ -15,15 +20,6 @@ export default function NodeCanvas() {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
   });
-
-  const nodeTypes = useMemo(
-    () => ({
-      resource: ResourceNode,
-      "custom-output": OutputNode,
-      splitter: SplitterNode,
-    }),
-    []
-  );
 
   return (
     <div

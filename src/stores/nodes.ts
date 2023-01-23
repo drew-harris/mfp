@@ -20,6 +20,7 @@ type RFState = {
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
+  updateTree: (sourceId: string) => void;
   addNode: (node: Node<MCNode>) => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
   setRatioForSplitter: (id: string, newPartCount: number) => void;
@@ -83,6 +84,7 @@ export const nodeStore = create<RFState>((set, get) => ({
             item: sourceNode?.data.item,
             outputRate: 0,
           },
+          label: "0",
           style: { strokeWidth: "4px" },
         } as Edge<MCEdge>,
         get().edges
@@ -141,6 +143,7 @@ export const nodeStore = create<RFState>((set, get) => ({
           if (edge.source === sourceId) {
             return {
               ...edge,
+              label: possibleSplitterValue || newRate,
               data: {
                 ...edge.data,
                 outputRate: possibleSplitterValue || newRate,
@@ -163,6 +166,10 @@ export const nodeStore = create<RFState>((set, get) => ({
     };
 
     setRateForOutputEdges(id, newRate);
+  },
+
+  updateTree(sourceId: string) {
+    const nodes = get().nodes;
   },
 
   setRatioForSplitter(id: string, newPartCount: number) {
