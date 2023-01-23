@@ -3,6 +3,7 @@ import { allTasks } from "../../hardcoded/tasks";
 import { useFullItem } from "../../hooks/useFullItem";
 import { ItemRequirement, Task } from "../../types/tasks";
 import { SpriteDisplay } from "../SpriteDisplay";
+import { DroppableOrder } from "./DroppableOrder";
 
 export const SideTaskBar = () => {
   const [task, setTask] = useState<Task | null>(null);
@@ -30,7 +31,7 @@ interface SideTaskViewProps {
 
 const SideTaskView = ({ task }: SideTaskViewProps) => {
   return (
-    <div className="p-2 bg-mc-200">
+    <div className="p-2">
       <div className="mb-3 text-lg font-bold">Current Task:</div>
       <div className="text-xl font-bold text-center">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
@@ -39,6 +40,7 @@ const SideTaskView = ({ task }: SideTaskViewProps) => {
           <RequirementView key={requirement.itemId} requirement={requirement} />
         ))}
       </div>
+      <DroppableOrder task={task} />
     </div>
   );
 };
