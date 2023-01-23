@@ -9,12 +9,14 @@ import { useState } from "react";
 import { Node } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
+import { DroppableOrderProps } from "./components/tasks/DroppableOrder";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
 import {
-  DraggableData,
+  DraggableItemData,
   MCNode,
   MCNodeType,
+  MCOrderNode,
   MCPickerItem,
   MCSplitterNode,
 } from "./types/MCNodes";
@@ -34,7 +36,28 @@ function App() {
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
     if (event.over && event.over.id === "droppable") {
-      const data = event.active.data.current as DraggableData;
+      // Check if its an order
+      if (event.active.data.current?.task) {
+        const data = event.active.data.current as DroppableOrderProps;
+        const orderNode: Node<MCOrderNode> = {
+          id: event.delta.x.toString(),
+          position: {
+            x: 30,
+            y: 40,
+          },
+          data: {
+            task: data.task,
+            id: data.task.id,
+            dataType: MCNodeType.order,
+          },
+          type: MCNodeType.order,
+        };
+        addNode(orderNode);
+        setIsDropped(true);
+        return;
+      }
+
+      const data = event.active.data.current as DraggableItemData;
       if (data.type === MCNodeType.splitter) {
         console.log("Creating splitter.");
         const node: Node<MCSplitterNode> = {

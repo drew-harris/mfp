@@ -2,6 +2,7 @@ import { useDroppable } from "@dnd-kit/core";
 import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
 import { useStore } from "zustand";
+import OrderNode from "../components/nodes/OrderNode";
 import OutputNode from "../components/nodes/OutputNode";
 import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
@@ -11,6 +12,7 @@ const nodeTypes = {
   resource: ResourceNode,
   "custom-output": OutputNode,
   splitter: SplitterNode,
+  order: OrderNode,
 };
 
 export default function NodeCanvas() {

@@ -1,10 +1,10 @@
 import { useDraggable } from "@dnd-kit/core";
-import { DraggableData } from "../types/MCNodes";
+import { DraggableItemData } from "../types/MCNodes";
 
 export default function DraggableSplittter() {
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: "splitter",
-    data: { isItem: false, type: "splitter" } as DraggableData,
+    data: { isItem: false, type: "splitter" } as DraggableItemData,
   });
 
   return (

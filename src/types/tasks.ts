@@ -20,6 +20,6 @@ export interface NodeRequirement {
   amount: number;
 }
 
-export interface DraggableOrder {
+export interface DraggableOrderData {
   task: Task;
 }

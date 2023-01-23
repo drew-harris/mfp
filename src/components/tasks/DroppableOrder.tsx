@@ -1,5 +1,8 @@
 import { useDraggable } from "@dnd-kit/core";
-import { DraggableOrder, Task } from "../../types/tasks";
+import { useStore } from "zustand";
+import { nodeStore } from "../../stores/nodes";
+import { MCNodeType } from "../../types/MCNodes";
+import { DraggableOrderData, Task } from "../../types/tasks";
 
 export interface DroppableOrderProps {
   task: Task;
@@ -9,8 +12,10 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({
       id: task.id,
-      data: { task } as DraggableOrder,
+      data: { task } as DraggableOrderData,
     });
+
+  const { nodes } = useStore(nodeStore);
 
   const style = transform
     ? {
@@ -18,6 +23,14 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
       }
     : undefined;
 
+  // Only show if the grid does not have any order nodes on it
+
+  const hasNodeAlready =
+    nodes.findIndex((node) => node.data.dataType === MCNodeType.order) > -1;
+
+  if (hasNodeAlready) {
+    return null;
+  }
   return (
     <div className="mt-5">
       <div
@@ -25,11 +38,12 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
         {...listeners}
         {...attributes}
         style={style}
-        className={`text-center grid p-3 place-items-center border-4 border-dashed bg-mc-200 border-mc-400 ${
-          isDragging ? "min-h-[150px] drop-shadow-sm" : null
-        }`}
+        className="p-1 text-white bg-orange-300 shadow max-w-[99px]"
       >
-        <div>Drag To Canvas To Start</div>
+        <div className="text-center text-black">Order</div>
+        <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
+          Test
+        </div>
       </div>
     </div>
   );
