@@ -6,7 +6,7 @@ import {
   DragStartEvent,
 } from "@dnd-kit/core";
 import { useState } from "react";
-import { Node, useViewport } from "reactflow";
+import { Node } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
 import { nodeStore } from "./stores/nodes";
@@ -58,8 +58,8 @@ function App() {
       const node: Node<MCNode> = {
         id: event.delta.x.toString(),
         position: {
-          x: event.delta.x,
-          y: event.delta.y,
+          x: 30,
+          y: 30,
         },
         data: {
           item: {
@@ -90,7 +90,7 @@ function App() {
       </div>
       <DragOverlay dropAnimation={null}>
         {active && active.data.current?.item && isDropped ? (
-          <DraggableItem item={active.data.current.item}></DraggableItem>
+          <DraggableItem higher item={active.data.current.item} />
         ) : null}
       </DragOverlay>
     </DndContext>

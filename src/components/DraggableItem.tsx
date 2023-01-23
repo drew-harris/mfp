@@ -4,10 +4,14 @@ import { SpriteDisplay } from "./SpriteDisplay";
 
 interface DraggableItemProps {
   item: MCPickerItem;
+  higher?: boolean;
 }
 
-export default function DraggableItem({ item }: DraggableItemProps) {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+export default function DraggableItem({
+  item,
+  higher = false,
+}: DraggableItemProps) {
+  const { attributes, listeners, setNodeRef } = useDraggable({
     id: item.itemId + item.dataType,
     data: { item, type: item.dataType } as DraggableData,
   });
@@ -21,10 +25,9 @@ export default function DraggableItem({ item }: DraggableItemProps) {
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      // style={{ ...style }}
       className={`border-4 ${isOutput} flex flex-col items-center border-mc-700 p-3`}
       style={{
-        zIndex: 288,
+        zIndex: higher ? 500 : 100,
       }}
     >
       <div>{item.title}</div>
