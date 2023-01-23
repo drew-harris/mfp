@@ -1,4 +1,4 @@
-import { MCNodeType, MCOutputNode, MCPickerItem } from "../types/MCNodes";
+import { MCItem, MCNodeType, MCPickerItem } from "../types/MCNodes";
 
 const blockNames = [
   "Stone",
@@ -44,4 +44,12 @@ export const outputItems: MCPickerItem[] = blockNames.map((name, index) => {
     spriteIndex: index,
     title: name,
   };
+});
+
+export const allItems: MCItem[] = blockNames.map((name, index) => {
+  return {
+    itemId: index,
+    spriteIndex: index,
+    title: name,
+  } as MCItem;
 });

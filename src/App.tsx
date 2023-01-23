@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Node } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
+import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
 import {
   DraggableData,
@@ -79,12 +80,14 @@ function App() {
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <div className="grid grid-rows-[1.8fr_1fr] h-full absolute top-0 bottom-0 left-0 right-0 p-2 gap-2 grid-cols-[2fr_2fr_1.3fr]">
-        <div className="bg-mc-300 border-4 border-mc-800 col-span-2">
+      <div className="grid absolute top-0 right-0 bottom-0 left-0 gap-2 p-2 h-full grid-rows-[1.8fr_1fr] grid-cols-[2fr_2fr_1.6fr]">
+        <div className="col-span-2 border-4 bg-mc-300 border-mc-800">
           <NodeCanvas />
         </div>
-        <div className="bg-mc-600 row-span-2">test2</div>
-        <div className="bg-mc-600 overflow-y-scroll col-span-2">
+        <div className="row-span-2 border-4 bg-mc-300 border-mc-800">
+          <SideTaskBar />
+        </div>
+        <div className="overflow-y-scroll col-span-2 bg-mc-600">
           <ItemPicker />
         </div>
       </div>

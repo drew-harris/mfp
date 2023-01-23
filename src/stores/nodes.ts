@@ -22,7 +22,6 @@ type RFState = {
   onConnect: OnConnect;
   addNode: (node: Node<MCNode>) => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
-  setRatioForSplitter: (id: string, newPartCount: number) => void;
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -117,27 +116,6 @@ export const nodeStore = create<RFState>((set, get) => ({
         } else {
           return edge;
         }
-      }),
-    });
-  },
-
-  setRatioForSplitter(id: string, newPartCount: number) {
-    const newValue = 1 / newPartCount;
-    console.log("NEW VALUE", newValue);
-    set({
-      nodes: get().nodes.map((node) => {
-        if (node.id === id) {
-          return {
-            ...node,
-            data: {
-              ...node.data,
-              ratio: [...Array(newPartCount)].map(() =>
-                parseFloat(newValue.toFixed(1))
-              ),
-            },
-          };
-        }
-        return node;
       }),
     });
   },

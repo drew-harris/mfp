@@ -1,27 +1,20 @@
-import { Handle, Position, useUpdateNodeInternals } from "reactflow";
-import { useStore } from "zustand";
-import { nodeStore } from "../../stores/nodes";
+import { useUpdateNodeInternals } from "reactflow";
 import { MCSplitterNode } from "../../types/MCNodes";
-import { SpriteDisplay } from "../SpriteDisplay";
 
 interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
 export default function SplitterNode({ data }: SplitterNodeProps) {
-  const setRatioForSplitter = useStore(
-    nodeStore,
-    (store) => store.setRatioForSplitter
-  );
   const updateNodeInternals = useUpdateNodeInternals();
 
   return <div>WIP</div>;
 
   // return (
   //   <>
-  //     <div className="p-1 bg-orange-300  shadow  text-white">
-  //       <div className="text-black text-center">Splitter</div>
-  //       <div className="bg-gray-100 px-8 py-4  text-black flex items-center flex-col">
+  //     <div className="p-1 text-white bg-orange-300 shadow">
+  //       <div className="text-center text-black">Splitter</div>
+  //       <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
   //         {data.item && (
   //           <SpriteDisplay
   //             className="mb-5"
@@ -29,10 +22,10 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   //             spriteIndex={data.item.spriteIndex}
   //           />
   //         )}
-  //         <div className="text-gray-400 text-xs">Output Count</div>
-  //         <div className="text-gray-400 text-xs">{data.id}</div>
+  //         <div className="text-xs text-gray-400">Output Count</div>
+  //         <div className="text-xs text-gray-400">{data.id}</div>
   //         <input
-  //           className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
+  //           className="pl-4 w-28 text-xs text-black bg-gray-300 rounded-xl border border-black placeholder:text-gray-600"
   //           placeholder="Ratio"
   //           value={data.ratio.length || 0}
   //           onChange={(event) => {
@@ -45,7 +38,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   //           position={Position.Left}
   //           style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
   //         >
-  //           <div className="text-[4px] translate-x-2 -translate-y-[1.2px]">
+  //           <div className="translate-x-2 text-[4px] -translate-y-[1.2px]">
   //             {data?.item?.title}
   //           </div>
   //         </Handle>
@@ -59,7 +52,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   //               transform: `scale(2.6) translate(0px, ${8.5 * index - 4}px)`,
   //             }}
   //           >
-  //             <div className="scale text-[4px] -translate-x-2 -translate-y-[1.2px]">
+  //             <div className="-translate-x-2 scale text-[4px] -translate-y-[1.2px]">
   //               {part}
   //             </div>
   //           </Handle>
