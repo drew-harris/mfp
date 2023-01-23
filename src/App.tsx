@@ -80,7 +80,7 @@ function App() {
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <div className="grid absolute top-0 right-0 bottom-0 left-0 gap-2 p-2 h-full grid-rows-[1.8fr_1fr] grid-cols-[2fr_2fr_1.6fr]">
+      <div className="grid absolute top-0 right-0 bottom-0 left-0 gap-2 p-2 h-full grid-rows-[1.8fr_1fr] grid-cols-[2fr_2fr_1.3fr]">
         <div className="col-span-2 border-4 bg-mc-300 border-mc-800">
           <NodeCanvas />
         </div>
