@@ -15,6 +15,7 @@ export interface MCItem {
 export interface MCPickerItem extends MCItem {
   dataType: MCNodeType;
 }
+
 export interface MCResourceNode {
   item: MCItem;
   dataType: MCNodeType;
@@ -29,7 +30,7 @@ export interface MCOutputNode {
 
 export interface MCSplitterNode {
   id: string;
-  dataType: MCNodeType;
+  dataType: MCNodeType.splitter;
   item?: MCItem;
   ratio: number[];
 }

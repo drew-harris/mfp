@@ -11,14 +11,12 @@ import {
   OnConnect,
   applyNodeChanges,
   applyEdgeChanges,
-  Viewport,
 } from "reactflow";
-import { MCEdge, MCNode, MCNodeType, MCSplitterNode } from "../types/MCNodes";
+import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 
 type RFState = {
   nodes: Node<MCNode>[];
   edges: Edge<MCEdge>[];
-  viewport: Viewport;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
@@ -46,7 +44,7 @@ export const nodeStore = create<RFState>((set, get) => ({
         x: 40,
         y: 30,
       },
-    },
+    } as Node<MCNode>,
   ],
   edges: [],
   onNodesChange: (changes: NodeChange[]) => {
@@ -59,11 +57,6 @@ export const nodeStore = create<RFState>((set, get) => ({
       edges: applyEdgeChanges(changes, get().edges),
     });
   },
-  viewport: {
-    zoom: 1,
-    x: 0,
-    y: 0,
-  },
   onConnect: (connection: Connection) => {
     console.log(connection);
     const nodes = get().nodes;
@@ -72,11 +65,10 @@ export const nodeStore = create<RFState>((set, get) => ({
     if (!targetNode || !sourceNode) {
       return;
     }
-    console.log(targetNode);
     if (
       !targetNode?.data &&
       targetNode?.data.item &&
-      sourceNode?.data?.item?.itemId !== targetNode?.data?.item.itemId
+      sourceNode?.data?.item?.itemId !== targetNode?.data?.item.itemId // Items must be the same type
     ) {
       return;
     }
@@ -95,25 +87,6 @@ export const nodeStore = create<RFState>((set, get) => ({
         get().edges
       ),
     });
-    if (targetNode.data.dataType === MCNodeType.splitter) {
-      set({
-        nodes: get().nodes.map((node) => {
-          if (
-            node.id === targetNode.id &&
-            node.data.dataType === MCNodeType.splitter
-          ) {
-            return {
-              ...node,
-              data: {
-                ...(node.data as MCSplitterNode),
-                item: sourceNode.data.item,
-              },
-            };
-          }
-          return node;
-        }),
-      });
-    }
   },
 
   addNode: (node: Node<MCNode>) => {
@@ -124,53 +97,28 @@ export const nodeStore = create<RFState>((set, get) => ({
   },
 
   setResourceOutputRate: (id: string, newRate: number) => {
-    const setRateForOutputEdges = (sourceId: string, newRate: number) => {
-      console.log(`Setting rates for id: ${sourceId} `);
-      const possibleSplitter = get().nodes.find(
-        (node) =>
-          node.data.dataType === MCNodeType.splitter && node.id === sourceId
-      ) as Node<MCSplitterNode> | undefined;
+    console.log(`Setting rates for id: ${id} `);
 
-      let possibleSplitterValue: number | undefined;
-      if (possibleSplitter) {
-        console.log("POSSIBLE", possibleSplitter);
-        possibleSplitterValue = possibleSplitter
-          ? possibleSplitter.data.ratio[0] * newRate
-          : newRate;
-      }
-
-      const edges = get().edges;
-      set({
-        edges: edges.map((edge) => {
-          if (!edge.data?.item) {
-            return edge;
-          }
-          if (edge.source === sourceId) {
-            return {
-              ...edge,
-              label: possibleSplitterValue || newRate,
-              data: {
-                ...edge.data,
-                outputRate: possibleSplitterValue || newRate,
-              },
-            };
-          } else {
-            return edge;
-          }
-        }),
-      });
-
-      // Get all new source nodes
-      const newSourceIds = edges
-        .filter((edge) => edge.source === sourceId)
-        .map((edge) => edge.target);
-
-      console.log("NEXT SOURCE IDS", newSourceIds);
-
-      newSourceIds.forEach((id) => setRateForOutputEdges(id, newRate));
-    };
-
-    setRateForOutputEdges(id, newRate);
+    const edges = get().edges;
+    set({
+      edges: edges.map((edge) => {
+        if (!edge.data?.item) {
+          return edge;
+        }
+        if (edge.source === id) {
+          return {
+            ...edge,
+            label: newRate,
+            data: {
+              ...edge.data,
+              outputRate: newRate,
+            },
+          };
+        } else {
+          return edge;
+        }
+      }),
+    });
   },
 
   setRatioForSplitter(id: string, newPartCount: number) {

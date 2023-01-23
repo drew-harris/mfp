@@ -14,28 +14,29 @@ export default function OutputNode({ data }: OutputNodeProps) {
     (state) =>
       state.edges.find((edge) => edge.target === data.id)?.data?.outputRate
   );
+
   return (
     <>
-      <div className="p-1 bg-cyan-300  shadow  text-white">
-        <div className="text-black text-center">Output</div>
-        <div className="bg-gray-100 px-8 py-4  text-black flex items-center flex-col">
+      <div className="p-1 text-white bg-cyan-300 shadow">
+        <div className="text-center text-black">Output</div>
+        <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
           <SpriteDisplay
             className="mb-5"
             size={56}
             spriteIndex={data.item.spriteIndex}
           />
           <input
-            className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
+            className="pl-4 w-28 text-xs text-black bg-gray-300 rounded-xl border border-black placeholder:text-gray-600"
             placeholder="Per-Hour Rate"
             value={outputRate}
           />
-          <div className="text-gray-400 text-xs">/ Hour</div>
+          <div className="text-xs text-gray-400">/ Hour</div>
           <Handle
             type="target"
             position={Position.Left}
             style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
           >
-            <div className="text-[4px] translate-x-2 -translate-y-[1.2px]">
+            <div className="translate-x-2 text-[4px] -translate-y-[1.2px]">
               {data.item.title}
             </div>
           </Handle>

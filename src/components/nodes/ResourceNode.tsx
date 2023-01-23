@@ -20,30 +20,30 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
   );
   return (
     <>
-      <div className="p-1 bg-lime-500  shadow  text-white">
-        <div className="text-black text-center">Resource</div>
-        <div className="bg-gray-100 px-8 py-4  text-black flex items-center flex-col">
+      <div className="p-1 text-white bg-lime-500 shadow">
+        <div className="text-center text-black">Resource</div>
+        <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
           <SpriteDisplay
             className="mb-5"
             size={56}
             spriteIndex={data?.item?.spriteIndex || 0}
           />
           <input
-            className="w-28 border text-xs pl-4 text-black placeholder:text-gray-600 bg-gray-300 border-black rounded-xl"
+            className="pl-4 w-28 text-xs text-black bg-gray-300 rounded-xl border border-black placeholder:text-gray-600"
             placeholder="Per-Hour Rate"
             onChange={(event) =>
               setOutputRate(data.id, parseInt(event.target.value) || 0)
             }
             value={outputRate}
           />
-          <div className="text-gray-400 text-xs">/ Hour</div>
+          <div className="text-xs text-gray-400">/ Hour</div>
           <Handle
             type="source"
             position={Position.Right}
             style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
           >
             <div
-              className="text-[4px] -translate-x-2 -translate-y-[1.2px]"
+              className="-translate-x-2 text-[4px] -translate-y-[1.2px]"
               style={{ direction: "rtl" }}
             >
               {data?.item?.title}
