@@ -81,7 +81,7 @@ export const nodeStore = create<RFState>((set, get) => ({
             item: sourceNode?.data.item,
             outputRate: 0,
           },
-          label: "0",
+          // label: "0",
           style: { strokeWidth: "4px" },
         } as Edge<MCEdge>,
         get().edges
@@ -108,7 +108,7 @@ export const nodeStore = create<RFState>((set, get) => ({
         if (edge.source === id) {
           return {
             ...edge,
-            label: newRate,
+            // label: newRate,
             data: {
               ...edge.data,
               outputRate: newRate,
