@@ -26,25 +26,7 @@ type RFState = {
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
 export const nodeStore = create<RFState>((set, get) => ({
-  nodes: [
-    {
-      type: MCNodeType.resource,
-      data: {
-        dataType: MCNodeType.resource,
-        id: "firstnode",
-        item: {
-          spriteIndex: 1,
-          itemId: 1,
-          title: "Grass",
-        },
-      },
-      id: "firstnode",
-      position: {
-        x: 40,
-        y: 30,
-      },
-    } as Node<MCNode>,
-  ],
+  nodes: [],
   edges: [],
   onNodesChange: (changes: NodeChange[]) => {
     set({

@@ -63,48 +63,27 @@ function App() {
         return;
       }
 
-      const data = event.active.data.current as DraggableItemData;
-      if (data.type === MCNodeType.splitter) {
-        console.log("Creating splitter.");
-        const node: Node<MCSplitterNode> = {
+      const itemInfo = event.active.data.current?.item as MCPickerItem;
+      const node = {
+        id: event.delta.x.toString(),
+        position: {
+          x: projection.x,
+          y: projection.y,
+        },
+        data: {
+          item: {
+            itemId: itemInfo.itemId,
+            spriteIndex: itemInfo.spriteIndex,
+            title: itemInfo.title,
+          },
+          ratio: [1],
+          dataType: itemInfo.dataType,
           id: event.delta.x.toString(),
-          position: {
-            x: projection.x,
-            y: projection.y,
-          },
-          data: {
-            ratio: [1],
-            dataType: MCNodeType.splitter,
-            id: event.delta.x.toString(),
-          },
-          type: data.type,
-        };
-        addNode(node);
-        setIsDropped(true);
-        return;
-      } else {
-        const itemInfo = event.active.data.current?.item as MCPickerItem;
-        const node = {
-          id: event.delta.x.toString(),
-          position: {
-            x: projection.x,
-            y: projection.y,
-          },
-          data: {
-            item: {
-              itemId: itemInfo.itemId,
-              spriteIndex: itemInfo.spriteIndex,
-              title: itemInfo.title,
-            },
-            ratio: [1],
-            dataType: itemInfo.dataType,
-            id: event.delta.x.toString(),
-          },
-          type: itemInfo.dataType,
-        };
-        addNode(node);
-        setIsDropped(true);
-      }
+        },
+        type: itemInfo.dataType,
+      };
+      addNode(node);
+      setIsDropped(true);
     }
   }
 

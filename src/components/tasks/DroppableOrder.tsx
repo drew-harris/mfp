@@ -33,26 +33,31 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
     return null;
   }
   return (
-    <div className="flex justify-center mt-5">
-      <div
-        ref={setNodeRef}
-        {...listeners}
-        {...attributes}
-        style={style}
-        className="p-1 text-white bg-orange-300 shadow"
-      >
-        <div className="text-center text-black">Order</div>
-        <div className="p-2 text-black bg-white">
-          {task.itemRequirements?.map((requirement) => (
-            <div className="flex gap-3 items-center" key={requirement.itemId}>
-              <RequirementView
-                className="my-2 text-black"
-                requirement={requirement}
-              />
-            </div>
-          ))}
+    <>
+      <div className="mt-6 mb-4 text-sm text-center text-mc-700">
+        Drag the order onto the canvas to begin.
+      </div>
+      <div className="flex justify-center">
+        <div
+          ref={setNodeRef}
+          {...listeners}
+          {...attributes}
+          style={style}
+          className="p-1 text-white bg-orange-300 shadow"
+        >
+          <div className="text-center text-black">Order</div>
+          <div className="p-2 text-black bg-white">
+            {task.itemRequirements?.map((requirement) => (
+              <div className="flex gap-3 items-center" key={requirement.itemId}>
+                <RequirementView
+                  className="my-2 text-black"
+                  requirement={requirement}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

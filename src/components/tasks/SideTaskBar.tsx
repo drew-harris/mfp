@@ -35,7 +35,7 @@ const SideTaskView = ({ task }: SideTaskViewProps) => {
       <div className="mb-3 text-lg font-bold">Current Task:</div>
       <div className="text-xl font-bold text-center">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
-      <div className="flex flex-wrap gap-y-3 justify-between items-center m-auto mt-3">
+      <div className="flex flex-wrap gap-y-3 justify-around items-center p-3 m-auto mt-3 bg-mc-200">
         {task.itemRequirements?.map((requirement) => (
           <RequirementView key={requirement.itemId} requirement={requirement} />
         ))}
