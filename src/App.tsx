@@ -19,7 +19,6 @@ import NodeCanvas from "./views/NodeCanvas";
 function App() {
   const [isDropped, setIsDropped] = useState(false);
   const [active, setActive] = useState<Active | null>(null);
-
   const { project } = useReactFlow();
 
   const addNode = useStore(nodeStore, (state) => state.addNode);

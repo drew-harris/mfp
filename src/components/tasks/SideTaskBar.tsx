@@ -9,7 +9,6 @@ import { nodeStore } from "../../stores/nodes";
 
 export const SideTaskBar = () => {
   const [task, setTask] = useState<Task | null>(null);
-
   const removeOrder = useStore(nodeStore, (state) => state.removeOrderNode);
 
   const clearTask = () => {

@@ -5,6 +5,8 @@ import {
   Connection,
   Edge,
   EdgeChange,
+  EdgeRemoveChange,
+  getConnectedEdges,
   Node,
   NodeChange,
   NodeRemoveChange,
@@ -22,6 +24,7 @@ type RFState = {
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
   addNode: (node: Node<MCNode>) => void;
+  removeNodeById: (nodeId: string) => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
   removeOrderNode: () => void;
 };
@@ -66,7 +69,7 @@ export const nodeStore = create<RFState>((set, get) => ({
             item: sourceNode?.data.item,
             outputRate: 0,
           },
-          // label: "0",
+          label: "0",
           style: { strokeWidth: "4px" },
         } as Edge<MCEdge>,
         get().edges
@@ -93,7 +96,7 @@ export const nodeStore = create<RFState>((set, get) => ({
         if (edge.source === id) {
           return {
             ...edge,
-            // label: newRate,
+            label: newRate,
             data: {
               ...edge.data,
               outputRate: newRate,
@@ -106,20 +109,35 @@ export const nodeStore = create<RFState>((set, get) => ({
     });
   },
 
+  removeNodeById(nodeId: string) {
+    console.log("Removing node by id", nodeId);
+    const nodes = get().nodes;
+    const possibleNode = nodes.find((n) => n.id == nodeId);
+
+    if (possibleNode) {
+      const change: NodeRemoveChange = {
+        id: possibleNode.id,
+        type: "remove",
+      };
+      const edges = getConnectedEdges([possibleNode], get().edges);
+      const changes: EdgeRemoveChange[] = edges.map((e) => ({
+        type: "remove",
+        id: e.id,
+      }));
+      set({
+        nodes: applyNodeChanges([change], get().nodes),
+        edges: applyEdgeChanges(changes, get().edges),
+      });
+    }
+  },
+
   removeOrderNode() {
     const nodes = get().nodes;
     const possibleOrder = nodes.find(
       (n) => n.data.dataType === MCNodeType.order
     );
-
     if (possibleOrder) {
-      const change: NodeRemoveChange = {
-        id: possibleOrder.id,
-        type: "remove",
-      };
-      set({
-        nodes: applyNodeChanges([change], get().nodes),
-      });
+      get().removeNodeById(possibleOrder.id);
     }
   },
 }));
