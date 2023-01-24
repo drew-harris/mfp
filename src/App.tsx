@@ -17,7 +17,6 @@ import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 
 function App() {
-  const [isDropped, setIsDropped] = useState(false);
   const [active, setActive] = useState<Active | null>(null);
   const { project } = useReactFlow();
 
@@ -52,7 +51,6 @@ function App() {
           type: MCNodeType.order,
         };
         addNode(orderNode);
-        setIsDropped(true);
         return;
       }
 
@@ -76,7 +74,6 @@ function App() {
         type: itemInfo.dataType,
       };
       addNode(node);
-      setIsDropped(true);
     }
   }
 
@@ -94,7 +91,7 @@ function App() {
         </div>
       </div>
       <DragOverlay dropAnimation={null}>
-        {active && active.data.current?.item && isDropped ? (
+        {active && active.data.current?.item ? (
           <DraggableItem higher item={active.data.current.item} />
         ) : null}
       </DragOverlay>
