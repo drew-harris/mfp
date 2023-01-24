@@ -14,7 +14,6 @@ import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
 import {
   DraggableItemData,
-  MCNode,
   MCNodeType,
   MCOrderNode,
   MCPickerItem,
@@ -40,7 +39,7 @@ function App() {
       if (event.active.data.current?.task) {
         const data = event.active.data.current as DroppableOrderProps;
         const orderNode: Node<MCOrderNode> = {
-          id: event.delta.x.toString(),
+          id: data.task.id,
           position: {
             x: 30,
             y: 40,
