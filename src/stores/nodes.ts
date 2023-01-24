@@ -66,7 +66,7 @@ export const nodeStore = create<RFState>((set, get) => ({
     }
     if (
       !targetNode?.data &&
-      targetNode?.data.item &&
+      targetNode?.data?.item &&
       sourceNode?.data?.item?.itemId !== targetNode?.data?.item.itemId // Items must be the same type
     ) {
       return;
@@ -120,3 +120,13 @@ export const nodeStore = create<RFState>((set, get) => ({
     });
   },
 }));
+
+function checkIfNodesConnect(
+  source: Node<MCNode>,
+  target: Node<MCNode>,
+  connection: Connection
+): boolean {
+  // Source should always have an item to pass
+
+  return false;
+}

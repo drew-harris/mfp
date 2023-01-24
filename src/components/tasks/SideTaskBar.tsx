@@ -45,10 +45,16 @@ const SideTaskView = ({ task }: SideTaskViewProps) => {
   );
 };
 
-const RequirementView = ({ requirement }: { requirement: ItemRequirement }) => {
+export const RequirementView = ({
+  requirement,
+  className,
+}: {
+  requirement: ItemRequirement;
+  className?: string;
+}) => {
   const item = useFullItem(requirement.itemId);
   return (
-    <div className="flex">
+    <div className={`flex ${className}`}>
       <div className="flex gap-2 items-center">
         <SpriteDisplay spriteIndex={item?.spriteIndex} />
         <div>X {requirement.perHour}</div>

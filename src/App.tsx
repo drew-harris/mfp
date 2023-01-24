@@ -76,28 +76,29 @@ function App() {
         addNode(node);
         setIsDropped(true);
         return;
-      }
-
-      const itemInfo = event.active.data.current?.item as MCPickerItem;
-      const node: Node<MCNode> = {
-        id: event.delta.x.toString(),
-        position: {
-          x: 30,
-          y: 30,
-        },
-        data: {
-          item: {
-            itemId: itemInfo.itemId,
-            spriteIndex: itemInfo.spriteIndex,
-            title: itemInfo.title,
-          },
-          dataType: itemInfo.dataType,
+      } else {
+        const itemInfo = event.active.data.current?.item as MCPickerItem;
+        const node = {
           id: event.delta.x.toString(),
-        },
-        type: itemInfo.dataType,
-      };
-      addNode(node);
-      setIsDropped(true);
+          position: {
+            x: 30,
+            y: 30,
+          },
+          data: {
+            item: {
+              itemId: itemInfo.itemId,
+              spriteIndex: itemInfo.spriteIndex,
+              title: itemInfo.title,
+            },
+            ratio: [1],
+            dataType: itemInfo.dataType,
+            id: event.delta.x.toString(),
+          },
+          type: itemInfo.dataType,
+        };
+        addNode(node);
+        setIsDropped(true);
+      }
     }
   }
 

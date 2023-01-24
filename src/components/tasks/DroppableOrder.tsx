@@ -3,6 +3,7 @@ import { useStore } from "zustand";
 import { nodeStore } from "../../stores/nodes";
 import { MCNodeType } from "../../types/MCNodes";
 import { DraggableOrderData, Task } from "../../types/tasks";
+import { RequirementView } from "./SideTaskBar";
 
 export interface DroppableOrderProps {
   task: Task;
@@ -32,17 +33,23 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
     return null;
   }
   return (
-    <div className="mt-5">
+    <div className="flex justify-center mt-5">
       <div
         ref={setNodeRef}
         {...listeners}
         {...attributes}
         style={style}
-        className="p-1 text-white bg-orange-300 shadow max-w-[99px]"
+        className="p-1 text-white bg-orange-300 shadow"
       >
         <div className="text-center text-black">Order</div>
-        <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
-          Test
+        <div className="p-2 bg-white">
+          {task.itemRequirements?.map((requirement) => (
+            <RequirementView
+              className="text-black"
+              requirement={requirement}
+              key={requirement.itemId}
+            />
+          ))}
         </div>
       </div>
     </div>

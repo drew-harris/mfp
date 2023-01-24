@@ -7,6 +7,6 @@ export const useFullItem = (itemId: number) => {
   return item;
 };
 
-function itemFromId(id: number | undefined): MCItem {
+export function itemFromId(id: number | undefined): MCItem {
   return allItems.find((item) => item.itemId == id) || allItems[0];
 }

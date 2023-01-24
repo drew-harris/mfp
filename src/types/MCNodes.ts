@@ -16,24 +16,28 @@ export interface MCItem {
 }
 
 export interface MCPickerItem extends MCItem {
-  dataType: MCNodeType;
+  dataType: MCNodeType.output | MCNodeType.resource | MCNodeType.splitter;
 }
 
 export interface MCResourceNode extends MCBaseNode {
   item: MCItem;
+  dataType: MCNodeType.resource;
 }
 
 export interface MCOutputNode extends MCBaseNode {
   item: MCItem;
+  dataType: MCNodeType.output;
 }
 
 export interface MCSplitterNode extends MCBaseNode {
   item?: MCItem;
   ratio: number[];
+  dataType: MCNodeType.splitter;
 }
 
 export interface MCOrderNode extends MCBaseNode {
   task: Task;
+  dataType: MCNodeType.order;
 }
 
 export interface MCEdge {
