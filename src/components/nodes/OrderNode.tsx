@@ -1,3 +1,5 @@
+import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import { Edge, Handle, Position } from "reactflow";
 import { useStore } from "zustand";
@@ -28,25 +30,27 @@ export default function OrderNode({ data }: OrderNodeProps) {
                 type="target"
                 position={Position.Left}
                 style={{
-                  transform: `scale(2.6) translate(-4px, ${-3}px)`,
+                  transform: `scale(2.6) translate(-4px, ${0}px)`,
                   top: 0,
                   display: "block",
                   position: "relative",
                 }}
               ></Handle>
               <RequirementView
-                className="my-2 text-black"
+                className="m-2 text-black"
                 requirement={requirement}
               />
-              <div>
+              <div className="mx-3">
                 {doesEdgePassRequirement(
                   incomingEdges.find(
                     (edge) => edge.data?.item.itemId === requirement.itemId
                   ),
                   requirement
-                )
-                  ? "Pass"
-                  : "Fail"}
+                ) ? (
+                  <FontAwesomeIcon icon={faCheck} />
+                ) : (
+                  <FontAwesomeIcon icon={faX} color="red" />
+                )}
               </div>
             </div>
           ))}

@@ -6,7 +6,7 @@ import {
   DragStartEvent,
 } from "@dnd-kit/core";
 import { useState } from "react";
-import { Node } from "reactflow";
+import { Node, useReactFlow } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
 import { DroppableOrderProps } from "./components/tasks/DroppableOrder";
@@ -26,6 +26,8 @@ function App() {
   const [isDropped, setIsDropped] = useState(false);
   const [active, setActive] = useState<Active | null>(null);
 
+  const { project } = useReactFlow();
+
   const addNode = useStore(nodeStore, (state) => state.addNode);
 
   function handleDragStart(event: DragStartEvent) {
@@ -35,14 +37,19 @@ function App() {
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
     if (event.over && event.over.id === "droppable") {
+      console.log("EVENT: ", event.active.rect.current.translated);
+      const projection = project({
+        x: event.active.rect.current.translated?.left || 0,
+        y: event.active.rect.current.translated?.top || 0,
+      });
       // Check if its an order
       if (event.active.data.current?.task) {
         const data = event.active.data.current as DroppableOrderProps;
         const orderNode: Node<MCOrderNode> = {
           id: data.task.id,
           position: {
-            x: 30,
-            y: 40,
+            x: projection.x,
+            y: projection.y,
           },
           data: {
             task: data.task,
@@ -62,8 +69,8 @@ function App() {
         const node: Node<MCSplitterNode> = {
           id: event.delta.x.toString(),
           position: {
-            x: 30,
-            y: 40,
+            x: projection.x,
+            y: projection.y,
           },
           data: {
             ratio: [1],
@@ -80,8 +87,8 @@ function App() {
         const node = {
           id: event.delta.x.toString(),
           position: {
-            x: 30,
-            y: 30,
+            x: projection.x,
+            y: projection.y,
           },
           data: {
             item: {

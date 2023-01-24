@@ -55,9 +55,9 @@ export const RequirementView = ({
   const item = useFullItem(requirement.itemId);
   return (
     <div className={`flex ${className}`}>
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-4 items-center">
         <SpriteDisplay spriteIndex={item?.spriteIndex} />
-        <div>X {requirement.perHour}</div>
+        <div>x {requirement.perHour}</div>
       </div>
     </div>
   );
