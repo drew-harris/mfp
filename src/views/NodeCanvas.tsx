@@ -17,28 +17,18 @@ const nodeTypes = {
 };
 
 export default function NodeCanvas() {
-  const {
-    // updateEdgeSpeeds,
-    nodes,
-    edges,
-    onNodesChange,
-    onEdgesChange,
-    onConnect,
-  } = useStore(nodeStore);
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } =
+    useStore(nodeStore);
 
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
   });
 
-  // useEffect(() => {
-  //   updateEdgeSpeeds();
-  // }, [edges]);
-
   return (
     <div
       ref={setNodeRef}
       className={`${
-        isOver ? "border-green-400" : "border-none"
+        isOver ? "border-green-400" : "border-transparent"
       } border-4 h-full`}
     >
       <ReactFlow
