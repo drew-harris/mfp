@@ -21,7 +21,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
 
   return (
     <>
-      <div className="p-1 text-white bg-lime-500 shadow">
+      <div className="p-1 text-white bg-green-300 shadow">
         <div className="text-center text-black">Resource</div>
         <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
           <SpriteDisplay
