@@ -1,6 +1,5 @@
 import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
 import { Edge, Handle, Position } from "reactflow";
 import { useStore } from "zustand";
 import { nodeStore } from "../../stores/nodes";
@@ -47,7 +46,7 @@ export default function OrderNode({ data }: OrderNodeProps) {
                   ),
                   requirement
                 ) ? (
-                  <FontAwesomeIcon icon={faCheck} />
+                  <FontAwesomeIcon icon={faCheck} color="green" />
                 ) : (
                   <FontAwesomeIcon icon={faX} color="red" />
                 )}

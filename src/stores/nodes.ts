@@ -1,17 +1,18 @@
-import create from "zustand";
 import {
+  addEdge,
+  applyEdgeChanges,
+  applyNodeChanges,
   Connection,
   Edge,
   EdgeChange,
   Node,
   NodeChange,
-  addEdge,
-  OnNodesChange,
-  OnEdgesChange,
+  NodeRemoveChange,
   OnConnect,
-  applyNodeChanges,
-  applyEdgeChanges,
+  OnEdgesChange,
+  OnNodesChange,
 } from "reactflow";
+import create from "zustand";
 import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 
 type RFState = {
@@ -22,6 +23,7 @@ type RFState = {
   onConnect: OnConnect;
   addNode: (node: Node<MCNode>) => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
+  removeOrderNode: () => void;
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -33,6 +35,7 @@ export const nodeStore = create<RFState>((set, get) => ({
       nodes: applyNodeChanges(changes, get().nodes),
     });
   },
+
   onEdgesChange: (changes: EdgeChange[]) => {
     set({
       edges: applyEdgeChanges(changes, get().edges),
@@ -101,6 +104,23 @@ export const nodeStore = create<RFState>((set, get) => ({
         }
       }),
     });
+  },
+
+  removeOrderNode() {
+    const nodes = get().nodes;
+    const possibleOrder = nodes.find(
+      (n) => n.data.dataType === MCNodeType.order
+    );
+
+    if (possibleOrder) {
+      const change: NodeRemoveChange = {
+        id: possibleOrder.id,
+        type: "remove",
+      };
+      set({
+        nodes: applyNodeChanges([change], get().nodes),
+      });
+    }
   },
 }));
 

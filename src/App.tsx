@@ -12,13 +12,7 @@ import DraggableItem from "./components/DraggableItem";
 import { DroppableOrderProps } from "./components/tasks/DroppableOrder";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
-import {
-  DraggableItemData,
-  MCNodeType,
-  MCOrderNode,
-  MCPickerItem,
-  MCSplitterNode,
-} from "./types/MCNodes";
+import { MCNodeType, MCOrderNode, MCPickerItem } from "./types/MCNodes";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 

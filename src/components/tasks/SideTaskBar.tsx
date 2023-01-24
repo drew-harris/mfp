@@ -4,9 +4,19 @@ import { useFullItem } from "../../hooks/useFullItem";
 import { ItemRequirement, Task } from "../../types/tasks";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { DroppableOrder } from "./DroppableOrder";
+import { useStore } from "zustand";
+import { nodeStore } from "../../stores/nodes";
 
 export const SideTaskBar = () => {
   const [task, setTask] = useState<Task | null>(null);
+
+  const removeOrder = useStore(nodeStore, (state) => state.removeOrderNode);
+
+  const clearTask = () => {
+    removeOrder();
+    setTask(null);
+  };
+
   return (
     <div className="p-3">
       {!task ? (
@@ -19,7 +29,9 @@ export const SideTaskBar = () => {
           </div>
         </>
       ) : (
-        <SideTaskView task={task} />
+        <>
+          <SideTaskView clearTask={clearTask} task={task} />
+        </>
       )}
     </div>
   );
@@ -27,12 +39,16 @@ export const SideTaskBar = () => {
 
 interface SideTaskViewProps {
   task: Task;
+  clearTask: () => void;
 }
 
-const SideTaskView = ({ task }: SideTaskViewProps) => {
+const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
   return (
     <div className="p-2">
-      <div className="mb-3 text-lg font-bold">Current Task:</div>
+      <div className="flex justify-between items-center mb-3">
+        <div className="text-lg font-bold">Current Task:</div>
+        <button onClick={clearTask}>Clear Task</button>
+      </div>
       <div className="text-xl font-bold text-center">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
       <div className="flex flex-wrap gap-y-3 justify-around items-center p-3 m-auto mt-3 bg-mc-200">
