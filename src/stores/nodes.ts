@@ -16,6 +16,10 @@ import {
 } from "reactflow";
 import create from "zustand";
 import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
+import {
+  animationDurationFromPerHour,
+  checkIfNodesConnect,
+} from "./nodeStoreUtils";
 
 type RFState = {
   nodes: Node<MCNode>[];
@@ -169,56 +173,3 @@ export const nodeStore = create<RFState>((set, get) => ({
     }
   },
 }));
-
-function checkIfNodesConnect(
-  source: Node<MCNode>,
-  target: Node<MCNode>,
-  connection: Connection
-): boolean {
-  // Source should always have an item to pass
-  if (
-    source.data.dataType === MCNodeType.order ||
-    source.data.dataType === MCNodeType.output
-  ) {
-    return false;
-  }
-
-  // The source node must have an item
-  const sourceItem = source.data.item;
-  if (!sourceItem) {
-    return false;
-  }
-
-  if (target.data.dataType == MCNodeType.output) {
-    if (target.data.item.itemId !== sourceItem.itemId) {
-      return false;
-    }
-  }
-
-  if (target.data.dataType === MCNodeType.order) {
-    const requirements = target.data.task.itemRequirements;
-
-    if (
-      requirements &&
-      !requirements.some((req) => req.itemId === sourceItem.itemId)
-    ) {
-      return false;
-    }
-  }
-
-  if (connection.targetHandle) {
-    if (sourceItem.itemId.toString() !== connection.targetHandle) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-// 0-
-
-function animationDurationFromPerHour(perHour: number): number {
-  if (perHour === 0) return 1000000;
-  if (perHour > 100) return 4;
-  return (100 - perHour) * 4;
-}
