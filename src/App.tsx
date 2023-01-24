@@ -86,7 +86,7 @@ function App() {
         <div className="row-span-2 border-4 bg-mc-300 border-mc-800">
           <SideTaskBar />
         </div>
-        <div className="overflow-y-scroll col-span-2 bg-mc-600">
+        <div className="overflow-y-scroll col-span-2 border-4 border-mc-800 bg-mc-300">
           <ItemPicker />
         </div>
       </div>
