@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { useStore } from "zustand";
 import { allTasks } from "../../hardcoded/tasks";
 import { useFullItem } from "../../hooks/useFullItem";
+import { nodeStore } from "../../stores/nodes";
 import { ItemRequirement, Task } from "../../types/tasks";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { DroppableOrder } from "./DroppableOrder";
-import { useStore } from "zustand";
-import { nodeStore } from "../../stores/nodes";
 
 export const SideTaskBar = () => {
   const [task, setTask] = useState<Task | null>(null);

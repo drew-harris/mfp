@@ -13,10 +13,6 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
     (store) => store.setResourceOutputRate
   );
 
-  const outwardConnections = useStore(nodeStore, (store) =>
-    store.edges.filter((e) => e?.sourceNode?.id === data.id)
-  );
-
   const outputRate = useStore(
     nodeStore,
     (store) =>
