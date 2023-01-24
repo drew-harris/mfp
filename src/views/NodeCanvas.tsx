@@ -1,4 +1,5 @@
 import { useDroppable } from "@dnd-kit/core";
+import { useEffect } from "react";
 import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
 import { useStore } from "zustand";
@@ -16,12 +17,22 @@ const nodeTypes = {
 };
 
 export default function NodeCanvas() {
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } =
-    useStore(nodeStore);
+  const {
+    // updateEdgeSpeeds,
+    nodes,
+    edges,
+    onNodesChange,
+    onEdgesChange,
+    onConnect,
+  } = useStore(nodeStore);
 
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
   });
+
+  // useEffect(() => {
+  //   updateEdgeSpeeds();
+  // }, [edges]);
 
   return (
     <div

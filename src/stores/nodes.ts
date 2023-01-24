@@ -25,6 +25,7 @@ type RFState = {
   onConnect: OnConnect;
   addNode: (node: Node<MCNode>) => void;
   removeNodeById: (nodeId: string) => void;
+  updateEdgeSpeeds: () => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
   removeOrderNode: () => void;
 };
@@ -42,6 +43,26 @@ export const nodeStore = create<RFState>((set, get) => ({
   onEdgesChange: (changes: EdgeChange[]) => {
     set({
       edges: applyEdgeChanges(changes, get().edges),
+    });
+  },
+
+  updateEdgeSpeeds() {
+    const edges = get().edges;
+    const newEdges: Edge<MCEdge>[] = edges.map((e) => {
+      return {
+        ...e,
+        style: {
+          ...e.style,
+          animationDuration: `${animationDurationFromPerHour(
+            e.data?.outputRate || 0
+          )}ms`,
+          animationDirection: undefined,
+        },
+      };
+    });
+
+    set({
+      edges: newEdges,
     });
   },
 
@@ -75,7 +96,7 @@ export const nodeStore = create<RFState>((set, get) => ({
           style: {
             strokeWidth: "4px",
             color: "white",
-            animationDuration: "10ms",
+            animationDuration: "0ms",
             animationDirection: "reverse",
           },
         } as Edge<MCEdge>,
@@ -114,6 +135,8 @@ export const nodeStore = create<RFState>((set, get) => ({
         }
       }),
     });
+
+    get().updateEdgeSpeeds();
   },
 
   removeNodeById(nodeId: string) {
@@ -190,4 +213,12 @@ function checkIfNodesConnect(
   }
 
   return true;
+}
+
+// 0-
+
+function animationDurationFromPerHour(perHour: number): number {
+  if (perHour === 0) return 1000000;
+  if (perHour > 100) return 4;
+  return (100 - perHour) * 4;
 }
