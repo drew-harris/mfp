@@ -64,11 +64,12 @@ export const nodeStore = create<RFState>((set, get) => ({
     if (!targetNode || !sourceNode) {
       return;
     }
-    if (
-      !targetNode?.data &&
-      targetNode?.data?.item &&
-      sourceNode?.data?.item?.itemId !== targetNode?.data?.item.itemId // Items must be the same type
-    ) {
+
+    if (sourceNode.data.dataType === MCNodeType.order) {
+      return;
+    }
+
+    if (checkIfNodesConnect(sourceNode, targetNode, connection)) {
       return;
     }
     set({
@@ -127,6 +128,12 @@ function checkIfNodesConnect(
   connection: Connection
 ): boolean {
   // Source should always have an item to pass
+  if (
+    source.data.dataType === MCNodeType.order ||
+    source.data.dataType === MCNodeType.output
+  ) {
+    return false;
+  }
 
-  return false;
+  return true;
 }
