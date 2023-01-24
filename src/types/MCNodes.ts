@@ -2,9 +2,9 @@ import { DraggableOrderData, Task } from "./tasks";
 
 export const enum MCNodeType {
   resource = "resource",
-  craftable = "craftable",
+  // craftable = "craftable",
   output = "custom-output",
-  custom = "custom",
+  // custom = "custom",
   splitter = "splitter",
   order = "order",
 }

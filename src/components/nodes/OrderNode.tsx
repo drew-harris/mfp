@@ -15,6 +15,19 @@ export default function OrderNode({ data }: OrderNodeProps) {
         <div className="p-2 text-black bg-white">
           {data.task.itemRequirements?.map((requirement) => (
             <div className="flex gap-3 items-center" key={requirement.itemId}>
+              <Handle
+                key={requirement.itemId}
+                id={requirement.itemId.toString()}
+                type="target"
+                position={Position.Left}
+                style={{
+                  transform: `scale(2.6) translate(-4px, ${0}px)`,
+                  // top: 50,
+                  top: 0,
+                  display: "block",
+                  position: "relative",
+                }}
+              ></Handle>
               <RequirementView
                 className="my-2 text-black"
                 requirement={requirement}
@@ -23,24 +36,6 @@ export default function OrderNode({ data }: OrderNodeProps) {
             </div>
           ))}
         </div>
-        {data.task.itemRequirements?.map((req, index) => (
-          <Handle
-            key={req.itemId}
-            id={req.itemId.toString()}
-            type="target"
-            position={Position.Left}
-            style={{
-              transform: `scale(2.6) translate(0px, ${index * 16 - 20}px)`,
-            }}
-          >
-            <div
-              className="-translate-x-2 text-[4px] -translate-y-[1.2px]"
-              style={{ direction: "rtl" }}
-            >
-              {itemFromId(req.itemId).title}
-            </div>
-          </Handle>
-        ))}
       </div>
     </>
   );

@@ -69,7 +69,7 @@ export const nodeStore = create<RFState>((set, get) => ({
       return;
     }
 
-    if (checkIfNodesConnect(sourceNode, targetNode, connection)) {
+    if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
       return;
     }
     set({
@@ -133,6 +133,35 @@ function checkIfNodesConnect(
     source.data.dataType === MCNodeType.output
   ) {
     return false;
+  }
+
+  // The source node must have an item
+  const sourceItem = source.data.item;
+  if (!sourceItem) {
+    return false;
+  }
+
+  if (target.data.dataType == MCNodeType.output) {
+    if (target.data.item.itemId !== sourceItem.itemId) {
+      return false;
+    }
+  }
+
+  if (target.data.dataType === MCNodeType.order) {
+    const requirements = target.data.task.itemRequirements;
+
+    if (
+      requirements &&
+      !requirements.some((req) => req.itemId === sourceItem.itemId)
+    ) {
+      return false;
+    }
+  }
+
+  if (connection.targetHandle) {
+    if (sourceItem.itemId.toString() !== connection.targetHandle) {
+      return false;
+    }
   }
 
   return true;

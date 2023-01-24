@@ -22,6 +22,28 @@ export const allTasks: Task[] = [
     ],
   },
   {
+    title: "Random Task",
+    id: "random-1",
+    description: `Test123`,
+    itemRequirements: [
+      {
+        itemId: 2,
+        perHour: 20,
+      },
+      {
+        itemId: 1,
+        perHour: 20,
+      },
+    ],
+
+    nodeRequirements: [
+      {
+        nodeType: MCNodeType.output,
+        amount: 1,
+      },
+    ],
+  },
+  {
     title: "Lots of Items",
     id: "dirt-2",
     description: "We need lots of everything",

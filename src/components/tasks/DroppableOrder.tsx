@@ -42,13 +42,14 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
         className="p-1 text-white bg-orange-300 shadow"
       >
         <div className="text-center text-black">Order</div>
-        <div className="p-2 bg-white">
+        <div className="p-2 text-black bg-white">
           {task.itemRequirements?.map((requirement) => (
-            <RequirementView
-              className="text-black"
-              requirement={requirement}
-              key={requirement.itemId}
-            />
+            <div className="flex gap-3 items-center" key={requirement.itemId}>
+              <RequirementView
+                className="my-2 text-black"
+                requirement={requirement}
+              />
+            </div>
           ))}
         </div>
       </div>

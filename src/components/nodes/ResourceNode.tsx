@@ -1,10 +1,10 @@
 import { Handle, Position } from "reactflow";
 import { useStore } from "zustand";
 import { nodeStore } from "../../stores/nodes";
-import { MCNode } from "../../types/MCNodes";
+import { MCResourceNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 interface ResourceNodeProps {
-  data: MCNode;
+  data: MCResourceNode;
 }
 
 export default function ResourceNode({ data }: ResourceNodeProps) {
