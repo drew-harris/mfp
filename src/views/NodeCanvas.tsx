@@ -1,5 +1,4 @@
 import { useDroppable } from "@dnd-kit/core";
-import { useEffect } from "react";
 import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
 import { useStore } from "zustand";
