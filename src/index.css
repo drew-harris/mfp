@@ -6,6 +6,10 @@
   .debug {
     @apply border border-red-500;
   }
+
+  .button {
+    @apply border-2 border-mc-700 px-2;
+  }
 }
 
 body {

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Node, useReactFlow } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
+import { MenuBar } from "./components/MenuBar";
 import { DroppableOrderProps } from "./components/tasks/DroppableOrder";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
@@ -78,15 +79,20 @@ function App() {
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <div className="grid absolute top-0 right-0 bottom-0 left-0 gap-2 p-2 h-full grid-rows-[1.8fr_1fr] grid-cols-[2fr_2fr_1.3fr]">
-        <div className="col-span-2 border-4 bg-mc-300 border-mc-800">
-          <NodeCanvas />
+      <div className="flex flex-col max-h-screen h-[100vh]">
+        <div className="flex gap-2 items-center p-2">
+          <MenuBar />
         </div>
-        <div className="row-span-2 border-4 bg-mc-300 border-mc-800">
-          <SideTaskBar />
-        </div>
-        <div className="overflow-y-scroll col-span-2 border-4 border-mc-800 bg-mc-300">
-          <ItemPicker />
+        <div className="grid flex-grow gap-2 pr-2 pb-2 pl-2 grid-rows-[1.8fr_1fr] grid-cols-[2fr_2fr_1.3fr]">
+          <div className="col-span-2 border-4 bg-mc-300 border-mc-800">
+            <NodeCanvas />
+          </div>
+          <div className="row-span-2 border-4 bg-mc-300 border-mc-800">
+            <SideTaskBar />
+          </div>
+          <div className="overflow-y-scroll col-span-2 border-4 border-mc-800 bg-mc-300">
+            <ItemPicker />
+          </div>
         </div>
       </div>
       <DragOverlay dropAnimation={null}>
