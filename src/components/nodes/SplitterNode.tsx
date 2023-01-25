@@ -1,4 +1,3 @@
-import { useUpdateNodeInternals } from "reactflow";
 import { MCSplitterNode } from "../../types/MCNodes";
 
 interface SplitterNodeProps {
@@ -6,8 +5,6 @@ interface SplitterNodeProps {
 }
 
 export default function SplitterNode({ data }: SplitterNodeProps) {
-  const updateNodeInternals = useUpdateNodeInternals();
-
   return <div>WIP</div>;
 
   // return (

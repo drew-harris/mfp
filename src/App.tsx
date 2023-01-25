@@ -29,7 +29,6 @@ function App() {
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
     if (event.over && event.over.id === "droppable") {
-      console.log("EVENT: ", event.active.rect.current.translated);
       const projection = project({
         x: event.active.rect.current.translated?.left || 0,
         y: event.active.rect.current.translated?.top || 0,
