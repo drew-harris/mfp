@@ -16,7 +16,7 @@ export const SideTaskBar = () => {
   );
 
   useEffect(() => {
-    if (!task && possibleOrderNode?.data.dataType == MCNodeType.order) {
+    if (possibleOrderNode?.data.dataType == MCNodeType.order) {
       if (possibleOrderNode.data.task) {
         setTask(possibleOrderNode.data.task);
       }
