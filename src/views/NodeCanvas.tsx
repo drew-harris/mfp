@@ -2,6 +2,7 @@ import { useDroppable } from "@dnd-kit/core";
 import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
 import { useStore } from "zustand";
+import CrafterNode from "../components/nodes/CrafterNode";
 import OrderNode from "../components/nodes/OrderNode";
 import OutputNode from "../components/nodes/OutputNode";
 import ResourceNode from "../components/nodes/ResourceNode";
@@ -13,6 +14,7 @@ const nodeTypes = {
   "custom-output": OutputNode,
   splitter: SplitterNode,
   order: OrderNode,
+  crafter: CrafterNode,
 };
 
 export default function NodeCanvas() {

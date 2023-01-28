@@ -1,6 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import { DraggableItemData, MCNodeType, MCPickerItem } from "../types/MCNodes";
 import { SpriteDisplay } from "./SpriteDisplay";
+import { cva } from "cva";
 
 interface DraggableItemProps {
   item: MCPickerItem;
@@ -16,16 +17,34 @@ export default function DraggableItem({
     data: { item, type: item.dataType } as DraggableItemData,
   });
 
+  const className = cva(
+    ["border-4", "flex", "flex-col", "items-center", "border-mc-200", "p-3"],
+    {
+      variants: {
+        nodeType: {
+          [MCNodeType.resource]: "bg-green-300",
+          [MCNodeType.crafter]: "bg-blue-200",
+          [MCNodeType.output]: "bg-orange-200",
+          [MCNodeType.order]: "bg-red-500",
+          [MCNodeType.splitter]: "bg-gray-200",
+          other: "bg-red-500",
+        },
+      },
+
+      defaultVariants: {
+        nodeType: "other",
+      },
+    }
+  );
+
   // TODO: use cva to change background
-  const isOutput =
-    item.dataType === MCNodeType.output ? "bg-orange-200" : "bg-green-300";
 
   return (
     <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className={`border-4 ${isOutput} flex flex-col items-center border-mc-700 p-3`}
+      className={className({ nodeType: item.dataType })}
       style={{
         zIndex: higher ? 500 : 100,
       }}

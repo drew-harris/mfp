@@ -1,6 +1,6 @@
 import { DraggableOrderData, Task } from "./tasks";
 
-export const enum MCNodeType {
+export enum MCNodeType {
   resource = "resource",
   crafter = "crafter",
   output = "custom-output",
@@ -44,7 +44,7 @@ export interface MCOrderNode extends MCBaseNode {
 }
 
 export interface MCCrafterNode extends MCBaseNode {
-  item?: MCItem;
+  item: MCItem;
   recipe: Recipe;
 }
 

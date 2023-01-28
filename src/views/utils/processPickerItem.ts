@@ -41,7 +41,6 @@ export function processPickerItem(
   }
 
   const regularItem = item as DraggableItemData;
-  console.log(regularItem);
 
   if (regularItem.type === MCNodeType.resource) {
     const node = {

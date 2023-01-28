@@ -37,6 +37,15 @@ export const resourceItems: MCPickerItem[] = blockNames.map((name, index) => {
   };
 });
 
+export const crafterItems: MCPickerItem[] = blockNames.map((name, index) => {
+  return {
+    dataType: MCNodeType.crafter,
+    itemId: index,
+    spriteIndex: index,
+    title: name,
+  };
+});
+
 export const outputItems: MCPickerItem[] = blockNames.map((name, index) => {
   return {
     dataType: MCNodeType.output,

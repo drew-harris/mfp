@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@use-gesture/react": "^10.2.20",
+    "cva": "npm:class-variance-authority",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-spring": "^9.5.5",
