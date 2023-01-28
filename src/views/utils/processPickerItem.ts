@@ -10,16 +10,15 @@ import {
 import { DraggableOrderData } from "../../types/tasks";
 import { getFirstRecipe } from "./recipe";
 
-/**
-  Processes a draggable data and returns a node to add to the graph.
-*/
-
 type PossibleNode =
   | Node<MCOrderNode>
   | Node<MCResourceNode>
   | Node<MCOutputNode>
   | Node<MCCrafterNode>;
 
+/**
+  Processes a draggable data and returns a node to add to the graph.
+*/
 export function processPickerItem(
   item: DraggableOrderData | DraggableItemData,
   projection: XYPosition
