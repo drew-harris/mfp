@@ -21,5 +21,6 @@ export interface NodeRequirement {
 }
 
 export interface DraggableOrderData {
+  type: MCNodeType.order;
   task: Task;
 }

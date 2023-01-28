@@ -12,7 +12,7 @@ export interface DroppableOrderProps {
 export const DroppableOrder = ({ task }: DroppableOrderProps) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: task.id,
-    data: { task } as DraggableOrderData,
+    data: { task, type: MCNodeType.order } as DraggableOrderData,
   });
 
   const { nodes } = useStore(nodeStore);

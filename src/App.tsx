@@ -6,16 +6,16 @@ import {
   DragStartEvent,
 } from "@dnd-kit/core";
 import { useState } from "react";
-import { Node, useReactFlow } from "reactflow";
+import { useReactFlow } from "reactflow";
 import { useStore } from "zustand";
 import DraggableItem from "./components/DraggableItem";
 import { MenuBar } from "./components/MenuBar";
-import { DroppableOrderProps } from "./components/tasks/DroppableOrder";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
-import { MCNodeType, MCOrderNode, MCPickerItem } from "./types/MCNodes";
+import { DraggableData } from "./types/MCNodes";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
+import { processPickerItem } from "./views/utils/processPickerItem";
 
 function App() {
   const [active, setActive] = useState<Active | null>(null);
@@ -34,46 +34,13 @@ function App() {
         x: event.active.rect.current.translated?.left || 0,
         y: event.active.rect.current.translated?.top || 0,
       });
-      // Check if its an order
-      if (event.active.data.current?.task) {
-        const data = event.active.data.current as DroppableOrderProps;
-        const orderNode: Node<MCOrderNode> = {
-          id: data.task.id,
-          position: {
-            x: projection.x,
-            y: projection.y,
-          },
-          data: {
-            task: data.task,
-            id: data.task.id,
-            dataType: MCNodeType.order,
-          },
-          type: MCNodeType.order,
-        };
-        addNode(orderNode);
-        return;
+      const item = event.active.data.current as unknown as DraggableData;
+      const node = processPickerItem(item, projection);
+      if (node) {
+        addNode(node);
+      } else {
+        console.log("No node returned");
       }
-
-      const itemInfo = event.active.data.current?.item as MCPickerItem;
-      const node = {
-        id: event.delta.x.toString(),
-        position: {
-          x: projection.x,
-          y: projection.y,
-        },
-        data: {
-          item: {
-            itemId: itemInfo.itemId,
-            spriteIndex: itemInfo.spriteIndex,
-            title: itemInfo.title,
-          },
-          ratio: [1],
-          dataType: itemInfo.dataType,
-          id: event.delta.x.toString(),
-        },
-        type: itemInfo.dataType,
-      };
-      addNode(node);
     }
   }
 
