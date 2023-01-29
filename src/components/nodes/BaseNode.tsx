@@ -1,5 +1,6 @@
+import { cva } from "cva";
 import { ReactNode } from "react";
-import { MCNode } from "../../types/MCNodes";
+import { MCNode, MCNodeType } from "../../types/MCNodes";
 import { getNodeName } from "../../utils/nodes";
 
 interface BaseNodeProps {
@@ -9,8 +10,23 @@ interface BaseNodeProps {
 }
 
 export const BaseNode = ({ children, className, data }: BaseNodeProps) => {
+  const outerClass = cva(["p-1", "text-white", "shadow", className], {
+    variants: {
+      nodeType: {
+        [MCNodeType.resource]: "bg-green-300",
+        [MCNodeType.crafter]: "bg-blue-200",
+        [MCNodeType.order]: "bg-red-500",
+        [MCNodeType.splitter]: "bg-gray-200",
+        other: "bg-red-500",
+      },
+    },
+    defaultVariants: {
+      nodeType: "other",
+    },
+  });
+
   return (
-    <div className={`p-1 text-white bg-orange-200 shadow ${className}`}>
+    <div className={outerClass({ nodeType: data.dataType })}>
       <div className="text-center text-black">{getNodeName(data.dataType)}</div>
       <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
         {children}

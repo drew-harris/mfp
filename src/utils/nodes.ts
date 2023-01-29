@@ -5,7 +5,11 @@ export const getNodeName = (type: MCNodeType): string => {
     return "Splitter";
   } else if (type == MCNodeType.order) {
     return "Order";
+  } else if (type == MCNodeType.resource) {
+    return "Resource";
+  } else if (type == MCNodeType.crafter) {
+    return "Crafter";
   } else {
-    return "Other";
+    return "Unknown";
   }
 };
