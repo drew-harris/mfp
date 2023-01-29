@@ -24,7 +24,6 @@ export default function DraggableItem({
         nodeType: {
           [MCNodeType.resource]: "bg-green-300",
           [MCNodeType.crafter]: "bg-blue-200",
-          [MCNodeType.output]: "bg-orange-200",
           [MCNodeType.order]: "bg-red-500",
           [MCNodeType.splitter]: "bg-gray-200",
           other: "bg-red-500",

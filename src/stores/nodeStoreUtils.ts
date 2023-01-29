@@ -13,10 +13,7 @@ export function checkIfNodesConnect(
   connection: Connection
 ): boolean {
   // Source should always have an item to pass
-  if (
-    source.data.dataType === MCNodeType.order ||
-    source.data.dataType === MCNodeType.output
-  ) {
+  if (source.data.dataType === MCNodeType.order) {
     return false;
   }
 
@@ -24,12 +21,6 @@ export function checkIfNodesConnect(
   const sourceItem = source.data.item;
   if (!sourceItem) {
     return false;
-  }
-
-  if (target.data.dataType == MCNodeType.output) {
-    if (target.data.item.itemId !== sourceItem.itemId) {
-      return false;
-    }
   }
 
   if (target.data.dataType === MCNodeType.order) {

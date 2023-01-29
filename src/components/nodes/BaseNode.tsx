@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { MCNode, MCNodeType } from "../../types/MCNodes";
+import { MCNode } from "../../types/MCNodes";
 import { getNodeName } from "../../utils/nodes";
 
 interface BaseNodeProps {

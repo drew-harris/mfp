@@ -3,7 +3,6 @@ import { DraggableOrderData, Task } from "./tasks";
 export enum MCNodeType {
   resource = "resource",
   crafter = "crafter",
-  output = "custom-output",
   splitter = "splitter",
   order = "order",
 }
@@ -15,21 +14,12 @@ export interface MCItem {
 }
 
 export interface MCPickerItem extends MCItem {
-  dataType:
-    | MCNodeType.output
-    | MCNodeType.resource
-    | MCNodeType.splitter
-    | MCNodeType.crafter;
+  dataType: MCNodeType.resource | MCNodeType.splitter | MCNodeType.crafter;
 }
 
 export interface MCResourceNode extends MCBaseNode {
   item: MCItem;
   dataType: MCNodeType.resource;
-}
-
-export interface MCOutputNode extends MCBaseNode {
-  item: MCItem;
-  dataType: MCNodeType.output;
 }
 
 export interface MCSplitterNode extends MCBaseNode {
@@ -60,7 +50,6 @@ interface MCBaseNode {
 }
 
 export type MCNode =
-  | MCOutputNode
   | MCResourceNode
   | MCSplitterNode
   | MCCrafterNode

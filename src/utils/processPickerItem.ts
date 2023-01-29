@@ -4,7 +4,6 @@ import {
   MCCrafterNode,
   MCNodeType,
   MCOrderNode,
-  MCOutputNode,
   MCResourceNode,
 } from "../types/MCNodes";
 import { DraggableOrderData } from "../types/tasks";
@@ -13,7 +12,6 @@ import { getFirstRecipe } from "./recipe";
 type PossibleNode =
   | Node<MCOrderNode>
   | Node<MCResourceNode>
-  | Node<MCOutputNode>
   | Node<MCCrafterNode>;
 
 /**
@@ -56,27 +54,6 @@ export function processPickerItem(
           title: regularItem.item.title,
         },
         ratio: [1],
-        dataType: regularItem.type,
-        id: projection.x.toString(),
-      },
-      type: regularItem.type,
-    };
-    return node;
-  }
-
-  if (regularItem.type === MCNodeType.output) {
-    const node: Node<MCOutputNode> = {
-      id: projection.x.toString(),
-      position: {
-        x: projection.x,
-        y: projection.y,
-      },
-      data: {
-        item: {
-          itemId: regularItem.item.itemId,
-          spriteIndex: regularItem.item.spriteIndex,
-          title: regularItem.item.title,
-        },
         dataType: regularItem.type,
         id: projection.x.toString(),
       },

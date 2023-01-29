@@ -1,4 +1,3 @@
-import { MCNodeType } from "../types/MCNodes";
 import { Task } from "../types/tasks";
 
 export const allTasks: Task[] = [
@@ -14,12 +13,7 @@ export const allTasks: Task[] = [
       },
     ],
 
-    nodeRequirements: [
-      {
-        nodeType: MCNodeType.output,
-        amount: 1,
-      },
-    ],
+    nodeRequirements: [],
   },
   {
     title: "Random Task",
@@ -36,12 +30,7 @@ export const allTasks: Task[] = [
       },
     ],
 
-    nodeRequirements: [
-      {
-        nodeType: MCNodeType.output,
-        amount: 1,
-      },
-    ],
+    nodeRequirements: [],
   },
   {
     title: "Lots of Items",
@@ -66,11 +55,6 @@ export const allTasks: Task[] = [
       },
     ],
 
-    nodeRequirements: [
-      {
-        nodeType: MCNodeType.output,
-        amount: 1,
-      },
-    ],
+    nodeRequirements: [],
   },
 ];

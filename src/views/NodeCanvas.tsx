@@ -4,14 +4,12 @@ import "reactflow/dist/style.css";
 import { useStore } from "zustand";
 import CrafterNode from "../components/nodes/CrafterNode";
 import OrderNode from "../components/nodes/OrderNode";
-import OutputNode from "../components/nodes/OutputNode";
 import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
 import { nodeStore } from "../stores/nodes";
 
 const nodeTypes = {
   resource: ResourceNode,
-  "custom-output": OutputNode,
   splitter: SplitterNode,
   order: OrderNode,
   crafter: CrafterNode,
