@@ -15,7 +15,7 @@ import { nodeStore } from "./stores/nodes";
 import { DraggableData } from "./types/MCNodes";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
-import { processPickerItem } from "./views/utils/processPickerItem";
+import { processPickerItem } from "./utils/processPickerItem";
 
 function App() {
   const [active, setActive] = useState<Active | null>(null);

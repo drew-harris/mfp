@@ -6,6 +6,7 @@ interface BaseNodeProps {
   children: ReactNode;
   className?: string;
 }
+
 export const BaseNode = ({ children, className }: BaseNodeProps) => {
   return (
     <div className={`p-1 text-white bg-orange-200 shadow ${className}`}>

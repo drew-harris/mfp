@@ -1,10 +1,15 @@
 import { useDraggable } from "@dnd-kit/core";
+import { resourceItems } from "../hardcoded/resourceItems";
 import { DraggableItemData } from "../types/MCNodes";
 
 export default function DraggableSplittter() {
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: "splitter",
-    data: { isItem: false, type: "splitter" } as DraggableItemData,
+    data: {
+      isItem: false,
+      type: "splitter",
+      item: resourceItems[0],
+    } as DraggableItemData,
   });
 
   return (

@@ -46,6 +46,7 @@ export interface MCOrderNode extends MCBaseNode {
 export interface MCCrafterNode extends MCBaseNode {
   item: MCItem;
   recipe: Recipe;
+  dataType: MCNodeType.crafter;
 }
 
 export interface MCEdge {

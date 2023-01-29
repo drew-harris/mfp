@@ -1,4 +1,4 @@
-import { Recipe } from "../../types/MCNodes";
+import { Recipe } from "../types/MCNodes";
 
 export function getFirstRecipe(itemId: number): Recipe {
   return {
