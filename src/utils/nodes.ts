@@ -9,6 +9,8 @@ export const getNodeName = (type: MCNodeType): string => {
     return "Resource";
   } else if (type == MCNodeType.crafter) {
     return "Crafter";
+  } else if (type == MCNodeType.info) {
+    return "Info";
   } else {
     return "Unknown";
   }

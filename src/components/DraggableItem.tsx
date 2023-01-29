@@ -2,6 +2,7 @@ import { useDraggable } from "@dnd-kit/core";
 import { DraggableItemData, MCNodeType, MCPickerItem } from "../types/MCNodes";
 import { SpriteDisplay } from "./SpriteDisplay";
 import { cva } from "cva";
+import { getNodeName } from "../utils/nodes";
 
 interface DraggableItemProps {
   item: MCPickerItem;
@@ -36,8 +37,6 @@ export default function DraggableItem({
     }
   );
 
-  // TODO: use cva to change background
-
   return (
     <div
       ref={setNodeRef}
@@ -48,7 +47,8 @@ export default function DraggableItem({
         zIndex: higher ? 500 : 100,
       }}
     >
-      <div>{item.title}</div>
+      <div className="text-xs">{getNodeName(item.dataType)}</div>
+      <div className="font-bold">{item.title}</div>
       <SpriteDisplay spriteIndex={item.spriteIndex} />
     </div>
   );

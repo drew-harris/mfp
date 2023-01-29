@@ -3,6 +3,7 @@ import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
 import { useStore } from "zustand";
 import CrafterNode from "../components/nodes/CrafterNode";
+import InfoNode from "../components/nodes/InfoNode";
 import OrderNode from "../components/nodes/OrderNode";
 import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
@@ -13,6 +14,7 @@ const nodeTypes = {
   splitter: SplitterNode,
   order: OrderNode,
   crafter: CrafterNode,
+  info: InfoNode,
 };
 
 export default function NodeCanvas() {

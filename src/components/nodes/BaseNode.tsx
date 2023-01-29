@@ -17,6 +17,7 @@ export const BaseNode = ({ children, className, data }: BaseNodeProps) => {
         [MCNodeType.crafter]: "bg-blue-200",
         [MCNodeType.order]: "bg-red-500",
         [MCNodeType.splitter]: "bg-gray-200",
+        [MCNodeType.info]: "bg-gray-200",
         other: "bg-red-500",
       },
     },

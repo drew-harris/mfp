@@ -5,6 +5,7 @@ export enum MCNodeType {
   crafter = "crafter",
   splitter = "splitter",
   order = "order",
+  info = "info",
 }
 
 export interface MCItem {
@@ -35,8 +36,11 @@ export interface MCOrderNode extends MCBaseNode {
 
 export interface MCCrafterNode extends MCBaseNode {
   item: MCItem;
-  recipe: Recipe;
   dataType: MCNodeType.crafter;
+}
+
+export interface MCInfoNode extends MCBaseNode {
+  dataType: MCNodeType.info;
 }
 
 export interface MCEdge {
@@ -52,6 +56,7 @@ interface MCBaseNode {
 export type MCNode =
   | MCResourceNode
   | MCSplitterNode
+  | MCInfoNode
   | MCCrafterNode
   | MCOrderNode;
 
@@ -60,9 +65,17 @@ export interface DraggableItemData {
   item: MCItem;
 }
 
-export type DraggableData = DraggableItemData | DraggableOrderData;
+export interface DraggableInfo {
+  type: MCNodeType.info;
+}
+
+export type DraggableData =
+  | DraggableItemData
+  | DraggableOrderData
+  | DraggableInfo;
 
 export interface Recipe {
+  outputItemId: number;
   outputAmount: number;
   inputs: {
     itemId: number;

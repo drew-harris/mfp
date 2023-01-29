@@ -2,6 +2,7 @@ import { Node, XYPosition } from "reactflow";
 import {
   DraggableItemData,
   MCCrafterNode,
+  MCInfoNode,
   MCNodeType,
   MCOrderNode,
   MCResourceNode,
@@ -12,6 +13,7 @@ import { getFirstRecipe } from "./recipe";
 type PossibleNode =
   | Node<MCOrderNode>
   | Node<MCResourceNode>
+  | Node<MCInfoNode>
   | Node<MCCrafterNode>;
 
 /**
@@ -37,6 +39,8 @@ export function processPickerItem(
       type: MCNodeType.order,
     } as Node<MCOrderNode>;
   }
+
+  console.log("item: ", item);
 
   const regularItem = item as DraggableItemData;
 
@@ -78,6 +82,22 @@ export function processPickerItem(
         dataType: regularItem.type,
         id: projection.x.toString(),
         recipe: getFirstRecipe(regularItem.item.itemId),
+      },
+      type: regularItem.type,
+    };
+    return node;
+  }
+
+  if (regularItem.type === MCNodeType.info) {
+    const node: Node<MCInfoNode> = {
+      id: projection.x.toString(),
+      position: {
+        x: projection.x,
+        y: projection.y,
+      },
+      data: {
+        dataType: regularItem.type,
+        id: projection.x.toString(),
       },
       type: regularItem.type,
     };

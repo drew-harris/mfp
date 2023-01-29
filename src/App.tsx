@@ -8,14 +8,15 @@ import {
 import { useState } from "react";
 import { useReactFlow } from "reactflow";
 import { useStore } from "zustand";
+import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
 import { MenuBar } from "./components/MenuBar";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
 import { DraggableData } from "./types/MCNodes";
+import { processPickerItem } from "./utils/processPickerItem";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
-import { processPickerItem } from "./utils/processPickerItem";
 
 function App() {
   const [active, setActive] = useState<Active | null>(null);
@@ -44,6 +45,16 @@ function App() {
     }
   }
 
+  let draggedItem = null;
+
+  if (active) {
+    if (active.data?.current?.item) {
+      draggedItem = <DraggableItem item={active.data.current.item} higher />;
+    } else {
+      draggedItem = <DraggableInfoSquare />;
+    }
+  }
+
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
       <div className="flex flex-col max-h-screen h-[100vh]">
@@ -62,11 +73,7 @@ function App() {
           </div>
         </div>
       </div>
-      <DragOverlay dropAnimation={null}>
-        {active && active.data.current?.item ? (
-          <DraggableItem higher item={active.data.current.item} />
-        ) : null}
-      </DragOverlay>
+      <DragOverlay dropAnimation={null}>{draggedItem}</DragOverlay>
     </DndContext>
   );
 }

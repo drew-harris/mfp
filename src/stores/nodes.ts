@@ -79,7 +79,10 @@ export const nodeStore = create<RFState>((set, get) => ({
       return;
     }
 
-    if (sourceNode.data.dataType === MCNodeType.order) {
+    if (
+      sourceNode.data.dataType === MCNodeType.order ||
+      sourceNode.data.dataType === MCNodeType.info
+    ) {
       return;
     }
 
