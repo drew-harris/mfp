@@ -1,5 +1,6 @@
 import { Node, XYPosition } from "reactflow";
 import {
+  DraggableInfo,
   DraggableItemData,
   MCCrafterNode,
   MCInfoNode,
@@ -20,7 +21,7 @@ type PossibleNode =
   Processes a draggable data and returns a node to add to the graph.
 */
 export function processPickerItem(
-  item: DraggableOrderData | DraggableItemData,
+  item: DraggableOrderData | DraggableItemData | DraggableInfo,
   projection: XYPosition
 ): PossibleNode | undefined {
   if (item.type == MCNodeType.order) {
@@ -81,7 +82,6 @@ export function processPickerItem(
         },
         dataType: regularItem.type,
         id: projection.x.toString(),
-        recipe: getFirstRecipe(regularItem.item.itemId),
       },
       type: regularItem.type,
     };
