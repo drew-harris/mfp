@@ -1,5 +1,5 @@
 import { MCItem, MCNodeType, MCPickerItem } from "../types/MCNodes";
-import { recipes } from "./recipies";
+import { allRecipes } from "./recipes";
 
 const blockNames = [
   "Stone", // 0
@@ -67,7 +67,7 @@ export const crafterItems: MCPickerItem[] = blockNames
   })
   .filter((item) => {
     console.log(item);
-    return recipes.findIndex((r) => r.outputItemId == item.itemId) >= 0;
+    return allRecipes.findIndex((r) => r.outputItemId == item.itemId) >= 0;
   }) as MCPickerItem[];
 
 export const allItems: MCItem[] = blockNames.map((name, index) => {

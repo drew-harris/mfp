@@ -6,11 +6,20 @@ import { getNodeName } from "../../utils/nodes";
 interface BaseNodeProps {
   data: MCNode;
   children: ReactNode;
-  className?: string;
+  outerClassName?: string;
+  innerClassName?: string;
+
+  leftSideNode?: ReactNode;
 }
 
-export const BaseNode = ({ children, className, data }: BaseNodeProps) => {
-  const outerClass = cva(["p-1", "text-white", "shadow", className], {
+export const BaseNode = ({
+  children,
+  outerClassName,
+  innerClassName,
+  data,
+  leftSideNode,
+}: BaseNodeProps) => {
+  const outerClass = cva(["p-1", "text-white", "shadow", outerClassName], {
     variants: {
       nodeType: {
         [MCNodeType.resource]: "bg-green-300",
@@ -29,9 +38,15 @@ export const BaseNode = ({ children, className, data }: BaseNodeProps) => {
   return (
     <div className={outerClass({ nodeType: data.dataType })}>
       <div className="text-center text-black">{getNodeName(data.dataType)}</div>
-      <div className="flex flex-col items-center py-4 px-8 text-black bg-gray-100">
+      <div
+        className={
+          "flex flex-col items-center py-4 px-8 text-black bg-gray-100 " +
+          innerClassName
+        }
+      >
         {children}
       </div>
+      <div className="absolute top-0 bottom-0 left-0">{leftSideNode}</div>
     </div>
   );
 };
