@@ -66,7 +66,6 @@ export const crafterItems: MCPickerItem[] = blockNames
     };
   })
   .filter((item) => {
-    console.log(item);
     return allRecipes.findIndex((r) => r.outputItemId == item.itemId) >= 0;
   }) as MCPickerItem[];
 
