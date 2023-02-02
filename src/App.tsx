@@ -13,7 +13,7 @@ import DraggableItem from "./components/DraggableItem";
 import { MenuBar } from "./components/MenuBar";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { nodeStore } from "./stores/nodes";
-import { DraggableData } from "./types/MCNodes";
+import { DraggableData, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
@@ -50,6 +50,8 @@ function App() {
   if (active) {
     if (active.data?.current?.item) {
       draggedItem = <DraggableItem item={active.data.current.item} higher />;
+    } else if (active.data.current?.type == MCNodeType.order) {
+      draggedItem = null;
     } else {
       draggedItem = <DraggableInfoSquare />;
     }
