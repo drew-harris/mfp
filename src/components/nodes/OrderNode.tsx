@@ -1,8 +1,7 @@
 import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Edge, Handle, Position } from "reactflow";
-import { useStore } from "zustand";
-import { nodeStore } from "../../stores/nodes";
+import { useNodeStore } from "../../stores/nodes";
 import { MCEdge, MCOrderNode } from "../../types/MCNodes";
 import { ItemRequirement } from "../../types/tasks";
 import { RequirementView } from "../tasks/SideTaskBar";
@@ -12,7 +11,7 @@ interface OrderNodeProps {
 }
 
 export default function OrderNode({ data }: OrderNodeProps) {
-  const incomingEdges = useStore(nodeStore, (store) =>
+  const incomingEdges = useNodeStore((store) =>
     store.edges.filter((edge) => edge.target === data.id)
   );
 

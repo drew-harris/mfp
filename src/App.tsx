@@ -7,12 +7,11 @@ import {
 } from "@dnd-kit/core";
 import { useState } from "react";
 import { useReactFlow } from "reactflow";
-import { useStore } from "zustand";
 import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
 import { MenuBar } from "./components/MenuBar";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
-import { nodeStore } from "./stores/nodes";
+import { useNodeStore } from "./stores/nodes";
 import { DraggableData, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import ItemPicker from "./views/ItemPicker";
@@ -22,7 +21,7 @@ function App() {
   const [active, setActive] = useState<Active | null>(null);
   const { project } = useReactFlow();
 
-  const addNode = useStore(nodeStore, (state) => state.addNode);
+  const addNode = useNodeStore((state) => state.addNode);
 
   function handleDragStart(event: DragStartEvent) {
     setActive(event.active);
@@ -51,6 +50,8 @@ function App() {
     if (active.data?.current?.item) {
       draggedItem = <DraggableItem item={active.data.current.item} higher />;
     } else if (active.data.current?.type == MCNodeType.order) {
+      // The draggable order is translated directly in the component so it does not
+      // render a duplicate
       draggedItem = null;
     } else {
       draggedItem = <DraggableInfoSquare />;

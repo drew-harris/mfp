@@ -1,13 +1,12 @@
 import { useDroppable } from "@dnd-kit/core";
 import ReactFlow from "reactflow";
 import "reactflow/dist/style.css";
-import { useStore } from "zustand";
 import CrafterNode from "../components/nodes/CrafterNode";
 import InfoNode from "../components/nodes/InfoNode";
 import OrderNode from "../components/nodes/OrderNode";
 import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
-import { nodeStore } from "../stores/nodes";
+import { useNodeStore } from "../stores/nodes";
 
 const nodeTypes = {
   resource: ResourceNode,
@@ -19,7 +18,7 @@ const nodeTypes = {
 
 export default function NodeCanvas() {
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect } =
-    useStore(nodeStore);
+    useNodeStore();
 
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",

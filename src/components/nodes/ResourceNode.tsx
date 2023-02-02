@@ -1,6 +1,5 @@
 import { Handle, Position } from "reactflow";
-import { useStore } from "zustand";
-import { nodeStore } from "../../stores/nodes";
+import { useNodeStore } from "../../stores/nodes";
 import { MCResourceNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
@@ -9,13 +8,9 @@ interface ResourceNodeProps {
 }
 
 export default function ResourceNode({ data }: ResourceNodeProps) {
-  const setOutputRate = useStore(
-    nodeStore,
-    (store) => store.setResourceOutputRate
-  );
+  const setOutputRate = useNodeStore((store) => store.setResourceOutputRate);
 
-  const outputRate = useStore(
-    nodeStore,
+  const outputRate = useNodeStore(
     (store) =>
       store.edges.find((edge) => edge.source === data.id)?.data?.outputRate || 0
   );

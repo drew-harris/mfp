@@ -20,6 +20,8 @@ export function checkIfNodesConnect(
     return false;
   }
 
+  console.log("Target Handle", connection.targetHandle);
+
   // The source node must have an item
   const sourceItem = source.data.item;
   if (!sourceItem) {

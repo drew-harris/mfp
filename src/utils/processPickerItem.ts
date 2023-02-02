@@ -9,7 +9,6 @@ import {
   MCResourceNode,
 } from "../types/MCNodes";
 import { DraggableOrderData } from "../types/tasks";
-import { getFirstRecipe } from "./recipe";
 
 type PossibleNode =
   | Node<MCOrderNode>

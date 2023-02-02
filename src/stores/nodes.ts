@@ -21,7 +21,7 @@ import {
   checkIfNodesConnect,
 } from "./nodeStoreUtils";
 
-type RFState = {
+export type RFState = {
   nodes: Node<MCNode>[];
   edges: Edge<MCEdge>[];
   onNodesChange: OnNodesChange;
@@ -35,7 +35,7 @@ type RFState = {
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
-export const nodeStore = create<RFState>((set, get) => ({
+export const useNodeStore = create<RFState>((set, get) => ({
   nodes: [],
   edges: [],
   onNodesChange: (changes: NodeChange[]) => {
@@ -71,7 +71,6 @@ export const nodeStore = create<RFState>((set, get) => ({
   },
 
   onConnect: (connection: Connection) => {
-    console.log(connection);
     const nodes = get().nodes;
     const sourceNode = nodes.find((node) => node.id === connection.source);
     const targetNode = nodes.find((node) => node.id === connection.target);

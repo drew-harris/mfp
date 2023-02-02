@@ -1,6 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import { useStore } from "zustand";
-import { nodeStore } from "../../stores/nodes";
+import { useNodeStore } from "../../stores/nodes";
 import { MCNodeType } from "../../types/MCNodes";
 import { DraggableOrderData, Task } from "../../types/tasks";
 import { RequirementView } from "./SideTaskBar";
@@ -15,7 +14,7 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
     data: { task, type: MCNodeType.order } as DraggableOrderData,
   });
 
-  const { nodes } = useStore(nodeStore);
+  const nodes = useNodeStore((s) => s.nodes);
 
   const style = transform
     ? {
