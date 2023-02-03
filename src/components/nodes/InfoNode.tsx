@@ -1,5 +1,7 @@
 import { Handle, Position } from "reactflow";
+import { useNodeStore } from "../../stores/nodes";
 import { MCInfoNode } from "../../types/MCNodes";
+import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 
 interface InfoNodeProps {
@@ -7,6 +9,10 @@ interface InfoNodeProps {
 }
 
 export default function InfoNode({ data }: InfoNodeProps) {
+  const incomingEdge = useNodeStore((s) =>
+    s.edges.find((e) => e.target === data.id)
+  );
+
   return (
     <BaseNode data={data}>
       <Handle
@@ -14,6 +20,13 @@ export default function InfoNode({ data }: InfoNodeProps) {
         position={Position.Left}
         style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
       />
+      {incomingEdge?.data && (
+        <div>
+          <SpriteDisplay spriteIndex={incomingEdge.data.item.spriteIndex} />
+          <div>{incomingEdge.data.item.title}</div>
+          <div>Rate: {incomingEdge.data.outputRate.toFixed(2)}</div>
+        </div>
+      )}
     </BaseNode>
   );
 }
