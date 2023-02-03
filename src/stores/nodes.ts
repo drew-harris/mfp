@@ -29,6 +29,7 @@ export type RFState = {
   onConnect: OnConnect;
   addNode: (node: Node<MCNode>) => void;
   removeNodeById: (nodeId: string) => void;
+  removeEdgeById: (edgeId: string) => void;
   updateEdgeSpeeds: () => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
   removeOrderNode: () => void;
@@ -161,6 +162,14 @@ export const useNodeStore = create<RFState>((set, get) => ({
       get().onEdgesChange(changes);
       get().onNodesChange([change]);
     }
+  },
+
+  removeEdgeById(edgeId) {
+    const change: EdgeRemoveChange = {
+      type: "remove",
+      id: edgeId,
+    };
+    get().onEdgesChange([change]);
   },
 
   removeOrderNode() {

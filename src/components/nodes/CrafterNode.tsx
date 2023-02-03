@@ -42,6 +42,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   }, [data.item]);
 
   const setResouceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
+  const removeEdge = useNodeStore((s) => s.removeEdgeById);
 
   const inboundEdges = useNodeStore((s) => {
     return s.edges.filter((e) => e.target === data.id);
@@ -59,7 +60,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         (e) => e.data?.item.itemId === input.itemId
       );
       if (inboundEdge?.data?.outputRate) {
-        return Math.floor(inboundEdge.data?.outputRate / input.amount);
+        return inboundEdge.data?.outputRate / input.amount;
       }
       return 0;
     });
@@ -67,6 +68,17 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     const outputRate = Math.min(...multiples) * selectedRecipe.outputAmount;
     setResouceOutputRate(data.id, outputRate);
   }, [inboundEdges, outboundEdges, selectedRecipe]);
+
+  useEffect(() => {
+    inboundEdges.forEach((edge) => {
+      const input = selectedRecipe.inputs.find(
+        (i) => i.itemId === edge.data?.item.itemId
+      );
+      if (!input) {
+        removeEdge(edge.id);
+      }
+    });
+  }, [selectedRecipe]);
 
   return (
     <BaseNode innerClassName="px-0 py-3" data={data}>
