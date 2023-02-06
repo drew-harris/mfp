@@ -1,5 +1,10 @@
 import { useDraggable } from "@dnd-kit/core";
-import { DraggableItemData, MCNodeType, MCPickerItem } from "../types/MCNodes";
+import {
+  DraggableItemData,
+  DraggableType,
+  MCNodeType,
+  MCPickerItem,
+} from "../types/MCNodes";
 import { SpriteDisplay } from "./SpriteDisplay";
 import { cva } from "cva";
 import { getNodeName } from "../utils/nodes";
@@ -15,7 +20,11 @@ export default function DraggableItem({
 }: DraggableItemProps) {
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: item.itemId + item.dataType,
-    data: { item, type: item.dataType } as DraggableItemData,
+    data: {
+      item,
+      type: item.dataType,
+      draggableType: DraggableType.item,
+    } as DraggableItemData,
   });
 
   const className = cva(

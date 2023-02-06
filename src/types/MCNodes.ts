@@ -62,11 +62,20 @@ export type MCNode =
 
 export interface DraggableItemData {
   type: MCNodeType;
-  item: MCItem;
+  draggableType: DraggableType.item;
+  item: MCPickerItem;
 }
 
 export interface DraggableInfo {
   type: MCNodeType.info;
+  draggableType: DraggableType.info;
+}
+
+export enum DraggableType {
+  item = "item",
+  order = "order",
+  info = "info",
+  splitter = "splitter",
 }
 
 export type DraggableData =

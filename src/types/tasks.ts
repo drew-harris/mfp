@@ -1,4 +1,4 @@
-import { MCNodeType } from "./MCNodes";
+import { DraggableType, MCNodeType } from "./MCNodes";
 
 export interface Task {
   itemRequirements?: ItemRequirement[];
@@ -23,4 +23,5 @@ export interface NodeRequirement {
 export interface DraggableOrderData {
   type: MCNodeType.order;
   task: Task;
+  draggableType: DraggableType.order;
 }

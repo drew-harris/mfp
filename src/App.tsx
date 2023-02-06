@@ -12,7 +12,7 @@ import DraggableItem from "./components/DraggableItem";
 import { MenuBar } from "./components/MenuBar";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { useNodeStore } from "./stores/nodes";
-import { DraggableData, MCNodeType } from "./types/MCNodes";
+import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import ItemPicker from "./views/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
@@ -47,8 +47,9 @@ function App() {
   let draggedItem = null;
 
   if (active) {
-    if (active.data?.current?.item) {
-      draggedItem = <DraggableItem item={active.data.current.item} higher />;
+    const data = active.data.current as unknown as DraggableData;
+    if (data.draggableType === DraggableType.item) {
+      draggedItem = <DraggableItem item={data.item} higher />;
     } else if (active.data.current?.type == MCNodeType.order) {
       // The draggable order is translated directly in the component so it does not
       // render a duplicate

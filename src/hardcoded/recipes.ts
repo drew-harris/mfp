@@ -3,16 +3,17 @@ import { Recipe } from "../types/MCNodes";
 export const allRecipes: Recipe[] = [
   {
     outputItemId: 31,
+    outputAmount: 1,
     inputs: [
       {
         amount: 1,
         itemId: 17,
       },
     ],
-    outputAmount: 1,
   },
   {
     outputItemId: 31,
+    outputAmount: 1,
     inputs: [
       {
         amount: 12,
@@ -23,6 +24,5 @@ export const allRecipes: Recipe[] = [
         itemId: 12,
       },
     ],
-    outputAmount: 1,
   },
 ];
