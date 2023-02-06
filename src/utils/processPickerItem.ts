@@ -79,6 +79,7 @@ export function processPickerItem(
           spriteIndex: regularItem.item.spriteIndex,
           title: regularItem.item.title,
         },
+        recipeIndex: 0,
         dataType: regularItem.type,
         id: projection.x.toString(),
       },

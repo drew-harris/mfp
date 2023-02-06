@@ -15,7 +15,7 @@ import {
   OnNodesChange,
 } from "reactflow";
 import create from "zustand";
-import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
+import { MCCrafterNode, MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 import {
   animationDurationFromPerHour,
   checkIfNodesConnect,
@@ -32,6 +32,7 @@ export type RFState = {
   removeEdgeById: (edgeId: string) => void;
   updateEdgeSpeeds: () => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
+  setCrafterRecipeIndex: (id: string, newRecipeIndex: number) => void;
   removeOrderNode: () => void;
 };
 
@@ -142,6 +143,25 @@ export const useNodeStore = create<RFState>((set, get) => ({
     });
 
     get().updateEdgeSpeeds();
+  },
+
+  setCrafterRecipeIndex(id, newRecipeIndex) {
+    const nodes = get().nodes;
+    set({
+      nodes: nodes.map((node) => {
+        if (node.id === id && node.data.dataType === MCNodeType.crafter) {
+          return {
+            ...node,
+            data: {
+              ...node.data,
+              recipeIndex: newRecipeIndex,
+            },
+          } as Node<MCCrafterNode>;
+        } else {
+          return node;
+        }
+      }),
+    });
   },
 
   removeNodeById(nodeId: string) {

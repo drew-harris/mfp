@@ -15,7 +15,7 @@ export interface MCItem {
 }
 
 export interface MCPickerItem extends MCItem {
-  dataType: MCNodeType.resource | MCNodeType.splitter | MCNodeType.crafter;
+  dataType: MCNodeType.resource | MCNodeType.crafter;
 }
 
 export interface MCResourceNode extends MCBaseNode {
@@ -37,6 +37,7 @@ export interface MCOrderNode extends MCBaseNode {
 export interface MCCrafterNode extends MCBaseNode {
   item: MCItem;
   dataType: MCNodeType.crafter;
+  recipeIndex: number;
 }
 
 export interface MCInfoNode extends MCBaseNode {

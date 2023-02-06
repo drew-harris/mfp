@@ -1,10 +1,10 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { Edge, Handle, Position } from "reactflow";
 import { allRecipes } from "../../hardcoded/recipes";
 import { useNodeStore } from "../../stores/nodes";
-import { MCCrafterNode, MCEdge } from "../../types/MCNodes";
+import { MCCrafterNode, MCEdge, MCNodeType } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { RecipeSelector } from "./nodeDetails/RecipeSelector";
@@ -52,7 +52,19 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return s.edges.filter((e) => e.source === data.id);
   }, actualEdgeUpdate);
 
-  const [selectedRecipe, setSelectedRecipe] = useState(recipes[0]);
+  const setSelectedRecipeIndex = useNodeStore((s) => s.setCrafterRecipeIndex);
+  const setSelectedRecipe = (recipe: typeof recipes[number]) => {
+    setSelectedRecipeIndex(data.id, recipes.indexOf(recipe));
+  };
+  const selectedRecipe = useNodeStore((s) => {
+    const potential = s.nodes.find(
+      (n) => n.id === data.id && n.data.dataType === MCNodeType.crafter
+    );
+    if (potential?.data.dataType === MCNodeType.crafter) {
+      return recipes[potential.data.recipeIndex];
+    }
+    return recipes[0];
+  });
 
   useEffect(() => {
     const multiples = selectedRecipe.inputs.map((input) => {
