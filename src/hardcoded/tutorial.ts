@@ -7,7 +7,6 @@ export const tutorial: TutorialStep[] = [
     description:
       "This is the first step of the tutorial. Drag a resource node to the canvas to continue.",
     checkCompletion(nodeState) {
-      console.log("inner check completion");
       return !!nodeState.nodes.find(
         (n) => n.data.dataType === MCNodeType.resource
       );
@@ -16,9 +15,8 @@ export const tutorial: TutorialStep[] = [
   {
     title: "Step 2",
     description:
-      "Drag a crafter node to continue. You can drag a crafter node from the sidebar on the left.",
+      "Drag a crafter node to continue. You can drag a crafter node from the panel on the bottom",
     checkCompletion(nodeState) {
-      console.log("inner check completion");
       return !!nodeState.nodes.find(
         (n) => n.data.dataType === MCNodeType.crafter
       );

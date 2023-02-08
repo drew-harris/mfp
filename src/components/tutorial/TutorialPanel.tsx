@@ -26,7 +26,6 @@ export const TutorialPanel = () => {
   const currentStep = useTutorialStore((s) => s.currentStep);
   const nextStep = useTutorialStore((s) => s.nextStep);
 
-  // TODO: Create a custom comparison function for the node store to reduce rerenders
   const state = useNodeStore((s) => s, customCompare);
 
   useEffect(() => {
