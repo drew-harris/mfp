@@ -28,7 +28,7 @@ export const SideTaskBar = () => {
   };
 
   return (
-    <div className="p-3">
+    <div>
       {!task ? (
         <>
           <div className="text-lg font-bold">Tasks</div>

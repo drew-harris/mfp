@@ -1,7 +1,10 @@
 import { useReactFlow } from "reactflow";
+import { useTutorialStore } from "../stores/tutorialStore";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
+  const toggle = useTutorialStore((s) => s.toggleTutorial);
+  const tutorialEnabled = useTutorialStore((s) => s.enabled);
 
   const save = () => {
     const copy = instance.toObject();
@@ -29,6 +32,9 @@ export const MenuBar = () => {
       </button>
       <button className="button" onClick={restoreFlow}>
         Load
+      </button>
+      <button className="button" onClick={toggle}>
+        {tutorialEnabled ? "Disable Tutorial" : "Enable Tutorial"}
       </button>
     </>
   );

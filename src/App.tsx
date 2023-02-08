@@ -10,6 +10,7 @@ import { useReactFlow } from "reactflow";
 import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
 import { MenuBar } from "./components/MenuBar";
+import { Sidebar } from "./components/tasks/Sidebar";
 import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { useNodeStore } from "./stores/nodes";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
@@ -70,7 +71,7 @@ function App() {
             <NodeCanvas />
           </div>
           <div className="row-span-2 border-4 bg-mc-300 border-mc-800">
-            <SideTaskBar />
+            <Sidebar />
           </div>
           <div className="overflow-y-scroll col-span-2 border-4 border-mc-800 bg-mc-300">
             <ItemPicker />
