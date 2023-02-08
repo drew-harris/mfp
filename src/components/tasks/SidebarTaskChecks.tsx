@@ -71,6 +71,7 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
       {itemRequirementsMapped.map((req) => (
         <ItemCheck key={req.itemId} req={req} />
       ))}
+      {itemRequirementsMapped.every((r) => r.completed) && <div>Submit</div>}
     </div>
   );
 };
