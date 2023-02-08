@@ -63,6 +63,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
             e.data?.outputRate || 0
           )}ms`,
           animationDirection: undefined,
+          // Move down a few pixels
         },
       };
     });
@@ -106,6 +107,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
             color: "white",
             animationDuration: "0ms",
             animationDirection: "reverse",
+            transform: "translateY(5px)",
           },
         } as Edge<MCEdge>,
         get().edges

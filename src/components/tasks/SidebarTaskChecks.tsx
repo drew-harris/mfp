@@ -1,8 +1,12 @@
+import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Edge } from "reactflow";
+import { useFullItem } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { MCEdge, MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
+import { RequirementView } from "./RequirementView";
 
 interface SidebarTaskChecksProps {
   task: Task;
@@ -76,5 +80,17 @@ export const ItemCheck = ({
 }: {
   req: { completed: boolean; itemId: number; perHour: number };
 }) => {
-  return <div>{req.completed ? "pass" : "fail"}</div>;
+  const item = useFullItem(req.itemId);
+  return (
+    <div className="flex gap-3 items-center p-2 bg-mc-200" key={req.itemId}>
+      <RequirementView requirement={req} />
+      <div className="mx-3">
+        {req.completed ? (
+          <FontAwesomeIcon icon={faCheck} color="green" />
+        ) : (
+          <FontAwesomeIcon icon={faX} color="red" />
+        )}
+      </div>
+    </div>
+  );
 };
