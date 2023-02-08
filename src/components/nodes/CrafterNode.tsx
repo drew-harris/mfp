@@ -1,7 +1,7 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useMemo } from "react";
-import { Edge, Handle, Position } from "reactflow";
+import { Edge, Handle, Position, useUpdateNodeInternals } from "reactflow";
 import { allRecipes } from "../../hardcoded/recipes";
 import { useNodeStore } from "../../stores/nodes";
 import { MCCrafterNode, MCEdge, MCNodeType } from "../../types/MCNodes";
@@ -41,6 +41,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return allRecipes.filter((r) => r.outputItemId === data.item.itemId);
   }, [data.item]);
 
+  const updateNodeInternals = useUpdateNodeInternals();
   const setResouceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
   const removeEdge = useNodeStore((s) => s.removeEdgeById);
 
@@ -90,6 +91,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         removeEdge(edge.id);
       }
     });
+    updateNodeInternals(data.id);
   }, [selectedRecipe]);
 
   return (
