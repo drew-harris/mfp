@@ -63,7 +63,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
             e.data?.outputRate || 0
           )}ms`,
           animationDirection: undefined,
-          // Move down a few pixels
         },
       };
     });
