@@ -2,7 +2,7 @@ import { useDraggable } from "@dnd-kit/core";
 import { useNodeStore } from "../../stores/nodes";
 import { MCNodeType } from "../../types/MCNodes";
 import { DraggableOrderData, Task } from "../../types/tasks";
-import { RequirementView } from "./SideTaskBar";
+import { RequirementView } from "./RequirementView";
 
 export interface DroppableOrderProps {
   task: Task;

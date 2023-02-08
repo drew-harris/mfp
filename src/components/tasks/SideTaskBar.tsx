@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { allTasks } from "../../hardcoded/tasks";
-import { useFullItem } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { MCNodeType } from "../../types/MCNodes";
-import { ItemRequirement, Task } from "../../types/tasks";
-import { SpriteDisplay } from "../SpriteDisplay";
+import { Task } from "../../types/tasks";
 import { DroppableOrder } from "./DroppableOrder";
+import { RequirementView } from "./RequirementView";
 
 export const SideTaskBar = () => {
   const [task, setTask] = useState<Task | null>(null);
@@ -67,24 +66,6 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
         ))}
       </div>
       <DroppableOrder task={task} />
-    </div>
-  );
-};
-
-export const RequirementView = ({
-  requirement,
-  className,
-}: {
-  requirement: ItemRequirement;
-  className?: string;
-}) => {
-  const item = useFullItem(requirement.itemId);
-  return (
-    <div className={`flex ${className}`}>
-      <div className="flex gap-4 items-center">
-        <SpriteDisplay spriteIndex={item?.spriteIndex} />
-        <div>x {requirement.perHour}</div>
-      </div>
     </div>
   );
 };

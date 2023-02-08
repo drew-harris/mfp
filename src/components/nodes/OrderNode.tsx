@@ -4,7 +4,7 @@ import { Edge, Handle, Position } from "reactflow";
 import { useNodeStore } from "../../stores/nodes";
 import { MCEdge, MCOrderNode } from "../../types/MCNodes";
 import { ItemRequirement } from "../../types/tasks";
-import { RequirementView } from "../tasks/SideTaskBar";
+import { RequirementView } from "../tasks/RequirementView";
 
 interface OrderNodeProps {
   data: MCOrderNode;
