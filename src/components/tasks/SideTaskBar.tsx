@@ -5,6 +5,7 @@ import { MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
 import { DroppableOrder } from "./DroppableOrder";
 import { RequirementView } from "./RequirementView";
+import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
 export const SideTaskBar = () => {
   const [task, setTask] = useState<Task | null>(null);
@@ -38,9 +39,7 @@ export const SideTaskBar = () => {
           </div>
         </>
       ) : (
-        <>
-          <SideTaskView clearTask={clearTask} task={task} />
-        </>
+        <SideTaskView clearTask={clearTask} task={task} />
       )}
     </div>
   );
@@ -60,11 +59,7 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
       </div>
       <div className="text-xl font-bold text-center">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
-      <div className="flex flex-wrap gap-y-3 justify-around items-center p-3 m-auto mt-3 bg-mc-200">
-        {task.itemRequirements?.map((requirement) => (
-          <RequirementView key={requirement.itemId} requirement={requirement} />
-        ))}
-      </div>
+      <SidebarTaskChecks task={task} />
       <DroppableOrder task={task} />
     </div>
   );
