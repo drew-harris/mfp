@@ -11,8 +11,8 @@ import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
 import { MenuBar } from "./components/MenuBar";
 import { Sidebar } from "./components/tasks/Sidebar";
-import { SideTaskBar } from "./components/tasks/SideTaskBar";
 import { useNodeStore } from "./stores/nodes";
+import { useUserStore } from "./stores/userStore";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import ItemPicker from "./views/ItemPicker";
@@ -21,6 +21,8 @@ import NodeCanvas from "./views/NodeCanvas";
 function App() {
   const [active, setActive] = useState<Active | null>(null);
   const { project } = useReactFlow();
+
+  const setUserId = useUserStore((state) => state.setTutorialId);
 
   const addNode = useNodeStore((state) => state.addNode);
 
