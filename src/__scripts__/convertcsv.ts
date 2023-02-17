@@ -1,4 +1,5 @@
 import { parseFile } from "fast-csv";
+import * as fs from "fs";
 
 interface Row {
   source: string;
@@ -26,7 +27,19 @@ async function parseCsv(): Promise<Row[]> {
   });
 }
 
-const rows = await parseCsv();
+async function getFilenames(): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    fs.readdir("public/item_images", (err, files) => {
+      if (err) reject(err);
+      resolve(files);
+    });
+  });
+}
+
+const rowPromise = parseCsv();
+const filenamesPromise = getFilenames();
+
+const [rows, filenames] = await Promise.all([rowPromise, filenamesPromise]);
 
 const ids = new Set<string>();
 
@@ -40,7 +53,8 @@ rows.forEach((row) => {
   }
 });
 
-console.log(ids);
+// console.log(ids);
+console.log(filenames);
 console.log(ids.size);
 
 export {};
