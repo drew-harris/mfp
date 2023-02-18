@@ -11,7 +11,7 @@
     "lint": "eslint src/**",
     "preview": "vite preview",
     "format": "prettier  \"**/*.{ts,tsx,css}\" --write",
-    "convert": "ts-node --esm src/__scripts__/convertcsv.ts"
+    "convert:items": "ts-node --esm src/__scripts__/createItemList.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.5",
