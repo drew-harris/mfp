@@ -1,5 +1,5 @@
 export interface SpriteDisplayProps {
-  spriteIndex: number;
+  spriteIndex?: number;
   size?: number;
   className?: string;
 }
@@ -14,8 +14,8 @@ export const SpriteDisplay: React.FC<SpriteDisplayProps> = ({
       style={{
         background: "url(/inventory_sprites.png)",
         backgroundSize: "1600%", // No clue how that works for any size
-        backgroundPositionX: -size * spriteIndex,
-        backgroundPositionY: -size * Math.floor(spriteIndex / 16),
+        backgroundPositionX: -size * (spriteIndex || 0),
+        backgroundPositionY: -size * Math.floor((spriteIndex || 0) / 16),
         width: size,
         height: size,
       }}

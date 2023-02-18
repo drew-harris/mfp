@@ -1,0 +1,12 @@
+[
+  {
+    "itemId": "item.minecraft:netherbrick",
+    "imageUrl": "nether_brick.png",
+    "title": "Nether Brick"
+  },
+  {
+    "itemId": "minecraft:nether_bricks",
+    "imageUrl": "nether_bricks.png",
+    "title": "Nether Bricks"
+  }
+]

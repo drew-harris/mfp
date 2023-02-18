@@ -10,8 +10,9 @@ export enum MCNodeType {
 
 export interface MCItem {
   title: string;
-  spriteIndex: number;
-  itemId: number;
+  spriteIndex?: number;
+  imageUrl?: string;
+  itemId: number | string;
 }
 
 export interface MCPickerItem extends MCItem {

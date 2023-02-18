@@ -21,6 +21,7 @@
     "@use-gesture/react": "^10.2.20",
     "cva": "npm:class-variance-authority",
     "fast-csv": "^4.3.6",
+    "node-fzf": "^0.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-spring": "^9.5.5",
