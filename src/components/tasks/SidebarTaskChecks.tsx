@@ -2,7 +2,6 @@ import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Edge } from "reactflow";
-import { useFullItem } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { MCEdge, MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
@@ -81,7 +80,6 @@ export const ItemCheck = ({
 }: {
   req: { completed: boolean; itemId: number; perHour: number };
 }) => {
-  const item = useFullItem(req.itemId);
   return (
     <div className="flex gap-3 items-center p-2 bg-mc-200" key={req.itemId}>
       <RequirementView requirement={req} />

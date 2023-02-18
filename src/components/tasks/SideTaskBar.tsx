@@ -4,7 +4,6 @@ import { useNodeStore } from "../../stores/nodes";
 import { MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
 import { DroppableOrder } from "./DroppableOrder";
-import { RequirementView } from "./RequirementView";
 import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
 export const SideTaskBar = () => {

@@ -8,6 +8,7 @@
     "test": "vitest",
     "test:gui": "vitest --ui",
     "build": "tsc && vite build",
+    "lint": "eslint src/**",
     "preview": "vite preview",
     "format": "prettier  \"**/*.{ts,tsx,css}\" --write",
     "convert": "ts-node --esm src/__scripts__/convertcsv.ts"

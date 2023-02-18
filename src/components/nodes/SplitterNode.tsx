@@ -4,6 +4,6 @@ interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
-export default function SplitterNode({ data }: SplitterNodeProps) {
+export default function SplitterNode(_props: SplitterNodeProps) {
   return <div>WIP</div>;
 }

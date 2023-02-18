@@ -5,7 +5,7 @@ export type TutorialState = {
   setId: (id: string) => void;
 };
 
-export const useUserStore = create<TutorialState>((set, get) => ({
+export const useUserStore = create<TutorialState>((set, _get) => ({
   id: null,
 
   setId(id) {
