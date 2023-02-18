@@ -11,7 +11,8 @@
     "lint": "eslint src/**",
     "preview": "vite preview",
     "format": "prettier  \"**/*.{ts,tsx,css}\" --write",
-    "convert:items": "ts-node --esm src/__scripts__/createItemList.ts"
+    "convert:items": "ts-node --esm src/__scripts__/createItemList.ts",
+    "convert:recipes": "ts-node --esm src/__scripts__/createRecipeList.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.5",
