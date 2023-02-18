@@ -17,11 +17,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
 
   return (
     <BaseNode data={data}>
-      <SpriteDisplay
-        className="mb-5"
-        size={56}
-        spriteIndex={data?.item?.spriteIndex || 0}
-      />
+      <SpriteDisplay className="mb-5" size={56} url={data?.item?.imageUrl} />
       <input
         className="pl-4 w-28 text-xs text-black bg-gray-300 rounded-xl border border-black placeholder:text-gray-600"
         placeholder="Per-Hour Rate"

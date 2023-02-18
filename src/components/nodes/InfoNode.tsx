@@ -22,7 +22,7 @@ export default function InfoNode({ data }: InfoNodeProps) {
       />
       {incomingEdge?.data && (
         <div>
-          <SpriteDisplay spriteIndex={incomingEdge.data.item.spriteIndex} />
+          <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
           <div>{incomingEdge.data.item.title}</div>
           <div>Rate: {incomingEdge.data.outputRate.toFixed(2)}</div>
         </div>

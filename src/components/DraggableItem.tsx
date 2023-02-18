@@ -58,7 +58,7 @@ export default function DraggableItem({
     >
       <div className="text-xs">{getNodeName(item.dataType)}</div>
       <div className="font-bold">{item.title}</div>
-      <SpriteDisplay spriteIndex={item.spriteIndex} />
+      <SpriteDisplay url={item.imageUrl} />
     </div>
   );
 }

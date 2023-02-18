@@ -54,7 +54,7 @@ export function processPickerItem(
       data: {
         item: {
           itemId: regularItem.item.itemId,
-          spriteIndex: regularItem.item.spriteIndex,
+          imageUrl: regularItem.item.imageUrl,
           title: regularItem.item.title,
         },
         ratio: [1],
@@ -62,7 +62,7 @@ export function processPickerItem(
         id: projection.x.toString(),
       },
       type: regularItem.type,
-    };
+    } as Node<MCResourceNode>;
     return node;
   }
 
@@ -76,7 +76,7 @@ export function processPickerItem(
       data: {
         item: {
           itemId: regularItem.item.itemId,
-          spriteIndex: regularItem.item.spriteIndex,
+          imageUrl: regularItem.item.imageUrl,
           title: regularItem.item.title,
         },
         recipeIndex: 0,
@@ -84,7 +84,7 @@ export function processPickerItem(
         id: projection.x.toString(),
       },
       type: regularItem.type,
-    };
+    } as Node<MCCrafterNode>;
     return node;
   }
 

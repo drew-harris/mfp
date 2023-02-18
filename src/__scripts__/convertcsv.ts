@@ -1,5 +1,6 @@
 import { parseFile } from "fast-csv";
 import * as fs from "fs";
+import * as fsprom from "fs/promises";
 
 // eslint-disable-next-line
 // @ts-ignore
@@ -10,6 +11,10 @@ interface Row {
   source: string;
   target: string;
   weight: number;
+}
+
+interface Cache {
+  [source: string]: string;
 }
 
 async function parseCsv(): Promise<Row[]> {
@@ -49,34 +54,66 @@ function titleCase(name: string) {
   return str.join(" ");
 }
 
-async function buildItems(filenames: string[], ids: string[]) {
-  const opts = {
-    list: filenames,
-    mode: "fuzzy",
-  };
+async function saveCache(cache: Cache) {
+  await fsprom.writeFile("src/hardcoded/cache.json", JSON.stringify(cache), {});
+}
 
+async function loadCache(): Promise<Cache> {
+  try {
+    const file = await fsprom.readFile("src/hardcoded/cache.json", "utf-8");
+    if (file.length === 0) return {};
+    if (file === "{}") return {};
+    return JSON.parse(file);
+  } catch (error) {
+    return {};
+  }
+}
+
+async function buildItems(filenames: string[], ids: string[]) {
   const items: MCItem[] = [];
-  for (let i = 0; i < 4; i++) {
+  const cache = await loadCache();
+
+  for (let i = 0; i < ids.length; i++) {
+    const opts = {
+      list: filenames,
+      mode: "fuzzy",
+      prefill: ids[i]
+        .replace("minecraft:", "")
+        .replace("item.", "")
+        .replaceAll(":", ""),
+    };
     console.clear();
     console.log(ids[i] + "?: ");
-    const result = await nfzf(opts);
-    if (result.input && result.input == "exit") {
-      break;
-    }
-
-    if (!result.selected) {
-      continue;
-    }
-
-    if (result.selected.value) {
-      const value = result.selected.value as string;
+    if (cache[ids[i]]) {
+      const value = cache[ids[i]] as string;
       items.push({
         itemId: ids[i],
-        imageUrl: result.selected.value,
         title: titleCase(value.replaceAll(".png", "").replaceAll("_", " ")),
+        imageUrl: cache[ids[i]],
       });
+    } else {
+      const result = await nfzf(opts);
+      if (result.input && result.input == "exit") {
+        break;
+      }
+
+      if (!result.selected) {
+        continue;
+      }
+
+      if (result.selected.value) {
+        cache[ids[i]] = result.selected.value;
+        const value = result.selected.value as string;
+        items.push({
+          itemId: ids[i],
+          imageUrl: result.selected.value,
+          title: titleCase(value.replaceAll(".png", "").replaceAll("_", " ")),
+        });
+      }
     }
   }
+
+  await saveCache(cache);
   return items;
 }
 

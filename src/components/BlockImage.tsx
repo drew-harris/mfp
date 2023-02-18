@@ -1,22 +1,22 @@
-export interface SpriteDisplayProps {
+export interface BlockImageProps {
   url: string;
   size?: number;
   className?: string;
 }
 
-export const SpriteDisplay: React.FC<SpriteDisplayProps> = ({
+export const BlockImage: React.FC<BlockImageProps> = ({
   url,
-  size = 42,
+  size = 32,
   className,
 }) => {
   return (
-    <img
-      src={`/item_images/${url}`}
+    <div
       style={{
+        background: `url(/${url})`,
         width: size,
         height: size,
       }}
       className={className}
-    ></img>
+    ></div>
   );
 };

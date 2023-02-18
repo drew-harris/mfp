@@ -11,7 +11,7 @@ export enum MCNodeType {
 export interface MCItem {
   title: string;
   spriteIndex?: number;
-  imageUrl?: string;
+  imageUrl: string;
   itemId: number | string;
 }
 
@@ -86,7 +86,7 @@ export type DraggableData =
   | DraggableInfo;
 
 export interface Recipe {
-  outputItemId: number;
+  outputItemId: number | string;
   outputAmount: number;
   inputs: {
     itemId: number;

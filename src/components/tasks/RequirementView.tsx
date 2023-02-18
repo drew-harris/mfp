@@ -13,7 +13,7 @@ export function RequirementView({
   return (
     <div className={`flex ${className}`}>
       <div className="flex gap-4 items-center">
-        <SpriteDisplay spriteIndex={item?.spriteIndex} />
+        <SpriteDisplay url={item.imageUrl} />
         <div>x {requirement.perHour}</div>
       </div>
     </div>
