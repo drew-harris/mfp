@@ -37,8 +37,8 @@ async function parseCsv(): Promise<Row[]> {
   });
 }
 
-async function getFilenames(): Promise<string[]> {
-  return new Promise((resolve, reject) => {
+async function getFilenames() {
+  return new Promise<string[]>((resolve, reject) => {
     fs.readdir("public/item_images", (err, files) => {
       if (err) reject(err);
       resolve(files);
@@ -58,12 +58,12 @@ async function saveCache(cache: Cache) {
   await fsprom.writeFile("src/hardcoded/cache.json", JSON.stringify(cache), {});
 }
 
-async function loadCache(): Promise<Cache> {
+async function loadCache() {
   try {
     const file = await fsprom.readFile("src/hardcoded/cache.json", "utf-8");
     if (file.length === 0) return {};
     if (file === "{}") return {};
-    return JSON.parse(file);
+    return JSON.parse(file) as Cache;
   } catch (error) {
     return {};
   }
@@ -74,13 +74,14 @@ async function buildItems(filenames: string[], ids: string[]) {
   const cache = await loadCache();
 
   for (let i = 0; i < ids.length; i++) {
+    const prefill = ids[i]
+      .replace("minecraft:", "")
+      .replace("item.", "")
+      .replaceAll(":", "");
     const opts = {
       list: filenames,
       mode: "fuzzy",
-      prefill: ids[i]
-        .replace("minecraft:", "")
-        .replace("item.", "")
-        .replaceAll(":", ""),
+      prefill: prefill,
     };
     console.clear();
     console.log(ids[i] + "?: ");
@@ -90,6 +91,12 @@ async function buildItems(filenames: string[], ids: string[]) {
         itemId: ids[i],
         title: titleCase(value.replaceAll(".png", "").replaceAll("_", " ")),
         imageUrl: cache[ids[i]],
+      });
+    } else if (filenames.includes(prefill + ".png")) {
+      items.push({
+        imageUrl: prefill + ".png",
+        itemId: ids[i],
+        title: titleCase(prefill.replaceAll("_", " ")),
       });
     } else {
       const result = await nfzf(opts);
