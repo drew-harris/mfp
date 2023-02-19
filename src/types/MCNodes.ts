@@ -12,7 +12,7 @@ export interface MCItem {
   title: string;
   spriteIndex?: number;
   imageUrl: string;
-  itemId: number | string;
+  itemId: string;
 }
 
 export interface MCPickerItem extends MCItem {
@@ -86,10 +86,10 @@ export type DraggableData =
   | DraggableInfo;
 
 export interface Recipe {
-  outputItemId: number | string;
+  outputItemId: string;
   outputAmount: number;
   inputs: {
-    itemId: number;
+    itemId: string;
     amount: number;
   }[];
 }

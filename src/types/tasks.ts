@@ -10,13 +10,13 @@ export interface Task {
 }
 
 export interface ItemRequirement {
-  itemId: number;
+  itemId: string;
   perHour: number;
 }
 
 export interface NodeRequirement {
   nodeType: MCNodeType;
-  itemId?: number;
+  itemId?: string;
   amount: number;
 }
 

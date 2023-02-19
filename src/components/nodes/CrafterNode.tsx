@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useMemo } from "react";
 import { Edge, Handle, Position, useUpdateNodeInternals } from "reactflow";
 import { allRecipes } from "../../hardcoded/recipes";
+import { useFullItem } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
-import { MCCrafterNode, MCEdge, MCNodeType } from "../../types/MCNodes";
+import { MCCrafterNode, MCEdge, MCNodeType, Recipe } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { RecipeSelector } from "./nodeDetails/RecipeSelector";
@@ -54,9 +55,10 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   }, actualEdgeUpdate);
 
   const setSelectedRecipeIndex = useNodeStore((s) => s.setCrafterRecipeIndex);
-  const setSelectedRecipe = (recipe: typeof recipes[number]) => {
+  const setSelectedRecipe = (recipe: Recipe) => {
     setSelectedRecipeIndex(data.id, recipes.indexOf(recipe));
   };
+
   const selectedRecipe = useNodeStore((s) => {
     const potential = s.nodes.find(
       (n) => n.id === data.id && n.data.dataType === MCNodeType.crafter
@@ -132,10 +134,11 @@ const CrafterInput = ({
   input,
 }: {
   input: {
-    itemId: number;
+    itemId: string;
     amount: number;
   };
 }) => {
+  const item = useFullItem(input.itemId);
   return (
     <div className="flex gap-3 items-center my-2">
       <Handle
@@ -149,7 +152,7 @@ const CrafterInput = ({
           position: "relative",
         }}
       />
-      {/* <SpriteDisplay url={input.amount} />x {input.amount} */}
+      <SpriteDisplay url={item.imageUrl} />x {input.amount}
     </div>
   );
 };

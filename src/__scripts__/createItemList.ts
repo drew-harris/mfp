@@ -151,4 +151,4 @@ const items = await buildItems(filenames, Array.from(ids));
 console.log(items);
 saveItems(items);
 
-export {};
+export { parseCsv, getFilenames, buildItems, saveItems };

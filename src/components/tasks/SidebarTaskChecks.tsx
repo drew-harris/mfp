@@ -78,7 +78,7 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
 export const ItemCheck = ({
   req,
 }: {
-  req: { completed: boolean; itemId: number; perHour: number };
+  req: { completed: boolean; itemId: string; perHour: number };
 }) => {
   return (
     <div className="flex gap-3 items-center p-2 bg-mc-200" key={req.itemId}>
