@@ -1,7 +1,6 @@
 import { parseFile } from "fast-csv";
-import { Recipe } from "../types/MCNodes";
-import * as fs from "fs";
 import * as fsprom from "fs/promises";
+import { Recipe } from "../types/MCNodes";
 
 interface Row {
   source: string;

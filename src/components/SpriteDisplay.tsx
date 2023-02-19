@@ -11,7 +11,7 @@ export const SpriteDisplay: React.FC<SpriteDisplayProps> = ({
 }) => {
   return (
     <img
-      src={`/item_images/${url}`}
+      src={`https://storage.googleapis.com/mfp-item-images/${url}`}
       style={{
         width: size,
         height: size,
