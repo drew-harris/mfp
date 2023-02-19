@@ -16,6 +16,13 @@ body {
   background-color: #d6d6d6;
 }
 
+.mc-background {
+  background-image: url("/Background.png");
+  /* background-size: 80% 80%; */
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+}
+
 html,
 body {
   height: 100%;

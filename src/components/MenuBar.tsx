@@ -1,6 +1,7 @@
 import { useReactFlow } from "reactflow";
 import { useTutorialStore } from "../stores/tutorialStore";
 import { useUserStore } from "../stores/userStore";
+import { Button } from "./basic/Button";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
@@ -29,15 +30,11 @@ export const MenuBar = () => {
 
   return (
     <>
-      <button className="button" onClick={save}>
-        Save
-      </button>
-      <button className="button" onClick={restoreFlow}>
-        Load
-      </button>
-      <button className="button" onClick={toggle}>
+      <Button onClick={save}>Save</Button>
+      <Button onClick={restoreFlow}>Load</Button>
+      <Button onClick={toggle}>
         {tutorialEnabled ? "Disable Tutorial" : "Enable Tutorial"}
-      </button>
+      </Button>
 
       <div>
         <div>Logged in as: {id}</div>
