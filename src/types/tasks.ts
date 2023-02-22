@@ -1,8 +1,14 @@
+import { RFState } from "../stores/nodes";
 import { DraggableType, MCNodeType } from "./MCNodes";
+
+export interface Mission {
+  tasks: Task[];
+}
 
 export interface Task {
   itemRequirements?: ItemRequirement[];
   nodeRequirements?: NodeRequirement[];
+  stateRequirement?: (state: RFState) => boolean;
 
   description?: string;
   title?: string;
