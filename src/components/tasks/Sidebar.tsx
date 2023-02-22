@@ -9,7 +9,6 @@ import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
 export const Sidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
-  // const currentMission = useObjectiveStore((s) => s.currentMission);
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
@@ -18,12 +17,11 @@ export const Sidebar = () => {
     state.nodes.find((n) => n.data.dataType === MCNodeType.order)
   );
 
-  // TODO: Fix saving states of tasks
   useEffect(() => {
     if (possibleOrderNode?.data.dataType == MCNodeType.order) {
       if (possibleOrderNode.data.task) {
         const task = possibleOrderNode.data.task;
-        const possibleMission = findMissionFromTask(task, allMissions);
+        const possibleMission = findMissionFromTask(task);
         if (possibleMission) {
           beginMission(possibleMission);
         }
@@ -37,10 +35,10 @@ export const Sidebar = () => {
   };
 
   return (
-    <div>
+    <div className="p-3">
       {!currentTask ? (
         <>
-          <div className="text-lg font-bold">Tasks</div>
+          <div className="text-lg font-bold">Missions</div>
           <div>
             {allMissions.map((mission) => (
               <MissionCard
@@ -60,7 +58,7 @@ export const Sidebar = () => {
 
 export function findMissionFromTask(
   task: Task,
-  missions: Mission[]
+  missions: Mission[] = allMissions
 ): Mission | null {
   const foundMissions = missions.filter((m) => {
     if (m.tasks.find((t) => t.id === task.id)) return true;
@@ -93,16 +91,16 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
 
 interface TaskCardProps {
   mission: Mission;
-  setMission: (task: Mission) => void;
+  setMission: (mission: Mission) => void;
 }
 
-const MissionCard = ({ mission: task, setMission }: TaskCardProps) => {
+const MissionCard = ({ mission, setMission }: TaskCardProps) => {
   return (
     <div
-      onClick={() => setMission(task)}
+      onClick={() => setMission(mission)}
       className="p-4 mt-3 cursor-pointer bg-mc-200"
     >
-      <div className="font-bold">{task.title}</div>
+      <div className="font-bold">{mission.title}</div>
     </div>
   );
 };
