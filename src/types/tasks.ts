@@ -2,6 +2,8 @@ import { RFState } from "../stores/nodes";
 import { DraggableType, MCNodeType } from "./MCNodes";
 
 export interface Mission {
+  title: string;
+  description?: string;
   tasks: Task[];
 }
 
