@@ -1,11 +1,11 @@
 import create from "zustand";
 
-export type TutorialState = {
+export type UserState = {
   id: string | null;
   setId: (id: string) => void;
 };
 
-export const useUserStore = create<TutorialState>((set, _get) => ({
+export const useUserStore = create<UserState>((set, _get) => ({
   id: null,
 
   setId(id) {
