@@ -19,21 +19,24 @@ export const BaseNode = ({
   data,
   leftSideNode,
 }: BaseNodeProps) => {
-  const outerClass = cva(["p-1", "text-white", "shadow", outerClassName], {
-    variants: {
-      nodeType: {
-        [MCNodeType.resource]: "bg-green-300",
-        [MCNodeType.crafter]: "bg-blue-200",
-        [MCNodeType.order]: "bg-red-500",
-        [MCNodeType.splitter]: "bg-gray-200",
-        [MCNodeType.info]: "bg-gray-200",
-        other: "bg-red-500",
+  const outerClass = cva(
+    ["p-1", "text-white", "shadow", "outset-4", outerClassName],
+    {
+      variants: {
+        nodeType: {
+          [MCNodeType.resource]: "bg-green-300",
+          [MCNodeType.crafter]: "bg-blue-200",
+          [MCNodeType.order]: "bg-red-500",
+          [MCNodeType.splitter]: "bg-gray-200",
+          [MCNodeType.info]: "bg-gray-200",
+          other: "bg-red-500",
+        },
       },
-    },
-    defaultVariants: {
-      nodeType: "other",
-    },
-  });
+      defaultVariants: {
+        nodeType: "other",
+      },
+    }
+  );
 
   return (
     <div className={outerClass({ nodeType: data.dataType })}>

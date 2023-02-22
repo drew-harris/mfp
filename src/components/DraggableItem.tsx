@@ -28,7 +28,7 @@ export default function DraggableItem({
   });
 
   const className = cva(
-    ["border-4", "flex", "flex-col", "items-center", "border-mc-200", "p-3"],
+    ["flex", "flex-col", "items-center", "p-3", "outset-4"],
     {
       variants: {
         nodeType: {
@@ -53,7 +53,7 @@ export default function DraggableItem({
       {...attributes}
       className={className({ nodeType: item.dataType })}
       style={{
-        zIndex: higher ? 500 : 100,
+        zIndex: higher ? 500 : 40,
       }}
     >
       <div className="text-xs">{getNodeName(item.dataType)}</div>

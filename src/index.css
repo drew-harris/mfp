@@ -10,6 +10,22 @@
   .button {
     @apply border-2 border-mc-700 px-2;
   }
+
+  .inset-4 {
+    @apply border-4 border-b-mc-100 border-mc-700;
+  }
+
+  .inset {
+    @apply border-2 border-b-mc-100 border-mc-700;
+  }
+
+  .outset {
+    @apply border-2 border-b-mc-400 border-mc-100;
+  }
+
+  .outset-4 {
+    @apply border-4 border-b-mc-400 border-mc-100;
+  }
 }
 
 body {

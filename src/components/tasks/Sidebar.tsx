@@ -89,16 +89,16 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
   );
 };
 
-interface TaskCardProps {
+interface MissionCardProps {
   mission: Mission;
   setMission: (mission: Mission) => void;
 }
 
-const MissionCard = ({ mission, setMission }: TaskCardProps) => {
+const MissionCard = ({ mission, setMission }: MissionCardProps) => {
   return (
     <div
       onClick={() => setMission(mission)}
-      className="p-4 mt-3 cursor-pointer bg-mc-200"
+      className="p-4 mt-3 outset cursor-pointer bg-mc-200"
     >
       <div className="font-bold">{mission.title}</div>
     </div>

@@ -66,7 +66,7 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
   );
 
   return (
-    <div>
+    <div className="outset">
       {itemRequirementsMapped.map((req) => (
         <ItemCheck key={req.itemId} req={req} />
       ))}

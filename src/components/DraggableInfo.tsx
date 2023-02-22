@@ -20,7 +20,7 @@ export default function DraggableInfoSquare({
       {...attributes}
       className="flex flex-col items-center p-3 border-4 bg-mc-300 border-mc-200"
       style={{
-        zIndex: higher ? 500 : 100,
+        zIndex: higher ? 500 : 40,
       }}
     >
       <div className="font-bold">Info</div>
