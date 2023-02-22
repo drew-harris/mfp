@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { allMissions } from "../../hardcoded/missions";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
@@ -8,7 +9,7 @@ import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
 export const Sidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
-  const currentMission = useObjectiveStore((s) => s.currentMission);
+  // const currentMission = useObjectiveStore((s) => s.currentMission);
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
@@ -18,13 +19,17 @@ export const Sidebar = () => {
   );
 
   // TODO: Fix saving states of tasks
-  // useEffect(() => {
-  //   if (possibleOrderNode?.data.dataType == MCNodeType.order) {
-  //     if (possibleOrderNode.data.task) {
-  //       setTask(possibleOrderNode.data.task);
-  //     }
-  //   }
-  // }, [possibleOrderNode]);
+  useEffect(() => {
+    if (possibleOrderNode?.data.dataType == MCNodeType.order) {
+      if (possibleOrderNode.data.task) {
+        const task = possibleOrderNode.data.task;
+        const possibleMission = findMissionFromTask(task, allMissions);
+        if (possibleMission) {
+          beginMission(possibleMission);
+        }
+      }
+    }
+  }, [possibleOrderNode]);
 
   const clearTask = () => {
     cancelMission();
@@ -52,6 +57,19 @@ export const Sidebar = () => {
     </div>
   );
 };
+
+export function findMissionFromTask(
+  task: Task,
+  missions: Mission[]
+): Mission | null {
+  const foundMissions = missions.filter((m) => {
+    if (m.tasks.find((t) => t.id === task.id)) return true;
+  });
+
+  if (foundMissions.length != 1) return null;
+
+  return missions[0];
+}
 
 interface SideTaskViewProps {
   task: Task;
