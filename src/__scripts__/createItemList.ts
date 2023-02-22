@@ -71,7 +71,7 @@ async function loadCache() {
 
 async function buildItems(filenames: string[], ids: string[]) {
   const items: MCItem[] = [];
-  const cache = await loadCache();
+  // const cache = await loadCache();
 
   for (let i = 0; i < ids.length; i++) {
     const prefill = ids[i]
@@ -83,16 +83,18 @@ async function buildItems(filenames: string[], ids: string[]) {
       mode: "fuzzy",
       prefill: prefill,
     };
+
     console.clear();
     console.log(ids[i] + "?: ");
-    if (cache[ids[i]]) {
-      const value = cache[ids[i]] as string;
-      items.push({
-        itemId: ids[i],
-        title: titleCase(value.replaceAll(".png", "").replaceAll("_", " ")),
-        imageUrl: cache[ids[i]],
-      });
-    } else if (filenames.includes(prefill + ".png")) {
+
+    // if (cache[ids[i]]) {
+    //   const value = cache[ids[i]] as string;
+    //   items.push({
+    //     itemId: ids[i],
+    //     title: titleCase(value.replaceAll(".png", "").replaceAll("_", " ")),
+    //     imageUrl: cache[ids[i]],
+    //   });
+    if (filenames.includes(prefill + ".png")) {
       items.push({
         imageUrl: prefill + ".png",
         itemId: ids[i],
@@ -109,7 +111,6 @@ async function buildItems(filenames: string[], ids: string[]) {
       }
 
       if (result.selected.value) {
-        cache[ids[i]] = result.selected.value;
         const value = result.selected.value as string;
         items.push({
           itemId: ids[i],
@@ -120,7 +121,7 @@ async function buildItems(filenames: string[], ids: string[]) {
     }
   }
 
-  await saveCache(cache);
+  // await saveCache(cache);
   return items;
 }
 
