@@ -10,11 +10,16 @@ export const LoginPage = () => {
       <div>Login</div>
       <input
         value={input}
-        className="p-3"
+        className="p-3 inset"
         onChange={(e) => setInput(e.target.value)}
         placeholder="Enter your id"
       />
-      <button onClick={() => updateId(input)}>Submit</button>
+      <button
+        className="p-3 bg-mc-100 max-w-xs mx-auto mt-8 outset mc-background"
+        onClick={() => updateId(input)}
+      >
+        Submit
+      </button>
     </div>
   );
 };
