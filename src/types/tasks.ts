@@ -1,4 +1,4 @@
-import { DebugMessage } from "../hooks/useTaskComplete";
+import { DebugMessage } from "../components/contexts/TaskCompleteProvider";
 import { RFState } from "../stores/nodes";
 import { DraggableType, MCNodeType } from "./MCNodes";
 

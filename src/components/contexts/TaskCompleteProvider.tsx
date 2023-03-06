@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
-import { RFState, useNodeStore } from "../stores/nodes";
-import { useObjectiveStore } from "../stores/objectiveStore";
-import { getEdgesIntoOrderNode } from "../utils/queries";
-import { itemFromId } from "./useFullItem";
+import { createContext, ReactNode, useEffect, useState } from "react";
+import { itemFromId } from "../../hooks/useFullItem";
+import { strictCompare } from "../../utils/comparison";
+import { useNodeStore } from "../../stores/nodes";
+import { useObjectiveStore } from "../../stores/objectiveStore";
+import { getEdgesIntoOrderNode } from "../../utils/queries";
 
-export type NodesAndEdges = Pick<RFState, "nodes" | "edges">;
+interface TaskCompleteProviderValue {
+  messages: DebugMessage[];
+  taskComplete: boolean;
+  efficiency: number;
+}
 
 export interface DebugMessage {
   message: string;
@@ -16,43 +21,20 @@ export interface EfficiencyInfo {
   weight: number;
 }
 
-// Check for equality
-export const strictCompare = (
-  newState: NodesAndEdges,
-  old: NodesAndEdges
-): boolean => {
-  // NOTE: May need to add more checks here
-  if (newState.nodes.length !== old.nodes.length) return false;
-  if (newState.edges.length !== old.edges.length) return false;
-
-  for (let i = 0; i < newState.nodes.length; i++) {
-    if (newState.nodes[i].id !== old.nodes[i].id) return false;
-    if (newState.nodes[i].type !== old.nodes[i].type) return false;
-    if (
-      JSON.stringify(newState.nodes[i].data) !==
-      JSON.stringify(old.nodes[i].data)
-    ) {
-      return false;
-    }
-  }
-
-  for (let i = 0; i < newState.edges.length; i++) {
-    if (newState.edges[i].id !== old.edges[i].id) return false;
-    if (newState.edges[i].source !== old.edges[i].source) return false;
-    if (newState.edges[i].target !== old.edges[i].target) return false;
-    if (newState.edges[i].type !== old.edges[i].type) return false;
-    if (
-      JSON.stringify(newState.edges[i].data) !==
-      JSON.stringify(old.edges[i].data)
-    ) {
-      return false;
-    }
-  }
-
-  return true;
+const defaults: TaskCompleteProviderValue = {
+  messages: [],
+  taskComplete: false,
+  efficiency: 1,
 };
 
-export function useTaskComplete() {
+export const TaskCompleteContext =
+  createContext<TaskCompleteProviderValue>(defaults);
+
+export default function TaskCompleteProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const state = useNodeStore(
     (s) => ({ nodes: s.nodes, edges: s.edges }),
     strictCompare
@@ -62,9 +44,14 @@ export function useTaskComplete() {
   const [messages, setMessages] = useState<DebugMessage[]>([]);
   const [taskComplete, setTaskComplete] = useState(false);
   const [efficiency, setEfficiency] = useState(1);
-
   useEffect(() => {
-    if (!currentTask) return;
+    if (!currentTask) {
+      setMessages([]);
+      setTaskComplete(false);
+      setEfficiency(1);
+      return;
+    }
+
     let complete = true;
     const newMessages: DebugMessage[] = [];
     const efficiencyInfo: EfficiencyInfo[] = [];
@@ -124,5 +111,11 @@ export function useTaskComplete() {
     setEfficiency(totalEfficiency / totalWeight);
   }, [state, currentTask]);
 
-  return { taskComplete, messages, efficiency };
+  return (
+    <TaskCompleteContext.Provider
+      value={{ messages, taskComplete, efficiency }}
+    >
+      {children}
+    </TaskCompleteContext.Provider>
+  );
 }

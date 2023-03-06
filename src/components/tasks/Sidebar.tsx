@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { allMissions } from "../../hardcoded/missions";
-import { useTaskComplete } from "../../hooks/useTaskComplete";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
 import { Mission, Task } from "../../types/tasks";
+import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
 import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
@@ -13,11 +13,11 @@ export const Sidebar = () => {
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
-  const nextTask = useObjectiveStore((s) => {
-    s.nextTask;
-  });
+  // const nextTask = useObjectiveStore((s) => {
+  //   s.nextTask;
+  // });
 
-  const data = useTaskComplete();
+  const data = useContext(TaskCompleteContext);
 
   const possibleOrderNode = useNodeStore((state) =>
     state.nodes.find((n) => n.data.dataType === MCNodeType.order)

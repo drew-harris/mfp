@@ -1,9 +1,10 @@
 // Set of queries to run on the nodes and edges
 
 import { Edge } from "reactflow";
+import { EfficiencyInfo } from "../components/contexts/TaskCompleteProvider";
 import { allRecipes } from "../hardcoded/recipes";
-import { EfficiencyInfo, NodesAndEdges } from "../hooks/useTaskComplete";
 import { MCEdge, MCItem, MCNodeType } from "../types/MCNodes";
+import { NodesAndEdges } from "./comparison";
 
 type NE = NodesAndEdges;
 
