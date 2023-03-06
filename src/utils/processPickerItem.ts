@@ -40,9 +40,34 @@ export function processPickerItem(
     } as Node<MCOrderNode>;
   }
 
+  if (item.type === MCNodeType.info) {
+    console.log("Creating info node");
+    const node: Node<MCInfoNode> = {
+      id: projection.x.toString(),
+      position: {
+        x: projection.x,
+        y: projection.y,
+      },
+      data: {
+        dataType: MCNodeType.info,
+        id: projection.x.toString(),
+      },
+      type: MCNodeType.info,
+    };
+    return node;
+  }
+
   console.log("item: ", item);
 
   const regularItem = item as DraggableItemData;
+
+  console.log("Copying to clipboard", regularItem.item.itemId);
+  navigator.clipboard
+    .writeText(regularItem.item.itemId)
+    .catch(() => console.log("oh no"))
+    .then(() => {
+      console.log("Success");
+    });
 
   if (regularItem.type === MCNodeType.resource) {
     const node = {
@@ -85,22 +110,6 @@ export function processPickerItem(
       },
       type: regularItem.type,
     } as Node<MCCrafterNode>;
-    return node;
-  }
-
-  if (regularItem.type === MCNodeType.info) {
-    const node: Node<MCInfoNode> = {
-      id: projection.x.toString(),
-      position: {
-        x: projection.x,
-        y: projection.y,
-      },
-      data: {
-        dataType: regularItem.type,
-        id: projection.x.toString(),
-      },
-      type: regularItem.type,
-    };
     return node;
   }
 }

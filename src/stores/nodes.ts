@@ -16,6 +16,7 @@ import {
 } from "reactflow";
 import create from "zustand";
 import { MCCrafterNode, MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
+import { Task } from "../types/tasks";
 import {
   animationDurationFromPerHour,
   checkIfNodesConnect,
@@ -34,6 +35,10 @@ export type RFState = {
   setResourceOutputRate: (id: string, newRate: number) => void;
   setCrafterRecipeIndex: (id: string, newRecipeIndex: number) => void;
   removeOrderNode: () => void;
+
+  queries: {
+    hasNodeType: (nodeType: MCNodeType) => boolean;
+  };
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -122,6 +127,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
   },
 
   setResourceOutputRate: (id: string, newRate: number) => {
+    console.log("Setting output rate", newRate);
     const edges = get().edges;
     set({
       edges: edges.map((edge) => {
@@ -201,5 +207,17 @@ export const useNodeStore = create<RFState>((set, get) => ({
     if (possibleOrder) {
       get().removeNodeById(possibleOrder.id);
     }
+  },
+
+  queries: {
+    hasNodeType(type: MCNodeType) {
+      const nodes = get().nodes;
+      return nodes.some((n) => n.data.dataType === type);
+    },
+
+    debugQuery(task: Task) {
+      const nodes = get().nodes;
+      return (task?.title || "no task") + JSON.stringify(nodes);
+    },
   },
 }));

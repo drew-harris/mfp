@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { allMissions } from "../../hardcoded/missions";
+import { useTaskComplete } from "../../hooks/useTaskComplete";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
@@ -12,6 +13,11 @@ export const Sidebar = () => {
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
+  const nextTask = useObjectiveStore((s) => {
+    s.nextTask;
+  });
+
+  const data = useTaskComplete();
 
   const possibleOrderNode = useNodeStore((state) =>
     state.nodes.find((n) => n.data.dataType === MCNodeType.order)
@@ -50,7 +56,12 @@ export const Sidebar = () => {
           </div>
         </>
       ) : (
-        <SideTaskView clearTask={clearTask} task={currentTask} />
+        <>
+          <SideTaskView clearTask={clearTask} task={currentTask} />
+          <div>{JSON.stringify(data.messages)}</div>
+          <div>Task Complete: {data.taskComplete.toString()}</div>
+          <div>Efficiency: {data.efficiency}</div>
+        </>
       )}
     </div>
   );
@@ -66,7 +77,7 @@ export function findMissionFromTask(
 
   if (foundMissions.length != 1) return null;
 
-  return missions[0];
+  return foundMissions[0];
 }
 
 interface SideTaskViewProps {

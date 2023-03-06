@@ -1,22 +1,37 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import DraggableInfoSquare from "../components/DraggableInfo";
 import DraggableItem from "../components/DraggableItem";
 import { crafterItems, resourceItems } from "../hardcoded/resourceItems";
+import { useObjectiveStore } from "../stores/objectiveStore";
 
 export default function ItemPicker() {
   const allItems = [...resourceItems, ...crafterItems];
   const [input, setInput] = useState("");
+  const currentMission = useObjectiveStore((s) => s.currentMission);
+  const currentTask = useObjectiveStore((s) => s.currentTask);
 
-  const filteredItems = allItems.filter((item) => {
-    if (input === "") return true;
+  const filteredItems = useMemo(() => {
+    return allItems.filter((item) => {
+      if (currentTask?.idPool) {
+        let pool: string[] = [];
+        if (currentTask.idPool === "inherit") {
+          pool = currentMission?.idPool || [];
+        } else {
+          pool = currentTask.idPool;
+        }
 
-    console.log(input.toLowerCase(), item.title.toLowerCase());
-    if (item.title.toLowerCase().includes(input.toLowerCase())) {
-      return true;
-    }
+        if (!pool.includes(item.itemId)) return false;
+      }
 
-    return false;
-  });
+      if (input === "") return true;
+
+      if (item.title.toLowerCase().includes(input.toLowerCase())) {
+        return true;
+      }
+
+      return false;
+    });
+  }, [currentTask, currentMission, input]);
 
   return (
     <>

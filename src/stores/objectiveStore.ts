@@ -8,6 +8,7 @@ export type ObjectiveState = {
   beginMission: (mission: Mission) => void;
   nextTask: () => void;
   cancelMission: () => void;
+  isTaskComplete: () => boolean;
 };
 
 export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
@@ -39,6 +40,10 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
     set({
       currentTask: currentMission.tasks[currentIndex + 1],
     });
+  },
+
+  isTaskComplete: () => {
+    return false;
   },
 
   cancelMission: () => {

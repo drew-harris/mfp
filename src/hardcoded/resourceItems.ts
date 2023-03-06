@@ -3,14 +3,21 @@ import { allRecipes } from "./recipes";
 
 import items from "./items.json";
 
-export const resourceItems: MCPickerItem[] = items.map((item) => {
-  return {
-    dataType: MCNodeType.resource,
-    itemId: item.itemId,
-    imageUrl: item.imageUrl,
-    title: item.title,
-  };
-});
+export const resourceItems: MCPickerItem[] = items
+  .map((item) => {
+    return {
+      dataType: MCNodeType.resource,
+      itemId: item.itemId,
+      imageUrl: item.imageUrl,
+      title: item.title,
+    };
+  })
+  .filter((item): boolean => {
+    if (item.title.includes("Wood")) {
+      return true;
+    }
+    return !allRecipes.find((r) => r.outputItemId == item.itemId);
+  }) as MCPickerItem[];
 
 export const crafterItems: MCPickerItem[] = items
   .map((item) => {

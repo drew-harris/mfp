@@ -1,15 +1,61 @@
+import { MCNodeType } from "../types/MCNodes";
 import { Mission } from "../types/tasks";
 
 export const allMissions: Mission[] = [
   {
     title: "Tutorial",
+    idPool: ["minecraft:cobblestone", "minecraft:furnace"],
     tasks: [
       {
         id: "tut-1",
+        title: "Get cobblestone",
+        description: "Drag a cobblestone resource to the canvas",
+        nodeRequirements: [
+          {
+            nodeType: MCNodeType.resource,
+            amount: 1,
+          },
+        ],
+
+        idPool: "inherit",
+      },
+
+      {
+        id: "tut-2",
+        description: "Drag a furnace crafter to the canvas",
+        nodeRequirements: [
+          {
+            amount: 1,
+            nodeType: MCNodeType.crafter,
+          },
+        ],
+        idPool: "inherit",
+      },
+
+      {
+        id: "tut-3",
+        description: "Connect the cobblestone resource to the furnace",
         itemRequirements: [
           {
-            itemId: "minecraft:spruce_log",
-            perHour: 432,
+            itemId: "minecraft:furnace",
+            perHour: 1,
+          },
+        ],
+        idPool: "inherit",
+      },
+    ],
+  },
+
+  {
+    title: "Test Mission",
+    tasks: [
+      {
+        title: "Create a furnace",
+        id: "test-1",
+        itemRequirements: [
+          {
+            itemId: "minecraft:furnace",
+            perHour: 1,
           },
         ],
       },

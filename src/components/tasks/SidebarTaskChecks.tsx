@@ -5,6 +5,7 @@ import { Edge } from "reactflow";
 import { useNodeStore } from "../../stores/nodes";
 import { MCEdge, MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
+import { Button } from "../basic/Button";
 import { RequirementView } from "./RequirementView";
 
 interface SidebarTaskChecksProps {
@@ -44,7 +45,7 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
   }, actualEdgeUpdate);
 
   useEffect(() => {
-    console.log("Incoming edges to order: ", incomingEdgesToOrder);
+    // console.log("Incoming edges to order: ", incomingEdgesToOrder);
     setItemRequirementsMapped(
       itemRequirementsMapped.map((req) => {
         return {
@@ -66,11 +67,13 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
   );
 
   return (
-    <div className="outset">
+    <div className="flex flex-col items-center">
       {itemRequirementsMapped.map((req) => (
         <ItemCheck key={req.itemId} req={req} />
       ))}
-      {itemRequirementsMapped.every((r) => r.completed) && <div>Submit</div>}
+      {itemRequirementsMapped.every((r) => r.completed) && (
+        <Button>Submit</Button>
+      )}
     </div>
   );
 };
@@ -81,7 +84,10 @@ export const ItemCheck = ({
   req: { completed: boolean; itemId: string; perHour: number };
 }) => {
   return (
-    <div className="flex gap-3 items-center p-2 bg-mc-200" key={req.itemId}>
+    <div
+      className="flex gap-3 m-3 items-center p-2 bg-mc-200 outset"
+      key={req.itemId}
+    >
       <RequirementView requirement={req} />
       <div className="mx-3">
         {req.completed ? (

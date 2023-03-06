@@ -74,15 +74,20 @@ async function buildItems(filenames: string[], ids: string[]) {
   // const cache = await loadCache();
 
   for (let i = 0; i < ids.length; i++) {
-    const prefill = ids[i]
+    let prefill = ids[i]
       .replace("minecraft:", "")
       .replace("item.", "")
       .replaceAll(":", "");
+
     const opts = {
       list: filenames,
       mode: "fuzzy",
       prefill: prefill,
     };
+
+    if (prefill.includes("stripped")) {
+      prefill = "";
+    }
 
     console.clear();
     console.log(ids[i] + "?: ");
