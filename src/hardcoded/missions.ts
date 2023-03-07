@@ -62,4 +62,24 @@ export const allMissions: Mission[] = [
       },
     ],
   },
+
+  {
+    title: "Enchantment Setup (Demo Task)",
+    tasks: [
+      {
+        title: "Create Enchantment Table and Books",
+        id: "test-2",
+        itemRequirements: [
+          {
+            itemId: "minecraft:enchanting_table",
+            perHour: 1,
+          },
+          {
+            itemId: "minecraft:bookshelf",
+            perHour: 4,
+          },
+        ],
+      },
+    ],
+  },
 ];
