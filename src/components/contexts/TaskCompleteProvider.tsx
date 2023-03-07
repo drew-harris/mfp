@@ -64,10 +64,8 @@ export default function TaskCompleteProvider({
     // Check for item requirements
     if (currentTask.itemRequirements) {
       const inputEdges = getEdgesIntoOrderNode(state);
-      console.log("Input edges", inputEdges);
       const requirements = currentTask.itemRequirements;
       if (inputEdges.length === 0) {
-        console.log("No inputs into order node");
         complete = false;
         newMessages.push({
           message: `No inputs into order node`,

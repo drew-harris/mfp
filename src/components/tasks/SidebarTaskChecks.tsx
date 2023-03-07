@@ -45,7 +45,6 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
   }, actualEdgeUpdate);
 
   useEffect(() => {
-    // console.log("Incoming edges to order: ", incomingEdgesToOrder);
     setItemRequirementsMapped(
       itemRequirementsMapped.map((req) => {
         return {

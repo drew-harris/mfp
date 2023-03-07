@@ -41,7 +41,6 @@ export function processPickerItem(
   }
 
   if (item.type === MCNodeType.info) {
-    console.log("Creating info node");
     const node: Node<MCInfoNode> = {
       id: projection.x.toString(),
       position: {
@@ -57,17 +56,11 @@ export function processPickerItem(
     return node;
   }
 
-  console.log("item: ", item);
-
   const regularItem = item as DraggableItemData;
 
-  console.log("Copying to clipboard", regularItem.item.itemId);
   navigator.clipboard
     .writeText(regularItem.item.itemId)
-    .catch(() => console.log("oh no"))
-    .then(() => {
-      console.log("Success");
-    });
+    .catch(() => console.log("oh no"));
 
   if (regularItem.type === MCNodeType.resource) {
     const node = {

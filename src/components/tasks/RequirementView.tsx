@@ -16,7 +16,6 @@ export function RequirementView({
         <SpriteDisplay url={item.imageUrl} />
         <div>x {requirement.perHour}</div>
       </div>
-      {/* <div className="text-xs">{item.title}</div> */}
     </div>
   );
 }
