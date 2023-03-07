@@ -49,7 +49,7 @@ export const allMissions: Mission[] = [
     title: "Create Furnaces (Demo Task)",
     tasks: [
       {
-        title: "Create a furnace",
+        title: "Create Furnaces",
         description:
           "We need furnaces! We need at least 8 new furnaces per hour.",
         id: "test-1",
