@@ -48,7 +48,7 @@ export default function ItemPicker() {
       {/* BUG:  Not sure why 1vh works */}
       <div className="grid z-40 grid-cols-6 gap-2 px-2 max-h-[1vh]">
         {/* <DraggableSplittter /> */}
-        {/* <DraggableInfoSquare /> */}
+        <DraggableInfoSquare />
         {filteredItems.map((item) => (
           <DraggableItem item={item} key={item.itemId + item.dataType} />
         ))}

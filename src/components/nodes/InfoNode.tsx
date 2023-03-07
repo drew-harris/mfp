@@ -20,12 +20,14 @@ export default function InfoNode({ data }: InfoNodeProps) {
         position={Position.Left}
         style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
       />
-      {incomingEdge?.data && (
-        <div>
+      {incomingEdge?.data ? (
+        <div className="flex flex-col items-center">
           <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
           <div>{incomingEdge.data.item.title}</div>
           <div>Rate: {incomingEdge.data.outputRate.toFixed(2)}</div>
         </div>
+      ) : (
+        <div>No Connected Node</div>
       )}
     </BaseNode>
   );
