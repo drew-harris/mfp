@@ -17,7 +17,7 @@ export default function OrderNode({ data }: OrderNodeProps) {
 
   return (
     <>
-      <div className="p-1 text-white bg-orange-300 shadow">
+      <div className="p-1 text-white bg-orange-300 shadow outset">
         <div className="text-center text-black">Order</div>
         <div className="p-2 text-black bg-white">
           {data.task.itemRequirements?.map((requirement) => (

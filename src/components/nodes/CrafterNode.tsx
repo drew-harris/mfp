@@ -111,8 +111,9 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         </div>
         <FontAwesomeIcon icon={faArrowRight} />
         <div className="flex gap-3 items-center pl-3">
-          <div>
+          <div className="flex flex-col items-center">
             <SpriteDisplay url={data.item.imageUrl} />
+            <div className="text-xs text-gray-500">{data.item.title}</div>
           </div>
           <Handle
             style={{
@@ -152,7 +153,12 @@ const CrafterInput = ({
           position: "relative",
         }}
       />
-      <SpriteDisplay url={item.imageUrl} />x {input.amount}
+      <div>
+        <div className="flex items-center gap-2">
+          <SpriteDisplay url={item.imageUrl} />x {input.amount}
+        </div>
+        <div className="text-xs text-center text-gray-500">{item.title}</div>
+      </div>
     </div>
   );
 };

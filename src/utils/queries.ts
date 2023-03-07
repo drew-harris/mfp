@@ -1,9 +1,12 @@
 // Set of queries to run on the nodes and edges
 
-import { Edge } from "reactflow";
-import { EfficiencyInfo } from "../components/contexts/TaskCompleteProvider";
+import { Edge, Node } from "reactflow";
+import {
+  DebugMessage,
+  EfficiencyInfo,
+} from "../components/contexts/TaskCompleteProvider";
 import { allRecipes } from "../hardcoded/recipes";
-import { MCEdge, MCItem, MCNodeType } from "../types/MCNodes";
+import { MCCrafterNode, MCEdge, MCItem, MCNodeType } from "../types/MCNodes";
 import { NodesAndEdges } from "./comparison";
 
 type NE = NodesAndEdges;
@@ -41,4 +44,28 @@ export function getOrderEfficiency(ne: NE): EfficiencyInfo | null {
   if (!orderNode) return null;
 
   return null;
+}
+
+export function getCrafterDebugMessages(ne: NE): DebugMessage[] {
+  const crafterNodes = ne.nodes.filter(
+    (n) => n.data.dataType === MCNodeType.crafter
+  ) as Node<MCCrafterNode>[];
+  const messages: DebugMessage[] = [];
+
+  for (const crafter of crafterNodes) {
+    const currentRecipe = allRecipes
+      .filter((r) => r.outputItemId === crafter.data.item.itemId)
+      .at(crafter.data.recipeIndex);
+
+    const edges = getEdgesIntoNode(ne, crafter.id);
+    if (edges.length != currentRecipe?.inputs.length) {
+      messages.push({
+        message:
+          "Crafter is missing inputs for " +
+          crafter.data.item.title.toLowerCase(),
+      });
+    }
+  }
+
+  return messages;
 }

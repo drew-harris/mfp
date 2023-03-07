@@ -58,9 +58,26 @@ export const Sidebar = () => {
       ) : (
         <>
           <SideTaskView clearTask={clearTask} task={currentTask} />
-          <div>{JSON.stringify(data.messages)}</div>
-          <div>Task Complete: {data.taskComplete.toString()}</div>
-          <div>Efficiency: {data.efficiency}</div>
+          {data.taskComplete && data.efficiency && (
+            <div className="text-center mb-4 text-lg">
+              Efficiency: {data.efficiency * 100}%
+            </div>
+          )}
+          {data.taskComplete && (
+            <button
+              onClick={() => alert("Assignment Submitted")}
+              className="bg-mc-200 p-3 mx-auto block outset"
+            >
+              Submit
+            </button>
+          )}
+          <div>
+            {data.messages.map((m) => (
+              <div className="bg-red-300 p-2 outset" key={m.message}>
+                {m.message}
+              </div>
+            ))}
+          </div>
         </>
       )}
     </div>

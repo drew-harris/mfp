@@ -28,7 +28,7 @@ export default function DraggableItem({
   });
 
   const className = cva(
-    ["flex", "flex-col", "items-center", "p-3", "outset-4"],
+    ["flex", "flex-col", "items-center", "p-3", "outset-4", "justify-between"],
     {
       variants: {
         nodeType: {
@@ -57,8 +57,8 @@ export default function DraggableItem({
       }}
     >
       <div className="text-xs">{getNodeName(item.dataType)}</div>
-      <div className="font-bold">{item.title}</div>
       <SpriteDisplay url={item.imageUrl} />
+      <div className="font-bold text-center">{item.title}</div>
     </div>
   );
 }

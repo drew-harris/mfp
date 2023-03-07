@@ -3,7 +3,10 @@ import { itemFromId } from "../../hooks/useFullItem";
 import { strictCompare } from "../../utils/comparison";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
-import { getEdgesIntoOrderNode } from "../../utils/queries";
+import {
+  getCrafterDebugMessages,
+  getEdgesIntoOrderNode,
+} from "../../utils/queries";
 
 interface TaskCompleteProviderValue {
   messages: DebugMessage[];
@@ -44,6 +47,8 @@ export default function TaskCompleteProvider({
   const [messages, setMessages] = useState<DebugMessage[]>([]);
   const [taskComplete, setTaskComplete] = useState(false);
   const [efficiency, setEfficiency] = useState(1);
+
+  // TODO: Refactor to lots of query util functions
   useEffect(() => {
     if (!currentTask) {
       setMessages([]);
@@ -60,26 +65,26 @@ export default function TaskCompleteProvider({
     if (currentTask.itemRequirements) {
       const inputEdges = getEdgesIntoOrderNode(state);
       console.log("Input edges", inputEdges);
-      const requiremets = currentTask.itemRequirements;
-      if (inputEdges.length == 0) {
+      const requirements = currentTask.itemRequirements;
+      if (inputEdges.length === 0) {
+        console.log("No inputs into order node");
+        complete = false;
         newMessages.push({
           message: `No inputs into order node`,
         });
       } else {
-        requiremets.forEach((req) => {
+        requirements.forEach((req) => {
           const item = itemFromId(req.itemId);
           const possibleEdge = inputEdges.find(
             (e) => e.data?.item.itemId === req.itemId
           );
 
           if (possibleEdge) {
-            console.log("Found edge", possibleEdge.data?.outputRate);
             if (
               possibleEdge.data?.outputRate != undefined &&
               possibleEdge.data.outputRate < req.perHour
             ) {
               complete = false;
-              console.log("Not enough", item.title);
               newMessages.push({
                 message: `Not enough ${item.title.toLowerCase()}s`,
               });
@@ -91,6 +96,7 @@ export default function TaskCompleteProvider({
               });
             }
           } else {
+            complete = false;
             newMessages.push({
               message: `Missing order input for ${item.title}`,
             });
@@ -99,17 +105,24 @@ export default function TaskCompleteProvider({
       }
       // Check all crafting recipies
     }
+    const craftingMessages = getCrafterDebugMessages(state);
+    console.log("Crafting messages", craftingMessages);
+    newMessages.push(...craftingMessages);
 
     const totalWeight = efficiencyInfo.reduce((a, b) => a + b.weight, 0);
     const totalEfficiency = efficiencyInfo.reduce((a, b) => a + b.percent, 0);
 
-    console.log("Total weight", totalWeight);
     console.log("Total efficiency", totalEfficiency);
 
+    console.log("New Messages", newMessages);
     setMessages(newMessages);
     setTaskComplete(complete);
     setEfficiency(totalEfficiency / totalWeight);
   }, [state, currentTask]);
+
+  useEffect(() => {
+    console.log("Messages", messages);
+  }, [messages]);
 
   return (
     <TaskCompleteContext.Provider

@@ -17,7 +17,8 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
 
   return (
     <BaseNode data={data}>
-      <SpriteDisplay className="mb-5" size={56} url={data?.item?.imageUrl} />
+      <SpriteDisplay className="" size={56} url={data?.item?.imageUrl} />
+      <div className="mb-3 text-xs">{data.item.title}</div>
       <input
         className="pl-4 w-28 text-xs text-black bg-gray-300 rounded-xl border border-black placeholder:text-gray-600"
         placeholder="Per-Hour Rate"
@@ -31,14 +32,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
         type="source"
         position={Position.Right}
         style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
-      >
-        <div
-          className="-translate-x-2 text-[4px] -translate-y-[1.2px]"
-          style={{ direction: "rtl" }}
-        >
-          {data?.item?.title}
-        </div>
-      </Handle>
+      ></Handle>
     </BaseNode>
   );
 }
