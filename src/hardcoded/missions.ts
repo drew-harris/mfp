@@ -67,7 +67,7 @@ export const allMissions: Mission[] = [
     title: "Enchantment Setup (Demo Task)",
     tasks: [
       {
-        title: "Create Enchantment Table and Books",
+        title: "Create Enchantment Table and Bookshelves",
         id: "test-2",
         itemRequirements: [
           {
