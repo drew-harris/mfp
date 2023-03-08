@@ -5,7 +5,6 @@ import { Edge } from "reactflow";
 import { useNodeStore } from "../../stores/nodes";
 import { MCEdge, MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
-import { Button } from "../basic/Button";
 import { RequirementView } from "./RequirementView";
 
 interface SidebarTaskChecksProps {

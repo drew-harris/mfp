@@ -1,5 +1,5 @@
 import { useDroppable } from "@dnd-kit/core";
-import ReactFlow from "reactflow";
+import ReactFlow, { Background, BackgroundVariant } from "reactflow";
 import "reactflow/dist/style.css";
 import CrafterNode from "../components/nodes/CrafterNode";
 import InfoNode from "../components/nodes/InfoNode";
@@ -38,7 +38,12 @@ export default function NodeCanvas() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-      ></ReactFlow>
+      >
+        <Background
+          color="#808080"
+          variant={BackgroundVariant.Lines}
+        ></Background>
+      </ReactFlow>
     </div>
   );
 }
