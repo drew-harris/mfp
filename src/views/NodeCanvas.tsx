@@ -41,6 +41,8 @@ export default function NodeCanvas() {
       >
         <Background
           color="#808080"
+          gap={46}
+          lineWidth={2}
           variant={BackgroundVariant.Lines}
         ></Background>
       </ReactFlow>
