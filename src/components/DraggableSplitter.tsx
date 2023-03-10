@@ -1,4 +1,6 @@
 import { useDraggable } from "@dnd-kit/core";
+import { faArrowsSplitUpAndLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   DraggableSplitterData,
   DraggableType,
@@ -25,12 +27,14 @@ export default function DraggableSplitter({
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className="flex flex-col items-center p-3 border-4 bg-mc-300 border-mc-200"
+      className="flex flex-col justify-between items-center p-3 border-4 bg-yellow-200 outset"
       style={{
         zIndex: higher ? 500 : 40,
       }}
     >
-      <div className="font-bold">Splitter</div>
+      <div className="text-xs">Utility</div>
+      <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} size="2x" />
+      <div className="font-bold text-center">Splitter</div>
     </div>
   );
 }

@@ -48,6 +48,7 @@ function FactoryPlanner() {
   let draggedItem = null;
 
   if (active) {
+    console.log(active.data.current);
     const data = active.data.current as unknown as DraggableData;
     if (data.draggableType === DraggableType.item) {
       draggedItem = <DraggableItem item={data.item} higher />;
@@ -56,6 +57,7 @@ function FactoryPlanner() {
       // render a duplicate
       draggedItem = null;
     } else if (data.draggableType === DraggableType.info) {
+      console.log("Dragging info");
       draggedItem = <DraggableInfoSquare />;
     } else {
       draggedItem = <DraggableSplitter />;
@@ -75,7 +77,7 @@ function FactoryPlanner() {
           <div className="row-span-2 border-4 bg-mc-300 inset-4">
             <Sidebar />
           </div>
-          <div className="overflow-y-scroll col-span-2 border-4 inset-4 bg-mc-300">
+          <div className="overflow-y-scroll col-span-2 border-4 inset-4 bg-mc-200">
             <ItemPicker />
           </div>
         </div>
