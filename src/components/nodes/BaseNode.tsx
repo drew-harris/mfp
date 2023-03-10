@@ -27,7 +27,7 @@ export const BaseNode = ({
           [MCNodeType.resource]: "bg-green-300",
           [MCNodeType.crafter]: "bg-blue-200",
           [MCNodeType.order]: "bg-red-500",
-          [MCNodeType.splitter]: "bg-gray-200",
+          [MCNodeType.splitter]: "bg-yellow-200",
           [MCNodeType.info]: "bg-gray-200",
           other: "bg-red-500",
         },
@@ -40,7 +40,9 @@ export const BaseNode = ({
 
   return (
     <div className={outerClass({ nodeType: data.dataType })}>
-      <div className="text-center text-black">{getNodeName(data.dataType)}</div>
+      <div className="text-center bg-yel text-black">
+        {getNodeName(data.dataType)}
+      </div>
       <div
         className={
           "flex flex-col items-center py-4 px-8 text-black bg-gray-100 " +

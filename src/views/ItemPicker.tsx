@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import DraggableInfoSquare from "../components/DraggableInfo";
 import DraggableItem from "../components/DraggableItem";
+import DraggableSplitter from "../components/DraggableSplitter";
 import { crafterItems, resourceItems } from "../hardcoded/resourceItems";
 import { useObjectiveStore } from "../stores/objectiveStore";
 
@@ -47,8 +48,8 @@ export default function ItemPicker() {
 
       {/* BUG:  Not sure why 1vh works */}
       <div className="grid z-40 grid-cols-6 gap-2 px-2 max-h-[1vh]">
-        {/* <DraggableSplittter /> */}
         <DraggableInfoSquare />
+        <DraggableSplitter />
         {filteredItems.map((item) => (
           <DraggableItem item={item} key={item.itemId + item.dataType} />
         ))}

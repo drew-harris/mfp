@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useReactFlow } from "reactflow";
 import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
+import DraggableSplitter from "./components/DraggableSplitter";
 import { MenuBar } from "./components/MenuBar";
 import { Sidebar } from "./components/tasks/Sidebar";
 import { useNodeStore } from "./stores/nodes";
@@ -54,8 +55,10 @@ function FactoryPlanner() {
       // The draggable order is translated directly in the component so it does not
       // render a duplicate
       draggedItem = null;
-    } else {
+    } else if (data.draggableType === DraggableType.info) {
       draggedItem = <DraggableInfoSquare />;
+    } else {
+      draggedItem = <DraggableSplitter />;
     }
   }
 
