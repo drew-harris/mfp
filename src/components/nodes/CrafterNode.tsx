@@ -69,6 +69,10 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return recipes[0];
   });
 
+  const isOutputting = useNodeStore((s) => {
+    return !!s.edges.find((edge) => edge.source === data.id);
+  });
+
   useEffect(() => {
     const multiples = selectedRecipe.inputs.map((input) => {
       const inboundEdge = inboundEdges.find(
@@ -116,6 +120,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
             <div className="text-xs text-gray-500">{data.item.title}</div>
           </div>
           <Handle
+            isConnectable={!isOutputting}
             style={{
               transform: `scale(2.6) translate(0px, 0px)`,
               top: 0,

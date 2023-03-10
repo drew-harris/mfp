@@ -15,6 +15,10 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
       store.edges.find((edge) => edge.source === data.id)?.data?.outputRate || 0
   );
 
+  const isOutputting = useNodeStore((s) => {
+    return !!s.edges.find((edge) => edge.source === data.id);
+  });
+
   return (
     <BaseNode data={data}>
       <SpriteDisplay className="" size={56} url={data?.item?.imageUrl} />
@@ -29,6 +33,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
       />
       <div className="text-xs text-gray-400">/ Hour</div>
       <Handle
+        isConnectable={!isOutputting}
         type="source"
         position={Position.Right}
         style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
