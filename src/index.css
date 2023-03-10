@@ -24,11 +24,11 @@
   }
 
   .outset-4 {
-    @apply border-4 border-b-[#00000050] border-[#00000030];
+    @apply border-4 border-b-[#00000050] border-[#ffffff40];
   }
 
   .outset-8 {
-    @apply border-8 border-b-[#00000050] border-[#00000030];
+    @apply border-8 border-b-[#00000050] border-[#ffffff40];
   }
 }
 

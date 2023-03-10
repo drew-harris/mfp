@@ -126,7 +126,7 @@ const MissionCard = ({ mission, setMission }: MissionCardProps) => {
   return (
     <div
       onClick={() => setMission(mission)}
-      className="p-4 mt-3 outset cursor-pointer bg-mc-200"
+      className="p-4 mt-3 outset-4 cursor-pointer bg-mc-200"
     >
       <div className="font-bold">{mission.title}</div>
     </div>
