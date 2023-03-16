@@ -70,7 +70,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   });
 
   const isOutputting = useNodeStore((s) => {
-    return !!s.edges.find((edge) => edge.source === data.id);
+    return Boolean(s.edges.find((edge) => edge.source === data.id));
   });
 
   useEffect(() => {
@@ -86,7 +86,13 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
 
     const outputRate = Math.min(...multiples) * selectedRecipe.outputAmount;
     setResouceOutputRate(data.id, outputRate);
-  }, [inboundEdges, outboundEdges, selectedRecipe]);
+  }, [
+    inboundEdges,
+    outboundEdges,
+    selectedRecipe,
+    data.id,
+    setResouceOutputRate,
+  ]);
 
   useEffect(() => {
     inboundEdges.forEach((edge) => {
@@ -98,7 +104,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
       }
     });
     updateNodeInternals(data.id);
-  }, [selectedRecipe]);
+  }, [selectedRecipe, data.id, inboundEdges, removeEdge, updateNodeInternals]);
 
   return (
     <BaseNode innerClassName="px-0 py-3" data={data}>
@@ -107,14 +113,14 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         selectedRecipe={selectedRecipe}
         setSelectedRecipe={setSelectedRecipe}
       />
-      <div className="flex gap-3 items-center">
+      <div className="flex items-center gap-3">
         <div>
           {selectedRecipe.inputs.map((input) => (
             <CrafterInput input={input} key={input.itemId} />
           ))}
         </div>
         <FontAwesomeIcon icon={faArrowRight} />
-        <div className="flex gap-3 items-center pl-3">
+        <div className="flex items-center gap-3 pl-3">
           <div className="flex flex-col items-center">
             <SpriteDisplay url={data.item.imageUrl} />
             <div className="text-xs text-gray-500">{data.item.title}</div>
@@ -146,7 +152,7 @@ const CrafterInput = ({
 }) => {
   const item = useFullItem(input.itemId);
   return (
-    <div className="flex gap-3 items-center my-2">
+    <div className="my-2 flex items-center gap-3">
       <Handle
         type="target"
         id={input.itemId.toString()}
@@ -162,7 +168,7 @@ const CrafterInput = ({
         <div className="flex items-center gap-2">
           <SpriteDisplay url={item.imageUrl} />x {input.amount}
         </div>
-        <div className="text-xs text-center text-gray-500">{item.title}</div>
+        <div className="text-center text-xs text-gray-500">{item.title}</div>
       </div>
     </div>
   );

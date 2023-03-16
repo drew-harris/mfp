@@ -17,11 +17,11 @@ export default function OrderNode({ data }: OrderNodeProps) {
 
   return (
     <>
-      <div className="p-1 text-white bg-orange-300 shadow outset">
+      <div className="outset bg-orange-300 p-1 text-white shadow">
         <div className="text-center text-black">Order</div>
-        <div className="p-2 text-black bg-white">
+        <div className="bg-white p-2 text-black">
           {data.task.itemRequirements?.map((requirement) => (
-            <div className="flex gap-3 items-center" key={requirement.itemId}>
+            <div className="flex items-center gap-3" key={requirement.itemId}>
               <Handle
                 key={requirement.itemId}
                 id={requirement.itemId.toString()}

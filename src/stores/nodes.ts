@@ -67,7 +67,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
           animationDuration: `${animationDurationFromPerHour(
             e.data?.outputRate || 0
           )}ms`,
-          animationDirection: undefined,
+          animationDirection: "reverse",
         },
       };
     });
@@ -174,7 +174,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
   removeNodeById(nodeId: string) {
     console.log("Removing node by id", nodeId);
     const nodes = get().nodes;
-    const possibleNode = nodes.find((n) => n.id == nodeId);
+    const possibleNode = nodes.find((n) => n.id === nodeId);
 
     if (possibleNode) {
       const change: NodeRemoveChange = {

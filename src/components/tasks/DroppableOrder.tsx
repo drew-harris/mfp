@@ -20,7 +20,7 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       }
-    : undefined;
+    : null;
 
   // Only show if the grid does not have any order nodes on it
 
@@ -32,7 +32,7 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
   }
   return (
     <>
-      <div className="mt-6 mb-4 text-sm text-center text-mc-700">
+      <div className="mt-6 mb-4 text-center text-sm text-mc-700">
         Drag the order onto the canvas to begin.
       </div>
       <div className="flex justify-center">
@@ -41,12 +41,12 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
           {...listeners}
           {...attributes}
           style={style}
-          className="p-1 text-white bg-orange-300 shadow"
+          className="bg-orange-300 p-1 text-white shadow"
         >
           <div className="text-center text-black">Order</div>
-          <div className="p-2 text-black bg-white">
+          <div className="bg-white p-2 text-black">
             {task.itemRequirements?.map((requirement) => (
-              <div className="flex gap-3 items-center" key={requirement.itemId}>
+              <div className="flex items-center gap-3" key={requirement.itemId}>
                 <RequirementView
                   className="my-2 text-black"
                   requirement={requirement}

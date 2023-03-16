@@ -24,7 +24,7 @@ export const Sidebar = () => {
   );
 
   useEffect(() => {
-    if (possibleOrderNode?.data.dataType == MCNodeType.order) {
+    if (possibleOrderNode?.data.dataType === MCNodeType.order) {
       if (possibleOrderNode.data.task) {
         const task = possibleOrderNode.data.task;
         const possibleMission = findMissionFromTask(task);
@@ -33,7 +33,7 @@ export const Sidebar = () => {
         }
       }
     }
-  }, [possibleOrderNode]);
+  }, [possibleOrderNode, beginMission]);
 
   const clearTask = () => {
     cancelMission();
@@ -59,21 +59,21 @@ export const Sidebar = () => {
         <>
           <SideTaskView clearTask={clearTask} task={currentTask} />
           {data.taskComplete && data.efficiency && (
-            <div className="text-center mb-4 text-lg">
+            <div className="mb-4 text-center text-lg">
               Efficiency: {data.efficiency * 100}%
             </div>
           )}
           {data.taskComplete && (
             <button
               onClick={() => alert("Assignment Submitted")}
-              className="bg-mc-200 p-3 mx-auto block outset"
+              className="outset mx-auto block bg-mc-200 p-3"
             >
               Submit
             </button>
           )}
           <div>
             {data.messages.map((m) => (
-              <div className="bg-red-300 p-2 outset" key={m.message}>
+              <div className="outset bg-red-300 p-2" key={m.message}>
                 {m.message}
               </div>
             ))}
@@ -90,11 +90,12 @@ export function findMissionFromTask(
 ): Mission | null {
   const foundMissions = missions.filter((m) => {
     if (m.tasks.find((t) => t.id === task.id)) return true;
+    return false;
   });
 
-  if (foundMissions.length != 1) return null;
+  if (foundMissions.length !== 1) return null;
 
-  return foundMissions[0];
+  return foundMissions[0] || null;
 }
 
 interface SideTaskViewProps {
@@ -105,11 +106,11 @@ interface SideTaskViewProps {
 const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
   return (
     <div className="p-2">
-      <div className="flex justify-between items-center mb-3">
+      <div className="mb-3 flex items-center justify-between">
         <div className="text-lg font-bold">Current Task:</div>
         <button onClick={clearTask}>Clear Task</button>
       </div>
-      <div className="text-xl font-bold text-center">{task.title}</div>
+      <div className="text-center text-xl font-bold">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
       <SidebarTaskChecks task={task} />
       <DroppableOrder task={task} />
@@ -126,7 +127,7 @@ const MissionCard = ({ mission, setMission }: MissionCardProps) => {
   return (
     <div
       onClick={() => setMission(mission)}
-      className="p-4 mt-3 outset-4 cursor-pointer bg-mc-200"
+      className="outset-4 mt-3 cursor-pointer bg-mc-200 p-4"
     >
       <div className="font-bold">{mission.title}</div>
     </div>

@@ -40,12 +40,12 @@ export const BaseNode = ({
 
   return (
     <div className={outerClass({ nodeType: data.dataType })}>
-      <div className="text-center bg-yel text-black">
+      <div className="bg-yel text-center text-black">
         {getNodeName(data.dataType)}
       </div>
       <div
         className={
-          "flex flex-col items-center py-4 px-8 text-black bg-gray-100 " +
+          "flex flex-col items-center bg-gray-100 py-4 px-8 text-black " +
           innerClassName
         }
       >

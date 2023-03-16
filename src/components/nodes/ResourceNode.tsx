@@ -16,7 +16,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
   );
 
   const isOutputting = useNodeStore((s) => {
-    return !!s.edges.find((edge) => edge.source === data.id);
+    return Boolean(s.edges.find((edge) => edge.source === data.id));
   });
 
   return (
@@ -24,7 +24,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
       <SpriteDisplay className="" size={56} url={data?.item?.imageUrl} />
       <div className="mb-3 text-xs">{data.item.title}</div>
       <input
-        className="pl-4 w-28 text-xs text-black bg-gray-300 rounded-xl border border-black placeholder:text-gray-600"
+        className="w-28 rounded-xl border border-black bg-gray-300 pl-4 text-xs text-black placeholder:text-gray-600"
         placeholder="Per-Hour Rate"
         onChange={(event) =>
           setOutputRate(data.id, parseInt(event.target.value) || 0)

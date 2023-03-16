@@ -29,7 +29,7 @@ export default function NodeCanvas() {
       ref={setNodeRef}
       className={`${
         isOver ? "border-green-400" : "border-transparent"
-      } border-4 h-full`}
+      } h-full border-4`}
     >
       <ReactFlow
         nodeTypes={nodeTypes}

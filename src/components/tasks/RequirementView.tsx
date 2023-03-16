@@ -12,7 +12,7 @@ export function RequirementView({
   const item = useFullItem(requirement.itemId);
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         <SpriteDisplay url={item.imageUrl} />
         <div>x {requirement.perHour}</div>
       </div>

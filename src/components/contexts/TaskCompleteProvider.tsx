@@ -79,14 +79,14 @@ export default function TaskCompleteProvider({
 
           if (possibleEdge) {
             if (
-              possibleEdge.data?.outputRate != undefined &&
+              possibleEdge.data?.outputRate &&
               possibleEdge.data.outputRate < req.perHour
             ) {
               complete = false;
               newMessages.push({
                 message: `Not enough ${item.title.toLowerCase()}s`,
               });
-            } else if (possibleEdge.data?.outputRate != undefined) {
+            } else if (possibleEdge.data?.outputRate) {
               const ratio = possibleEdge.data?.outputRate / req.perHour;
               efficiencyInfo.push({
                 percent: ratio,

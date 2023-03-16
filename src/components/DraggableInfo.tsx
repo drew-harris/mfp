@@ -23,14 +23,14 @@ export default function DraggableInfoSquare({
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className="flex flex-col items-center justify-between p-3 outset bg-mc-100"
+      className="outset flex flex-col items-center justify-between bg-mc-100 p-3"
       style={{
         zIndex: higher ? 500 : 40,
       }}
     >
       <div className="text-xs">Utility</div>
       <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
-      <div className="font-bold text-center">Info</div>
+      <div className="text-center font-bold">Info</div>
     </div>
   );
 }

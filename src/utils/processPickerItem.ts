@@ -29,8 +29,8 @@ export function processPickerItem(
     | DraggableInfo
     | DraggableSplitterData,
   projection: XYPosition
-): PossibleNode | undefined {
-  if (item.type == MCNodeType.order) {
+): PossibleNode {
+  if (item.type === MCNodeType.order) {
     const orderItem = item as DraggableOrderData;
     return {
       id: orderItem.task.id,
@@ -106,9 +106,8 @@ export function processPickerItem(
       type: regularItem.type,
     } as Node<MCResourceNode>;
     return node;
-  }
-
-  if (regularItem.type === MCNodeType.crafter) {
+  } else {
+    // Crafter
     const node: Node<MCCrafterNode> = {
       id: projection.x.toString(),
       position: {
