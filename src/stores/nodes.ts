@@ -33,7 +33,11 @@ export type RFState = {
   removeEdgeById: (edgeId: string) => void;
   updateEdgeSpeeds: () => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
+
+  // TO DEPRICATE
   setCrafterRecipeIndex: (id: string, newRecipeIndex: number) => void;
+
+  setNodeData: <T extends MCNode>(id: string, newData: Partial<T>) => void;
   removeOrderNode: () => void;
 
   queries: {
@@ -164,6 +168,26 @@ export const useNodeStore = create<RFState>((set, get) => ({
               recipeIndex: newRecipeIndex,
             },
           } as Node<MCCrafterNode>;
+        } else {
+          return node;
+        }
+      }),
+    });
+  },
+
+  setNodeData(id, newData) {
+    console.log("Setting node data", id, newData);
+    const nodes = get().nodes;
+    set({
+      nodes: nodes.map((node) => {
+        if (node.id === id) {
+          return {
+            ...node,
+            data: {
+              ...node.data,
+              ...newData,
+            },
+          };
         } else {
           return node;
         }
