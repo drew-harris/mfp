@@ -71,7 +71,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
           animationDuration: `${animationDurationFromPerHour(
             e.data?.outputRate || 0
           )}ms`,
-          animationDirection: "reverse",
         },
       };
     });
@@ -114,7 +113,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
             strokeWidth: "4px",
             color: "white",
             animationDuration: "0ms",
-            animationDirection: "reverse",
             transform: "translateY(5px)",
           },
         } as Edge<MCEdge>,
