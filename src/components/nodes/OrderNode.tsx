@@ -16,7 +16,6 @@ export default function OrderNode({ data }: OrderNodeProps) {
     store.edges.filter((edge) => edge.target === data.id)
   );
 
-  // TODO: Migrate to basenode
   return (
     <BaseNode data={data} innerClassName="py-0 px-0">
       <div className="m-0 p-0 text-black">
