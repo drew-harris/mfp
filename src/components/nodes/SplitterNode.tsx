@@ -1,6 +1,9 @@
 import { useEffect } from "react";
+import { useUpdateNodeInternals } from "reactflow";
 import { useSetNodeData } from "../../hooks/useSetNodeData";
+import { useNodeStore } from "../../stores/nodes";
 import { MCSplitterNode } from "../../types/MCNodes";
+import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
 
@@ -26,6 +29,19 @@ export function getRatioFromInputString(input: string): number[] {
 
 export default function SplitterNode({ data }: SplitterNodeProps) {
   const setData = useSetNodeData<MCSplitterNode>(data.id);
+  const updateNodeInternals = useUpdateNodeInternals();
+
+  //TODO: ADD FILTER
+  const incomingEdge = useNodeStore((s) =>
+    s.edges.find((e) => e?.target === data.id)
+  );
+
+  const outgoingEdges = useNodeStore((s) =>
+    s.edges.filter((e) => e?.source === data.id)
+  );
+
+  const setEdgeData = useNodeStore((s) => s.setEdgeData);
+  const removeEdge = useNodeStore((s) => s.removeEdgeById);
 
   const updateString = (s: string) => {
     setData({ splitString: s });
@@ -35,16 +51,35 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   useEffect(() => {
     const ratios = getRatioFromInputString(data.splitString);
     setData({ ratios });
+    updateNodeInternals(data.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.splitString]);
+
+  useEffect(() => {
+    for (let i = 0; i < outgoingEdges.length; i++) {
+      if (!incomingEdge) {
+        removeEdge(outgoingEdges[i].id);
+      } else {
+        setEdgeData(outgoingEdges[i].id, {
+          outputRate: data.ratios[i] * incomingEdge.data.outputRate,
+          item: incomingEdge.data.item,
+        });
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [incomingEdge, data.ratios, removeEdge, setEdgeData]);
 
   return (
     <BaseNode
       data={data}
+      leftSideNode={<SideHandle type="target" />}
       rightSideNode={data.ratios.map((_, i) => (
         <SideHandle key={i} type="source" id={`output-${i}`} />
       ))}
     >
+      {incomingEdge?.data && (
+        <SpriteDisplay className="mb-4" url={incomingEdge.data.item.imageUrl} />
+      )}
       <input
         type="text"
         className="inset"

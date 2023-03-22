@@ -17,9 +17,15 @@ export default function InfoNode({ data }: InfoNodeProps) {
     <BaseNode leftSideNode={<SideHandle type="target" />} data={data}>
       {incomingEdge?.data ? (
         <div className="flex flex-col items-center">
-          <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
-          <div>{incomingEdge.data.item.title}</div>
-          <div>Rate: {incomingEdge.data.outputRate.toFixed(2)}</div>
+          {incomingEdge?.data?.item?.imageUrl && (
+            <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
+          )}
+          {incomingEdge?.data?.item?.title && (
+            <div>{incomingEdge.data?.item?.title}</div>
+          )}
+          {incomingEdge.data.outputRate && (
+            <div>Rate: {incomingEdge.data.outputRate.toFixed(2)}</div>
+          )}
         </div>
       ) : (
         <div>No Connected Node</div>

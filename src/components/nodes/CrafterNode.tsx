@@ -14,7 +14,7 @@ interface CrafterNodeProps {
   data: MCCrafterNode;
 }
 
-const actualEdgeUpdate = (
+export const actualEdgeUpdate = (
   oldEdges: Edge<MCEdge>[],
   newEdges: Edge<MCEdge>[]
 ): boolean => {

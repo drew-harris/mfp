@@ -1,4 +1,3 @@
-import { Handle, Position } from "reactflow";
 import { useNodeStore } from "../../stores/nodes";
 import { MCResourceNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";

@@ -10,7 +10,7 @@ export const SpriteDisplay: React.FC<SpriteDisplayProps> = ({
   size = 42,
   className,
   ...props
-}) => {
+}: SpriteDisplayProps) => {
   return (
     <img
       {...props}

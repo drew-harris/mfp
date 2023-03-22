@@ -38,6 +38,7 @@ export type RFState = {
   setCrafterRecipeIndex: (id: string, newRecipeIndex: number) => void;
 
   setNodeData: <T extends MCNode>(id: string, newData: Partial<T>) => void;
+  setEdgeData: <T extends MCEdge>(id: string, newData: Partial<T>) => void;
   removeOrderNode: () => void;
 
   queries: {
@@ -188,6 +189,26 @@ export const useNodeStore = create<RFState>((set, get) => ({
           };
         } else {
           return node;
+        }
+      }),
+    });
+  },
+
+  setEdgeData(id, newData) {
+    console.log("Setting edge data", id, newData);
+    const edges = get().edges;
+    set({
+      edges: edges.map((edge) => {
+        if (edge.id === id) {
+          return {
+            ...edge,
+            data: {
+              ...edge.data,
+              ...newData,
+            },
+          };
+        } else {
+          return edge;
         }
       }),
     });
