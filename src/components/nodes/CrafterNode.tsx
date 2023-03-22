@@ -152,7 +152,7 @@ const CrafterInput = ({
 }) => {
   const item = useFullItem(input.itemId);
   return (
-    <div className="my-2 flex items-center gap-3">
+    <div className="debug my-2 flex items-center gap-3">
       <Handle
         type="target"
         id={input.itemId.toString()}

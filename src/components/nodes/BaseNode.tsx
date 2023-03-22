@@ -10,6 +10,7 @@ interface BaseNodeProps {
   innerClassName?: string;
 
   leftSideNode?: ReactNode;
+  rightSideNode?: ReactNode;
 }
 
 export const BaseNode = ({
@@ -18,6 +19,7 @@ export const BaseNode = ({
   innerClassName,
   data,
   leftSideNode,
+  rightSideNode,
 }: BaseNodeProps) => {
   const outerClass = cva(
     ["p-1", "text-white", "shadow", "outset-4", outerClassName],
@@ -40,9 +42,7 @@ export const BaseNode = ({
 
   return (
     <div className={outerClass({ nodeType: data.dataType })}>
-      <div className="bg-yel text-center text-black">
-        {getNodeName(data.dataType)}
-      </div>
+      <div className="text-center text-black">{getNodeName(data.dataType)}</div>
       <div
         className={
           "flex flex-col items-center bg-gray-100 py-4 px-8 text-black " +
@@ -51,7 +51,12 @@ export const BaseNode = ({
       >
         {children}
       </div>
-      <div className="absolute top-0 bottom-0 left-0">{leftSideNode}</div>
+      <div className="absolute top-0 bottom-0 left-0 flex flex-col justify-center gap-5">
+        {leftSideNode}
+      </div>
+      <div className="absolute top-0 bottom-0 right-0 flex flex-col justify-center gap-5">
+        {rightSideNode}
+      </div>
     </div>
   );
 };

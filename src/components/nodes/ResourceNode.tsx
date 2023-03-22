@@ -3,6 +3,7 @@ import { useNodeStore } from "../../stores/nodes";
 import { MCResourceNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
+import { SideHandle } from "./nodeDetails/SideHandle";
 interface ResourceNodeProps {
   data: MCResourceNode;
 }
@@ -20,7 +21,10 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
   });
 
   return (
-    <BaseNode data={data}>
+    <BaseNode
+      rightSideNode={<SideHandle isConnectable={!isOutputting} type="source" />}
+      data={data}
+    >
       <SpriteDisplay className="" size={56} url={data?.item?.imageUrl} />
       <div className="mb-3 text-xs">{data.item.title}</div>
       <input
@@ -32,12 +36,6 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
         value={outputRate || 0}
       />
       <div className="text-xs text-gray-400">/ Hour</div>
-      <Handle
-        isConnectable={!isOutputting}
-        type="source"
-        position={Position.Right}
-        style={{ transform: "scale(2.6) translate(0px, -1.5px)" }}
-      ></Handle>
     </BaseNode>
   );
 }
