@@ -3,6 +3,7 @@ import { useUpdateNodeInternals } from "reactflow";
 import { useSetNodeData } from "../../hooks/useSetNodeData";
 import { useNodeStore } from "../../stores/nodes";
 import { MCSplitterNode } from "../../types/MCNodes";
+import { singleEdgeUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
@@ -31,9 +32,9 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   const setData = useSetNodeData<MCSplitterNode>(data.id);
   const updateNodeInternals = useUpdateNodeInternals();
 
-  //TODO: ADD FILTER
-  const incomingEdge = useNodeStore((s) =>
-    s.edges.find((e) => e?.target === data.id)
+  const incomingEdge = useNodeStore(
+    (s) => s.edges.find((e) => e?.target === data.id),
+    singleEdgeUpdate
   );
 
   const outgoingEdges = useNodeStore((s) =>
@@ -67,7 +68,13 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [incomingEdge, data.ratios, removeEdge, setEdgeData]);
+  }, [
+    incomingEdge,
+    data.ratios,
+    removeEdge,
+    setEdgeData,
+    outgoingEdges.length,
+  ]);
 
   return (
     <BaseNode

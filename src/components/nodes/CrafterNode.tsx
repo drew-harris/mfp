@@ -1,12 +1,13 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useMemo } from "react";
-import { Edge, Handle, Position, useUpdateNodeInternals } from "reactflow";
+import { Handle, Position, useUpdateNodeInternals } from "reactflow";
 import { allRecipes } from "../../hardcoded/recipes";
 import { useFullItem } from "../../hooks/useFullItem";
 import { useSetNodeData } from "../../hooks/useSetNodeData";
 import { useNodeStore } from "../../stores/nodes";
-import { MCCrafterNode, MCEdge, MCNodeType, Recipe } from "../../types/MCNodes";
+import { MCCrafterNode, MCNodeType, Recipe } from "../../types/MCNodes";
+import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { RecipeSelector } from "./nodeDetails/RecipeSelector";
@@ -14,29 +15,6 @@ import { RecipeSelector } from "./nodeDetails/RecipeSelector";
 interface CrafterNodeProps {
   data: MCCrafterNode;
 }
-
-export const actualEdgeUpdate = (
-  oldEdges: Edge<MCEdge>[],
-  newEdges: Edge<MCEdge>[]
-): boolean => {
-  const datas = oldEdges.map((e) => e.data);
-  const newDatas = newEdges.map((e) => e.data);
-
-  if (datas.length !== newDatas.length) {
-    return false;
-  }
-
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]?.item.itemId !== newDatas[i]?.item.itemId) {
-      return false;
-    }
-    if (datas[i]?.outputRate !== newDatas[i]?.outputRate) {
-      return false;
-    }
-  }
-
-  return true;
-};
 
 export default function CrafterNode({ data }: CrafterNodeProps) {
   const recipes = useMemo(() => {
@@ -49,11 +27,11 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
 
   const inboundEdges = useNodeStore((s) => {
     return s.edges.filter((e) => e.target === data.id);
-  }, actualEdgeUpdate);
+  }, edgeArrayUpdate);
 
   const outboundEdges = useNodeStore((s) => {
     return s.edges.filter((e) => e.source === data.id);
-  }, actualEdgeUpdate);
+  }, edgeArrayUpdate);
 
   const setNodeData = useSetNodeData<MCCrafterNode>(data.id);
   const setSelectedRecipe = (recipe: Recipe) => {
