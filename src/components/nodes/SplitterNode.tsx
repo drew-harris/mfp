@@ -74,7 +74,14 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       data={data}
       leftSideNode={<SideHandle type="target" />}
       rightSideNode={data.ratios.map((_, i) => (
-        <SideHandle key={i} type="source" id={`output-${i}`} />
+        <SideHandle
+          className={
+            i >= outgoingEdges.length ? "border-black bg-red-500" : null
+          }
+          key={i}
+          type="source"
+          id={`output-${i}`}
+        />
       ))}
     >
       {incomingEdge?.data && (
@@ -84,7 +91,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
         type="text"
         className="inset"
         value={data.splitString}
-        onChange={(e) => updateString(e.target.value)}
+        onChange={(e) => updateString(e.target.value.toUpperCase())}
       />
     </BaseNode>
   );

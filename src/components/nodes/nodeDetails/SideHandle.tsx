@@ -4,9 +4,14 @@ const getPosition = (type: HandleProps["type"]): Position => {
   return type === "source" ? Position.Right : Position.Left;
 };
 
-export function SideHandle(props: Omit<HandleProps, "position">) {
+export interface SideHandleProps extends Omit<HandleProps, "position"> {
+  className?: string;
+}
+
+export function SideHandle(props: SideHandleProps) {
   return (
     <Handle
+      className={props.className}
       {...props}
       style={{
         transform: `scale(2.6) translate(0px, 0px)`,

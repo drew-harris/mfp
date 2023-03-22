@@ -26,11 +26,11 @@ export const BaseNode = ({
     {
       variants: {
         nodeType: {
-          [MCNodeType.resource]: "bg-green-300",
-          [MCNodeType.crafter]: "bg-blue-200",
-          [MCNodeType.order]: "bg-red-500",
-          [MCNodeType.splitter]: "bg-yellow-200",
-          [MCNodeType.info]: "bg-gray-200",
+          [MCNodeType.resource]: "bg-green-400",
+          [MCNodeType.crafter]: "bg-blue-300",
+          [MCNodeType.order]: "bg-red-400",
+          [MCNodeType.splitter]: "bg-yellow-300",
+          [MCNodeType.info]: "bg-gray-300",
           other: "bg-red-500",
         },
       },
@@ -51,10 +51,10 @@ export const BaseNode = ({
       >
         {children}
       </div>
-      <div className="absolute top-0 bottom-0 left-0 flex flex-col justify-center gap-5">
+      <div className="absolute top-0 bottom-0 left-0 flex flex-col justify-center gap-8">
         {leftSideNode}
       </div>
-      <div className="absolute top-0 bottom-0 right-0 flex flex-col justify-center gap-5">
+      <div className="absolute top-0 bottom-0 right-0 flex flex-col justify-center gap-8">
         {rightSideNode}
       </div>
     </div>
