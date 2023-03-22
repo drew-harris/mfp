@@ -89,7 +89,8 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       )}
       <input
         type="text"
-        className="inset"
+        placeholder="Enter Splitting Pattern..."
+        className="inset p-1 px-3"
         value={data.splitString}
         onChange={(e) => updateString(e.target.value.toUpperCase())}
       />

@@ -4,6 +4,7 @@ import { useEffect, useMemo } from "react";
 import { Edge, Handle, Position, useUpdateNodeInternals } from "reactflow";
 import { allRecipes } from "../../hardcoded/recipes";
 import { useFullItem } from "../../hooks/useFullItem";
+import { useSetNodeData } from "../../hooks/useSetNodeData";
 import { useNodeStore } from "../../stores/nodes";
 import { MCCrafterNode, MCEdge, MCNodeType, Recipe } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
@@ -54,9 +55,9 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return s.edges.filter((e) => e.source === data.id);
   }, actualEdgeUpdate);
 
-  const setSelectedRecipeIndex = useNodeStore((s) => s.setCrafterRecipeIndex);
+  const setNodeData = useSetNodeData<MCCrafterNode>(data.id);
   const setSelectedRecipe = (recipe: Recipe) => {
-    setSelectedRecipeIndex(data.id, recipes.indexOf(recipe));
+    setNodeData({ recipeIndex: recipes.indexOf(recipe) });
   };
 
   const selectedRecipe = useNodeStore((s) => {
@@ -152,7 +153,7 @@ const CrafterInput = ({
 }) => {
   const item = useFullItem(input.itemId);
   return (
-    <div className="debug my-2 flex items-center gap-3">
+    <div className="my-2 flex items-center gap-3">
       <Handle
         type="target"
         id={input.itemId.toString()}
