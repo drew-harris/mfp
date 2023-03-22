@@ -19,7 +19,7 @@ export default function OrderNode({ data }: OrderNodeProps) {
   // TODO: Migrate to basenode
   return (
     <BaseNode data={data} innerClassName="py-0 px-0">
-      <div className="debug m-0 p-0 text-black">
+      <div className="m-0 p-0 text-black">
         {data.task.itemRequirements?.map((requirement) => (
           <div className="flex items-center gap-3" key={requirement.itemId}>
             <Handle
