@@ -76,6 +76,15 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
     outgoingEdges.length,
   ]);
 
+  useEffect(() => {
+    if (!incomingEdge) {
+      setData({ item: null });
+    } else {
+      setData({ item: incomingEdge.data.item });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [incomingEdge]);
+
   return (
     <BaseNode
       data={data}
