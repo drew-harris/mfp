@@ -101,7 +101,10 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       ))}
     >
       {incomingEdge?.data && (
-        <SpriteDisplay className="mb-4" url={incomingEdge.data.item.imageUrl} />
+        <SpriteDisplay
+          label={incomingEdge.data.item.title}
+          url={incomingEdge.data.item.imageUrl}
+        />
       )}
       <input
         type="text"
