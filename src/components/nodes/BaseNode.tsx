@@ -9,8 +9,8 @@ interface BaseNodeProps {
   outerClassName?: string;
   innerClassName?: string;
 
-  leftSideNode?: ReactNode;
-  rightSideNode?: ReactNode;
+  leftSideNodes?: ReactNode;
+  rightSideNodes?: ReactNode;
 }
 
 export const BaseNode = ({
@@ -18,8 +18,8 @@ export const BaseNode = ({
   outerClassName,
   innerClassName,
   data,
-  leftSideNode,
-  rightSideNode,
+  leftSideNodes: leftSideNode,
+  rightSideNodes: rightSideNode,
 }: BaseNodeProps) => {
   const outerClass = cva(
     ["p-1", "text-white", "shadow", "outset-4", outerClassName],

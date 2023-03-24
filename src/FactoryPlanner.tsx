@@ -71,13 +71,13 @@ function FactoryPlanner() {
           <MenuBar />
         </div>
         <div className="grid flex-grow grid-cols-[2fr_2fr_1.3fr] grid-rows-[1.8fr_1fr] gap-2 pr-2 pb-2 pl-2">
-          <div className="inset-4 col-span-2 border-4 bg-mc-300">
+          <div className="outset-4 col-span-2 border-4 bg-mc-300">
             <NodeCanvas />
           </div>
-          <div className="inset-4 row-span-2 border-4 bg-mc-300">
+          <div className="outset-4 row-span-2 border-4 bg-mc-300">
             <Sidebar />
           </div>
-          <div className="inset-4 col-span-2 overflow-y-scroll border-4 bg-mc-200">
+          <div className="outset-4 col-span-2 overflow-y-scroll border-4 bg-mc-200">
             <ItemPicker />
           </div>
         </div>

@@ -88,8 +88,8 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   return (
     <BaseNode
       data={data}
-      leftSideNode={<SideHandle type="target" />}
-      rightSideNode={data.ratios.map((_, i) => (
+      leftSideNodes={<SideHandle type="target" />}
+      rightSideNodes={data.ratios.map((_, i) => (
         <SideHandle
           className={
             i >= outgoingEdges.length ? "border-black bg-red-500" : null

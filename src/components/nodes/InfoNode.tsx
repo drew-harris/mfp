@@ -14,7 +14,7 @@ export default function InfoNode({ data }: InfoNodeProps) {
   );
 
   return (
-    <BaseNode leftSideNode={<SideHandle type="target" />} data={data}>
+    <BaseNode leftSideNodes={<SideHandle type="target" />} data={data}>
       {incomingEdge?.data ? (
         <div className="flex flex-col items-center">
           {incomingEdge?.data?.item?.imageUrl && (

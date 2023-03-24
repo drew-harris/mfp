@@ -31,7 +31,7 @@ export const MenuBar = () => {
       <Button onClick={restoreFlow}>Load</Button>
 
       <div>
-        <div>Logged in as: {id}</div>
+        <div className="text-white">Logged in as: {id}</div>
       </div>
     </>
   );

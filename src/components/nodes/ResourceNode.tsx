@@ -21,7 +21,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
 
   return (
     <BaseNode
-      rightSideNode={<SideHandle isConnectable={!isOutputting} type="source" />}
+      rightSideNodes={<SideHandle isConnectable={!isOutputting} type="source" />}
       data={data}
     >
       <SpriteDisplay className="" size={56} url={data?.item?.imageUrl} />
