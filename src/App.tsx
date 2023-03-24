@@ -4,7 +4,7 @@ import { useUserStore } from "./stores/userStore";
 
 export default function App() {
   const userId = useUserStore((s) => s.id);
-  if (userId) {
+  if (!userId) {
     return <FactoryPlanner />;
   } else {
     return <LoginPage />;

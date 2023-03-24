@@ -97,7 +97,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       <input
         type="text"
         placeholder="Enter Splitting Pattern..."
-        className="inset p-1 px-3"
+        className="rounded-xl border border-black bg-gray-300 pl-4 text-xs text-black placeholder:text-gray-400"
         value={data.splitString}
         onChange={(e) => updateString(e.target.value.toUpperCase())}
       />

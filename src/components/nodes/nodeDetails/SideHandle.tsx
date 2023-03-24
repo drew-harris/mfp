@@ -9,6 +9,7 @@ export interface SideHandleProps extends Omit<HandleProps, "position"> {
 }
 
 export function SideHandle(props: SideHandleProps) {
+  // TODO: use cva for variants
   return (
     <Handle
       className={props.className}

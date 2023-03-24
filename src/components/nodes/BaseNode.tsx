@@ -51,10 +51,10 @@ export const BaseNode = ({
       >
         {children}
       </div>
-      <div className="absolute top-0 bottom-0 left-0 flex flex-col justify-center gap-8">
+      <div className="ldft absolute top-0 bottom-0 flex flex-col justify-around py-2">
         {leftSideNode}
       </div>
-      <div className="absolute top-0 bottom-0 right-0 flex flex-col justify-center gap-8">
+      <div className="absolute top-0 bottom-0 right-0 flex flex-col justify-around py-2">
         {rightSideNode}
       </div>
     </div>
