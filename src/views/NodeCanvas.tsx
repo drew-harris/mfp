@@ -1,6 +1,12 @@
 import { useDroppable } from "@dnd-kit/core";
-import ReactFlow, { Background, BackgroundVariant } from "reactflow";
+import ReactFlow, {
+  Background,
+  BackgroundVariant,
+  Controls,
+  Panel,
+} from "reactflow";
 import "reactflow/dist/style.css";
+import { MenuBar } from "../components/MenuBar";
 import CrafterNode from "../components/nodes/CrafterNode";
 import InfoNode from "../components/nodes/InfoNode";
 import OrderNode from "../components/nodes/OrderNode";
@@ -39,12 +45,26 @@ export default function NodeCanvas() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
       >
+        <Controls
+          style={{
+            margin: 4,
+          }}
+          className="outset bg-mc-100"
+        />
         <Background
           color="#808080"
           gap={48}
           lineWidth={2}
           variant={BackgroundVariant.Lines}
         ></Background>
+        <Panel
+          style={{
+            margin: 4,
+          }}
+          position="top-left"
+        >
+          <MenuBar />
+        </Panel>
       </ReactFlow>
     </div>
   );

@@ -66,10 +66,10 @@ function FactoryPlanner() {
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <div className="flex h-[100vh] max-h-screen flex-col">
-        <div className="flex items-center gap-2 p-2">
-          <MenuBar />
-        </div>
+      <div className="flex h-[100vh] max-h-screen flex-col pt-3">
+        {/* <div className="flex items-center gap-2 p-2"> */}
+        {/*   <MenuBar /> */}
+        {/* </div> */}
         <div className="grid flex-grow grid-cols-[2fr_2fr_1.3fr] grid-rows-[1.8fr_1fr] gap-2 pr-2 pb-2 pl-2">
           <div className="outset-4 col-span-2 border-4 bg-mc-300">
             <NodeCanvas />
