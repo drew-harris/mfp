@@ -77,7 +77,7 @@ function FactoryPlanner() {
           <div className="outset-4 row-span-2 border-4 bg-mc-300">
             <Sidebar />
           </div>
-          <div className="outset-4 col-span-2 overflow-y-scroll border-4 bg-mc-200">
+          <div className="outset-4 col-span-2 overflow-y-scroll border-4 bg-mc-300">
             <ItemPicker />
           </div>
         </div>
