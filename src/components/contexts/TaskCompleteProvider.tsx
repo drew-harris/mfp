@@ -1,8 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { itemFromId } from "../../hooks/useFullItem";
-import { strictCompare } from "../../utils/comparison";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
+import { MCNodeType } from "../../types/MCNodes";
+import { strictCompare } from "../../utils/comparison";
 import {
   getCrafterDebugMessages,
   getEdgesIntoOrderNode,
@@ -44,6 +45,10 @@ export default function TaskCompleteProvider({
   );
   const currentTask = useObjectiveStore((s) => s.currentTask);
 
+  const orderNodeOnCanvas = useNodeStore((s) =>
+    Boolean(s.nodes.find((n) => n.data.dataType === MCNodeType.order))
+  );
+
   const [messages, setMessages] = useState<DebugMessage[]>([]);
   const [taskComplete, setTaskComplete] = useState(false);
   const [efficiency, setEfficiency] = useState(1);
@@ -65,7 +70,7 @@ export default function TaskCompleteProvider({
     if (currentTask.itemRequirements) {
       const inputEdges = getEdgesIntoOrderNode(state);
       const requirements = currentTask.itemRequirements;
-      if (inputEdges.length === 0) {
+      if (inputEdges.length === 0 && orderNodeOnCanvas) {
         complete = false;
         newMessages.push({
           message: `No inputs into order node`,
@@ -79,14 +84,14 @@ export default function TaskCompleteProvider({
 
           if (possibleEdge) {
             if (
-              possibleEdge.data?.outputRate != undefined &&
+              possibleEdge.data?.outputRate &&
               possibleEdge.data.outputRate < req.perHour
             ) {
               complete = false;
               newMessages.push({
                 message: `Not enough ${item.title.toLowerCase()}s`,
               });
-            } else if (possibleEdge.data?.outputRate != undefined) {
+            } else if (possibleEdge.data?.outputRate) {
               const ratio = possibleEdge.data?.outputRate / req.perHour;
               efficiencyInfo.push({
                 percent: ratio,
@@ -116,7 +121,7 @@ export default function TaskCompleteProvider({
     setMessages(newMessages);
     setTaskComplete(complete);
     setEfficiency(totalEfficiency / totalWeight);
-  }, [state, currentTask]);
+  }, [state, currentTask, orderNodeOnCanvas]);
 
   useEffect(() => {
     console.log("Messages", messages);

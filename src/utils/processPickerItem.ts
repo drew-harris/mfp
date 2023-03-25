@@ -2,11 +2,13 @@ import { Node, XYPosition } from "reactflow";
 import {
   DraggableInfo,
   DraggableItemData,
+  DraggableSplitterData,
   MCCrafterNode,
   MCInfoNode,
   MCNodeType,
   MCOrderNode,
   MCResourceNode,
+  MCSplitterNode,
 } from "../types/MCNodes";
 import { DraggableOrderData } from "../types/tasks";
 
@@ -14,16 +16,21 @@ type PossibleNode =
   | Node<MCOrderNode>
   | Node<MCResourceNode>
   | Node<MCInfoNode>
+  | Node<MCSplitterNode>
   | Node<MCCrafterNode>;
 
 /**
   Processes a draggable data and returns a node to add to the graph.
 */
 export function processPickerItem(
-  item: DraggableOrderData | DraggableItemData | DraggableInfo,
+  item:
+    | DraggableOrderData
+    | DraggableItemData
+    | DraggableInfo
+    | DraggableSplitterData,
   projection: XYPosition
-): PossibleNode | undefined {
-  if (item.type == MCNodeType.order) {
+): PossibleNode {
+  if (item.type === MCNodeType.order) {
     const orderItem = item as DraggableOrderData;
     return {
       id: orderItem.task.id,
@@ -56,6 +63,24 @@ export function processPickerItem(
     return node;
   }
 
+  if (item.type === MCNodeType.splitter) {
+    const node: Node<MCSplitterNode> = {
+      id: projection.x.toString(),
+      position: {
+        x: projection.x,
+        y: projection.y,
+      },
+      data: {
+        dataType: MCNodeType.splitter,
+        splitString: "",
+        ratios: [],
+        id: projection.x.toString(),
+      },
+      type: MCNodeType.splitter,
+    };
+    return node;
+  }
+
   const regularItem = item as DraggableItemData;
 
   navigator.clipboard
@@ -82,9 +107,8 @@ export function processPickerItem(
       type: regularItem.type,
     } as Node<MCResourceNode>;
     return node;
-  }
-
-  if (regularItem.type === MCNodeType.crafter) {
+  } else {
+    // Crafter
     const node: Node<MCCrafterNode> = {
       id: projection.x.toString(),
       position: {

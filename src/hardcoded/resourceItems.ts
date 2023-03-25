@@ -16,7 +16,7 @@ export const resourceItems: MCPickerItem[] = items
     if (item.title.includes("Wood")) {
       return true;
     }
-    return !allRecipes.find((r) => r.outputItemId == item.itemId);
+    return !allRecipes.find((r) => r.outputItemId === item.itemId);
   }) as MCPickerItem[];
 
 export const crafterItems: MCPickerItem[] = items
@@ -30,7 +30,7 @@ export const crafterItems: MCPickerItem[] = items
     };
   })
   .filter((item) => {
-    return allRecipes.findIndex((r) => r.outputItemId == item.itemId) >= 0;
+    return allRecipes.findIndex((r) => r.outputItemId === item.itemId) >= 0;
   }) as MCPickerItem[];
 
 export const allItems: MCItem[] = items.map((item) => {

@@ -8,6 +8,8 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
   ],
   overrides: [],
   parser: "@typescript-eslint/parser",
@@ -19,5 +21,16 @@ module.exports = {
   rules: {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0,
+    eqeqeq: "error",
+    "no-var": "error",
+    "no-unused-expressions": "warn",
+    "no-implicit-coercion": "warn",
+    "no-undefined": "error",
+    "prefer-const": "error",
+    camelcase: "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+    ],
   },
 };

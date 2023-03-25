@@ -44,8 +44,8 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
   }, actualEdgeUpdate);
 
   useEffect(() => {
-    setItemRequirementsMapped(
-      itemRequirementsMapped.map((req) => {
+    setItemRequirementsMapped((i) =>
+      i.map((req) => {
         return {
           ...req,
           completed: incomingEdgesToOrder.some(
@@ -80,7 +80,7 @@ export const ItemCheck = ({
 }) => {
   return (
     <div
-      className="flex gap-3 m-3 items-center p-2 bg-mc-200 outset"
+      className="outset m-3 flex items-center gap-3 bg-mc-200 p-2"
       key={req.itemId}
     >
       <RequirementView requirement={req} />

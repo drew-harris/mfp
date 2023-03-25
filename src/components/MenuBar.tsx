@@ -1,10 +1,9 @@
 import { useReactFlow } from "reactflow";
-import { useUserStore } from "../stores/userStore";
 import { Button } from "./basic/Button";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
-  const id = useUserStore((s) => s.id);
+  // const id = useUserStore((s) => s.id);
 
   const save = () => {
     const copy = instance.toObject();
@@ -26,13 +25,11 @@ export const MenuBar = () => {
   };
 
   return (
-    <>
+    <div className="flex gap-2">
       <Button onClick={save}>Save</Button>
       <Button onClick={restoreFlow}>Load</Button>
 
-      <div>
-        <div>Logged in as: {id}</div>
-      </div>
-    </>
+      <div>{/* <div className="text-white">Logged in as: {id}</div> */}</div>
+    </div>
   );
 };

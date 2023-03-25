@@ -8,5 +8,5 @@ export const useFullItem = (itemId: string) => {
 };
 
 export function itemFromId(id: string | undefined): MCItem {
-  return allItems.find((item) => item.itemId == id) || allItems[0];
+  return allItems.find((item) => item.itemId === id) || allItems[0];
 }

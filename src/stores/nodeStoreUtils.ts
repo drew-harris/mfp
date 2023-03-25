@@ -12,6 +12,7 @@ export function checkIfNodesConnect(
   target: Node<MCNode>,
   connection: Connection
 ): boolean {
+  console.log("Checking if nodes connect", source, target, connection);
   // Source should always have an item to pass
   if (
     source.data.dataType === MCNodeType.order ||
@@ -20,9 +21,14 @@ export function checkIfNodesConnect(
     return false;
   }
 
+  if (target.data.dataType === MCNodeType.info) {
+    return true;
+  }
+
   // The source node must have an item
   const sourceItem = source.data.item;
   if (!sourceItem) {
+    console.log("Source node has no item");
     return false;
   }
 
@@ -37,6 +43,7 @@ export function checkIfNodesConnect(
     }
   }
 
+  // What does this mean
   if (connection.targetHandle) {
     if (sourceItem.itemId.toString() !== connection.targetHandle) {
       return false;

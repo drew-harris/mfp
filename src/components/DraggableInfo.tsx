@@ -1,5 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
-import { DraggableInfo, MCNodeType } from "../types/MCNodes";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DraggableInfo, DraggableType, MCNodeType } from "../types/MCNodes";
 
 interface DraggableInfoProps {
   higher?: boolean;
@@ -10,7 +12,10 @@ export default function DraggableInfoSquare({
 }: DraggableInfoProps) {
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: "info",
-    data: { type: MCNodeType.info } as DraggableInfo,
+    data: {
+      type: MCNodeType.info,
+      draggableType: DraggableType.info,
+    } as DraggableInfo,
   });
 
   return (
@@ -18,12 +23,14 @@ export default function DraggableInfoSquare({
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className="flex flex-col items-center p-3 border-4 bg-mc-300 border-mc-200"
+      className="outset flex flex-col items-center justify-between bg-mc-100 p-3"
       style={{
         zIndex: higher ? 500 : 40,
       }}
     >
-      <div className="font-bold">Info</div>
+      <div className="text-xs">Utility</div>
+      <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
+      <div className="text-center font-bold">Info</div>
     </div>
   );
 }
