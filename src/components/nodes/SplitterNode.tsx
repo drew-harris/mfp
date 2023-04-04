@@ -64,13 +64,13 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
         <>
           <div className="mt-4 flex items-center gap-3 text-xs">
             <div className="text-black">
-              {incomingEdge.data.outputRate * data.ratio}
+              {Math.round(incomingEdge.data.outputRate * data.ratio)}
             </div>
             <SideHandle type="source" id="output-0" />
           </div>
           <div className="mb-3 flex items-center gap-3 text-xs">
             <div className="text-black">
-              {incomingEdge.data.outputRate * (1 - data.ratio)}
+              {Math.round(incomingEdge.data.outputRate * (1 - data.ratio))}
             </div>
             <SideHandle label="te" type="source" id="output-0" />
           </div>
