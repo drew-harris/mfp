@@ -7,6 +7,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:unicorn/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "prettier",
@@ -27,6 +28,10 @@ module.exports = {
     "no-implicit-coercion": "warn",
     "no-undefined": "error",
     "prefer-const": "error",
+    "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/prefer-ternary": "off",
     camelcase: "warn",
     "@typescript-eslint/no-unused-vars": [
       "warn",

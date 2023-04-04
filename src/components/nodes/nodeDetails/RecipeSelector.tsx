@@ -12,7 +12,7 @@ export const RecipeSelector = ({
   selectedRecipe,
   setSelectedRecipe,
 }: RecipeSelectorProps) => {
-  const currentRecipeIndex = recipes.findIndex((r) => r === selectedRecipe) + 1;
+  const currentRecipeIndex = recipes.indexOf(selectedRecipe) + 1;
 
   const selectNextRecipe = () => {
     const nextRecipeIndex = currentRecipeIndex % recipes.length;

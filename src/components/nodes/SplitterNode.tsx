@@ -11,6 +11,22 @@ interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
+// Exported for testing
+export function getRatioFromInputString(input: string): number[] {
+  input = input.toLowerCase().replaceAll(" ", "");
+  const map = new Map();
+  for (const c of input) {
+    if (map.has(c)) {
+      map.set(c, map.get(c) + 1);
+    } else {
+      map.set(c, 1);
+    }
+  }
+  const total = input.length;
+  const ratios = [...map.values()].map((v) => v / total);
+  return ratios;
+}
+
 export default function SplitterNode({ data }: SplitterNodeProps) {
   const setData = useSetNodeData<MCSplitterNode>(data.id);
 
@@ -32,26 +48,26 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   };
 
   useEffect(() => {
-    for (let i = 0; i < outgoingEdges.length; i++) {
-      if (!incomingEdge) {
-        removeEdge(outgoingEdges[i].id);
-      } else {
-        setEdgeData(outgoingEdges[i].id, {
+    for (const [i, outgoingEdge] of outgoingEdges.entries()) {
+      if (incomingEdge) {
+        setEdgeData(outgoingEdge.id, {
           outputRate:
             incomingEdge.data.outputRate *
             (i === 0 ? data.ratio : 1 - data.ratio),
           item: incomingEdge.data.item,
         });
+      } else {
+        removeEdge(outgoingEdge.id);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [incomingEdge, data.ratio, removeEdge, setEdgeData, outgoingEdges.length]);
 
   useEffect(() => {
-    if (!incomingEdge) {
-      setData({ item: null });
-    } else {
+    if (incomingEdge) {
       setData({ item: incomingEdge.data.item });
+    } else {
+      setData({ item: null });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [incomingEdge]);
@@ -85,7 +101,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       )}
       <input
         onChange={(e) => {
-          updateRatio(parseFloat(e.target.value));
+          updateRatio(Number.parseFloat(e.target.value));
         }}
         className="nodrag"
         type="range"

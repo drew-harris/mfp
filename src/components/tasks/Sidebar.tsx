@@ -24,13 +24,14 @@ export const Sidebar = () => {
   );
 
   useEffect(() => {
-    if (possibleOrderNode?.data.dataType === MCNodeType.order) {
-      if (possibleOrderNode.data.task) {
-        const task = possibleOrderNode.data.task;
-        const possibleMission = findMissionFromTask(task);
-        if (possibleMission) {
-          beginMission(possibleMission);
-        }
+    if (
+      possibleOrderNode?.data.dataType === MCNodeType.order &&
+      possibleOrderNode.data.task
+    ) {
+      const task = possibleOrderNode.data.task;
+      const possibleMission = findMissionFromTask(task);
+      if (possibleMission) {
+        beginMission(possibleMission);
       }
     }
   }, [possibleOrderNode, beginMission]);
@@ -42,20 +43,7 @@ export const Sidebar = () => {
 
   return (
     <div className="p-3">
-      {!currentTask ? (
-        <>
-          <div className="text-lg font-bold">Missions</div>
-          <div>
-            {allMissions.map((mission) => (
-              <MissionCard
-                setMission={beginMission}
-                key={mission.title}
-                mission={mission}
-              />
-            ))}
-          </div>
-        </>
-      ) : (
+      {currentTask ? (
         <>
           <SideTaskView clearTask={clearTask} task={currentTask} />
           {data.taskComplete && data.efficiency && (
@@ -79,6 +67,19 @@ export const Sidebar = () => {
             ))}
           </div>
         </>
+      ) : (
+        <>
+          <div className="text-lg font-bold">Missions</div>
+          <div>
+            {allMissions.map((mission) => (
+              <MissionCard
+                setMission={beginMission}
+                key={mission.title}
+                mission={mission}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
@@ -89,7 +90,7 @@ export function findMissionFromTask(
   missions: Mission[] = allMissions
 ): Mission | null {
   const foundMissions = missions.filter((m) => {
-    if (m.tasks.find((t) => t.id === task.id)) return true;
+    if (m.tasks.some((t) => t.id === task.id)) return true;
     return false;
   });
 
@@ -98,12 +99,12 @@ export function findMissionFromTask(
   return foundMissions[0] || null;
 }
 
-interface SideTaskViewProps {
+interface SideTaskViewProperties {
   task: Task;
   clearTask: () => void;
 }
 
-const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
+const SideTaskView = ({ task, clearTask }: SideTaskViewProperties) => {
   return (
     <div className="p-2">
       <div className="mb-3 flex items-center justify-between">
@@ -118,12 +119,12 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
   );
 };
 
-interface MissionCardProps {
+interface MissionCardProperties {
   mission: Mission;
   setMission: (mission: Mission) => void;
 }
 
-const MissionCard = ({ mission, setMission }: MissionCardProps) => {
+const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
   return (
     <div
       onClick={() => setMission(mission)}

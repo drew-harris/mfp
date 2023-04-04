@@ -46,7 +46,7 @@ export default function TaskCompleteProvider({
   const currentTask = useObjectiveStore((s) => s.currentTask);
 
   const orderNodeOnCanvas = useNodeStore((s) =>
-    Boolean(s.nodes.find((n) => n.data.dataType === MCNodeType.order))
+    Boolean(s.nodes.some((n) => n.data.dataType === MCNodeType.order))
   );
 
   const [messages, setMessages] = useState<DebugMessage[]>([]);
@@ -76,7 +76,7 @@ export default function TaskCompleteProvider({
           message: `No inputs into order node`,
         });
       } else {
-        requirements.forEach((req) => {
+        for (const req of requirements) {
           const item = itemFromId(req.itemId);
           const possibleEdge = inputEdges.find(
             (e) => e.data?.item.itemId === req.itemId
@@ -104,7 +104,7 @@ export default function TaskCompleteProvider({
               message: `Missing order input for ${item.title}`,
             });
           }
-        });
+        }
       }
       // Check all crafting recipies
     }

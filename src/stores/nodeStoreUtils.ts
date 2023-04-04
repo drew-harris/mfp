@@ -2,7 +2,7 @@ import { Connection, Node } from "reactflow";
 import { MCNode, MCNodeType } from "../types/MCNodes";
 
 export function animationDurationFromPerHour(perHour: number): number {
-  if (perHour === 0) return 1000000;
+  if (perHour === 0) return 1_000_000;
   if (perHour > 100) return 4;
   return (100 - perHour) * 4;
 }
@@ -37,17 +37,18 @@ export function checkIfNodesConnect(
 
     if (
       requirements &&
-      !requirements.some((req) => req.itemId === sourceItem.itemId)
+      !requirements.some((request) => request.itemId === sourceItem.itemId)
     ) {
       return false;
     }
   }
 
   // What does this mean
-  if (connection.targetHandle) {
-    if (sourceItem.itemId.toString() !== connection.targetHandle) {
-      return false;
-    }
+  if (
+    connection.targetHandle &&
+    sourceItem.itemId.toString() !== connection.targetHandle
+  ) {
+    return false;
   }
 
   return true;

@@ -49,7 +49,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   });
 
   const isOutputting = useNodeStore((s) => {
-    return Boolean(s.edges.find((edge) => edge.source === data.id));
+    return Boolean(s.edges.some((edge) => edge.source === data.id));
   });
 
   useEffect(() => {
@@ -74,14 +74,14 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   ]);
 
   useEffect(() => {
-    inboundEdges.forEach((edge) => {
+    for (const edge of inboundEdges) {
       const input = selectedRecipe.inputs.find(
         (i) => i.itemId === edge.data?.item.itemId
       );
       if (!input) {
         removeEdge(edge.id);
       }
-    });
+    }
     updateNodeInternals(data.id);
   }, [selectedRecipe, data.id, inboundEdges, removeEdge, updateNodeInternals]);
 

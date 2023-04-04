@@ -15,11 +15,11 @@ export const edgeArrayUpdate = (
     return false;
   }
 
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]?.item.itemId !== newDatas[i]?.item.itemId) {
+  for (const [i, data] of datas.entries()) {
+    if (data?.item.itemId !== newDatas[i]?.item.itemId) {
       return false;
     }
-    if (datas[i]?.outputRate !== newDatas[i]?.outputRate) {
+    if (data?.outputRate !== newDatas[i]?.outputRate) {
       return false;
     }
   }
