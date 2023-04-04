@@ -11,22 +11,6 @@ interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
-// Exported for testing
-export function getRatioFromInputString(input: string): number[] {
-  input = input.toLowerCase().replaceAll(" ", "");
-  const map = new Map();
-  for (const c of input) {
-    if (map.has(c)) {
-      map.set(c, map.get(c) + 1);
-    } else {
-      map.set(c, 1);
-    }
-  }
-  const total = input.length;
-  const ratios = [...map.values()].map((v) => v / total);
-  return ratios;
-}
-
 export default function SplitterNode({ data }: SplitterNodeProps) {
   const setData = useSetNodeData<MCSplitterNode>(data.id);
 
