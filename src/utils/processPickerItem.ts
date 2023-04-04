@@ -72,8 +72,7 @@ export function processPickerItem(
       },
       data: {
         dataType: MCNodeType.splitter,
-        splitString: "",
-        ratios: [],
+        ratio: 0.5,
         id: projection.x.toString(),
       },
       type: MCNodeType.splitter,
