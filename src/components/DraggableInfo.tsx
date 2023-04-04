@@ -1,6 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { usePickerFilterStore } from "../stores/pickerFilterStore";
 import { DraggableInfo, DraggableType, MCNodeType } from "../types/MCNodes";
 
 interface DraggableInfoProps {
@@ -10,6 +11,9 @@ interface DraggableInfoProps {
 export default function DraggableInfoSquare({
   higher = false,
 }: DraggableInfoProps) {
+  const enabled = usePickerFilterStore(
+    (s) => s.switches["Utility"] || s.switches["All Nodes"]
+  );
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: "info",
     data: {
@@ -17,6 +21,8 @@ export default function DraggableInfoSquare({
       draggableType: DraggableType.info,
     } as DraggableInfo,
   });
+
+  if (!enabled) return null;
 
   return (
     <div

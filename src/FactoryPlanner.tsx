@@ -14,7 +14,7 @@ import { Sidebar } from "./components/tasks/Sidebar";
 import { useNodeStore } from "./stores/nodes";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
-import ItemPicker from "./views/ItemPicker";
+import ItemPicker from "./components/nodePicker/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 
 function FactoryPlanner() {

@@ -1,6 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import { faArrowsSplitUpAndLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { usePickerFilterStore } from "../stores/pickerFilterStore";
 import {
   DraggableSplitterData,
   DraggableType,
@@ -14,6 +15,9 @@ interface DraggableSplitterProps {
 export default function DraggableSplitter({
   higher = false,
 }: DraggableSplitterProps) {
+  const enabled = usePickerFilterStore(
+    (s) => s.switches["Utility"] || s.switches["All Nodes"]
+  );
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: "splitter",
     data: {
@@ -21,6 +25,8 @@ export default function DraggableSplitter({
       draggableType: DraggableType.splitter,
     } as DraggableSplitterData,
   });
+
+  if (!enabled) return null;
 
   return (
     <div

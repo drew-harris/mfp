@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
-import DraggableInfoSquare from "../components/DraggableInfo";
-import DraggableItem from "../components/DraggableItem";
-import DraggableSplitter from "../components/DraggableSplitter";
-import { crafterItems, resourceItems } from "../hardcoded/resourceItems";
-import { useObjectiveStore } from "../stores/objectiveStore";
+import { crafterItems, resourceItems } from "../../hardcoded/resourceItems";
+import { useObjectiveStore } from "../../stores/objectiveStore";
+import { FilterType } from "../../stores/pickerFilterStore";
+import DraggableInfoSquare from "../DraggableInfo";
+import DraggableItem from "../DraggableItem";
+import DraggableSplitter from "../DraggableSplitter";
+import FilterButton from "./FilterButton";
 
 export default function ItemPicker() {
   const [input, setInput] = useState("");
@@ -36,7 +38,7 @@ export default function ItemPicker() {
 
   return (
     <>
-      <div className="sticky top-0 z-50 mb-2 border-2 border-b-mc-600 bg-mc-200 p-2">
+      <div className="sticky top-0 z-50 mb-2 flex items-center justify-between border-2 border-b-mc-600 bg-mc-200 p-2">
         {/* TODO: Make input sticky */}
         <input
           className="inset p-1"
@@ -44,6 +46,12 @@ export default function ItemPicker() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         ></input>
+        <div className="flex gap-2">
+          <FilterButton type={FilterType.all} />
+          <FilterButton type={FilterType.resource} />
+          <FilterButton type={FilterType.crafter} />
+          <FilterButton type={FilterType.utility} />
+        </div>
       </div>
 
       {/* BUG:  Not sure why 1vh works */}

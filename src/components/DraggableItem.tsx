@@ -8,6 +8,7 @@ import {
 import { SpriteDisplay } from "./SpriteDisplay";
 import { cva } from "cva";
 import { getNodeName } from "../utils/nodes";
+import { FilterType, usePickerFilterStore } from "../stores/pickerFilterStore";
 
 interface DraggableItemProps {
   item: MCPickerItem;
@@ -18,6 +19,15 @@ export default function DraggableItem({
   item,
   higher = false,
 }: DraggableItemProps) {
+  const filterType: FilterType =
+    item.dataType === MCNodeType.resource
+      ? FilterType.resource
+      : FilterType.crafter;
+
+  const enabled = usePickerFilterStore(
+    (s) => s.switches[filterType] || s.switches["All Nodes"]
+  );
+
   const { attributes, listeners, setNodeRef } = useDraggable({
     id: item.itemId + item.dataType,
     data: {
@@ -45,6 +55,8 @@ export default function DraggableItem({
       },
     }
   );
+
+  if (!enabled) return null;
 
   return (
     <div
