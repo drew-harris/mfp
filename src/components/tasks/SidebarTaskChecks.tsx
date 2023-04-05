@@ -43,6 +43,12 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
     );
   }, actualEdgeUpdate);
 
+  const [itemRequirementsMapped, setItemRequirementsMapped] = useState(
+    task.itemRequirements?.map((req) => {
+      return { ...req, completed: false };
+    }) || []
+  );
+
   useEffect(() => {
     setItemRequirementsMapped((i) =>
       i.map((req) => {
@@ -58,11 +64,7 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
     );
   }, [incomingEdgesToOrder]);
 
-  const [itemRequirementsMapped, setItemRequirementsMapped] = useState(
-    task.itemRequirements?.map((req) => {
-      return { ...req, completed: false };
-    }) || []
-  );
+  if (!task.itemRequirements) return null;
 
   return (
     <div className="flex flex-col items-center">

@@ -1,4 +1,3 @@
-import { DebugMessage } from "../components/contexts/TaskCompleteProvider";
 import { RFState } from "../stores/nodes";
 import { DraggableType, MCNodeType } from "./MCNodes";
 
@@ -14,10 +13,7 @@ export interface Mission {
 export interface Task {
   itemRequirements?: ItemRequirement[];
   nodeRequirements?: NodeRequirement[];
-  stateRequirement?: (state: RFState) => {
-    status: boolean;
-    messages: DebugMessage[];
-  };
+  stateRequirement?: (state: RFState) => boolean;
 
   description?: string;
   title?: string;
