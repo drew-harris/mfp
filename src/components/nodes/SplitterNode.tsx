@@ -76,7 +76,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
                 {Math.round(incomingEdge.data.outputRate * (1 - data.ratio))}
               </div>
             )}
-            <SideHandle label="te" type="source" id="output-0" />
+            <SideHandle label="te" type="source" id="output-1" />
           </div>
         </>
       }
