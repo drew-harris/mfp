@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { allMissions } from "../../hardcoded/missions";
+import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
@@ -16,7 +17,7 @@ export const Sidebar = () => {
   const beginMission = useObjectiveStore((s) => s.beginMission);
   const nextTask = useObjectiveStore((s) => s.nextTask);
 
-  const hasNextTask = useObjectiveStore((s) => s.hasNextTask);
+  const hasNextTask = useHasNextStep();
 
   const data = useContext(TaskCompleteContext);
 

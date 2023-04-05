@@ -34,6 +34,11 @@ export const allMissions: Mission[] = [
           );
         },
       },
+      {
+        id: "tutorial-recipe",
+        title: "Recipe Node",
+        description: "Pause here",
+      },
     ],
   },
 

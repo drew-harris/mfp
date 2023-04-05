@@ -50,12 +50,10 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
       return false;
     }
     const currentIndex = currentMission?.tasks.indexOf(currentTask);
-    if (!currentIndex) {
-      return false;
-    }
     if (currentIndex + 1 >= currentMission.tasks.length) {
       return false;
     }
+    console.log("has next task");
     return true;
   },
 
