@@ -36,7 +36,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       if (incomingEdge) {
         setEdgeData(outgoingEdge.id, {
           outputRate:
-            incomingEdge.data.outputRate *
+            (incomingEdge.data.outputRate || 0) *
             (i === 0 ? data.ratio : 1 - data.ratio),
           item: incomingEdge.data.item,
         });
@@ -63,15 +63,19 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       rightSideNodes={
         <>
           <div className="mt-4 flex items-center gap-3 text-xs">
-            <div className="text-black">
-              {Math.round(incomingEdge.data.outputRate * data.ratio)}
-            </div>
+            {incomingEdge?.data && (
+              <div className="text-black">
+                {Math.round(incomingEdge.data.outputRate * data.ratio)}
+              </div>
+            )}
             <SideHandle type="source" id="output-0" />
           </div>
           <div className="mb-3 flex items-center gap-3 text-xs">
-            <div className="text-black">
-              {Math.round(incomingEdge.data.outputRate * (1 - data.ratio))}
-            </div>
+            {incomingEdge?.data && (
+              <div className="text-black">
+                {Math.round(incomingEdge.data.outputRate * (1 - data.ratio))}
+              </div>
+            )}
             <SideHandle label="te" type="source" id="output-0" />
           </div>
         </>
