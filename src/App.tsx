@@ -7,7 +7,13 @@ export default function App() {
   const userId = useUserStore((s) => s.id);
   if (userId) {
     pullMFPData(userId);
-    pushMFPData(userId, { testValue: "test555" });
+    pushMFPData(userId, {
+      nodesOnScreen: 5,
+      nodes: {
+        one: "GrassBlock",
+        two: "Furnaces",
+      }
+    });
 
     return <FactoryPlanner />;
   } else {

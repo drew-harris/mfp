@@ -26,7 +26,7 @@ export const RecipeSelector = ({
   };
 
   return (
-    <div className="flex gap-3 justify-around items-center mb-4 w-full">
+    <div className="mb-4 flex w-full items-center justify-around gap-3">
       <div onClick={selectPreviousRecipe} className="p-1">
         <FontAwesomeIcon icon={faCaretLeft} />
       </div>

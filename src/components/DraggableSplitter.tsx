@@ -1,25 +1,29 @@
 import { useDraggable } from "@dnd-kit/core";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsSplitUpAndLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePickerFilterStore } from "../stores/pickerFilterStore";
-import { DraggableInfo, DraggableType, MCNodeType } from "../types/MCNodes";
+import {
+  DraggableSplitterData,
+  DraggableType,
+  MCNodeType,
+} from "../types/MCNodes";
 
-interface DraggableInfoProps {
+interface DraggableSplitterProps {
   higher?: boolean;
 }
 
-export default function DraggableInfoSquare({
+export default function DraggableSplitter({
   higher = false,
-}: DraggableInfoProps) {
+}: DraggableSplitterProps) {
   const enabled = usePickerFilterStore(
     (s) => s.switches["Utility"] || s.switches["All Nodes"]
   );
   const { attributes, listeners, setNodeRef } = useDraggable({
-    id: "info",
+    id: "splitter",
     data: {
-      type: MCNodeType.info,
-      draggableType: DraggableType.info,
-    } as DraggableInfo,
+      type: MCNodeType.splitter,
+      draggableType: DraggableType.splitter,
+    } as DraggableSplitterData,
   });
 
   if (!enabled) return null;
@@ -29,14 +33,14 @@ export default function DraggableInfoSquare({
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className="outset flex flex-col items-center justify-between bg-mc-100 p-3"
+      className="outset flex flex-col items-center justify-between border-4 bg-yellow-200 p-3"
       style={{
         zIndex: higher ? 500 : 40,
       }}
     >
       <div className="text-xs">Utility</div>
-      <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
-      <div className="text-center font-bold">Info</div>
+      <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} size="2x" />
+      <div className="text-center font-bold">Splitter</div>
     </div>
   );
 }

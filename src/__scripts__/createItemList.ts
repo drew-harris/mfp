@@ -1,6 +1,5 @@
 import { parseFile } from "fast-csv";
 import * as fs from "fs";
-import * as fsprom from "fs/promises";
 
 // eslint-disable-next-line
 // @ts-ignore
@@ -13,10 +12,6 @@ interface Row {
   weight: number;
 }
 
-interface Cache {
-  [source: string]: string;
-}
-
 async function parseCsv(): Promise<Row[]> {
   return new Promise((resolve, reject) => {
     const rows: Row[] = [];
@@ -25,11 +20,13 @@ async function parseCsv(): Promise<Row[]> {
     })
       .on("error", (error) => reject(error))
       .on("data", (row: string[]) => {
-        rows.push({
-          source: row[0],
-          target: row[1],
-          weight: Number(row[2]),
-        });
+        if (row[0] && row[1]) {
+          rows.push({
+            source: row[0],
+            target: row[1],
+            weight: Number(row[2]),
+          });
+        }
       })
       .on("end", () => {
         resolve(rows);
@@ -54,24 +51,8 @@ function titleCase(name: string) {
   return str.join(" ");
 }
 
-async function saveCache(cache: Cache) {
-  await fsprom.writeFile("src/hardcoded/cache.json", JSON.stringify(cache), {});
-}
-
-async function loadCache() {
-  try {
-    const file = await fsprom.readFile("src/hardcoded/cache.json", "utf-8");
-    if (file.length === 0) return {};
-    if (file === "{}") return {};
-    return JSON.parse(file) as Cache;
-  } catch (error) {
-    return {};
-  }
-}
-
 async function buildItems(filenames: string[], ids: string[]) {
   const items: MCItem[] = [];
-  // const cache = await loadCache();
 
   for (let i = 0; i < ids.length; i++) {
     let prefill = ids[i]
@@ -107,7 +88,7 @@ async function buildItems(filenames: string[], ids: string[]) {
       });
     } else {
       const result = await nfzf(opts);
-      if (result.input && result.input == "exit") {
+      if (result.input && result.input === "exit") {
         break;
       }
 

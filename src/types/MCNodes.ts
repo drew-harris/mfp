@@ -26,7 +26,8 @@ export interface MCResourceNode extends MCBaseNode {
 
 export interface MCSplitterNode extends MCBaseNode {
   item?: MCItem;
-  ratio: number[];
+  splitString: string;
+  ratios: number[];
   dataType: MCNodeType.splitter;
 }
 
@@ -73,6 +74,11 @@ export interface DraggableInfo {
   draggableType: DraggableType.info;
 }
 
+export interface DraggableSplitterData {
+  type: MCNodeType.splitter;
+  draggableType: DraggableType.splitter;
+}
+
 export enum DraggableType {
   item = "item",
   order = "order",
@@ -83,6 +89,7 @@ export enum DraggableType {
 export type DraggableData =
   | DraggableItemData
   | DraggableOrderData
+  | DraggableSplitterData
   | DraggableInfo;
 
 export interface Recipe {

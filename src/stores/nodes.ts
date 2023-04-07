@@ -15,7 +15,7 @@ import {
   OnNodesChange,
 } from "reactflow";
 import create from "zustand";
-import { MCCrafterNode, MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
+import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 import { Task } from "../types/tasks";
 import {
   animationDurationFromPerHour,
@@ -33,7 +33,9 @@ export type RFState = {
   removeEdgeById: (edgeId: string) => void;
   updateEdgeSpeeds: () => void;
   setResourceOutputRate: (id: string, newRate: number) => void;
-  setCrafterRecipeIndex: (id: string, newRecipeIndex: number) => void;
+
+  setNodeData: <T extends MCNode>(id: string, newData: Partial<T>) => void;
+  setEdgeData: <T extends MCEdge>(id: string, newData: Partial<T>) => void;
   removeOrderNode: () => void;
 
   queries: {
@@ -67,7 +69,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
           animationDuration: `${animationDurationFromPerHour(
             e.data?.outputRate || 0
           )}ms`,
-          animationDirection: undefined,
         },
       };
     });
@@ -110,7 +111,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
             strokeWidth: "4px",
             color: "white",
             animationDuration: "0ms",
-            animationDirection: "reverse",
             transform: "translateY(5px)",
           },
         } as Edge<MCEdge>,
@@ -152,18 +152,19 @@ export const useNodeStore = create<RFState>((set, get) => ({
     get().updateEdgeSpeeds();
   },
 
-  setCrafterRecipeIndex(id, newRecipeIndex) {
+  setNodeData(id, newData) {
+    console.log("Setting node data", id, newData);
     const nodes = get().nodes;
     set({
       nodes: nodes.map((node) => {
-        if (node.id === id && node.data.dataType === MCNodeType.crafter) {
+        if (node.id === id) {
           return {
             ...node,
             data: {
               ...node.data,
-              recipeIndex: newRecipeIndex,
+              ...newData,
             },
-          } as Node<MCCrafterNode>;
+          };
         } else {
           return node;
         }
@@ -171,10 +172,31 @@ export const useNodeStore = create<RFState>((set, get) => ({
     });
   },
 
+  setEdgeData(id, newData) {
+    console.log("Setting edge data", id, newData);
+    const edges = get().edges;
+    set({
+      edges: edges.map((edge) => {
+        if (edge.id === id) {
+          return {
+            ...edge,
+            data: {
+              ...edge.data,
+              ...newData,
+            },
+          };
+        } else {
+          return edge;
+        }
+      }),
+    });
+    get().updateEdgeSpeeds();
+  },
+
   removeNodeById(nodeId: string) {
     console.log("Removing node by id", nodeId);
     const nodes = get().nodes;
-    const possibleNode = nodes.find((n) => n.id == nodeId);
+    const possibleNode = nodes.find((n) => n.id === nodeId);
 
     if (possibleNode) {
       const change: NodeRemoveChange = {
