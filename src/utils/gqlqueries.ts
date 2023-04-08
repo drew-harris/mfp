@@ -1,4 +1,5 @@
 import { gql, GraphQLClient } from "graphql-request";
+import { ReactFlowJsonObject } from "reactflow";
 
 //will need to encrypt and .env
 const endpoint =
@@ -38,7 +39,10 @@ export const pullMFPData = async (userID: string) => {
 };
 
 //MFPData must be JSON Object example MFPData = {nodesOnScreen: 5, nodes: {one: "GrassBlock", two: "Furnace"}};
-export const pushMFPData = async (userID: string, MFPData: any) => {
+export const pushMFPData = async (
+  userID: string,
+  MFPData: ReactFlowJsonObject
+) => {
   const loggedInClient = new GraphQLClient(endpoint, {
     headers: { Authorization: password },
   });
@@ -50,12 +54,16 @@ export const pushMFPData = async (userID: string, MFPData: any) => {
     const test = (await loggedInClient.request(
       getUserDataQuery,
       queryVariables
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     )) as any;
-    const userData: any = JSON.parse(test.getUserData);
+    if (!test && !test?.getUserData) {
+      throw new Error("User does not have data");
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const userData: any = JSON.parse(test?.getUserData);
     userData.data.MFP = { MFP: { MFPData } };
   } catch (error) {
     console.log(error);
     throw new Error("Failed to save MFP", error);
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 };
