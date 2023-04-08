@@ -14,6 +14,12 @@ const getUserDataQuery = gql`
   }
 `;
 
+const createDataMutation = gql`
+    mutation MyMutation($userID: String!, $key: String!, $data: AWSJSON!) {
+      createUserData(userID: $userID, key: $key, data: $data);
+  }
+`;
+
 //returns JSON object
 export const pullMFPData = async (userID: string) => {
   const loggedInClient = new GraphQLClient(endpoint, {
@@ -38,7 +44,6 @@ export const pullMFPData = async (userID: string) => {
   }
 };
 
-//MFPData must be JSON Object example MFPData = {nodesOnScreen: 5, nodes: {one: "GrassBlock", two: "Furnace"}};
 export const pushMFPData = async (
   userID: string,
   MFPData: ReactFlowJsonObject
@@ -50,20 +55,19 @@ export const pushMFPData = async (
     userID,
     key,
   };
-  try {
-    const response = (await loggedInClient.request(
-      getUserDataQuery,
-      queryVariables
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    )) as any;
-    if (!response && !response?.getUserData) {
-      throw new Error("User does not have data");
-    }
+  const test = (await loggedInClient.request(
+    getUserDataQuery,
+    queryVariables
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const userData: any = JSON.parse(response?.getUserData);
-    userData.data.MFP = { MFP: { MFPData } };
-  } catch (error) {
-    console.log(error);
-    throw new Error("Failed to save MFP", error);
-  }
+  )) as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const userData: any = JSON.parse(test.getUserData);
+  userData.data.MFP = { MFP: { MFPData } };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mutationVariables: any = {
+    userID: userID,
+    key: key,
+    data: JSON.stringify(userData.data),
+  };
+  await loggedInClient.request(createDataMutation, mutationVariables);
 };
