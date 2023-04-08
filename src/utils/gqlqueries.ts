@@ -32,7 +32,7 @@ export const pullMFPData = async (userID: string) => {
   if (dummy.data.MFP) {
     console.log("User has MFP data!");
     console.log(dummy.data.MFP);
-    return dummy.data.MFP;
+    return dummy.data.MFP.MFP.MFPData;
   } else {
     return null;
   }
@@ -51,16 +51,16 @@ export const pushMFPData = async (
     key,
   };
   try {
-    const test = (await loggedInClient.request(
+    const response = (await loggedInClient.request(
       getUserDataQuery,
       queryVariables
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     )) as any;
-    if (!test && !test?.getUserData) {
+    if (!response && !response?.getUserData) {
       throw new Error("User does not have data");
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const userData: any = JSON.parse(test?.getUserData);
+    const userData: any = JSON.parse(response?.getUserData);
     userData.data.MFP = { MFP: { MFPData } };
   } catch (error) {
     console.log(error);

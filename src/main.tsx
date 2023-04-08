@@ -5,7 +5,7 @@ import App from "./App";
 import TaskCompleteProvider from "./components/contexts/TaskCompleteProvider";
 import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.querySelector("#root") as HTMLElement).render(
   <React.StrictMode>
     <ReactFlowProvider>
       <TaskCompleteProvider>
