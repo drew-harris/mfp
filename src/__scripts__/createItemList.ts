@@ -1,8 +1,6 @@
 import { parseFile } from "fast-csv";
-import * as fs from "fs";
+import * as fs from "node:fs";
 
-// eslint-disable-next-line
-// @ts-ignore
 import nfzf from "node-fzf";
 import { MCItem } from "../types/MCNodes";
 
@@ -54,8 +52,8 @@ function titleCase(name: string) {
 async function buildItems(filenames: string[], ids: string[]) {
   const items: MCItem[] = [];
 
-  for (let i = 0; i < ids.length; i++) {
-    let prefill = ids[i]
+  for (const id of ids) {
+    let prefill = id
       .replace("minecraft:", "")
       .replace("item.", "")
       .replaceAll(":", "");
@@ -71,7 +69,7 @@ async function buildItems(filenames: string[], ids: string[]) {
     }
 
     console.clear();
-    console.log(ids[i] + "?: ");
+    console.log(id + "?: ");
 
     // if (cache[ids[i]]) {
     //   const value = cache[ids[i]] as string;
@@ -83,7 +81,7 @@ async function buildItems(filenames: string[], ids: string[]) {
     if (filenames.includes(prefill + ".png")) {
       items.push({
         imageUrl: prefill + ".png",
-        itemId: ids[i],
+        itemId: id,
         title: titleCase(prefill.replaceAll("_", " ")),
       });
     } else {
@@ -99,7 +97,7 @@ async function buildItems(filenames: string[], ids: string[]) {
       if (result.selected.value) {
         const value = result.selected.value as string;
         items.push({
-          itemId: ids[i],
+          itemId: id,
           imageUrl: result.selected.value,
           title: titleCase(value.replaceAll(".png", "").replaceAll("_", " ")),
         });
@@ -117,14 +115,16 @@ function saveItems(items: MCItem[]) {
   file.write(JSON.stringify(items));
 }
 
+// eslint-disable-next-line unicorn/prefer-top-level-await
 const rowPromise = parseCsv();
+// eslint-disable-next-line unicorn/prefer-top-level-await
 const filenamesPromise = getFilenames();
 
 const [rows, filenames] = await Promise.all([rowPromise, filenamesPromise]);
 
 const ids = new Set<string>();
 
-rows.forEach((row) => {
+for (const row of rows) {
   if (!row.source.startsWith("r_")) {
     ids.add(row.source);
   }
@@ -132,9 +132,9 @@ rows.forEach((row) => {
   if (!row.target.startsWith("r_")) {
     ids.add(row.target);
   }
-});
+}
 
-const items = await buildItems(filenames, Array.from(ids));
+const items = await buildItems(filenames, [...ids]);
 console.log(items);
 saveItems(items);
 

@@ -1,5 +1,5 @@
 import { parseFile } from "fast-csv";
-import * as fsprom from "fs/promises";
+import * as fsprom from "node:fs/promises";
 import { Recipe } from "../types/MCNodes";
 
 interface Row {
@@ -38,12 +38,12 @@ async function main() {
   const recipes: Recipe[] = [];
   const recipeIds = new Set<string>();
 
-  rows.forEach((row) => {
+  for (const row of rows) {
     if (row.source.startsWith("r_")) recipeIds.add(row.source);
     if (row.target.startsWith("r_")) recipeIds.add(row.target);
-  });
+  }
 
-  recipeIds.forEach((id) => {
+  for (const id of recipeIds) {
     const outputRows = rows.filter((row) => row.source === id);
     const inputRows = rows.filter((row) => row.target === id);
 
@@ -57,11 +57,11 @@ async function main() {
     };
 
     recipes.push(recipe);
-  });
+  }
 
   await saveRecipes(recipes, "src/hardcoded/recipes.json");
 }
 
-main();
+await main();
 
 export {};
