@@ -1,5 +1,5 @@
 import { useReactFlow } from "reactflow";
-import { Button } from "./basic/Button";
+import { Button } from "../basic/Button";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
