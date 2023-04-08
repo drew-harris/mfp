@@ -1,49 +1,46 @@
 import { Mission } from "../types/tasks";
 
 export const allMissions: Mission[] = [
-  // {
-  //   title: "Tutorial",
-  //   idPool: ["minecraft:cobblestone", "minecraft:furnace"],
-  //   tasks: [
-  //     {
-  //       id: "tut-1",
-  //       title: "Get cobblestone",
-  //       description: "Drag a cobblestone resource to the canvas",
-  //       nodeRequirements: [
-  //         {
-  //           nodeType: MCNodeType.resource,
-  //           amount: 1,
-  //         },
-  //       ],
-  //
-  //       idPool: "inherit",
-  //     },
-  //
-  //     {
-  //       id: "tut-2",
-  //       description: "Drag a furnace crafter to the canvas",
-  //       nodeRequirements: [
-  //         {
-  //           amount: 1,
-  //           nodeType: MCNodeType.crafter,
-  //         },
-  //       ],
-  //       idPool: "inherit",
-  //     },
-  //
-  //     {
-  //       id: "tut-3",
-  //       description: "Connect the cobblestone resource to the furnace",
-  //       itemRequirements: [
-  //         {
-  //           itemId: "minecraft:furnace",
-  //           perHour: 1,
-  //         },
-  //       ],
-  //       idPool: "inherit",
-  //     },
-  //   ],
-  // },
+  // Tutorial
+  {
+    title: "Tutorial",
+    tasks: [
+      {
+        id: "tutorial-resource",
+        title: "Resource Node",
+        description: "Drag a diamond resource node to the canvas",
+        idPool: ["item.minecraft:diamond"],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.nodes.some(
+              (n) =>
+                n.data.dataType === "resource" &&
+                n.data.item.itemId === "item.minecraft:diamond"
+            )
+          );
+        },
+      },
+      {
+        id: "tutorial-delete",
+        title: "Deleting nodes",
+        description:
+          "Click on the resource node and use the backspace key to delete it (will update when i make button)",
+        idPool: ["item.minecraft:diamond"],
+        stateRequirement: (state) => {
+          return !state.nodes.some(
+            (n) =>
+              n.data.dataType === "resource" &&
+              n.data.item.itemId === "item.minecraft:diamond"
+          );
+        },
+      },
+      {
+        id: "tutorial-recipe",
+        title: "Recipe Node",
+        description: "Pause here",
+      },
+    ],
+  },
 
   {
     title: "Create Furnaces (Demo Task)",

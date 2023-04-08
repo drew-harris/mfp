@@ -30,6 +30,11 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
   if (hasNodeAlready) {
     return null;
   }
+
+  if (!task.itemRequirements) {
+    return null;
+  }
+
   return (
     <>
       <div className="mt-6 mb-4 text-center text-sm text-mc-700">

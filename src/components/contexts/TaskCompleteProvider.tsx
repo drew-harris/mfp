@@ -76,6 +76,7 @@ export default function TaskCompleteProvider({
           message: `No inputs into order node`,
         });
       } else {
+        // Loop through item requirements
         for (const req of requirements) {
           const item = itemFromId(req.itemId);
           const possibleEdge = inputEdges.find(
@@ -112,12 +113,26 @@ export default function TaskCompleteProvider({
     console.log("Crafting messages", craftingMessages);
     newMessages.push(...craftingMessages);
 
+    // Efficiency
     const totalWeight = efficiencyInfo.reduce((a, b) => a + b.weight, 0);
     const totalEfficiency = efficiencyInfo.reduce((a, b) => a + b.percent, 0);
 
     console.log("Total efficiency", totalEfficiency);
 
     console.log("New Messages", newMessages);
+
+    // Check for state requirement
+    if (currentTask.stateRequirement) {
+      const stateRequirement = currentTask.stateRequirement;
+      console.log(useNodeStore.getState().nodes);
+      const passes = stateRequirement(useNodeStore.getState());
+      if (!passes) {
+        console.log("State requirement failed");
+        complete = false;
+      }
+      newMessages.push(...messages);
+    }
+
     setMessages(newMessages);
     setTaskComplete(complete);
     setEfficiency(totalEfficiency / totalWeight);
