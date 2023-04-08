@@ -18,7 +18,7 @@ export const pullMFPData = async (userID: string) => {
   const loggedInClient = new GraphQLClient(endpoint, {
     headers: { Authorization: password },
   });
-  const queryVariables: any = {
+  const queryVariables = {
     userID,
     key,
   };
@@ -43,7 +43,7 @@ export const pushMFPData = async (userID: string, MFPData: any) => {
   const loggedInClient = new GraphQLClient(endpoint, {
     headers: { Authorization: password },
   });
-  const queryVariables: any = {
+  const queryVariables = {
     userID,
     key,
   };
