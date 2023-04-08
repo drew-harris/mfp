@@ -27,14 +27,13 @@ export const pullMFPData = async (userID: string) => {
     queryVariables
   )) as any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const dummy: any = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
+  const dummy = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
   if (dummy.data.MFP) {
     console.log("User has MFP data!");
     console.log(dummy.data.MFP);
     return dummy.data.MFP;
   } else {
-    console.log("User does not have MFP data!");
-    return 0;
+    return null;
   }
 };
 
@@ -47,11 +46,16 @@ export const pushMFPData = async (userID: string, MFPData: any) => {
     userID,
     key,
   };
-  const test = (await loggedInClient.request(
-    getUserDataQuery,
-    queryVariables
-  )) as any;
+  try {
+    const test = (await loggedInClient.request(
+      getUserDataQuery,
+      queryVariables
+    )) as any;
+    const userData: any = JSON.parse(test.getUserData);
+    userData.data.MFP = { MFP: { MFPData } };
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to save MFP", error);
+  }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const userData: any = JSON.parse(test.getUserData);
-  userData.data.MFP = { MFP: { MFPData } };
 };
