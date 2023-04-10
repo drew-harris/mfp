@@ -1,4 +1,4 @@
-import { request, gql, GraphQLClient } from 'graphql-request';
+import { gql, GraphQLClient } from 'graphql-request';
 
 //will need to encrypt and .env
 const endpoint = 'https://fs73ztf2angzrl5wenenojtq4u.appsync-api.us-east-1.amazonaws.com/graphql';
@@ -7,21 +7,10 @@ const key = 'myUserData';
 const loggedInClient = new GraphQLClient(endpoint, { headers: { Authorization: password } })
 const emptyMFP = { "nodes": [], "edges": [], "viewport": { "x": 0, "y": 0, "zoom": 1 } };
 
-function jsonStringifyReplacer(key: any, value: any) {
-  return value instanceof Set ? [...value] : value;
-}
-
-function pprint(obj: any): any {
-  try {
-    const obj_str = JSON.stringify(obj, jsonStringifyReplacer, 2);
-    console.log(obj_str);
-    return obj_str;
-  } catch (error) {
-    console.log('couldnt not stringify:')
-    console.log(obj);
-  }
-}
-
+type AWSResponse = {
+  getUserData: string;
+  userID?: string;
+};
 
 const createUserMutation = gql`
 mutation MyMutation($userID: String!) {
@@ -50,13 +39,13 @@ const getUserDataQuery = gql`
 `;
 
 const createUser = async (userID: string) => {
-  const queryVariables: any = {
+  const queryVariables = {
     userID: userID,
   };
-  const dataPushVariables: any = {
+  const dataPushVariables = {
     userID: userID,
     key: key,
-    data: JSON.stringify({ some_value: 'empty_value' }),
+    data: JSON.stringify({ someValue: 'empty_value' }),
   }
   const data = await loggedInClient.request(createUserMutation, queryVariables);
   console.log("created user: " + JSON.stringify(data));
@@ -70,17 +59,18 @@ const createUser = async (userID: string) => {
 
 //returns JSON object
 export const pullMFPData = async (userID: string) => {
-  const queryVariables: any = {
+  const queryVariables = {
     userID,
     key,
   };
-  let data = await loggedInClient.request(getUserDataQuery, queryVariables);
-  let dummy: any = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
-  if (dummy.data === undefined) {
+  const data: AWSResponse = await loggedInClient.request(getUserDataQuery, queryVariables);
+  const dummy = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
+  console.log(typeof dummy);
+  if (typeof dummy.data === "undefined") {
     console.log("need to create user/user has no data");
     createUser(userID);
     console.log(dummy);
-  } else if (dummy.data.MFP == undefined) {
+  } else if (typeof dummy.data.MFP === "undefined") {
     console.log("user has data, no MFP data");
     pushMFPData(userID, emptyMFP);
   } else if (dummy.data.MFP) {
@@ -92,19 +82,24 @@ export const pullMFPData = async (userID: string) => {
 
 
 //MFPData must be JSON Object example MFPData = {nodesOnScreen: 5, nodes: {one: "GrassBlock", two: "Furnace"}};
-export const pushMFPData = async (userID: string, MFPData: any) => {
-  const queryVariables: any = {
+export const pushMFPData = async (userID: string, MFPData: object) => {
+  const queryVariables = {
     userID,
     key,
   };
-  const test = await loggedInClient.request(getUserDataQuery, queryVariables);
-  let userData: any = JSON.parse(test.getUserData); //if this errors out on nvim, its not really an error ESLINT hates me
-  userData.data.MFP = { MFPData };
-  const mutationVariables: any = {
-    userID: userID,
-    key: key,
-    data: JSON.stringify(userData.data),
-  };
-  let data = await loggedInClient.request(createDataMutation, mutationVariables);
+  const test: AWSResponse = await loggedInClient.request(getUserDataQuery, queryVariables);
+  try {
+    const userData = JSON.parse(test.getUserData); //if this errors out on nvim, its not really an error ESLINT hates me
+    userData.data.MFP = { MFPData };
+    const mutationVariables = {
+      userID: userID,
+      key: key,
+      data: JSON.stringify(userData.data),
+    };
+    const data = await loggedInClient.request(createDataMutation, mutationVariables);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
