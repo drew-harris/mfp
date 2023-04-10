@@ -22,6 +22,20 @@ function pprint(obj: any): any {
   }
 }
 
+
+const createUserMutation = gql`
+mutation MyMutation($userID: String!) {
+    createUser(userID: $userID, accessLevel: "STUDENT", groups: ["G1", "G2"], email: "") {
+        userID
+        email
+        dateCreated
+        lastUpdate
+        accessLevel
+        generatedID
+        groups
+    }
+}`;
+
 const createDataMutation = gql`
   mutation MyMutation($userID: String!, $key: String!, $data: AWSJSON!) {
     createUserData(userID: $userID, key: $key, data: $data);
@@ -35,6 +49,25 @@ const getUserDataQuery = gql`
   }
 `;
 
+const createUser = async (userID: string) => {
+  const queryVariables: any = {
+    userID: userID,
+  };
+  const dataPushVariables: any = {
+    userID: userID,
+    key: key,
+    data: JSON.stringify({ some_value: 'empty_value' }),
+  }
+  const data = await loggedInClient.request(createUserMutation, queryVariables);
+  console.log("created user: " + JSON.stringify(data));
+  //creates user ^^ without data
+  const dataPush = await loggedInClient.request(createDataMutation, dataPushVariables);
+  console.log("pushed data: " + JSON.stringify(dataPush));
+  //creates data JSON object
+  pushMFPData(userID, emptyMFP);
+  //pushes default MFP data into data object
+};
+
 //returns JSON object
 export const pullMFPData = async (userID: string) => {
   const queryVariables: any = {
@@ -45,11 +78,14 @@ export const pullMFPData = async (userID: string) => {
   let dummy: any = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
   if (dummy.data === undefined) {
     console.log("need to create user/user has no data");
+    createUser(userID);
+    console.log(dummy);
   } else if (dummy.data.MFP == undefined) {
     console.log("user has data, no MFP data");
     pushMFPData(userID, emptyMFP);
   } else if (dummy.data.MFP) {
     console.log("retrieved MFP Data : " + JSON.stringify(dummy.data.MFP));
+    console.log(dummy);
     return dummy.data.MFP;
   }
 };
