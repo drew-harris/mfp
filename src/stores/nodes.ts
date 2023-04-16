@@ -38,6 +38,9 @@ export type RFState = {
   setEdgeData: <T extends MCEdge>(id: string, newData: Partial<T>) => void;
   removeOrderNode: () => void;
 
+  infoModeEnabled: boolean;
+  toggleInfoMode: () => void;
+
   queries: {
     hasNodeType: (nodeType: MCNodeType) => boolean;
   };
@@ -47,6 +50,7 @@ export type RFState = {
 export const useNodeStore = create<RFState>((set, get) => ({
   nodes: [],
   edges: [],
+  infoModeEnabled: false,
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
@@ -241,5 +245,11 @@ export const useNodeStore = create<RFState>((set, get) => ({
       const nodes = get().nodes;
       return (task?.title || "no task") + JSON.stringify(nodes);
     },
+  },
+
+  toggleInfoMode() {
+    set({
+      infoModeEnabled: !get().infoModeEnabled,
+    });
   },
 }));
