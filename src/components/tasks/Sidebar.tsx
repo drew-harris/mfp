@@ -49,18 +49,23 @@ export const Sidebar = () => {
       return <Button onClick={() => nextTask()}>Next</Button>;
     } else {
       return (
-        <Button onClick={() => alert("Assignment Submitted")}>Submit</Button>
+        <Button
+          className="mx-auto"
+          onClick={() => alert("Assignment Submitted")}
+        >
+          Submit
+        </Button>
       );
     }
   };
 
   if (currentTask) {
     return (
-      <div className="p-3">
+      <div className="flex flex-col items-center p-3">
         <SideTaskView clearTask={clearTask} task={currentTask} />
         {data.taskComplete && data.efficiency > 0 && (
           <div className="mb-4 text-center text-lg">
-            Efficiency: {data.efficiency * 100}%
+            Efficiency: {Number(data.efficiency.toFixed(2) || 0) * 100}%
           </div>
         )}
         <NextButton />

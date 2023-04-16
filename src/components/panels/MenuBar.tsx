@@ -1,9 +1,14 @@
 import { useReactFlow } from "reactflow";
+import { useNodeStore } from "../../stores/nodes";
 import { Button } from "../basic/Button";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
   // const id = useUserStore((s) => s.id);
+  const [infoMode, toggleInfo] = useNodeStore((r) => [
+    r.infoModeEnabled,
+    r.toggleInfoMode,
+  ]);
 
   const save = () => {
     const copy = instance.toObject();
@@ -28,6 +33,9 @@ export const MenuBar = () => {
     <div className="flex gap-2">
       <Button onClick={save}>Save</Button>
       <Button onClick={restoreFlow}>Load</Button>
+      <Button className={infoMode ? "bg-mc-200" : null} onClick={toggleInfo}>
+        Info Mode
+      </Button>
 
       <div>{/* <div className="text-white">Logged in as: {id}</div> */}</div>
     </div>

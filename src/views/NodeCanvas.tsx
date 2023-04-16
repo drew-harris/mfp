@@ -14,6 +14,7 @@ import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
 import { useNodeStore } from "../stores/nodes";
 import DeleteButton from "../components/panels/DeleteButton";
+import InfoEdge from "../components/nodes/edges/InfoEdge";
 
 const nodeTypes = {
   resource: ResourceNode,
@@ -21,6 +22,10 @@ const nodeTypes = {
   order: OrderNode,
   crafter: CrafterNode,
   info: InfoNode,
+};
+
+const edgeTypes = {
+  default: InfoEdge,
 };
 
 export default function NodeCanvas() {
@@ -40,6 +45,7 @@ export default function NodeCanvas() {
     >
       <ReactFlow
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
