@@ -6,13 +6,15 @@ import ReactFlow, {
   Panel,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { MenuBar } from "../components/MenuBar";
+import { MenuBar } from "../components/panels/MenuBar";
 import CrafterNode from "../components/nodes/CrafterNode";
 import InfoNode from "../components/nodes/InfoNode";
 import OrderNode from "../components/nodes/OrderNode";
 import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
 import { useNodeStore } from "../stores/nodes";
+import DeleteButton from "../components/panels/DeleteButton";
+import InfoEdge from "../components/nodes/edges/InfoEdge";
 
 const nodeTypes = {
   resource: ResourceNode,
@@ -20,6 +22,10 @@ const nodeTypes = {
   order: OrderNode,
   crafter: CrafterNode,
   info: InfoNode,
+};
+
+const edgeTypes = {
+  default: InfoEdge,
 };
 
 export default function NodeCanvas() {
@@ -39,6 +45,7 @@ export default function NodeCanvas() {
     >
       <ReactFlow
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -64,6 +71,14 @@ export default function NodeCanvas() {
           position="top-left"
         >
           <MenuBar />
+        </Panel>
+        <Panel
+          position="bottom-right"
+          style={{
+            margin: 4,
+          }}
+        >
+          <DeleteButton />
         </Panel>
       </ReactFlow>
     </div>
