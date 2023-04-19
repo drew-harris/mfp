@@ -6,21 +6,21 @@ const getPosition = (type: HandleProps["type"]): Position => {
 
 export interface SideHandleProps extends Omit<HandleProps, "position"> {
   className?: string;
+  label?: string;
 }
 
 export function SideHandle(props: SideHandleProps) {
-  // TODO: use cva for variants
   return (
     <Handle
       className={props.className}
       {...props}
       style={{
-        transform: `scale(2.6) translate(0px, 0px)`,
+        transform: `scale(2.6)`,
         top: 0,
         display: "block",
         position: "relative",
       }}
       position={getPosition(props.type)}
-    />
+    ></Handle>
   );
 }

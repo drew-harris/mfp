@@ -1,9 +1,11 @@
 import { useContext, useEffect } from "react";
 import { allMissions } from "../../hardcoded/missions";
+import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
 import { Mission, Task } from "../../types/tasks";
+import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
 import { SidebarTaskChecks } from "./SidebarTaskChecks";
@@ -13,9 +15,9 @@ export const Sidebar = () => {
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
-  // const nextTask = useObjectiveStore((s) => {
-  //   s.nextTask;
-  // });
+  const nextTask = useObjectiveStore((s) => s.nextTask);
+
+  const hasNextTask = useHasNextStep();
 
   const data = useContext(TaskCompleteContext);
 
@@ -24,13 +26,14 @@ export const Sidebar = () => {
   );
 
   useEffect(() => {
-    if (possibleOrderNode?.data.dataType === MCNodeType.order) {
-      if (possibleOrderNode.data.task) {
-        const task = possibleOrderNode.data.task;
-        const possibleMission = findMissionFromTask(task);
-        if (possibleMission) {
-          beginMission(possibleMission);
-        }
+    if (
+      possibleOrderNode?.data.dataType === MCNodeType.order &&
+      possibleOrderNode.data.task
+    ) {
+      const task = possibleOrderNode.data.task;
+      const possibleMission = findMissionFromTask(task);
+      if (possibleMission) {
+        beginMission(possibleMission);
       }
     }
   }, [possibleOrderNode, beginMission]);
@@ -40,48 +43,57 @@ export const Sidebar = () => {
     removeOrder();
   };
 
-  return (
-    <div className="p-3">
-      {!currentTask ? (
-        <>
-          <div className="text-lg font-bold">Missions</div>
-          <div>
-            {allMissions.map((mission) => (
-              <MissionCard
-                setMission={beginMission}
-                key={mission.title}
-                mission={mission}
-              />
-            ))}
+  const NextButton = () => {
+    if (!data.taskComplete) return null;
+    if (hasNextTask) {
+      return <Button onClick={() => nextTask()}>Next</Button>;
+    } else {
+      return (
+        <Button
+          className="mx-auto"
+          onClick={() => alert("Assignment Submitted")}
+        >
+          Submit
+        </Button>
+      );
+    }
+  };
+
+  if (currentTask) {
+    return (
+      <div className="flex flex-col items-center p-3">
+        <SideTaskView clearTask={clearTask} task={currentTask} />
+        {data.taskComplete && data.efficiency > 0 && (
+          <div className="mb-4 text-center text-lg">
+            Efficiency: {Number(data.efficiency.toFixed(2) || 0) * 100}%
           </div>
-        </>
-      ) : (
-        <>
-          <SideTaskView clearTask={clearTask} task={currentTask} />
-          {data.taskComplete && data.efficiency && (
-            <div className="mb-4 text-center text-lg">
-              Efficiency: {data.efficiency * 100}%
+        )}
+        <NextButton />
+        <div>
+          {data.messages.map((m) => (
+            <div className="outset bg-red-300 p-2" key={m.message}>
+              {m.message}
             </div>
-          )}
-          {data.taskComplete && (
-            <button
-              onClick={() => alert("Assignment Submitted")}
-              className="outset mx-auto block bg-mc-200 p-3"
-            >
-              Submit
-            </button>
-          )}
-          <div>
-            {data.messages.map((m) => (
-              <div className="outset bg-red-300 p-2" key={m.message}>
-                {m.message}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
+          ))}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="p-3">
+        <div className="text-lg font-bold">Missions</div>
+        <div>
+          {allMissions.map((mission) => (
+            <MissionCard
+              setMission={beginMission}
+              key={mission.title}
+              mission={mission}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 };
 
 export function findMissionFromTask(
@@ -89,7 +101,7 @@ export function findMissionFromTask(
   missions: Mission[] = allMissions
 ): Mission | null {
   const foundMissions = missions.filter((m) => {
-    if (m.tasks.find((t) => t.id === task.id)) return true;
+    if (m.tasks.some((t) => t.id === task.id)) return true;
     return false;
   });
 
@@ -98,12 +110,12 @@ export function findMissionFromTask(
   return foundMissions[0] || null;
 }
 
-interface SideTaskViewProps {
+interface SideTaskViewProperties {
   task: Task;
   clearTask: () => void;
 }
 
-const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
+const SideTaskView = ({ task, clearTask }: SideTaskViewProperties) => {
   return (
     <div className="p-2">
       <div className="mb-3 flex items-center justify-between">
@@ -114,16 +126,17 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProps) => {
       <div className="text-center text-mc-700">{task.description}</div>
       <SidebarTaskChecks task={task} />
       <DroppableOrder task={task} />
+      {/* Need to return continue  button here */}
     </div>
   );
 };
 
-interface MissionCardProps {
+interface MissionCardProperties {
   mission: Mission;
   setMission: (mission: Mission) => void;
 }
 
-const MissionCard = ({ mission, setMission }: MissionCardProps) => {
+const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
   return (
     <div
       onClick={() => setMission(mission)}

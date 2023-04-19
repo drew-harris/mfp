@@ -1,5 +1,6 @@
 import { cva } from "cva";
 import { ReactNode } from "react";
+import { useNodeStore } from "../../stores/nodes";
 import { MCNode, MCNodeType } from "../../types/MCNodes";
 import { getNodeName } from "../../utils/nodes";
 
@@ -21,6 +22,9 @@ export const BaseNode = ({
   leftSideNodes: leftSideNode,
   rightSideNodes: rightSideNode,
 }: BaseNodeProps) => {
+  const realNodeData = useNodeStore((s) =>
+    s.nodes.find((n) => n.id === data.id)
+  );
   const outerClass = cva(
     ["p-1", "text-white", "shadow", "outset-4", outerClassName],
     {
@@ -33,15 +37,25 @@ export const BaseNode = ({
           [MCNodeType.info]: "bg-gray-300",
           other: "bg-red-500",
         },
+        selected: {
+          true: "border-4 border-white/75 shadow-lg",
+          false: null,
+        },
       },
       defaultVariants: {
         nodeType: "other",
+        selected: false,
       },
     }
   );
 
   return (
-    <div className={outerClass({ nodeType: data.dataType })}>
+    <div
+      className={outerClass({
+        nodeType: data.dataType,
+        selected: realNodeData?.selected || false,
+      })}
+    >
       <div className="text-center text-black">{getNodeName(data.dataType)}</div>
       <div
         className={

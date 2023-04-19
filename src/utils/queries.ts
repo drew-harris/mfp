@@ -21,7 +21,7 @@ export function getEdgesIntoOrderNode(ne: NE): Edge<MCEdge>[] {
     (n) => n.data.dataType === MCNodeType.order
   );
 
-  console.log("Possible order node: ", possibleOrderNode);
+  console.log("Possible order node:", possibleOrderNode);
   return possibleOrderNode ? getEdgesIntoNode(ne, possibleOrderNode.id) : [];
 }
 

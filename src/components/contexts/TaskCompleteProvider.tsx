@@ -46,7 +46,7 @@ export default function TaskCompleteProvider({
   const currentTask = useObjectiveStore((s) => s.currentTask);
 
   const orderNodeOnCanvas = useNodeStore((s) =>
-    Boolean(s.nodes.find((n) => n.data.dataType === MCNodeType.order))
+    Boolean(s.nodes.some((n) => n.data.dataType === MCNodeType.order))
   );
 
   const [messages, setMessages] = useState<DebugMessage[]>([]);
@@ -76,7 +76,8 @@ export default function TaskCompleteProvider({
           message: `No inputs into order node`,
         });
       } else {
-        requirements.forEach((req) => {
+        // Loop through item requirements
+        for (const req of requirements) {
           const item = itemFromId(req.itemId);
           const possibleEdge = inputEdges.find(
             (e) => e.data?.item.itemId === req.itemId
@@ -104,7 +105,7 @@ export default function TaskCompleteProvider({
               message: `Missing order input for ${item.title}`,
             });
           }
-        });
+        }
       }
       // Check all crafting recipies
     }
@@ -112,12 +113,26 @@ export default function TaskCompleteProvider({
     console.log("Crafting messages", craftingMessages);
     newMessages.push(...craftingMessages);
 
+    // Efficiency
     const totalWeight = efficiencyInfo.reduce((a, b) => a + b.weight, 0);
     const totalEfficiency = efficiencyInfo.reduce((a, b) => a + b.percent, 0);
 
     console.log("Total efficiency", totalEfficiency);
 
     console.log("New Messages", newMessages);
+
+    // Check for state requirement
+    if (currentTask.stateRequirement) {
+      const stateRequirement = currentTask.stateRequirement;
+      console.log(useNodeStore.getState().nodes);
+      const passes = stateRequirement(useNodeStore.getState());
+      if (!passes) {
+        console.log("State requirement failed");
+        complete = false;
+      }
+      newMessages.push(...messages);
+    }
+
     setMessages(newMessages);
     setTaskComplete(complete);
     setEfficiency(totalEfficiency / totalWeight);
