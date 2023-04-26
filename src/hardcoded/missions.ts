@@ -253,6 +253,27 @@ export const allMissions: Mission[] = [
         ],
         continuation: true,
       },
+      {
+        id: "tutorial-splitter-finish",
+        title: "Splitter Node",
+        description:
+          "Drag the order node from the right side to the canvas and connect the crafter nodes to complete the tutorial",
+        idPool: [
+          "minecraft:furnace",
+          "minecraft:cobblestone",
+          "minecraft:cobblestone_slab",
+        ],
+        itemRequirements: [
+          {
+            perHour: 1,
+            itemId: "minecraft:furnace",
+          },
+          {
+            perHour: 1,
+            itemId: "minecraft:cobblestone_slab",
+          },
+        ],
+      },
     ],
   },
 
