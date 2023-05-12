@@ -1,7 +1,7 @@
 {
   "name": "mfp",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.1.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,8 +12,12 @@
     "preview": "vite preview",
     "format": "prettier  \"**/*.{ts,tsx,css}\" --write",
     "convert:items": "ts-node --esm src/__scripts__/createItemList.ts",
-    "convert:recipes": "ts-node --esm src/__scripts__/createRecipeList.ts"
+    "convert:recipes": "ts-node --esm src/__scripts__/createRecipeList.ts",
+    "bump": "npm version patch --no-git-tag-version && git add package.json"
   },
+  "pre-commit": [
+    "bump"
+  ],
   "dependencies": {
     "@dnd-kit/core": "^6.0.5",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -35,6 +39,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.17",
+    "pre-commit": "^1.2.2",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",

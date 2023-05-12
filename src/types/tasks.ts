@@ -19,6 +19,8 @@ export interface Task {
   title?: string;
   id: string;
 
+  continuation?: boolean;
+
   idPool?: string[] | "inherit";
 }
 
