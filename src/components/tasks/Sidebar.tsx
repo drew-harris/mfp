@@ -8,7 +8,6 @@ import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
-import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
 export const Sidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
