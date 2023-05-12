@@ -2,7 +2,6 @@ import { MCNodeType } from "../types/MCNodes";
 import { Mission } from "../types/tasks";
 
 export const allMissions: Mission[] = [
-  // Tutorial
   {
     title: "Unit 1, Lesson 2",
     tasks: [

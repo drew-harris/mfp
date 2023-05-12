@@ -118,7 +118,7 @@ interface SideTaskViewProperties {
 const SideTaskView = ({ task, clearTask }: SideTaskViewProperties) => {
   return (
     <div className="p-2">
-      <div className="debug mb-3 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between">
         <div className="text-lg font-bold">Current Task:</div>
         <button onClick={clearTask}>Clear Task</button>
       </div>
