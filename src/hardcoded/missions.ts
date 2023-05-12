@@ -94,7 +94,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-resource-desc",
         title: "Resource Node",
         description:
-          "This is a resource node, it represents an infinite supply of a basic item needed for crafting. You can adjust how many are being output by entering in an amount // MAKE EDITIBLE",
+          "This is a resource node, it represents an infinite supply of a basic item needed for crafting. You can adjust how many are being output by entering in an amount",
         idPool: ["item.minecraft:diamond"],
         continuation: true,
       },
@@ -151,7 +151,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-recipe-connect",
         title: "Crafting Node",
         description:
-          "Connect the resource node to the crafter by dragging the circle to create a path. (reword probably)",
+          "Connect the resource node to the crafter by dragging the circle to create a path.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(

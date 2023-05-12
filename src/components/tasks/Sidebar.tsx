@@ -1,9 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
-import { MCNodeType } from "../../types/MCNodes";
 import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
@@ -21,22 +20,22 @@ export const Sidebar = () => {
 
   const data = useContext(TaskCompleteContext);
 
-  const possibleOrderNode = useNodeStore((state) =>
-    state.nodes.find((n) => n.data.dataType === MCNodeType.order)
-  );
+  // const possibleOrderNode = useNodeStore((state) =>
+  //   state.nodes.find((n) => n.data.dataType === MCNodeType.order)
+  // );
 
-  useEffect(() => {
-    if (
-      possibleOrderNode?.data.dataType === MCNodeType.order &&
-      possibleOrderNode.data.task
-    ) {
-      const task = possibleOrderNode.data.task;
-      const possibleMission = findMissionFromTask(task);
-      if (possibleMission) {
-        beginMission(possibleMission);
-      }
-    }
-  }, [possibleOrderNode, beginMission]);
+  // useEffect(() => {
+  //   if (
+  //     possibleOrderNode?.data.dataType === MCNodeType.order &&
+  //     possibleOrderNode.data.task
+  //   ) {
+  //     const task = possibleOrderNode.data.task;
+  //     const possibleMission = findMissionFromTask(task);
+  //     if (possibleMission) {
+  //       beginMission(possibleMission);
+  //     }
+  //   }
+  // }, [possibleOrderNode, beginMission]);
 
   const clearTask = () => {
     cancelMission();
