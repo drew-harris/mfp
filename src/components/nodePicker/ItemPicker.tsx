@@ -40,7 +40,7 @@ export default function ItemPicker() {
       <div className="sticky top-0 z-50 mb-2 flex items-center justify-between border-2 border-b-mc-600 bg-mc-200 p-2">
         {/* TODO: Make input sticky */}
         <input
-          className="inset p-1"
+          className="inset bg-mc-300 p-1 text-white placeholder:text-mc-100"
           placeholder="Search for items"
           value={input}
           onChange={(e) => setInput(e.target.value)}
