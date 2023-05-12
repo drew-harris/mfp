@@ -140,6 +140,7 @@ export default function TaskCompleteProvider({
     setMessages(newMessages);
     setTaskComplete(complete);
     setEfficiency(totalEfficiency / totalWeight);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, currentTask, orderNodeOnCanvas]);
 
   useEffect(() => {
