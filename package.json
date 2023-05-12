@@ -1,7 +1,7 @@
 {
   "name": "mfp",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,7 @@
     "format": "prettier  \"**/*.{ts,tsx,css}\" --write",
     "convert:items": "ts-node --esm src/__scripts__/createItemList.ts",
     "convert:recipes": "ts-node --esm src/__scripts__/createRecipeList.ts",
-    "bump": "npm version patch --no-git-tag-version"
+    "bump": "npm version patch --no-git-tag-version && git add package.json"
   },
   "pre-commit": [
     "bump"
