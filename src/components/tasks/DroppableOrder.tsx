@@ -46,7 +46,7 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
           {...listeners}
           {...attributes}
           style={style}
-          className="bg-orange-300 p-1 text-white shadow"
+          className="bg-red-400 p-1 text-white shadow"
         >
           <div className="text-center text-black">Order</div>
           <div className="bg-white p-2 text-black">
