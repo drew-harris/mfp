@@ -66,6 +66,7 @@ function FactoryPlanner() {
   }
 
   const screenHeight = window.innerHeight;
+  const screenWidth = window.innerWidth;
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
@@ -79,6 +80,7 @@ function FactoryPlanner() {
           split="vertical"
           primary="second"
           minSize={300}
+          maxSize={screenWidth * 0.5}
           defaultSize={"20%"}
         >
           {/*@ts-ignore*/}
