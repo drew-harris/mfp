@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   Active,
   DndContext,
@@ -16,6 +17,7 @@ import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import ItemPicker from "./components/nodePicker/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
+import SplitPane from "react-split-pane";
 
 function FactoryPlanner() {
   const [active, setActive] = useState<Active | null>(null);
@@ -63,21 +65,46 @@ function FactoryPlanner() {
     }
   }
 
+  const screenHeight = window.innerHeight;
+
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <div className="flex h-[100vh] max-h-screen flex-col pt-2">
-        <div className="grid flex-grow grid-cols-[2fr_2fr_1.3fr] grid-rows-[1.8fr_1fr] gap-2 pr-2 pb-2 pl-2">
-          <div className="outset-4 col-span-2 border-4 bg-mc-300">
-            <NodeCanvas />
-          </div>
-          <div className="outset-4 row-span-2 border-4 bg-mc-300">
+      <div className="debug relative h-[100vh]">
+        {/*@ts-ignore*/}
+        <SplitPane
+          resizerStyle={{
+            border: "2px solid #5d5d5d",
+            cursor: "col-resize",
+          }}
+          split="vertical"
+          primary="second"
+          minSize={300}
+          defaultSize={"20%"}
+        >
+          {/*@ts-ignore*/}
+          <SplitPane
+            split="horizontal"
+            resizerStyle={{
+              border: "2px solid #5d5d5d",
+              cursor: "row-resize",
+            }}
+            defaultSize={screenHeight * 0.7}
+            minSize={200}
+            maxSize={screenHeight * 0.9}
+          >
+            <div className="outset-4 col-span-2 h-full w-full border-4 bg-mc-300">
+              <NodeCanvas />
+            </div>
+            <div className="outset-4 col-span-2 h-full overflow-y-scroll border-4 bg-mc-300">
+              <ItemPicker />
+            </div>
+          </SplitPane>
+          <div className="outset-4 relative row-span-2 h-full border-4 bg-mc-300">
             <Sidebar />
           </div>
-          <div className="outset-4 col-span-2 overflow-y-scroll border-4 bg-mc-300">
-            <ItemPicker />
-          </div>
-        </div>
+        </SplitPane>
       </div>
+
       <DragOverlay dropAnimation={null}>{draggedItem}</DragOverlay>
     </DndContext>
   );
