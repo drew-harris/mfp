@@ -38,8 +38,6 @@ export const MenuBar = () => {
       <Button className={infoMode ? "bg-mc-200" : null} onClick={toggleInfo}>
         Info Mode
       </Button>
-
-      <div>{/* <div className="text-white">Logged in as: {id}</div> */}</div>
     </div>
   );
 };

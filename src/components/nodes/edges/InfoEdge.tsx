@@ -9,6 +9,7 @@ function CustomEdge(props: EdgeProps) {
   const {
     id,
     sourceX,
+    selected,
     sourceY,
     targetX,
     targetY,
@@ -33,7 +34,7 @@ function CustomEdge(props: EdgeProps) {
     return (
       <BaseEdge
         style={{
-          stroke: "darkgray",
+          stroke: selected ? "white" : "darkgray",
           strokeWidth: 4,
           transform: "translate(0px, 0.4%)",
           ...style,
@@ -55,7 +56,7 @@ function CustomEdge(props: EdgeProps) {
       <path
         id={id}
         style={{
-          stroke: "darkgray",
+          stroke: selected ? "white" : "darkgray",
           strokeWidth: 4,
           transform: "translate(0px, 0.4%)",
           ...style,

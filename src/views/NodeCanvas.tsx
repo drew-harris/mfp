@@ -73,6 +73,14 @@ export default function NodeCanvas() {
           <MenuBar />
         </Panel>
         <Panel
+          style={{
+            margin: 4,
+          }}
+          position="top-right"
+        >
+          <div className="opacity-50">v{APP_VERSION}</div>
+        </Panel>
+        <Panel
           position="bottom-right"
           style={{
             margin: 4,

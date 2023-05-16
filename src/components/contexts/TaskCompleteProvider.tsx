@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { itemFromId } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
@@ -66,19 +65,24 @@ export default function TaskCompleteProvider({
     const newMessages: DebugMessage[] = [];
     const efficiencyInfo: EfficiencyInfo[] = [];
 
+    if (currentTask.continuation) {
+      setMessages([]);
+      setTaskComplete(true);
+    }
+
     // Check for item requirements
     if (currentTask.itemRequirements) {
       const inputEdges = getEdgesIntoOrderNode(state);
       const requirements = currentTask.itemRequirements;
       if (inputEdges.length === 0 && orderNodeOnCanvas) {
         complete = false;
-        newMessages.push({
-          message: `No inputs into order node`,
-        });
+        // newMessages.push({
+        //   message: `No inputs into order node`,
+        // });
       } else {
         // Loop through item requirements
         for (const req of requirements) {
-          const item = itemFromId(req.itemId);
+          // const item = itemFromId(req.itemId);
           const possibleEdge = inputEdges.find(
             (e) => e.data?.item.itemId === req.itemId
           );
@@ -89,9 +93,9 @@ export default function TaskCompleteProvider({
               possibleEdge.data.outputRate < req.perHour
             ) {
               complete = false;
-              newMessages.push({
-                message: `Not enough ${item.title.toLowerCase()}s`,
-              });
+              // newMessages.push({
+              //   message: `Not enough ${item.title.toLowerCase()}s`,
+              // });
             } else if (possibleEdge.data?.outputRate) {
               const ratio = possibleEdge.data?.outputRate / req.perHour;
               efficiencyInfo.push({
@@ -101,9 +105,9 @@ export default function TaskCompleteProvider({
             }
           } else {
             complete = false;
-            newMessages.push({
-              message: `Missing order input for ${item.title}`,
-            });
+            // newMessages.push({
+            //   message: `Missing order input for ${item.title}`,
+            // });
           }
         }
       }
@@ -111,7 +115,7 @@ export default function TaskCompleteProvider({
     }
     const craftingMessages = getCrafterDebugMessages(state);
     console.log("Crafting messages", craftingMessages);
-    newMessages.push(...craftingMessages);
+    // newMessages.push(...craftingMessages);
 
     // Efficiency
     const totalWeight = efficiencyInfo.reduce((a, b) => a + b.weight, 0);
