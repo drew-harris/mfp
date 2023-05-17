@@ -70,7 +70,7 @@ function FactoryPlanner() {
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <div className="debug relative h-[100vh]">
+      <div className="relative h-[100vh]">
         {/*@ts-ignore*/}
         <SplitPane
           resizerStyle={{
