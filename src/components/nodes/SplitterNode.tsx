@@ -89,16 +89,20 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
     <BaseNode
       data={data}
       leftSideNodes={<SideHandle type="target" />}
-      rightSideNodes={data.ratios.map((_, i) => (
-        <SideHandle
-          className={
-            i >= outgoingEdges.length ? "border-black bg-red-500" : null
-          }
-          key={i}
-          type="source"
-          id={`output-${i}`}
-        />
-      ))}
+      rightSideNodes={data.ratios.map((_, i) => {
+        const uniqueString = [...new Set(data.splitString)].join("");
+        return (
+          <SideHandle
+            className={
+              i >= outgoingEdges.length ? "border-black bg-red-500" : null
+            }
+            key={i}
+            type="source"
+            id={`output-${i}`}
+            label={uniqueString[i]}
+          />
+        );
+      })}
     >
       {incomingEdge?.data && (
         <SpriteDisplay
@@ -109,7 +113,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       <input
         type="text"
         placeholder="Enter Splitting Pattern..."
-        className="rounded-xl border border-black bg-gray-300 pl-4 text-xs text-black placeholder:text-gray-400"
+        className="rounded-xl border border-black bg-gray-300 px-5 py-1 text-xs text-black placeholder:text-gray-400"
         value={data.splitString}
         onChange={(e) => updateString(e.target.value.toUpperCase())}
       />

@@ -21,6 +21,10 @@ export function SideHandle(props: SideHandleProps) {
         position: "relative",
       }}
       position={getPosition(props.type)}
-    ></Handle>
+    >
+      <div className="-translate-x-[6px] -translate-y-[3.2px] text-[6px] text-black">
+        {props.label}
+      </div>
+    </Handle>
   );
 }
