@@ -1,5 +1,6 @@
 import create from "zustand";
 import { Mission, Task } from "../types/tasks";
+import { useNodeStore } from "./nodes";
 
 export type ObjectiveState = {
   currentMission: Mission | null;
@@ -16,6 +17,7 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
   currentTask: null,
 
   beginMission: (mission: Mission) => {
+    useNodeStore.getState().clearAllNodes();
     if (mission.tasks.length === 0) {
       throw new Error("Mission must have at least one task");
     }
