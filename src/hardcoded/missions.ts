@@ -264,41 +264,41 @@ export const allMissions: Mission[] = [
     ],
   },
 
-  {
-    title: "Create Furnaces (Demo Task)",
-    tasks: [
-      {
-        title: "Create Furnaces",
-        description:
-          "We need furnaces! We need at least 8 new furnaces per hour.",
-        id: "test-1",
-        itemRequirements: [
-          {
-            itemId: "minecraft:furnace",
-            perHour: 8,
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   title: "Create Furnaces (Demo Task)",
+  //   tasks: [
+  //     {
+  //       title: "Create Furnaces",
+  //       description:
+  //         "We need furnaces! We need at least 8 new furnaces per hour.",
+  //       id: "test-1",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "minecraft:furnace",
+  //           perHour: 8,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 
-  {
-    title: "Enchantment Setup (Demo Task)",
-    tasks: [
-      {
-        title: "Create Enchantment Table and Bookshelves",
-        id: "test-2",
-        itemRequirements: [
-          {
-            itemId: "minecraft:enchanting_table",
-            perHour: 1,
-          },
-          {
-            itemId: "minecraft:bookshelf",
-            perHour: 4,
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   title: "Enchantment Setup (Demo Task)",
+  //   tasks: [
+  //     {
+  //       title: "Create Enchantment Table and Bookshelves",
+  //       id: "test-2",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "minecraft:enchanting_table",
+  //           perHour: 1,
+  //         },
+  //         {
+  //           itemId: "minecraft:bookshelf",
+  //           perHour: 4,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
