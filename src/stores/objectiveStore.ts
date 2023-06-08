@@ -8,8 +8,10 @@ export type ObjectiveState = {
 
   beginMission: (mission: Mission) => void;
   nextTask: () => void;
+  previousTask: () => void;
   cancelMission: () => void;
   hasNextTask: () => boolean;
+  hasPreviousTask: () => boolean;
 };
 
 export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
@@ -46,6 +48,25 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
     });
   },
 
+  previousTask() {
+    console.log("previous task");
+    const { currentMission, currentTask } = get();
+
+    if (!currentMission || !currentTask) {
+      return;
+    }
+
+    const currentIndex = currentMission?.tasks.indexOf(currentTask);
+    console.log("Current index", currentIndex);
+
+    if (currentIndex - 1 < 0) {
+      return;
+    }
+    set({
+      currentTask: currentMission.tasks[currentIndex - 1],
+    });
+  },
+
   hasNextTask: () => {
     const { currentMission, currentTask } = get();
     if (!currentMission || !currentTask) {
@@ -56,6 +77,19 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
       return false;
     }
     console.log("has next task");
+    return true;
+  },
+
+  hasPreviousTask() {
+    const { currentMission, currentTask } = get();
+    if (!currentMission || !currentTask) {
+      return false;
+    }
+    const currentIndex = currentMission?.tasks.indexOf(currentTask);
+    if (currentIndex - 1 < 0) {
+      return false;
+    }
+    console.log("has previous task");
     return true;
   },
 

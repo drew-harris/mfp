@@ -18,6 +18,8 @@ export const Sidebar = () => {
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
   const nextTask = useObjectiveStore((s) => s.nextTask);
+  const previousTask = useObjectiveStore((s) => s.previousTask);
+  const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
 
   const hasNextTask = useHasNextStep();
 
@@ -31,7 +33,14 @@ export const Sidebar = () => {
   const NextButton = () => {
     if (!data.taskComplete) return null;
     if (hasNextTask) {
-      return <Button onClick={() => nextTask()}>Next</Button>;
+      return (
+        <div className="flex gap-2">
+          {hasPreviousTask() && (
+            <Button onClick={() => previousTask()}>Back</Button>
+          )}
+          <Button onClick={() => nextTask()}>Next</Button>
+        </div>
+      );
     } else {
       return (
         <Button
