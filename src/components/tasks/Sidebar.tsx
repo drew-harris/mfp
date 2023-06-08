@@ -13,6 +13,7 @@ import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
 export const Sidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
+  const currentMission = useObjectiveStore((s) => s.currentMission);
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
@@ -46,6 +47,9 @@ export const Sidebar = () => {
   if (currentTask) {
     return (
       <div className="flex flex-col items-center p-3">
+        <div className="mb-4 w-full text-left text-xl text-black/50">
+          {currentMission?.title}
+        </div>
         <SideTaskView clearTask={clearTask} task={currentTask} />
         {data.taskComplete && data.efficiency > 0 && (
           <div className="mb-4 text-center text-lg">
@@ -104,9 +108,6 @@ interface SideTaskViewProperties {
 const SideTaskView = ({ task }: SideTaskViewProperties) => {
   return (
     <div className="p-2">
-      <div className="mb-3 flex items-center justify-between">
-        <div className="text-lg font-bold">Current Task:</div>
-      </div>
       <div className="text-center text-xl font-bold">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
       <SidebarTaskChecks task={task} />

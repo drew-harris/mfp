@@ -78,7 +78,7 @@ export default function NodeCanvas() {
           }}
           position="top-right"
         >
-          <div className="opacity-50">v{APP_VERSION}</div>
+          <div className="opacity-20">v{APP_VERSION}</div>
         </Panel>
         <Panel
           position="bottom-right"
