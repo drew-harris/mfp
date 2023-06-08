@@ -41,7 +41,7 @@ export default function ItemPicker() {
         {/* TODO: Make input sticky */}
         <input
           className="inset bg-mc-300 p-1 text-white placeholder:text-mc-100"
-          placeholder="Search for items"
+          placeholder="Search for items..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         ></input>
