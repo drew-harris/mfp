@@ -3,6 +3,7 @@ import { DraggableType, MCNodeType } from "./MCNodes";
 
 export interface Mission {
   title: string;
+  id: string;
   description?: string;
   tasks: Task[];
 

@@ -3,6 +3,7 @@ import { Mission } from "../types/tasks";
 
 export const allMissions: Mission[] = [
   {
+    id: "tutorial",
     title: "Tutorial",
     tasks: [
       {
@@ -195,6 +196,7 @@ export const allMissions: Mission[] = [
   },
   {
     title: "Unit 1, Lesson 2",
+    id: "u1l2",
     tasks: [
       {
         id: "u1l2-planks",
@@ -240,6 +242,7 @@ export const allMissions: Mission[] = [
   },
   {
     title: "Unit 1, Lesson 7",
+    id: "u1l7",
     tasks: [
       {
         id: "u1l7-planks",
