@@ -143,10 +143,6 @@ export default function TaskCompleteProvider({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, currentTask, orderNodeOnCanvas]);
 
-  useEffect(() => {
-    console.log("Messages", messages);
-  }, [messages]);
-
   return (
     <TaskCompleteContext.Provider
       value={{ messages, taskComplete, efficiency }}

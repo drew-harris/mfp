@@ -1,31 +1,33 @@
 import { useReactFlow } from "reactflow";
-import { useNodeStore } from "../../stores/nodes";
+import { pullMFPData, pushMFPData } from "../../utils/gqlqueries";
 import { Button } from "../basic/Button";
+import { useUserStore } from "../..//stores/userStore";
+import { useNodeStore } from "../../stores/nodes";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
+  const id = useUserStore((s) => s.id);
   // const id = useUserStore((s) => s.id);
   const [infoMode, toggleInfo] = useNodeStore((r) => [
     r.infoModeEnabled,
     r.toggleInfoMode,
   ]);
 
-  const save = () => {
+  const save = async () => {
     const copy = instance.toObject();
-    localStorage.setItem("rfsave", JSON.stringify(copy));
+    await pushMFPData(id, copy);
     return;
   };
 
   const restoreFlow = async () => {
-    const item = localStorage.getItem("rfsave");
-    if (item) {
-      const flow = JSON.parse(item);
-      if (flow) {
-        const { x = 0, y = 0, zoom = 1 } = flow.viewport;
-        instance.setNodes(flow.nodes || []);
-        instance.setEdges(flow.edges || []);
-        instance.setViewport({ x, y, zoom });
-      }
+    if (!id) return;
+    const data = await pullMFPData(id);
+    if (data) {
+      console.log("data", data);
+      const { x = 0, y = 0, zoom = 1 } = data.viewport;
+      instance.setNodes(data.nodes || []);
+      instance.setEdges(data.edges || []);
+      instance.setViewport({ x, y, zoom });
     }
   };
 
