@@ -45,7 +45,7 @@ export const Sidebar = () => {
       return (
         <Button
           className="mx-auto"
-          onClick={() => alert("Assignment Submitted")}
+          onClick={() => alert("Assignment Submitted!")}
         >
           Submit
         </Button>
