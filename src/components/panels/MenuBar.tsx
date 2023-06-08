@@ -36,7 +36,7 @@ export const MenuBar = () => {
       <Button onClick={save}>Save</Button>
       <Button onClick={restoreFlow}>Load</Button>
       <Button className={infoMode ? "bg-mc-200" : null} onClick={toggleInfo}>
-        Info Mode
+        Info Mode: {infoMode ? "ON" : "OFF"}
       </Button>
     </div>
   );
