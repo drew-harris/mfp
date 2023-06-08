@@ -1,7 +1,7 @@
 {
   "name": "mfp",
   "private": true,
-  "version": "2.1.19",
+  "version": "2.1.20",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -30,6 +30,7 @@
     "node-fzf": "^0.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.12.0",
     "react-split-pane": "^0.1.92",
     "react-spring": "^9.5.5",
     "react-spritesheet": "^1.0.1",

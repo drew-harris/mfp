@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { allMissions } from "../../hardcoded/missions";
+import { useUserStore } from "../../stores/userStore";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
@@ -75,6 +76,7 @@ export const Sidebar = () => {
             </div>
           ))}
         </div>
+        <IdDebugView />
       </div>
     );
   } else {
@@ -90,6 +92,7 @@ export const Sidebar = () => {
             />
           ))}
         </div>
+        <IdDebugView />
       </div>
     );
   }
@@ -125,7 +128,6 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProperties) => {
       <div className="text-center text-mc-700">{task.description}</div>
       <SidebarTaskChecks task={task} />
       <DroppableOrder task={task} />
-      {/* Need to return continue  button here */}
     </div>
   );
 };
@@ -144,4 +146,9 @@ const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
       <div className="font-bold">{mission.title}</div>
     </div>
   );
+};
+
+const IdDebugView = () => {
+  const id = useUserStore((s) => s.id);
+  return <div className="absolute bottom-2 right-2 text-black/20">{id}</div>;
 };
