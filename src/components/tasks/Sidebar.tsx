@@ -1,15 +1,15 @@
 import { useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 import { allMissions } from "../../hardcoded/missions";
-import { useUserStore } from "../../stores/userStore";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
+import { useUserStore } from "../../stores/userStore";
 import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
 import { SidebarTaskChecks } from "./SidebarTaskChecks";
-import { useSearchParams } from "react-router-dom";
 
 export const Sidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -151,7 +151,7 @@ const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
 
 const IdDebugView = () => {
   const id = useUserStore((s) => s.id);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   return (
     <div className="absolute bottom-2 right-2 text-black/20">
       <div>{id}</div>

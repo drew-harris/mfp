@@ -22,6 +22,7 @@ const createDataMutation = gql`
 
 //returns JSON object
 export const pullMFPData = async (userID: string) => {
+  console.log("pulling data");
   const loggedInClient = new GraphQLClient(endpoint, {
     headers: { Authorization: password },
   });
@@ -33,9 +34,10 @@ export const pullMFPData = async (userID: string) => {
     getUserDataQuery,
     queryVariables
   )) as any;
+  console.log(data);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dummy = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
-  if (dummy.data.MFP) {
+  if (dummy?.data?.MFP) {
     console.log("User has MFP data!");
     console.log(dummy.data.MFP);
     return dummy.data.MFP.MFP.MFPData;
@@ -62,6 +64,10 @@ export const pushMFPData = async (
   )) as any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const userData: any = JSON.parse(test.getUserData);
+  console.log("USERDATA:", userData);
+  if (!userData.data) {
+    userData.data = {};
+  }
   userData.data.MFP = { MFP: { MFPData } };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mutationVariables: any = {
@@ -69,5 +75,9 @@ export const pushMFPData = async (
     key: key,
     data: JSON.stringify(userData.data),
   };
-  await loggedInClient.request(createDataMutation, mutationVariables);
+  try {
+    await loggedInClient.request(createDataMutation, mutationVariables);
+  } catch (error) {
+    console.log(error);
+  }
 };
