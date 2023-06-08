@@ -152,7 +152,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
         }
       }),
     });
-
     get().updateEdgeSpeeds();
   },
 

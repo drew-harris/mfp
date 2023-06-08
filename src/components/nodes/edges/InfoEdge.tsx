@@ -70,9 +70,6 @@ function CustomEdge(props: EdgeProps) {
         height={foreignObjectSize}
         x={labelX - foreignObjectSize / 2}
         y={labelY - foreignObjectSize / 2}
-        style={{
-          border: "1px solid red",
-        }}
         className="edgebutton-foreignobject"
         startOffset={"15%"}
         requiredExtensions="http://www.w3.org/1999/xhtml"

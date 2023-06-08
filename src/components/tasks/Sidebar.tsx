@@ -1,14 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { allMissions } from "../../hardcoded/missions";
+import { useUserStore } from "../../stores/userStore";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
-import { MCNodeType } from "../../types/MCNodes";
 import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
 import { SidebarTaskChecks } from "./SidebarTaskChecks";
+import { useSearchParams } from "react-router-dom";
 
 export const Sidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -21,22 +22,22 @@ export const Sidebar = () => {
 
   const data = useContext(TaskCompleteContext);
 
-  const possibleOrderNode = useNodeStore((state) =>
-    state.nodes.find((n) => n.data.dataType === MCNodeType.order)
-  );
+  // const possibleOrderNode = useNodeStore((state) =>
+  //   state.nodes.find((n) => n.data.dataType === MCNodeType.order)
+  // );
 
-  useEffect(() => {
-    if (
-      possibleOrderNode?.data.dataType === MCNodeType.order &&
-      possibleOrderNode.data.task
-    ) {
-      const task = possibleOrderNode.data.task;
-      const possibleMission = findMissionFromTask(task);
-      if (possibleMission) {
-        beginMission(possibleMission);
-      }
-    }
-  }, [possibleOrderNode, beginMission]);
+  // useEffect(() => {
+  //   if (
+  //     possibleOrderNode?.data.dataType === MCNodeType.order &&
+  //     possibleOrderNode.data.task
+  //   ) {
+  //     const task = possibleOrderNode.data.task;
+  //     const possibleMission = findMissionFromTask(task);
+  //     if (possibleMission) {
+  //       beginMission(possibleMission);
+  //     }
+  //   }
+  // }, [possibleOrderNode, beginMission]);
 
   const clearTask = () => {
     cancelMission();
@@ -76,6 +77,7 @@ export const Sidebar = () => {
             </div>
           ))}
         </div>
+        <IdDebugView />
       </div>
     );
   } else {
@@ -91,6 +93,7 @@ export const Sidebar = () => {
             />
           ))}
         </div>
+        <IdDebugView />
       </div>
     );
   }
@@ -126,7 +129,6 @@ const SideTaskView = ({ task, clearTask }: SideTaskViewProperties) => {
       <div className="text-center text-mc-700">{task.description}</div>
       <SidebarTaskChecks task={task} />
       <DroppableOrder task={task} />
-      {/* Need to return continue  button here */}
     </div>
   );
 };
@@ -143,6 +145,17 @@ const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
       className="outset-4 mt-3 cursor-pointer bg-mc-200 p-4"
     >
       <div className="font-bold">{mission.title}</div>
+    </div>
+  );
+};
+
+const IdDebugView = () => {
+  const id = useUserStore((s) => s.id);
+  const [searchParams, setSearchParams] = useSearchParams();
+  return (
+    <div className="absolute bottom-2 right-2 text-black/20">
+      <div>{id}</div>
+      <div>{searchParams.get("assignment")}</div>
     </div>
   );
 };

@@ -4,7 +4,7 @@
 
 @layer components {
   .debug {
-    @apply border border-red-500;
+    @apply outline outline-red-500;
   }
 
   .button {

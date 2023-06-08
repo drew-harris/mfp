@@ -94,7 +94,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-resource-desc",
         title: "Resource Node",
         description:
-          "This is a resource node, it represents an infinite supply of a basic item needed for crafting. You can adjust how many are being output by entering in an amount // MAKE EDITIBLE",
+          "This is a resource node, it represents an infinite supply of a basic item needed for crafting. You can adjust how many are being output by entering in an amount",
         idPool: ["item.minecraft:diamond"],
         continuation: true,
       },
@@ -151,7 +151,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-recipe-connect",
         title: "Crafting Node",
         description:
-          "Connect the resource node to the crafter by dragging the circle to create a path. (reword probably)",
+          "Connect the resource node to the crafter by dragging the circle to create a path.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(
@@ -210,7 +210,7 @@ export const allMissions: Mission[] = [
       {
         id: "tutorial-splitter-crafter",
         title: "Splitter Node",
-        description: "Drag the cobblestone crafter to the canvas. ",
+        description: "Drag the cobblestone slab crafter to the canvas. ",
         idPool: [
           "minecraft:furnace",
           "minecraft:cobblestone",
@@ -230,7 +230,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-connect",
         title: "Splitter Node",
         description:
-          "Connect the resouce node to the lefthand side inputs of the splitter node and connect the right side of the splitter nodes to the two inputs",
+          'You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For example, "AAB" will allocate twice as many materials to the first output than the second. Enter a splitting pattern and connect all 4 nodes.',
         idPool: [
           "minecraft:furnace",
           "minecraft:cobblestone",
@@ -239,18 +239,6 @@ export const allMissions: Mission[] = [
         stateRequirement(state) {
           return state.edges.length === 3;
         },
-      },
-      {
-        id: "tutorial-splitter-connect",
-        title: "Splitter Node",
-        description:
-          "You can use the slider on the splitter node to adjust the ratio of items that the outputs recieve.",
-        idPool: [
-          "minecraft:furnace",
-          "minecraft:cobblestone",
-          "minecraft:cobblestone_slab",
-        ],
-        continuation: true,
       },
       {
         id: "tutorial-splitter-finish",
