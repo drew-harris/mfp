@@ -38,7 +38,6 @@ export default function ItemPicker() {
   return (
     <>
       <div className="sticky top-0 z-50 mb-2 flex items-center justify-between border-2 border-b-mc-600 bg-mc-200 p-2">
-        {/* TODO: Make input sticky */}
         <input
           className="inset bg-mc-300 p-1 text-white placeholder:text-mc-100"
           placeholder="Search for items..."
@@ -55,7 +54,6 @@ export default function ItemPicker() {
 
       {/* BUG:  Not sure why 1vh works */}
       <div className="z-40 grid max-h-[1vh] grid-cols-6 gap-2 px-2">
-        {/* <DraggableInfoSquare /> */}
         <DraggableSplitter />
         {filteredItems.map((item) => (
           <DraggableItem item={item} key={item.itemId + item.dataType} />

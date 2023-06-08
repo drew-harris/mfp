@@ -7,7 +7,6 @@ import { useNodeStore } from "../../stores/nodes";
 export const MenuBar = () => {
   const instance = useReactFlow();
   const id = useUserStore((s) => s.id);
-  // const id = useUserStore((s) => s.id);
   const [infoMode, toggleInfo] = useNodeStore((r) => [
     r.infoModeEnabled,
     r.toggleInfoMode,
