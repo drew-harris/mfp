@@ -17,7 +17,7 @@ export const LoginPage = () => {
         placeholder="Enter your id"
       />
       <button
-        className="outset mc-background mt-2 block w-full max-w-sm bg-mc-100 p-3"
+        className="outset mt-2 block w-full max-w-sm bg-mc-100 p-3"
         onClick={() => updateId(input)}
       >
         Submit

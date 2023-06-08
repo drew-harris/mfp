@@ -12,6 +12,7 @@ export const MenuBar = () => {
     r.toggleInfoMode,
   ]);
 
+  // This is a test comment
   const save = async () => {
     const copy = instance.toObject();
     await pushMFPData(id, copy);
