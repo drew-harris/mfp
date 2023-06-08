@@ -9,6 +9,7 @@ import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
 import { SidebarTaskChecks } from "./SidebarTaskChecks";
+import { useSearchParams } from "react-router-dom";
 
 export const Sidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -150,5 +151,11 @@ const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
 
 const IdDebugView = () => {
   const id = useUserStore((s) => s.id);
-  return <div className="absolute bottom-2 right-2 text-black/20">{id}</div>;
+  const [searchParams, setSearchParams] = useSearchParams();
+  return (
+    <div className="absolute bottom-2 right-2 text-black/20">
+      <div>{id}</div>
+      <div>{searchParams.get("assignment")}</div>
+    </div>
+  );
 };
