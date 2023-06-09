@@ -119,7 +119,6 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
     <div className="p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
-      <SidebarTaskChecks task={task} />
       <DroppableOrder task={task} />
     </div>
   );
