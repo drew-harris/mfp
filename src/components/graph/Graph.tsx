@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { AxisOptions, Chart } from "react-charts";
+import { itemFromId } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
@@ -28,21 +29,38 @@ type Datum = {
 
 const hours = [0, 1, 2, 3, 4, 5];
 
-function GraphDetails({ orderNodeId }: GraphDetailsProps) {
+function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
   const incomingEdges = useNodeStore((s) =>
     s.edges.filter((e) => e.target === orderNodeId)
   );
 
-  const data = incomingEdges.map((e) => ({
-    label: e.data.item.title,
-    data: hours.map(
-      (hour) =>
-        ({
-          hour: hour,
-          rate: e.data.outputRate * hour,
-        } as Datum)
-    ),
-  }));
+  const data = useMemo(() => {
+    return task.itemRequirements.map((r) => {
+      const matchedEdge = incomingEdges.find(
+        (e) => e.data.item.itemId === r.itemId
+      );
+      if (matchedEdge) {
+        return {
+          label: matchedEdge.data.item.title,
+          data: hours.map(
+            (hour) =>
+              ({
+                hour: hour,
+                rate: matchedEdge.data.outputRate * hour,
+              } as Datum)
+          ),
+        };
+      } else {
+        return {
+          label: itemFromId(r.itemId).title,
+          data: hours.map((h) => ({
+            rate: 0,
+            hour: h,
+          })),
+        };
+      }
+    });
+  }, [incomingEdges, task]);
 
   const primaryAxis = useMemo(
     (): AxisOptions<Datum> => ({
