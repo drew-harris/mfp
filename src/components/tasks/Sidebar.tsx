@@ -1,15 +1,12 @@
 import { useContext } from "react";
-import { useSearchParams } from "react-router-dom";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
-import { useUserStore } from "../../stores/userStore";
 import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
-import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
 export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -72,7 +69,6 @@ export const TaskSidebar = () => {
             </div>
           ))}
         </div>
-        <IdDebugView />
       </div>
     );
   } else {
@@ -88,7 +84,6 @@ export const TaskSidebar = () => {
             />
           ))}
         </div>
-        <IdDebugView />
       </div>
     );
   }
@@ -139,13 +134,13 @@ const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
   );
 };
 
-const IdDebugView = () => {
-  const id = useUserStore((s) => s.id);
-  const [searchParams] = useSearchParams();
-  return (
-    <div className="absolute bottom-2 right-2 text-black/20">
-      <div>{id}</div>
-      <div>{searchParams.get("assignment")}</div>
-    </div>
-  );
-};
+// const IdDebugView = () => {
+//   const id = useUserStore((s) => s.id);
+//   const [searchParams] = useSearchParams();
+//   return (
+//     <div className="absolute bottom-2 right-2 text-black/20">
+//       <div>{id}</div>
+//       <div>{searchParams.get("assignment")}</div>
+//     </div>
+//   );
+// };
