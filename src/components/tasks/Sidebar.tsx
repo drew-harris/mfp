@@ -11,7 +11,7 @@ import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
 import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
-export const Sidebar = () => {
+export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
   const currentMission = useObjectiveStore((s) => s.currentMission);
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
@@ -20,7 +20,6 @@ export const Sidebar = () => {
   const nextTask = useObjectiveStore((s) => s.nextTask);
   const previousTask = useObjectiveStore((s) => s.previousTask);
   const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
-
   const hasNextTask = useHasNextStep();
 
   const data = useContext(TaskCompleteContext);

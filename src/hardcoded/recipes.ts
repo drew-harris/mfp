@@ -2,4 +2,6 @@ import { Recipe } from "../types/MCNodes";
 
 import recipes from "./recipes.json";
 
-export const allRecipes = recipes as Recipe[];
+const recipies = recipes as Recipe[];
+
+export const allRecipes = recipies.filter((r) => r.inputs.length > 0);

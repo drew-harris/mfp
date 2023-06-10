@@ -7,17 +7,18 @@ import {
   DragStartEvent,
 } from "@dnd-kit/core";
 import { useState } from "react";
+import SplitPane from "react-split-pane";
 import { useReactFlow } from "reactflow";
 import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
 import DraggableSplitter from "./components/DraggableSplitter";
-import { Sidebar } from "./components/tasks/Sidebar";
+import Graph from "./components/graph/Graph";
+import ItemPicker from "./components/nodePicker/ItemPicker";
+import { TaskSidebar } from "./components/tasks/Sidebar";
 import { useNodeStore } from "./stores/nodes";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
-import ItemPicker from "./components/nodePicker/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
-import SplitPane from "react-split-pane";
 
 function FactoryPlanner() {
   const [active, setActive] = useState<Active | null>(null);
@@ -101,8 +102,9 @@ function FactoryPlanner() {
               <ItemPicker />
             </div>
           </SplitPane>
-          <div className="outset-4 relative row-span-2 h-full border-4 bg-mc-300">
-            <Sidebar />
+          <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
+            <TaskSidebar />
+            <Graph />
           </div>
         </SplitPane>
       </div>
