@@ -26469,7 +26469,7 @@
     "outputItemId": "item.minecraft:iron_ingot",
     "inputs": [
       {
-        "amount": 1,
+        "amount": 9,
         "itemId": "item.minecraft:iron_nugget"
       }
     ]
