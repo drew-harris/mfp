@@ -98,7 +98,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
             <CrafterInput input={input} key={input.itemId} />
           ))}
         </div>
-        <FontAwesomeIcon icon={faArrowRight} />
+        <FontAwesomeIcon className="ml-4" icon={faArrowRight} />
         <div className="flex items-center gap-3 pl-3">
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-3">
