@@ -26635,16 +26635,6 @@
     ]
   },
   {
-    "outputAmount": 1,
-    "outputItemId": "item.minecraft:iron_ingot",
-    "inputs": [
-      {
-        "amount": 9,
-        "itemId": "item.minecraft:iron_nugget"
-      }
-    ]
-  },
-  {
     "outputAmount": 9,
     "outputItemId": "item.minecraft:iron_ingot",
     "inputs": [
