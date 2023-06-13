@@ -187,7 +187,7 @@ export const allMissions: Mission[] = [
             itemId: "minecraft:furnace",
           },
           {
-            perHour: 1,
+            perHour: 8,
             itemId: "minecraft:cobblestone_slab",
           },
         ],
