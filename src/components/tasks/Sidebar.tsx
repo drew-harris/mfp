@@ -36,16 +36,22 @@ export const TaskSidebar = () => {
     cancelMission();
     removeOrder();
   };
-
   const NextButton = () => {
     if (!data.taskComplete) return null;
     if (hasNextTask) {
       return (
         <div className="flex gap-2">
-          {hasPreviousTask() && (
+          {hasPreviousTask() && currentMission.id === "tutorial" && (
             <Button onClick={() => previousTask()}>Back</Button>
           )}
-          <Button onClick={() => nextTask()}>Next</Button>
+          <Button
+            onClick={() => {
+              nextTask();
+              removeOrder();
+            }}
+          >
+            Next
+          </Button>
         </div>
       );
     } else {
