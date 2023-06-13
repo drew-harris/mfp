@@ -1478,42 +1478,82 @@
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:jungle_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": "minecraft:jungle_planks"
+      }
+    ]
   },
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:acacia_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": "minecraft:acacia_planks"
+      }
+    ]
   },
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:birch_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": "minecraft:birch_planks"
+      }
+    ]
   },
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:dark_oak_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": "minecraft:dark_oak_log"
+      }
+    ]
   },
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:oak_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": "minecraft:oak_planks"
+      }
+    ]
   },
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:spruce_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": "minecraft:spruce_planks"
+      }
+    ]
   },
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:crimson_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": "minecraft:crimson_planks"
+      }
+    ]
   },
   {
     "outputAmount": 4,
     "outputItemId": "minecraft:warped_stairs",
-    "inputs": []
+    "inputs": [
+      {
+        "amount": 6,
+        "itemId": ""
+      }
+    ]
   },
   {
     "outputAmount": 4,

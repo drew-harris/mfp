@@ -13,9 +13,9 @@ export const resourceItems: MCPickerItem[] = items
     };
   })
   .filter((item): boolean => {
-    if (item.title.includes("Wood")) {
-      return true;
-    }
+    // if (item.title.includes("Wood")) {
+    //   return true;
+    // }
     return !allRecipes.some((r) => r.outputItemId === item.itemId);
   }) as MCPickerItem[];
 

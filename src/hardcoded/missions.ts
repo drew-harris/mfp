@@ -268,23 +268,66 @@ export const allMissions: Mission[] = [
     ],
   },
 
-  // {
-  //   title: "Create Furnaces (Demo Task)",
-  //   tasks: [
-  //     {
-  //       title: "Create Furnaces",
-  //       description:
-  //         "We need furnaces! We need at least 8 new furnaces per hour.",
-  //       id: "test-1",
-  //       itemRequirements: [
-  //         {
-  //           itemId: "minecraft:furnace",
-  //           perHour: 8,
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+  {
+    title: "Unit 2, Lesson 3",
+    id: "u2l3",
+    tasks: [
+      {
+        id: "u2l3-o1",
+        title: "First Order",
+        itemRequirements: [
+          {
+            itemId: "minecraft:crafting_table",
+            perHour: 5,
+          },
+          {
+            itemId: "minecraft:oak_fence",
+            perHour: 42,
+          },
+          {
+            itemId: "minecraft:fence_gate",
+            perHour: 10,
+          },
+          {
+            itemId: "item.minecraft:oak_sign",
+            perHour: 12,
+          },
+        ],
+      },
+      {
+        id: "u2l3-o2",
+        title: "Second Order",
+        itemRequirements: [
+          {
+            itemId: "item.minecraft:wooden_pickaxe",
+            perHour: 20,
+          },
+          {
+            itemId: "minecraft:torch",
+            perHour: 20,
+          },
+          {
+            itemId: "minecraft:chest",
+            perHour: 5,
+          },
+        ],
+      },
+      {
+        id: "u2l3-o3",
+        title: "Third Order",
+        itemRequirements: [
+          {
+            itemId: "minecraft:oak_stairs",
+            perHour: 12,
+          },
+          {
+            itemId: "minecraft:ladder",
+            perHour: 24,
+          },
+        ],
+      },
+    ],
+  },
 
   // {
   //   title: "Enchantment Setup (Demo Task)",
