@@ -5,6 +5,7 @@ export const allMissions: Mission[] = [
   {
     id: "tutorial",
     title: "Tutorial",
+    completeMessage: "Well done! You completed the Tutorial",
     tasks: [
       {
         id: "tutorial-resource",

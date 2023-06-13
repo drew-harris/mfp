@@ -52,7 +52,10 @@ export const TaskSidebar = () => {
       return (
         <Button
           className="mx-auto"
-          onClick={() => alert("Assignment Submitted!")}
+          onClick={() => {
+            alert(currentMission.completeMessage ?? "Assignment Submitted!");
+            cancelMission();
+          }}
         >
           Submit
         </Button>
