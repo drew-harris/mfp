@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useUpdateNodeInternals } from "reactflow";
 import { useSetNodeData } from "../../hooks/useSetNodeData";
 import { useNodeStore } from "../../stores/nodes";
 import { MCSplitterNode } from "../../types/MCNodes";
@@ -11,8 +12,25 @@ interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
+export function getRatioFromInputString(input: string): number[] {
+  input = input.toLowerCase().replaceAll(" ", "");
+  const map = new Map();
+  // eslint-disable-next-line unicorn/prefer-spread
+  for (const c of input.split("")) {
+    if (map.has(c)) {
+      map.set(c, map.get(c) + 1);
+    } else {
+      map.set(c, 1);
+    }
+  }
+  const total = input.length;
+  const ratios = [...map.values()].map((v) => v / total);
+  return ratios;
+}
+
 export default function SplitterNode({ data }: SplitterNodeProps) {
   const setData = useSetNodeData<MCSplitterNode>(data.id);
+  const updateNodeInternals = useUpdateNodeInternals();
 
   const incomingEdge = useNodeStore(
     (s) => s.edges.find((e) => e?.target === data.id),
@@ -26,18 +44,23 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   const setEdgeData = useNodeStore((s) => s.setEdgeData);
   const removeEdge = useNodeStore((s) => s.removeEdgeById);
 
-  const updateRatio = (ratio: number) => {
-    console.log("updating ratio", ratio);
-    setData({ ratio: ratio / 16 });
+  const updateString = (s: string) => {
+    setData({ splitString: s });
   };
+
+  // Handle string changes into ratios
+  useEffect(() => {
+    const ratios = getRatioFromInputString(data.splitString);
+    setData({ ratios });
+    updateNodeInternals(data.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.splitString]);
 
   useEffect(() => {
     for (const [i, outgoingEdge] of outgoingEdges.entries()) {
       if (incomingEdge) {
         setEdgeData(outgoingEdge.id, {
-          outputRate:
-            (incomingEdge.data.outputRate || 0) *
-            (i === 0 ? data.ratio : 1 - data.ratio),
+          outputRate: data.ratios[i] * incomingEdge.data.outputRate,
           item: incomingEdge.data.item,
         });
       } else {
@@ -45,7 +68,13 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [incomingEdge, data.ratio, removeEdge, setEdgeData, outgoingEdges.length]);
+  }, [
+    incomingEdge,
+    data.ratios,
+    removeEdge,
+    setEdgeData,
+    outgoingEdges.length,
+  ]);
 
   useEffect(() => {
     if (incomingEdge) {
@@ -60,26 +89,20 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
     <BaseNode
       data={data}
       leftSideNodes={<SideHandle type="target" />}
-      rightSideNodes={
-        <>
-          <div className="mt-4 flex items-center gap-3 text-xs">
-            {incomingEdge?.data && (
-              <div className="text-black">
-                {Math.round(incomingEdge.data.outputRate * data.ratio)}
-              </div>
-            )}
-            <SideHandle type="source" id="output-0" />
-          </div>
-          <div className="mb-3 flex items-center gap-3 text-xs">
-            {incomingEdge?.data && (
-              <div className="text-black">
-                {Math.round(incomingEdge.data.outputRate * (1 - data.ratio))}
-              </div>
-            )}
-            <SideHandle label="te" type="source" id="output-1" />
-          </div>
-        </>
-      }
+      rightSideNodes={data.ratios.map((_, i) => {
+        const uniqueString = [...new Set(data.splitString)].join("");
+        return (
+          <SideHandle
+            className={
+              i >= outgoingEdges.length ? "border-black bg-red-500" : null
+            }
+            key={i}
+            type="source"
+            id={`output-${i}`}
+            label={uniqueString[i]}
+          />
+        );
+      })}
     >
       {incomingEdge?.data && (
         <SpriteDisplay
@@ -88,14 +111,11 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
         />
       )}
       <input
-        onChange={(e) => {
-          updateRatio(Number.parseFloat(e.target.value));
-        }}
-        className="nodrag"
-        type="range"
-        min={0}
-        max={16}
-        value={data.ratio * 16}
+        type="text"
+        placeholder="Enter Splitting Pattern..."
+        className="rounded-xl border border-black bg-gray-300 px-5 py-1 text-xs text-black placeholder:text-gray-400"
+        value={data.splitString}
+        onChange={(e) => updateString(e.target.value.toUpperCase())}
       />
     </BaseNode>
   );

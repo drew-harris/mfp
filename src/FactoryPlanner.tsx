@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   Active,
   DndContext,
@@ -6,15 +7,17 @@ import {
   DragStartEvent,
 } from "@dnd-kit/core";
 import { useState } from "react";
+import SplitPane from "react-split-pane";
 import { useReactFlow } from "reactflow";
 import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
 import DraggableSplitter from "./components/DraggableSplitter";
-import { Sidebar } from "./components/tasks/Sidebar";
+import Graph from "./components/graph/Graph";
+import ItemPicker from "./components/nodePicker/ItemPicker";
+import { TaskSidebar } from "./components/tasks/Sidebar";
 import { useNodeStore } from "./stores/nodes";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
-import ItemPicker from "./components/nodePicker/ItemPicker";
 import NodeCanvas from "./views/NodeCanvas";
 
 function FactoryPlanner() {
@@ -63,21 +66,49 @@ function FactoryPlanner() {
     }
   }
 
+  const screenHeight = window.innerHeight;
+  const screenWidth = window.innerWidth;
+
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      <div className="flex h-[100vh] max-h-screen flex-col pt-2">
-        <div className="grid flex-grow grid-cols-[2fr_2fr_1.3fr] grid-rows-[1.8fr_1fr] gap-2 pr-2 pb-2 pl-2">
-          <div className="outset-4 col-span-2 border-4 bg-mc-300">
-            <NodeCanvas />
+      <div className="relative h-[100vh]">
+        {/*@ts-ignore*/}
+        <SplitPane
+          resizerStyle={{
+            border: "2px solid #5d5d5d",
+            cursor: "col-resize",
+          }}
+          split="vertical"
+          primary="second"
+          minSize={300}
+          maxSize={screenWidth * 0.5}
+          defaultSize={"20%"}
+        >
+          {/*@ts-ignore*/}
+          <SplitPane
+            split="horizontal"
+            resizerStyle={{
+              border: "2px solid #5d5d5d",
+              cursor: "row-resize",
+            }}
+            defaultSize={screenHeight * 0.7}
+            minSize={200}
+            maxSize={screenHeight * 0.9}
+          >
+            <div className="outset-4 col-span-2 h-full w-full border-4 bg-mc-300">
+              <NodeCanvas />
+            </div>
+            <div className="outset-4 col-span-2 h-full overflow-y-scroll border-4 bg-mc-300">
+              <ItemPicker />
+            </div>
+          </SplitPane>
+          <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
+            <TaskSidebar />
+            <Graph />
           </div>
-          <div className="outset-4 row-span-2 border-4 bg-mc-300">
-            <Sidebar />
-          </div>
-          <div className="outset-4 col-span-2 overflow-y-scroll border-4 bg-mc-300">
-            <ItemPicker />
-          </div>
-        </div>
+        </SplitPane>
       </div>
+
       <DragOverlay dropAnimation={null}>{draggedItem}</DragOverlay>
     </DndContext>
   );

@@ -26,3 +26,5 @@ dist-ssr
 **/public/item_images**
 
 **/cache.json
+
+notes.md

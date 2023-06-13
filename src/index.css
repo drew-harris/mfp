@@ -4,7 +4,7 @@
 
 @layer components {
   .debug {
-    @apply border border-red-500;
+    @apply outline outline-red-500;
   }
 
   .button {
@@ -36,13 +36,6 @@ body {
   /* background-color: #d6d6d6; */
   /* background-color: #6b6b6b; */
   background-color: #525252;
-}
-
-.mc-background {
-  background-image: url("/Background.png");
-  /* background-size: 80% 80%; */
-  background-repeat: repeat;
-  background-blend-mode: multiply;
 }
 
 html,

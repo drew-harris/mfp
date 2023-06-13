@@ -26,7 +26,8 @@ export interface MCResourceNode extends MCBaseNode {
 
 export interface MCSplitterNode extends MCBaseNode {
   item?: MCItem;
-  ratio: number;
+  ratios: number[];
+  splitString: string;
   dataType: MCNodeType.splitter;
 }
 

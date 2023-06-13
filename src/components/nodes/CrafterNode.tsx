@@ -92,16 +92,19 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         selectedRecipe={selectedRecipe}
         setSelectedRecipe={setSelectedRecipe}
       />
-      <div className="flex items-center gap-3">
+      <div className="flex  items-center gap-3">
         <div>
           {selectedRecipe.inputs.map((input) => (
             <CrafterInput input={input} key={input.itemId} />
           ))}
         </div>
-        <FontAwesomeIcon icon={faArrowRight} />
+        <FontAwesomeIcon className="ml-4" icon={faArrowRight} />
         <div className="flex items-center gap-3 pl-3">
           <div className="flex flex-col items-center">
-            <SpriteDisplay url={data.item.imageUrl} />
+            <div className="flex items-center gap-3">
+              <SpriteDisplay url={data.item.imageUrl} />
+              <div>x {selectedRecipe.outputAmount}</div>
+            </div>
             <div className="text-xs text-gray-500">{data.item.title}</div>
           </div>
           <Handle

@@ -21,8 +21,8 @@ describe("Finds the correct mission based on a task", () => {
 
   it("does not return tasks if multiple missions match", () => {
     const missions: Mission[] = [
-      { title: "Mission 1", tasks: [{ id: "tut-1" }] },
-      { title: "Mission 2", tasks: [{ id: "tut-1" }] },
+      { title: "Mission 1", id: "m1", tasks: [{ id: "tut-1" }] },
+      { title: "Mission 2", id: "m2", tasks: [{ id: "tut-1" }] },
     ];
     const matchedMission = findMissionFromTask(missions[0].tasks[0], missions);
 

@@ -3,76 +3,7 @@ import { Mission } from "../types/tasks";
 
 export const allMissions: Mission[] = [
   {
-    title: "Unit 1, Lesson 2",
-    tasks: [
-      {
-        id: "u1l2-planks",
-        description: "Produce 8 oak planks per hour",
-        itemRequirements: [
-          {
-            itemId: "minecraft:oak_planks",
-            perHour: 8,
-          },
-        ],
-      },
-      {
-        id: "u1l2-sticks",
-        description: "Produce 32 sticks per hour",
-        itemRequirements: [
-          {
-            itemId: "item.minecraft:stick",
-            perHour: 32,
-          },
-        ],
-      },
-      {
-        id: "u1l2-diamond-axe",
-        description: "Produce a diamond axe",
-        itemRequirements: [
-          {
-            itemId: "item.minecraft:diamond_axe",
-            perHour: 1,
-          },
-        ],
-      },
-      {
-        id: "u1l2-chest",
-        description: "Produce 10 chests per hour",
-        itemRequirements: [
-          {
-            itemId: "minecraft:chest",
-            perHour: 10,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Unit 1, Lesson 7",
-    tasks: [
-      {
-        id: "u1l7-planks",
-        description: "Produce 10 iron picks per hour",
-        itemRequirements: [
-          {
-            itemId: "item.minecraft:iron_pickaxe",
-            perHour: 10,
-          },
-        ],
-      },
-      {
-        id: "u1l7-sticks",
-        description: "Produce 1 furnace",
-        itemRequirements: [
-          {
-            itemId: "minecraft:furnace",
-            perHour: 1,
-          },
-        ],
-      },
-    ],
-  },
-  {
+    id: "tutorial",
     title: "Tutorial",
     tasks: [
       {
@@ -210,7 +141,7 @@ export const allMissions: Mission[] = [
       {
         id: "tutorial-splitter-crafter",
         title: "Splitter Node",
-        description: "Drag the cobblestone crafter to the canvas. ",
+        description: "Drag the cobblestone slab crafter to the canvas. ",
         idPool: [
           "minecraft:furnace",
           "minecraft:cobblestone",
@@ -230,7 +161,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-connect",
         title: "Splitter Node",
         description:
-          "Connect the resouce node to the lefthand side inputs of the splitter node and connect the right side of the splitter nodes to the two inputs",
+          'You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For example, "AAB" will allocate twice as many materials to the first output than the second. Enter a splitting pattern and connect all 4 nodes.',
         idPool: [
           "minecraft:furnace",
           "minecraft:cobblestone",
@@ -239,18 +170,6 @@ export const allMissions: Mission[] = [
         stateRequirement(state) {
           return state.edges.length === 3;
         },
-      },
-      {
-        id: "tutorial-splitter-connect",
-        title: "Splitter Node",
-        description:
-          "You can use the slider on the splitter node to adjust the ratio of items that the outputs recieve.",
-        idPool: [
-          "minecraft:furnace",
-          "minecraft:cobblestone",
-          "minecraft:cobblestone_slab",
-        ],
-        continuation: true,
       },
       {
         id: "tutorial-splitter-finish",
@@ -275,42 +194,114 @@ export const allMissions: Mission[] = [
       },
     ],
   },
-
   {
-    title: "Create Furnaces (Demo Task)",
+    title: "Unit 1, Lesson 2",
+    id: "u1l2",
     tasks: [
       {
-        title: "Create Furnaces",
-        description:
-          "We need furnaces! We need at least 8 new furnaces per hour.",
-        id: "test-1",
+        id: "u1l2-planks",
+        description: "Produce 8 oak planks per hour",
         itemRequirements: [
           {
-            itemId: "minecraft:furnace",
+            itemId: "minecraft:oak_planks",
             perHour: 8,
           },
         ],
       },
-    ],
-  },
-
-  {
-    title: "Enchantment Setup (Demo Task)",
-    tasks: [
       {
-        title: "Create Enchantment Table and Bookshelves",
-        id: "test-2",
+        id: "u1l2-sticks",
+        description: "Produce 32 sticks per hour",
         itemRequirements: [
           {
-            itemId: "minecraft:enchanting_table",
+            itemId: "item.minecraft:stick",
+            perHour: 32,
+          },
+        ],
+      },
+      {
+        id: "u1l2-diamond-axe",
+        description: "Produce a diamond axe",
+        itemRequirements: [
+          {
+            itemId: "item.minecraft:diamond_axe",
             perHour: 1,
           },
+        ],
+      },
+      {
+        id: "u1l2-chest",
+        description: "Produce 10 chests per hour",
+        itemRequirements: [
           {
-            itemId: "minecraft:bookshelf",
-            perHour: 4,
+            itemId: "minecraft:chest",
+            perHour: 10,
           },
         ],
       },
     ],
   },
+  {
+    title: "Unit 1, Lesson 7",
+    id: "u1l7",
+    tasks: [
+      {
+        id: "u1l7-planks",
+        description: "Produce 10 iron picks per hour",
+        itemRequirements: [
+          {
+            itemId: "item.minecraft:iron_pickaxe",
+            perHour: 10,
+          },
+        ],
+      },
+      {
+        id: "u1l7-sticks",
+        description: "Produce 1 furnace",
+        itemRequirements: [
+          {
+            itemId: "minecraft:furnace",
+            perHour: 1,
+          },
+        ],
+      },
+    ],
+  },
+
+  // {
+  //   title: "Create Furnaces (Demo Task)",
+  //   tasks: [
+  //     {
+  //       title: "Create Furnaces",
+  //       description:
+  //         "We need furnaces! We need at least 8 new furnaces per hour.",
+  //       id: "test-1",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "minecraft:furnace",
+  //           perHour: 8,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   title: "Enchantment Setup (Demo Task)",
+  //   tasks: [
+  //     {
+  //       title: "Create Enchantment Table and Bookshelves",
+  //       id: "test-2",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "minecraft:enchanting_table",
+  //           perHour: 1,
+  //         },
+  //         {
+  //           itemId: "minecraft:bookshelf",
+  //           perHour: 4,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];

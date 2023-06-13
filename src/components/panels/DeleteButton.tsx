@@ -50,7 +50,7 @@ export default function DeleteButton() {
   return (
     <div
       onClick={handleDelete}
-      className="debug outset-4 bg-mc-300 p-2 px-3  active:inset-4 "
+      className="outset-4 bg-mc-300 p-2 px-3  active:inset-4 "
     >
       <FontAwesomeIcon icon={faTrash} />
     </div>

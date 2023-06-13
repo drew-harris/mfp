@@ -1,4 +1,6 @@
-import { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
@@ -7,35 +9,28 @@ import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
-import { SidebarTaskChecks } from "./SidebarTaskChecks";
 
-export const Sidebar = () => {
+export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
+  const currentMission = useObjectiveStore((s) => s.currentMission);
   const removeOrder = useNodeStore((state) => state.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
   const nextTask = useObjectiveStore((s) => s.nextTask);
-
+  const previousTask = useObjectiveStore((s) => s.previousTask);
+  const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
   const hasNextTask = useHasNextStep();
 
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const missionId = searchParams.get("assignment");
+    if (missionId) {
+      beginMission(allMissions.find((m) => m.id === missionId));
+    }
+  }, [searchParams.get("assignment")]);
+
   const data = useContext(TaskCompleteContext);
-
-  // const possibleOrderNode = useNodeStore((state) =>
-  //   state.nodes.find((n) => n.data.dataType === MCNodeType.order)
-  // );
-
-  // useEffect(() => {
-  //   if (
-  //     possibleOrderNode?.data.dataType === MCNodeType.order &&
-  //     possibleOrderNode.data.task
-  //   ) {
-  //     const task = possibleOrderNode.data.task;
-  //     const possibleMission = findMissionFromTask(task);
-  //     if (possibleMission) {
-  //       beginMission(possibleMission);
-  //     }
-  //   }
-  // }, [possibleOrderNode, beginMission]);
 
   const clearTask = () => {
     cancelMission();
@@ -45,12 +40,19 @@ export const Sidebar = () => {
   const NextButton = () => {
     if (!data.taskComplete) return null;
     if (hasNextTask) {
-      return <Button onClick={() => nextTask()}>Next</Button>;
+      return (
+        <div className="flex gap-2">
+          {hasPreviousTask() && (
+            <Button onClick={() => previousTask()}>Back</Button>
+          )}
+          <Button onClick={() => nextTask()}>Next</Button>
+        </div>
+      );
     } else {
       return (
         <Button
           className="mx-auto"
-          onClick={() => alert("Assignment Submitted")}
+          onClick={() => alert("Assignment Submitted!")}
         >
           Submit
         </Button>
@@ -61,6 +63,9 @@ export const Sidebar = () => {
   if (currentTask) {
     return (
       <div className="flex flex-col items-center p-3">
+        <div className="mb-4 w-full text-left text-xl text-black/50">
+          {currentMission?.title}
+        </div>
         <SideTaskView clearTask={clearTask} task={currentTask} />
         {data.taskComplete && data.efficiency > 0 && (
           <div className="mb-4 text-center text-lg">
@@ -114,17 +119,12 @@ interface SideTaskViewProperties {
   clearTask: () => void;
 }
 
-const SideTaskView = ({ task, clearTask }: SideTaskViewProperties) => {
+const SideTaskView = ({ task }: SideTaskViewProperties) => {
   return (
     <div className="p-2">
-      <div className="mb-3 flex items-center justify-between">
-        <div className="text-lg font-bold">Current Task:</div>
-        <button onClick={clearTask}>Clear Task</button>
-      </div>
       <div className="text-center text-xl font-bold">{task.title}</div>
       <div className="text-center text-mc-700">{task.description}</div>
       <DroppableOrder task={task} />
-      {/* Need to return continue  button here */}
     </div>
   );
 };
@@ -144,3 +144,14 @@ const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
     </div>
   );
 };
+
+// const IdDebugView = () => {
+//   const id = useUserStore((s) => s.id);
+//   const [searchParams] = useSearchParams();
+//   return (
+//     <div className="absolute bottom-2 right-2 text-black/20">
+//       <div>{id}</div>
+//       <div>{searchParams.get("assignment")}</div>
+//     </div>
+//   );
+// };

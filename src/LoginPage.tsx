@@ -6,16 +6,18 @@ export const LoginPage = () => {
   const updateId = useUserStore((s) => s.setId);
 
   return (
-    <div className="flex h-[100vh] max-h-screen flex-col p-8">
-      <div>Login</div>
+    <div className="flex h-[100vh] max-h-screen flex-col items-center p-8">
+      <div className="mb-12 text-center text-3xl font-bold text-white">
+        Login
+      </div>
       <input
         value={input}
-        className="inset p-3"
+        className="inset block w-full max-w-sm p-3"
         onChange={(e) => setInput(e.target.value)}
         placeholder="Enter your id"
       />
       <button
-        className="outset mc-background mx-auto mt-8 max-w-xs bg-mc-100 p-3"
+        className="outset mt-2 block w-full max-w-sm bg-mc-100 p-3"
         onClick={() => updateId(input)}
       >
         Submit

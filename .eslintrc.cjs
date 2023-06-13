@@ -27,6 +27,7 @@ module.exports = {
     "no-unused-expressions": "warn",
     "no-implicit-coercion": "warn",
     "no-undefined": "error",
+    "no-unused-vars": "off", // Handled by ts
     "prefer-const": "error",
     "unicorn/filename-case": "off",
     "unicorn/no-null": "off",
