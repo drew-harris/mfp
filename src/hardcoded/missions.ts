@@ -329,21 +329,26 @@ export const allMissions: Mission[] = [
     ],
   },
 
-  {
-    title: "test",
-    id: "test",
-    tasks: [
-      {
-        id: "test-1",
-        itemRequirements: [
-          {
-            itemId: "item.minecraft:netherbrick",
-            perHour: 8,
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   title: "test",
+  //   id: "test",
+  //   tasks: [
+  //     {
+  //       id: "test-1",
+  //       title: "Create Nether Brick",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "item.minecraft:netherbrick",
+  //           perHour: 8,
+  //         },
+  //         {
+  //           itemId: "item.minecraft:quartz",
+  //           perHour: 8,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 
   // {
   //   title: "Enchantment Setup (Demo Task)",

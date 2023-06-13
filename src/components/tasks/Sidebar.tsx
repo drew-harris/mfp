@@ -71,9 +71,9 @@ export const TaskSidebar = () => {
         </div>
         <SideTaskView clearTask={clearTask} task={currentTask} />
         {data.taskComplete && data.efficiency > 0 && (
-          <div className="mb-4">
-            <div className="text-center text-lg">
-              Efficiency: {(Number(data.efficiency) * 100).toFixed(2)}%
+          <div className="mb-4 text-center">
+            <div className="text-lg">
+              Efficiency: {(data.efficiency * 100).toFixed(0)}%
             </div>
             {data.efficiency > 1 && (
               <div className="text-sm text-black/75">
