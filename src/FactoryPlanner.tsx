@@ -102,7 +102,7 @@ function FactoryPlanner() {
               <ItemPicker />
             </div>
           </SplitPane>
-          <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
+          <div className="outset-4 relative row-span-2 flex h-full flex-col border-4 bg-mc-300">
             <TaskSidebar />
             <Graph />
           </div>
