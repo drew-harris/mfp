@@ -1,4 +1,6 @@
-import { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
@@ -18,6 +20,15 @@ export const TaskSidebar = () => {
   const previousTask = useObjectiveStore((s) => s.previousTask);
   const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
   const hasNextTask = useHasNextStep();
+
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const missionId = searchParams.get("assignment");
+    if (missionId) {
+      beginMission(allMissions.find((m) => m.id === missionId));
+    }
+  }, [searchParams.get("assignment")]);
 
   const data = useContext(TaskCompleteContext);
 
