@@ -83,7 +83,6 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
       {
         getValue: (datum) => datum.rate,
         scaleType: "linear",
-        styles: {},
       },
     ],
     []
@@ -109,6 +108,9 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                 padding: 40,
                 tooltip: {
                   render: ({ focusedDatum, anchor }) => {
+                    if (!anchor.style.top) {
+                      return null;
+                    }
                     const item = itemFromId(
                       focusedDatum?.originalDatum.itemId || ""
                     );
@@ -127,7 +129,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                         <div className="text-sm">{item.title || "No Item"}</div>
                         <SpriteDisplay size={34} url={item.imageUrl} />
                         <div className="text-xs">
-                          {data?.rate || 0} after {data?.hour} hours
+                          {data?.rate || 0} produced after {data?.hour} seconds
                         </div>
                       </div>
                     );
@@ -137,6 +139,11 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                 data,
                 primaryAxis,
                 secondaryAxes,
+                getSeriesStyle: () => ({
+                  line: {
+                    strokeWidth: "4px",
+                  },
+                }),
               }}
             />
           </div>
