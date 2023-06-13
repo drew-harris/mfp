@@ -201,7 +201,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l2-planks",
-        description: "Produce 8 oak planks per hour",
+        description: "Produce 8 oak planks per second",
         itemRequirements: [
           {
             itemId: "minecraft:oak_planks",
@@ -211,7 +211,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-sticks",
-        description: "Produce 32 sticks per hour",
+        description: "Produce 32 sticks per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:stick",
@@ -231,7 +231,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-chest",
-        description: "Produce 10 chests per hour",
+        description: "Produce 10 chests per second",
         itemRequirements: [
           {
             itemId: "minecraft:chest",
@@ -247,7 +247,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l7-planks",
-        description: "Produce 10 iron picks per hour",
+        description: "Produce 10 iron picks per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:iron_pickaxe",
@@ -329,21 +329,21 @@ export const allMissions: Mission[] = [
     ],
   },
 
-  // {
-  //   title: "test",
-  //   id: "test",
-  //   tasks: [
-  //     {
-  //       id: "test-1",
-  //       itemRequirements: [
-  //         {
-  //           itemId: "item.minecraft:netherbrick",
-  //           perHour: 8,
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+  {
+    title: "test",
+    id: "test",
+    tasks: [
+      {
+        id: "test-1",
+        itemRequirements: [
+          {
+            itemId: "item.minecraft:netherbrick",
+            perHour: 8,
+          },
+        ],
+      },
+    ],
+  },
 
   // {
   //   title: "Enchantment Setup (Demo Task)",
