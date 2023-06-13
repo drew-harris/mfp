@@ -162,7 +162,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-connect",
         title: "Splitter Node",
         description:
-          'You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For example, "AAB" will allocate twice as many materials to the first output than the second. Enter a splitting pattern and connect all 4 nodes.',
+          'You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For example, "AAB" will allocate twice as many materials to the first output than the second. Enter a splitting pattern (AAB) on the splitter node and connect all 4 nodes.',
         idPool: [
           "minecraft:furnace",
           "minecraft:cobblestone",
@@ -328,6 +328,22 @@ export const allMissions: Mission[] = [
       },
     ],
   },
+
+  // {
+  //   title: "test",
+  //   id: "test",
+  //   tasks: [
+  //     {
+  //       id: "test-1",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "item.minecraft:netherbrick",
+  //           perHour: 8,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 
   // {
   //   title: "Enchantment Setup (Demo Task)",
