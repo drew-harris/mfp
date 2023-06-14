@@ -221,7 +221,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-diamond-axe",
-        description: "Produce a diamond axe",
+        description: "Produce 1 diamond axe per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:diamond_axe",
@@ -247,7 +247,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l7-planks",
-        description: "Produce 10 iron picks per second",
+        description: "Produce 10 iron pickaxes per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:iron_pickaxe",
