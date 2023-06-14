@@ -275,6 +275,8 @@ export const allMissions: Mission[] = [
       {
         id: "u2l3-o1",
         title: "First Order",
+        description:
+          "Produce 5 crafting tables, 42 oak fences, 10 fence gates, and 12 oak signs per second",
         itemRequirements: [
           {
             itemId: "minecraft:crafting_table",
@@ -297,6 +299,8 @@ export const allMissions: Mission[] = [
       {
         id: "u2l3-o2",
         title: "Second Order",
+        description:
+          "Produce 20 wooden pickaxes, 20 torches, and 5 chests per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:wooden_pickaxe",
@@ -315,6 +319,7 @@ export const allMissions: Mission[] = [
       {
         id: "u2l3-o3",
         title: "Third Order",
+        description: "Produce 12 oak stairs, and 24 ladders per second",
         itemRequirements: [
           {
             itemId: "minecraft:oak_stairs",
