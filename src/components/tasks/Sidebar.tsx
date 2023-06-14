@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
+import { useNotifications } from "../../stores/notifications";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
@@ -17,9 +18,12 @@ export const TaskSidebar = () => {
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
   const nextTask = useObjectiveStore((s) => s.nextTask);
+  const [completeNotificationSent, setCompleteNotificationSent] =
+    useState(false);
   const previousTask = useObjectiveStore((s) => s.previousTask);
   const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
   const hasNextTask = useHasNextStep();
+  const sendNotification = useNotifications((s) => s.sendNotification);
 
   const [searchParams] = useSearchParams();
 
@@ -36,6 +40,20 @@ export const TaskSidebar = () => {
     cancelMission();
     removeOrder();
   };
+
+  useEffect(() => {
+    if (data.taskComplete && !completeNotificationSent) {
+      setCompleteNotificationSent(true);
+      if (hasNextTask) {
+        sendNotification("Task Complete!");
+      } else {
+        sendNotification("Lesson Complete", "success");
+      }
+    } else {
+      setCompleteNotificationSent(false);
+    }
+  }, [data.taskComplete]);
+
   const NextButton = () => {
     if (!data.taskComplete) return null;
     if (hasNextTask) {

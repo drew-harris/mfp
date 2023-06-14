@@ -16,7 +16,7 @@ export function RequirementView({
         <SpriteDisplay url={item.imageUrl} />
         <div className="flex items-baseline gap-[2px]">
           <span>x {requirement.perHour}</span>
-          <span className="text-xs text-black/40">/s</span>
+          {/* <span className="text-xs text-black/40">/s</span> */}
         </div>
       </div>
     </div>
