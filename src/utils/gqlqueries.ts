@@ -21,13 +21,14 @@ const createDataMutation = gql`
   }
 `;
 
+const loggedInClient = new GraphQLClient(endpoint, {
+  headers: { Authorization: password },
+});
+
 //returns JSON object
 export const pullMFPData = async (userID: string) => {
   try {
     console.log("pulling data");
-    const loggedInClient = new GraphQLClient(endpoint, {
-      headers: { Authorization: password },
-    });
     const queryVariables = {
       userID,
       key,
@@ -55,9 +56,6 @@ export const pushMFPData = async (
   userID: string,
   MFPData: ReactFlowJsonObject
 ) => {
-  const loggedInClient = new GraphQLClient(endpoint, {
-    headers: { Authorization: password },
-  });
   try {
     const queryVariables = {
       userID,
