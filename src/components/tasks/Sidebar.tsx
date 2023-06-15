@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
+import { useNotifications } from "../../stores/notifications";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
@@ -17,9 +18,12 @@ export const TaskSidebar = () => {
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
   const nextTask = useObjectiveStore((s) => s.nextTask);
+  const [completeNotificationSent, setCompleteNotificationSent] =
+    useState(false);
   const previousTask = useObjectiveStore((s) => s.previousTask);
   const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
   const hasNextTask = useHasNextStep();
+  const sendNotification = useNotifications((s) => s.sendNotification);
 
   const [searchParams] = useSearchParams();
 
@@ -37,22 +41,45 @@ export const TaskSidebar = () => {
     removeOrder();
   };
 
+  useEffect(() => {
+    if (data.taskComplete && !completeNotificationSent) {
+      setCompleteNotificationSent(true);
+      if (hasNextTask) {
+        sendNotification("Task Complete!");
+      } else {
+        sendNotification("Lesson Complete", "success");
+      }
+    } else {
+      setCompleteNotificationSent(false);
+    }
+  }, [data.taskComplete]);
+
   const NextButton = () => {
     if (!data.taskComplete) return null;
     if (hasNextTask) {
       return (
         <div className="flex gap-2">
-          {hasPreviousTask() && (
+          {hasPreviousTask() && currentMission.id === "tutorial" && (
             <Button onClick={() => previousTask()}>Back</Button>
           )}
-          <Button onClick={() => nextTask()}>Next</Button>
+          <Button
+            onClick={() => {
+              nextTask();
+              removeOrder();
+            }}
+          >
+            Next
+          </Button>
         </div>
       );
     } else {
       return (
         <Button
           className="mx-auto"
-          onClick={() => alert("Assignment Submitted!")}
+          onClick={() => {
+            alert(currentMission.completeMessage ?? "Assignment Submitted!");
+            cancelMission();
+          }}
         >
           Submit
         </Button>
@@ -68,8 +95,20 @@ export const TaskSidebar = () => {
         </div>
         <SideTaskView clearTask={clearTask} task={currentTask} />
         {data.taskComplete && data.efficiency > 0 && (
-          <div className="mb-4 text-center text-lg">
-            Efficiency: {Number(data.efficiency.toFixed(2) || 0) * 100}%
+          <div className="mb-4 text-center">
+            <div className="text-lg">
+              Efficiency: {(data.efficiency * 100).toFixed(0)}%
+            </div>
+            {data.efficiency > 1 && (
+              <div className="text-sm text-black/75">
+                You are producing too much!
+              </div>
+            )}
+            {data.efficiency < 1 && (
+              <div className="text-sm text-black/75">
+                You are not producing enough!
+              </div>
+            )}
           </div>
         )}
         <NextButton />

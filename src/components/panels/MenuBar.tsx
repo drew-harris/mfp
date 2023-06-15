@@ -3,10 +3,12 @@ import { pullMFPData, pushMFPData } from "../../utils/gqlqueries";
 import { Button } from "../basic/Button";
 import { useUserStore } from "../..//stores/userStore";
 import { useNodeStore } from "../../stores/nodes";
+import { useNotifications } from "../../stores/notifications";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
   const id = useUserStore((s) => s.id);
+  const sendNotification = useNotifications((s) => s.sendNotification);
   const [infoMode, toggleInfo] = useNodeStore((r) => [
     r.infoModeEnabled,
     r.toggleInfoMode,
@@ -28,6 +30,8 @@ export const MenuBar = () => {
       instance.setNodes(data.nodes || []);
       instance.setEdges(data.edges || []);
       instance.setViewport({ x, y, zoom });
+    } else {
+      sendNotification("Could not find saved data", "error");
     }
   };
 

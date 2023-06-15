@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from "graphql-request";
 import { ReactFlowJsonObject } from "reactflow";
+import { useNotifications } from "../stores/notifications";
 
 //will need to encrypt and .env
 const endpoint =
@@ -22,26 +23,30 @@ const createDataMutation = gql`
 
 //returns JSON object
 export const pullMFPData = async (userID: string) => {
-  console.log("pulling data");
-  const loggedInClient = new GraphQLClient(endpoint, {
-    headers: { Authorization: password },
-  });
-  const queryVariables = {
-    userID,
-    key,
-  };
-  const data = (await loggedInClient.request(
-    getUserDataQuery,
-    queryVariables
-  )) as any;
-  console.log(data);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const dummy = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
-  if (dummy?.data?.MFP) {
-    console.log("User has MFP data!");
-    console.log(dummy.data.MFP);
-    return dummy.data.MFP.MFP.MFPData;
-  } else {
+  try {
+    console.log("pulling data");
+    const loggedInClient = new GraphQLClient(endpoint, {
+      headers: { Authorization: password },
+    });
+    const queryVariables = {
+      userID,
+      key,
+    };
+    const data = (await loggedInClient.request(
+      getUserDataQuery,
+      queryVariables
+    )) as any;
+    console.log(data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const dummy = JSON.parse(data.getUserData); //if this errors out on nvim, its not really an error
+    if (dummy?.data?.MFP) {
+      console.log("User has MFP data!");
+      console.log(dummy.data.MFP);
+      return dummy.data.MFP.MFP.MFPData;
+    } else {
+      return null;
+    }
+  } catch {
     return null;
   }
 };
@@ -53,31 +58,39 @@ export const pushMFPData = async (
   const loggedInClient = new GraphQLClient(endpoint, {
     headers: { Authorization: password },
   });
-  const queryVariables = {
-    userID,
-    key,
-  };
-  const test = (await loggedInClient.request(
-    getUserDataQuery,
-    queryVariables
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  )) as any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const userData: any = JSON.parse(test.getUserData);
-  console.log("USERDATA:", userData);
-  if (!userData.data) {
-    userData.data = {};
-  }
-  userData.data.MFP = { MFP: { MFPData } };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mutationVariables: any = {
-    userID: userID,
-    key: key,
-    data: JSON.stringify(userData.data),
-  };
   try {
-    await loggedInClient.request(createDataMutation, mutationVariables);
+    const queryVariables = {
+      userID,
+      key,
+    };
+    const test = (await loggedInClient.request(
+      getUserDataQuery,
+      queryVariables
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    )) as any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const userData: any = JSON.parse(test.getUserData);
+    console.log("USERDATA:", userData);
+    if (!userData.data) {
+      userData.data = {};
+    }
+    userData.data.MFP = { MFP: { MFPData } };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const mutationVariables: any = {
+      userID: userID,
+      key: key,
+      data: JSON.stringify(userData.data),
+    };
+    const response = (await loggedInClient.request(
+      createDataMutation,
+      mutationVariables
+    )) as any;
+    console.log("RESPONSE:", response);
+    if (response.createUserData === true) {
+      useNotifications.getState().sendNotification("Saved data!", "success");
+    }
   } catch (error) {
+    useNotifications.getState().sendError("Failed to save data!");
     console.log(error);
   }
 };

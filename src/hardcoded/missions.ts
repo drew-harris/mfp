@@ -5,6 +5,7 @@ export const allMissions: Mission[] = [
   {
     id: "tutorial",
     title: "Tutorial",
+    completeMessage: "Well done! You completed the Tutorial",
     tasks: [
       {
         id: "tutorial-resource",
@@ -161,7 +162,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-connect",
         title: "Splitter Node",
         description:
-          'You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For example, "AAB" will allocate twice as many materials to the first output than the second. Enter a splitting pattern and connect all 4 nodes.',
+          'You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For example, "AAB" will allocate twice as many materials to the first output than the second. Enter a splitting pattern (AAB) on the splitter node and connect all 4 nodes.',
         idPool: [
           "minecraft:furnace",
           "minecraft:cobblestone",
@@ -187,7 +188,7 @@ export const allMissions: Mission[] = [
             itemId: "minecraft:furnace",
           },
           {
-            perHour: 1,
+            perHour: 8,
             itemId: "minecraft:cobblestone_slab",
           },
         ],
@@ -200,7 +201,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l2-planks",
-        description: "Produce 8 oak planks per hour",
+        description: "Produce 8 oak planks per second",
         itemRequirements: [
           {
             itemId: "minecraft:oak_planks",
@@ -210,7 +211,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-sticks",
-        description: "Produce 32 sticks per hour",
+        description: "Produce 32 sticks per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:stick",
@@ -220,7 +221,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-diamond-axe",
-        description: "Produce a diamond axe",
+        description: "Produce 1 diamond axe per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:diamond_axe",
@@ -230,7 +231,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-chest",
-        description: "Produce 10 chests per hour",
+        description: "Produce 10 chests per second",
         itemRequirements: [
           {
             itemId: "minecraft:chest",
@@ -246,7 +247,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l7-planks",
-        description: "Produce 10 iron picks per hour",
+        description: "Produce 10 iron pickaxes per second",
         itemRequirements: [
           {
             itemId: "item.minecraft:iron_pickaxe",
@@ -267,19 +268,88 @@ export const allMissions: Mission[] = [
     ],
   },
 
+  {
+    title: "Unit 2, Lesson 3",
+    id: "u2l3",
+    tasks: [
+      {
+        id: "u2l3-o1",
+        title: "First Order",
+        description:
+          "Produce 5 crafting tables, 42 oak fences, 10 fence gates, and 12 oak signs per second",
+        itemRequirements: [
+          {
+            itemId: "minecraft:crafting_table",
+            perHour: 5,
+          },
+          {
+            itemId: "minecraft:oak_fence",
+            perHour: 42,
+          },
+          {
+            itemId: "minecraft:fence_gate",
+            perHour: 10,
+          },
+          {
+            itemId: "item.minecraft:oak_sign",
+            perHour: 12,
+          },
+        ],
+      },
+      {
+        id: "u2l3-o2",
+        title: "Second Order",
+        description:
+          "Produce 20 wooden pickaxes, 20 torches, and 5 chests per second",
+        itemRequirements: [
+          {
+            itemId: "item.minecraft:wooden_pickaxe",
+            perHour: 20,
+          },
+          {
+            itemId: "minecraft:torch",
+            perHour: 20,
+          },
+          {
+            itemId: "minecraft:chest",
+            perHour: 5,
+          },
+        ],
+      },
+      {
+        id: "u2l3-o3",
+        title: "Third Order",
+        description: "Produce 12 oak stairs, and 24 ladders per second",
+        itemRequirements: [
+          {
+            itemId: "minecraft:oak_stairs",
+            perHour: 12,
+          },
+          {
+            itemId: "minecraft:ladder",
+            perHour: 24,
+          },
+        ],
+      },
+    ],
+  },
+
   // {
-  //   title: "Create Furnaces (Demo Task)",
+  //   title: "test",
+  //   id: "test",
   //   tasks: [
   //     {
-  //       title: "Create Furnaces",
-  //       description:
-  //         "We need furnaces! We need at least 8 new furnaces per hour.",
   //       id: "test-1",
+  //       title: "Create Nether Brick",
   //       itemRequirements: [
   //         {
-  //           itemId: "minecraft:furnace",
+  //           itemId: "item.minecraft:netherbrick",
   //           perHour: 8,
   //         },
+  //         // {
+  //         //   itemId: "item.minecraft:quartz",
+  //         //   perHour: 8,
+  //         // },
   //       ],
   //     },
   //   ],

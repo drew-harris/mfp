@@ -5,6 +5,7 @@ export interface Mission {
   title: string;
   id: string;
   description?: string;
+  completeMessage?: string;
   tasks: Task[];
 
   // List of all available items for the mission

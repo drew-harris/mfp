@@ -3,10 +3,7 @@ import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
 import { strictCompare } from "../../utils/comparison";
-import {
-  getCrafterDebugMessages,
-  getEdgesIntoOrderNode,
-} from "../../utils/queries";
+import { getEdgesIntoOrderNode } from "../../utils/queries";
 
 interface TaskCompleteProviderValue {
   messages: DebugMessage[];
@@ -20,8 +17,8 @@ export interface DebugMessage {
 }
 
 export interface EfficiencyInfo {
-  percent: number;
-  weight: number;
+  requirement: number;
+  achieved: number;
 }
 
 const defaults: TaskCompleteProviderValue = {
@@ -89,7 +86,7 @@ export default function TaskCompleteProvider({
 
           if (possibleEdge) {
             if (
-              possibleEdge.data?.outputRate &&
+              possibleEdge.data?.outputRate !== null &&
               possibleEdge.data.outputRate < req.perHour
             ) {
               complete = false;
@@ -99,9 +96,10 @@ export default function TaskCompleteProvider({
             } else if (possibleEdge.data?.outputRate) {
               const ratio = possibleEdge.data?.outputRate / req.perHour;
               efficiencyInfo.push({
-                percent: ratio,
-                weight: req.perHour,
+                requirement: req.perHour,
+                achieved: possibleEdge.data?.outputRate,
               });
+              console.log("Ratio", ratio);
             }
           } else {
             complete = false;
@@ -113,15 +111,17 @@ export default function TaskCompleteProvider({
       }
       // Check all crafting recipies
     }
-    const craftingMessages = getCrafterDebugMessages(state);
-    console.log("Crafting messages", craftingMessages);
-    // newMessages.push(...craftingMessages);
+    // const craftingMessages = getCrafterDebugMessages(state);
+    // console.log("Crafting messages", craftingMessages);
+    // // newMessages.push(...craftingMessages);
 
     // Efficiency
-    const totalWeight = efficiencyInfo.reduce((a, b) => a + b.weight, 0);
-    const totalEfficiency = efficiencyInfo.reduce((a, b) => a + b.percent, 0);
-
-    console.log("Total efficiency", totalEfficiency);
+    console.log("Efficiency Info", efficiencyInfo);
+    const totalRequirement = efficiencyInfo.reduce(
+      (a, b) => a + b.requirement,
+      0
+    );
+    const totalAchieved = efficiencyInfo.reduce((a, b) => a + b.achieved, 0);
 
     console.log("New Messages", newMessages);
 
@@ -139,7 +139,8 @@ export default function TaskCompleteProvider({
 
     setMessages(newMessages);
     setTaskComplete(complete);
-    setEfficiency(totalEfficiency / totalWeight);
+    setEfficiency(totalAchieved / totalRequirement);
+    console.log("TASK COMPLETE", complete);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, currentTask, orderNodeOnCanvas]);
 

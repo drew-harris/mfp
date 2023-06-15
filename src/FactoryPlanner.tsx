@@ -14,6 +14,7 @@ import DraggableItem from "./components/DraggableItem";
 import DraggableSplitter from "./components/DraggableSplitter";
 import Graph from "./components/graph/Graph";
 import ItemPicker from "./components/nodePicker/ItemPicker";
+import Notifications from "./components/Notifications";
 import { TaskSidebar } from "./components/tasks/Sidebar";
 import { useNodeStore } from "./stores/nodes";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
@@ -95,16 +96,19 @@ function FactoryPlanner() {
             minSize={200}
             maxSize={screenHeight * 0.9}
           >
-            <div className="outset-4 col-span-2 h-full w-full border-4 bg-mc-300">
+            <div className="outset-4 relative col-span-2 h-full w-full border-4 bg-mc-300">
               <NodeCanvas />
+              <Notifications className="absolute top-0 right-0 z-30 p-2" />
             </div>
             <div className="outset-4 col-span-2 h-full overflow-y-scroll border-4 bg-mc-300">
               <ItemPicker />
             </div>
           </SplitPane>
           <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
-            <TaskSidebar />
-            <Graph />
+            <div>
+              <TaskSidebar />
+              <Graph />
+            </div>
           </div>
         </SplitPane>
       </div>
