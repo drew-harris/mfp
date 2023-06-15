@@ -21,7 +21,7 @@ const createDataMutation = gql`
   }
 `;
 
-const loggedInClient = new GraphQLClient(endpoint, {
+export const loggedInClient = new GraphQLClient(endpoint, {
   headers: { Authorization: password },
 });
 

@@ -1,9 +1,9 @@
 import { useReactFlow } from "reactflow";
-import { pullMFPData, pushMFPData } from "../../utils/gqlqueries";
-import { Button } from "../basic/Button";
 import { useUserStore } from "../..//stores/userStore";
+import { pullMFPData, pushMFPData } from "../../api/gqlqueries";
 import { useNodeStore } from "../../stores/nodes";
 import { useNotifications } from "../../stores/notifications";
+import { Button } from "../basic/Button";
 
 export const MenuBar = () => {
   const instance = useReactFlow();
