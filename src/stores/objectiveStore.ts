@@ -1,4 +1,5 @@
 import create from "zustand";
+import { safeSendLog } from "../api/logs";
 import { Mission, Task } from "../types/tasks";
 import { useNodeStore } from "./nodes";
 
@@ -20,6 +21,7 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
 
   beginMission: (mission: Mission) => {
     useNodeStore.getState().clearAllNodes();
+    safeSendLog("LessonBegin", { mission });
     if (mission.tasks.length === 0) {
       throw new Error("Mission must have at least one task");
     }
@@ -46,6 +48,7 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
     set({
       currentTask: currentMission.tasks[currentIndex + 1],
     });
+    safeSendLog("NextTask", { mission: currentMission, task: currentTask });
   },
 
   previousTask() {

@@ -15,6 +15,7 @@ import {
   OnNodesChange,
 } from "reactflow";
 import create from "zustand";
+import { safeSendLog } from "../api/logs";
 import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 import { Task } from "../types/tasks";
 import {
@@ -102,6 +103,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
     if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
       return;
     }
+    safeSendLog("ConnectNodes", { connection });
 
     set({
       edges: addEdge(
@@ -249,12 +251,14 @@ export const useNodeStore = create<RFState>((set, get) => ({
   },
 
   toggleInfoMode() {
+    safeSendLog("ToggleInfoMode", { enable: !get().infoModeEnabled });
     set({
       infoModeEnabled: !get().infoModeEnabled,
     });
   },
 
   clearAllNodes() {
+    safeSendLog("ClearCanvas", {});
     set({
       nodes: [],
       edges: [],

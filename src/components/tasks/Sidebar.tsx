@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { safeSendLog } from "../../api/logs";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
@@ -46,8 +47,10 @@ export const TaskSidebar = () => {
       setCompleteNotificationSent(true);
       if (hasNextTask) {
         sendNotification("Task Complete!");
+        safeSendLog("TaskComplete", { currentTask });
       } else {
         sendNotification("Lesson Complete", "success");
+        safeSendLog("LessonComplete", { currentMission });
       }
     } else {
       setCompleteNotificationSent(false);
@@ -78,6 +81,7 @@ export const TaskSidebar = () => {
           className="mx-auto"
           onClick={() => {
             alert(currentMission.completeMessage ?? "Assignment Submitted!");
+            safeSendLog("AssignmentSubmitted", { currentMission });
             cancelMission();
           }}
         >

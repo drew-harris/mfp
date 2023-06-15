@@ -2,9 +2,11 @@ import { gql } from "graphql-request";
 import { useUserStore } from "../stores/userStore";
 import { loggedInClient } from "./gqlqueries";
 
-export enum LogType {
-  LessonComplete = "LessonComplete",
-}
+export type LogType =
+  | "LessonBegin"
+  | "NextTask"
+  | "TaskComplete"
+  | "LessonComplete";
 
 const sendLogMutation = gql`
   mutation MyLogMutation(
@@ -36,7 +38,7 @@ export const rawSendLog = async (type: LogType, data: object) => {
   };
 
   const result = (await loggedInClient.request(sendLogMutation, variables)) as {
-    createEvent?: any;
+    createEvent?: unknown;
   };
   if (!result.createEvent) {
     throw new Error("Could not send log");

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { AxisOptions, Chart } from "react-charts";
+import { safeSendLog } from "../../api/logs";
 import { itemFromId } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
@@ -91,7 +92,13 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
   return (
     <>
       <div className="m-2">
-        <Button className="w-full" onClick={() => setDialogOpen(true)}>
+        <Button
+          className="w-full"
+          onClick={() => {
+            setDialogOpen(true);
+            safeSendLog("OpenGraph", {});
+          }}
+        >
           Open Graph
         </Button>
       </div>
