@@ -6,7 +6,12 @@ export type LogType =
   | "LessonBegin"
   | "NextTask"
   | "TaskComplete"
-  | "LessonComplete";
+  | "LessonComplete"
+  | "AssignmentSubmitted"
+  | "OpenGraph"
+  | "ConnectNodes"
+  | "ToggleInfoMode"
+  | "ClearCanvas";
 
 const sendLogMutation = gql`
   mutation MyLogMutation(
