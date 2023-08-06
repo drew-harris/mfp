@@ -6,7 +6,7 @@ import { allRecipes } from "../../hardcoded/recipes";
 import { useFullItem } from "../../hooks/useFullItem";
 import { useSetNodeData } from "../../hooks/useSetNodeData";
 import { useNodeStore } from "../../stores/nodes";
-import { MCCrafterNode, MCNodeType, Recipe } from "../../types/MCNodes";
+import { MCCrafterNode, Recipe } from "../../types/MCNodes";
 import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
@@ -20,6 +20,8 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   const recipes = useMemo(() => {
     return allRecipes.filter((r) => r.outputItemId === data.item.itemId);
   }, [data.item]);
+
+  const infoModeEnabled = useNodeStore((s) => s.infoModeEnabled);
 
   const updateNodeInternals = useUpdateNodeInternals();
   const setResouceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
@@ -38,15 +40,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     setNodeData({ recipeIndex: recipes.indexOf(recipe) });
   };
 
-  const selectedRecipe = useNodeStore((s) => {
-    const potential = s.nodes.find(
-      (n) => n.id === data.id && n.data.dataType === MCNodeType.crafter
-    );
-    if (potential?.data.dataType === MCNodeType.crafter) {
-      return recipes[potential.data.recipeIndex];
-    }
-    return recipes[0];
-  });
+  const selectedRecipe = recipes[data.recipeIndex];
 
   const isOutputting = useNodeStore((s) => {
     return Boolean(s.edges.some((edge) => edge.source === data.id));
@@ -120,6 +114,14 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
           />
         </div>
       </div>
+      {infoModeEnabled && (
+        <div>
+          <div>
+            Sets:{" "}
+            {outboundEdges[0]?.data.outputRate / selectedRecipe.outputAmount}
+          </div>
+        </div>
+      )}
     </BaseNode>
   );
 }
