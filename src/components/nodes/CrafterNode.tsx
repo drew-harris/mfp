@@ -79,6 +79,30 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     updateNodeInternals(data.id);
   }, [selectedRecipe, data.id, inboundEdges, removeEdge, updateNodeInternals]);
 
+  const outputSets =
+    outboundEdges[0]?.data.outputRate / selectedRecipe.outputAmount;
+
+  const leftovers = inboundEdges.flatMap((edge) => {
+    const input = selectedRecipe.inputs.find(
+      (i) => i.itemId === edge.data?.item.itemId
+    );
+    if (!input) {
+      return [];
+    }
+    return [
+      {
+        itemId: edge.data.item.itemId,
+        amount: edge.data.outputRate - input.amount * outputSets,
+      },
+    ];
+  });
+
+  const leftoversSum = leftovers.reduce((acc, curr) => {
+    return acc + curr.amount;
+  }, 0);
+
+  const efficiency = outputSets / (outputSets + leftoversSum);
+
   return (
     <BaseNode innerClassName="px-0 py-3" data={data}>
       <RecipeSelector
@@ -116,10 +140,8 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
       </div>
       {infoModeEnabled && (
         <div>
-          <div>
-            Sets:{" "}
-            {outboundEdges[0]?.data.outputRate / selectedRecipe.outputAmount}
-          </div>
+          <div>Sets: {outputSets}</div>
+          <div>Efficiency: {Math.round(efficiency * 100)}%</div>
         </div>
       )}
     </BaseNode>
