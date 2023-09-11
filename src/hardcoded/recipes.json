@@ -2199,16 +2199,6 @@
   },
   {
     "outputAmount": 1,
-    "outputItemId": "minecraft:torch",
-    "inputs": [
-      {
-        "amount": 4,
-        "itemId": "item.minecraft:glowstone_dust"
-      }
-    ]
-  },
-  {
-    "outputAmount": 1,
     "outputItemId": "minecraft:lapis_block",
     "inputs": [
       {
