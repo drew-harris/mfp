@@ -3300,6 +3300,11 @@
     "title": "Stone Axe"
   },
   {
+    "imageUrl": "wooden_axe.png",
+    "itemId": "item.minecraft:wooden_axe",
+    "title": "Wooden Axe"
+  },
+  {
     "imageUrl": "diamond_shovel.png",
     "itemId": "item.minecraft:diamond_shovel",
     "title": "Diamond Shovel"

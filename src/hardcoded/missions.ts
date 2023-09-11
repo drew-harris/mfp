@@ -17,8 +17,8 @@ export const allMissions: Mission[] = [
             state.nodes.some(
               (n) =>
                 n.data.dataType === "resource" &&
-                n.data.item.itemId === "item.minecraft:diamond"
-            )
+                n.data.item.itemId === "item.minecraft:diamond",
+            ),
           );
         },
       },
@@ -40,7 +40,7 @@ export const allMissions: Mission[] = [
           return !state.nodes.some(
             (n) =>
               n.data.dataType === "resource" &&
-              n.data.item.itemId === "item.minecraft:diamond"
+              n.data.item.itemId === "item.minecraft:diamond",
           );
         },
       },
@@ -52,7 +52,7 @@ export const allMissions: Mission[] = [
         idPool: ["minecraft:furnace"],
         stateRequirement: (state) => {
           return Boolean(
-            state.nodes.some((n) => n.data.dataType === MCNodeType.crafter)
+            state.nodes.some((n) => n.data.dataType === MCNodeType.crafter),
           );
         },
       },
@@ -74,8 +74,8 @@ export const allMissions: Mission[] = [
             state.nodes.some(
               (n) =>
                 n.data.dataType === MCNodeType.resource &&
-                n.data.item.itemId === "minecraft:cobblestone"
-            )
+                n.data.item.itemId === "minecraft:cobblestone",
+            ),
           );
         },
       },
@@ -88,8 +88,8 @@ export const allMissions: Mission[] = [
         stateRequirement(state) {
           return Boolean(
             state.edges.some(
-              (n) => (n.data.item.itemId = "minecraft:cobblestone")
-            )
+              (n) => (n.data.item.itemId = "minecraft:cobblestone"),
+            ),
           );
         },
       },
@@ -135,7 +135,7 @@ export const allMissions: Mission[] = [
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(
-            state.nodes.some((n) => n.data.dataType === MCNodeType.splitter)
+            state.nodes.some((n) => n.data.dataType === MCNodeType.splitter),
           );
         },
       },
@@ -153,8 +153,8 @@ export const allMissions: Mission[] = [
             state.nodes.some(
               (n) =>
                 n.data.dataType === MCNodeType.crafter &&
-                n.data.item.itemId === "minecraft:cobblestone_slab"
-            )
+                n.data.item.itemId === "minecraft:cobblestone_slab",
+            ),
           );
         },
       },
@@ -275,55 +275,11 @@ export const allMissions: Mission[] = [
       {
         id: "u2l3-o1",
         title: "First Order",
-        description:
-          "Produce 5 crafting tables, 42 oak fences, 10 fence gates, and 12 oak signs per second",
+        description: "Produce 14 crafting tables and 24 ladders per minute.",
         itemRequirements: [
           {
             itemId: "minecraft:crafting_table",
-            perHour: 5,
-          },
-          {
-            itemId: "minecraft:oak_fence",
-            perHour: 42,
-          },
-          {
-            itemId: "minecraft:fence_gate",
-            perHour: 10,
-          },
-          {
-            itemId: "item.minecraft:oak_sign",
-            perHour: 12,
-          },
-        ],
-      },
-      {
-        id: "u2l3-o2",
-        title: "Second Order",
-        description:
-          "Produce 20 wooden pickaxes, 20 torches, and 5 chests per second",
-        itemRequirements: [
-          {
-            itemId: "item.minecraft:wooden_pickaxe",
-            perHour: 20,
-          },
-          {
-            itemId: "minecraft:torch",
-            perHour: 20,
-          },
-          {
-            itemId: "minecraft:chest",
-            perHour: 5,
-          },
-        ],
-      },
-      {
-        id: "u2l3-o3",
-        title: "Third Order",
-        description: "Produce 12 oak stairs, and 24 ladders per second",
-        itemRequirements: [
-          {
-            itemId: "minecraft:oak_stairs",
-            perHour: 12,
+            perHour: 14,
           },
           {
             itemId: "minecraft:ladder",
@@ -331,9 +287,57 @@ export const allMissions: Mission[] = [
           },
         ],
       },
+      {
+        id: "u2l3-o2",
+        title: "Second Order",
+        description: "Produce 5 chests, and 15 oak signs per minute",
+        itemRequirements: [
+          {
+            itemId: "minecraft:chest",
+            perHour: 5,
+          },
+          {
+            itemId: "item.minecraft:oak_sign",
+            perHour: 15,
+          },
+        ],
+      },
+      {
+        id: "u2l3-o3",
+        title: "Third Order",
+        description: "Produce 48 oak fences and 8 fence gates per minute.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:oak_fence",
+            perHour: 48,
+          },
+          {
+            itemId: "minecraft:fence_gate",
+            perHour: 8,
+          },
+        ],
+      },
+      {
+        id: "u2l3-o4",
+        title: "Fourth Order",
+        description: "Produce 48 oak fences and 8 fence gates per minute.",
+        itemRequirements: [
+          {
+            itemId: "item.minecraft:wooden_axe",
+            perHour: 30,
+          },
+          {
+            itemId: "item.minecraft:wooden_shovel",
+            perHour: 30,
+          },
+          {
+            itemId: "item.minecraft:wooden_pickaxe",
+            perHour: 30,
+          },
+        ],
+      },
     ],
   },
-
   // {
   //   title: "test",
   //   id: "test",

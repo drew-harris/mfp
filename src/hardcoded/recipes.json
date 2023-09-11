@@ -25462,6 +25462,20 @@
   },
   {
     "outputAmount": 1,
+    "outputItemId": "item.minecraft:wooden_axe",
+    "inputs": [
+      {
+        "amount": 3,
+        "itemId": "minecraft:oak_planks"
+      },
+      {
+        "amount": 2,
+        "itemId": "item.minecraft:stick"
+      }
+    ]
+  },
+  {
+    "outputAmount": 1,
     "outputItemId": "item.minecraft:wooden_pickaxe",
     "inputs": [
       {
