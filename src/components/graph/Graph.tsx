@@ -136,7 +136,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                         <div className="text-sm">{item.title || "No Item"}</div>
                         <SpriteDisplay size={34} url={item.imageUrl} />
                         <div className="text-xs">
-                          {data?.rate || 0} produced after {data?.hour} seconds
+                          {data?.rate || 0} produced after {data?.hour} minutes
                         </div>
                       </div>
                     );

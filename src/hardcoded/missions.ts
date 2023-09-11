@@ -17,8 +17,8 @@ export const allMissions: Mission[] = [
             state.nodes.some(
               (n) =>
                 n.data.dataType === "resource" &&
-                n.data.item.itemId === "item.minecraft:diamond",
-            ),
+                n.data.item.itemId === "item.minecraft:diamond"
+            )
           );
         },
       },
@@ -40,7 +40,7 @@ export const allMissions: Mission[] = [
           return !state.nodes.some(
             (n) =>
               n.data.dataType === "resource" &&
-              n.data.item.itemId === "item.minecraft:diamond",
+              n.data.item.itemId === "item.minecraft:diamond"
           );
         },
       },
@@ -52,7 +52,7 @@ export const allMissions: Mission[] = [
         idPool: ["minecraft:furnace"],
         stateRequirement: (state) => {
           return Boolean(
-            state.nodes.some((n) => n.data.dataType === MCNodeType.crafter),
+            state.nodes.some((n) => n.data.dataType === MCNodeType.crafter)
           );
         },
       },
@@ -74,8 +74,8 @@ export const allMissions: Mission[] = [
             state.nodes.some(
               (n) =>
                 n.data.dataType === MCNodeType.resource &&
-                n.data.item.itemId === "minecraft:cobblestone",
-            ),
+                n.data.item.itemId === "minecraft:cobblestone"
+            )
           );
         },
       },
@@ -88,8 +88,8 @@ export const allMissions: Mission[] = [
         stateRequirement(state) {
           return Boolean(
             state.edges.some(
-              (n) => (n.data.item.itemId = "minecraft:cobblestone"),
-            ),
+              (n) => (n.data.item.itemId = "minecraft:cobblestone")
+            )
           );
         },
       },
@@ -135,7 +135,7 @@ export const allMissions: Mission[] = [
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(
-            state.nodes.some((n) => n.data.dataType === MCNodeType.splitter),
+            state.nodes.some((n) => n.data.dataType === MCNodeType.splitter)
           );
         },
       },
@@ -153,8 +153,8 @@ export const allMissions: Mission[] = [
             state.nodes.some(
               (n) =>
                 n.data.dataType === MCNodeType.crafter &&
-                n.data.item.itemId === "minecraft:cobblestone_slab",
-            ),
+                n.data.item.itemId === "minecraft:cobblestone_slab"
+            )
           );
         },
       },
@@ -201,7 +201,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l2-planks",
-        description: "Produce 8 oak planks per second",
+        description: "Produce 8 oak planks per minute",
         itemRequirements: [
           {
             itemId: "minecraft:oak_planks",
@@ -211,7 +211,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-sticks",
-        description: "Produce 32 sticks per second",
+        description: "Produce 32 sticks per minute",
         itemRequirements: [
           {
             itemId: "item.minecraft:stick",
@@ -221,7 +221,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-diamond-axe",
-        description: "Produce 1 diamond axe per second",
+        description: "Produce 1 diamond axe per minute",
         itemRequirements: [
           {
             itemId: "item.minecraft:diamond_axe",
@@ -231,7 +231,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-chest",
-        description: "Produce 10 chests per second",
+        description: "Produce 10 chests per minute",
         itemRequirements: [
           {
             itemId: "minecraft:chest",
@@ -247,7 +247,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l7-planks",
-        description: "Produce 10 iron pickaxes per second",
+        description: "Produce 10 iron pickaxes per minute",
         itemRequirements: [
           {
             itemId: "item.minecraft:iron_pickaxe",
