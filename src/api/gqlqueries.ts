@@ -35,7 +35,7 @@ export const pullMFPData = async (userID: string) => {
     };
     const data = (await loggedInClient.request(
       getUserDataQuery,
-      queryVariables,
+      queryVariables
     )) as any;
     console.log(data);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,7 +54,7 @@ export const pullMFPData = async (userID: string) => {
 
 export const pushMFPData = async (
   userID: string,
-  MFPData: ReactFlowJsonObject,
+  MFPData: ReactFlowJsonObject
 ) => {
   try {
     const queryVariables = {
@@ -63,7 +63,7 @@ export const pushMFPData = async (
     };
     const test = (await loggedInClient.request(
       getUserDataQuery,
-      queryVariables,
+      queryVariables
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     )) as any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81,7 +81,7 @@ export const pushMFPData = async (
     };
     const response = (await loggedInClient.request(
       createDataMutation,
-      mutationVariables,
+      mutationVariables
     )) as any;
     console.log("RESPONSE:", response);
     if (response.createUserData === true) {

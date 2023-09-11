@@ -30,13 +30,13 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
       <div className="mb-3 text-xs">{data.item.title}</div>
       <input
         className="w-28 rounded-xl border border-black bg-gray-300 pl-4 text-xs text-black placeholder:text-gray-600"
-        placeholder="Per-Second Rate"
+        placeholder="Per-Minute Rate"
         onChange={(event) =>
           setOutputRate(data.id, Number.parseInt(event.target.value) || 0)
         }
         value={outputRate || 0}
       />
-      <div className="text-xs text-gray-400">/ Second</div>
+      <div className="text-xs text-gray-400">/ Minute</div>
     </BaseNode>
   );
 }
