@@ -38,7 +38,15 @@ export default function DraggableItem({
   });
 
   const className = cva(
-    ["flex", "flex-col", "items-center", "p-3", "outset-4", "justify-between"],
+    [
+      "flex",
+      "flex-col",
+      "overflow-hidden",
+      "items-center",
+      "p-3",
+      "outset-4",
+      "justify-between",
+    ],
     {
       variants: {
         nodeType: {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { findMissionFromTask } from "../components/tasks/Sidebar";
+import { findMissionFromTask } from "../components/tasks/TaskSidebar";
 import { allMissions } from "../hardcoded/missions";
 import { Mission, Task } from "../types/tasks";
 

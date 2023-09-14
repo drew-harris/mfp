@@ -15,7 +15,7 @@ import DraggableSplitter from "./components/DraggableSplitter";
 import Graph from "./components/graph/Graph";
 import ItemPicker from "./components/nodePicker/ItemPicker";
 import Notifications from "./components/Notifications";
-import { TaskSidebar } from "./components/tasks/Sidebar";
+import Sidebar from "./components/Sidebar";
 import { useNodeStore } from "./stores/nodes";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
@@ -83,7 +83,7 @@ function FactoryPlanner() {
           primary="second"
           minSize={300}
           maxSize={screenWidth * 0.5}
-          defaultSize={"20%"}
+          defaultSize={300}
         >
           {/*@ts-ignore*/}
           <SplitPane
@@ -105,8 +105,8 @@ function FactoryPlanner() {
             </div>
           </SplitPane>
           <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
-            <div>
-              <TaskSidebar />
+            <div className="h-full pb-11">
+              <Sidebar />
               <Graph />
             </div>
           </div>

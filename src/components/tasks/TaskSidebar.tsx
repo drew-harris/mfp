@@ -15,7 +15,7 @@ import { DroppableOrder } from "./DroppableOrder";
 export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
   const currentMission = useObjectiveStore((s) => s.currentMission);
-  const removeOrder = useNodeStore((state) => state.removeOrderNode);
+  const removeOrder = useNodeStore((s) => s.removeOrderNode);
   const cancelMission = useObjectiveStore((s) => s.cancelMission);
   const beginMission = useObjectiveStore((s) => s.beginMission);
   const nextTask = useObjectiveStore((s) => s.nextTask);
@@ -93,7 +93,7 @@ export const TaskSidebar = () => {
 
   if (currentTask) {
     return (
-      <div className="flex flex-col items-center p-3">
+      <div className="flex flex-col items-center">
         <div className="mb-4 w-full text-left text-xl text-black/50">
           {currentMission?.title}
         </div>
@@ -127,9 +127,8 @@ export const TaskSidebar = () => {
     );
   } else {
     return (
-      <div className="p-3">
-        <div className="text-lg font-bold">Missions</div>
-        <div>
+      <div className="">
+        <div className="flex flex-col gap-2">
           {allMissions.map((mission) => (
             <MissionCard
               setMission={beginMission}
@@ -181,20 +180,9 @@ const MissionCard = ({ mission, setMission }: MissionCardProperties) => {
   return (
     <div
       onClick={() => setMission(mission)}
-      className="outset-4 mt-3 cursor-pointer bg-mc-200 p-4"
+      className="outset-4 cursor-pointer bg-mc-200 p-4"
     >
       <div className="font-bold">{mission.title}</div>
     </div>
   );
 };
-
-// const IdDebugView = () => {
-//   const id = useUserStore((s) => s.id);
-//   const [searchParams] = useSearchParams();
-//   return (
-//     <div className="absolute bottom-2 right-2 text-black/20">
-//       <div>{id}</div>
-//       <div>{searchParams.get("assignment")}</div>
-//     </div>
-//   );
-// };
