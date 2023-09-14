@@ -17,7 +17,7 @@ export default function FilterButton(props: FilterButtonProps) {
     variants: {
       enabled: {
         true: "bg-mc-200",
-        false: "bg-mc-500",
+        false: "bg-mc-500 opacity-50",
       },
     },
 

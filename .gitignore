@@ -28,3 +28,8 @@ dist-ssr
 **/cache.json
 
 notes.md
+
+*.env
+
+
+src/__generated__/**
