@@ -89,6 +89,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
     []
   );
 
+  // TODO: Replace with shadcn dialog
   return (
     <>
       <div className="m-2">

@@ -47,6 +47,11 @@ export type RFState = {
   queries: {
     hasNodeType: (nodeType: MCNodeType) => boolean;
   };
+
+  internal: {
+    appendNodes: (nodes: Node<MCNode>[]) => void;
+    appendEdges: (edges: Edge<MCEdge>[]) => void;
+  };
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -255,6 +260,20 @@ export const useNodeStore = create<RFState>((set, get) => ({
     set({
       infoModeEnabled: !get().infoModeEnabled,
     });
+  },
+
+  internal: {
+    appendNodes(nodes) {
+      set({
+        nodes: [...get().nodes, ...nodes],
+      });
+    },
+
+    appendEdges(edges) {
+      set({
+        edges: [...get().edges, ...edges],
+      });
+    },
   },
 
   clearAllNodes() {
