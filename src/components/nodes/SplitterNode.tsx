@@ -52,13 +52,19 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   useEffect(() => {
     const ratios = getRatioFromInputString(data.splitString);
     setData({ ratios });
+    console.log(ratios);
     updateNodeInternals(data.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.splitString]);
 
   useEffect(() => {
     for (const [i, outgoingEdge] of outgoingEdges.entries()) {
-      if (incomingEdge) {
+      console.log(
+        `i: ${i}, ratios length: ${
+          data.ratios.length
+        }, outgoingEdge: ${outgoingEdges.entries()}`
+      );
+      if (incomingEdge && i < data.ratios.length) {
         setEdgeData(outgoingEdge.id, {
           outputRate: data.ratios[i] * incomingEdge.data.outputRate,
           item: incomingEdge.data.item,
