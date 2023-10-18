@@ -26,15 +26,17 @@ export const allMissions: Mission[] = [
         id: "tutorial-resource-desc",
         title: "Resource Node",
         description:
-          "This is a resource node, it represents an infinite supply of a basic item needed for crafting. You can adjust how many are being output by entering in an amount",
+          "This is a resource node, it represents an infinite supply of a basic item needed for crafting. You can" +
+          " adjust how many are being output by entering in an amount.",
         idPool: ["item.minecraft:diamond"],
         continuation: true,
       },
       {
         id: "tutorial-delete",
-        title: "Deleting nodes",
+        title: "Deleting Nodes",
         description:
-          "Click on the resource node and use the backspace key or the delete icon in the lower right corner to delete it",
+          "Click on the resource node and use the backspace key or the delete icon in the lower right corner to" +
+          " delete it.",
         idPool: ["item.minecraft:diamond"],
         stateRequirement: (state) => {
           return !state.nodes.some(
@@ -48,7 +50,8 @@ export const allMissions: Mission[] = [
         id: "tutorial-recipe",
         title: "Crafting Node",
         description:
-          "Crafting nodes are a way to turn a resource into a new item with a crafting recipe. In this example, we will craft a furnace, which requires 9 cobblestone to build, drag the furnace crafting node to the canvas.",
+          "Crafting nodes are a way to turn a resource into a new item with a crafting recipe. In this example, we" +
+          " will craft a furnace, which requires 9 cobblestone to build, drag the furnace crafting node to the canvas.",
         idPool: ["minecraft:furnace"],
         stateRequirement: (state) => {
           return Boolean(
@@ -60,14 +63,15 @@ export const allMissions: Mission[] = [
         id: "tutorial-recipe-multiple",
         title: "Crafting Node",
         description:
-          "Notice that you can use the arrows at the top of the crafter to select different recipes, for this tutorial we use recipe 1/3 which uses cobblestone",
+          "Notice that you can use the arrows at the top of the crafter to select different recipes, for this" +
+          " tutorial we use recipe 1/3 which uses cobblestone.",
         idPool: ["minecraft:furnace"],
         continuation: true,
       },
       {
         id: "tutorial-recipe-bring-in",
         title: "Crafting Node",
-        description: "Now, drag a cobblestone resource node to the canvas",
+        description: "Now, drag a cobblestone resource node to the canvas.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(
@@ -103,17 +107,19 @@ export const allMissions: Mission[] = [
       },
       {
         id: "tutorial-info-mode",
-        title: "Info mode",
+        title: "Info Mode",
         description:
-          'In order to see the flow of items on the canvas, we need to use info mode. You can turn it on and off by using the "Info Mode" button at the top of the canvas',
+          "In order to see the flow of items on the canvas, we need to use info mode. You can turn it on and off by" +
+          ' using the "Info Mode" button at the top of the canvas.',
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         continuation: true,
       },
       {
         id: "tutorial-info-mode",
-        title: "Info mode",
+        title: "Info Mode",
         description:
-          'In order to see the flow of items on the canvas, we need to use info mode. You can turn it on and off by using the "Info Mode" button at the top of the canvas',
+          "In order to see the flow of items on the canvas, we need to use info mode. You can turn it on and off by" +
+          ' using the "Info Mode" button at the top of the canvas.',
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         continuation: true,
       },
@@ -121,7 +127,8 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-delete",
         title: "Splitter Node",
         description:
-          "We also need to craft some cobblestone slabs. First delete the path between the resource node and the crafter node. Select it with the mouse and use the delete button on the bottom right of the canvas.",
+          "We also need to craft some cobblestone slabs. First delete the path between the resource node and the" +
+          " crafter node. Select it with the mouse and use the delete button on the bottom right of the canvas.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return state.edges.length === 0;
@@ -162,7 +169,9 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-connect",
         title: "Splitter Node",
         description:
-          'You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For example, "AAB" will allocate twice as many materials to the first output than the second. Enter a splitting pattern (AAB) on the splitter node and connect all 4 nodes.',
+          "You can use the input on the splitter node to adjust the ratio of items that the outputs recieve. For" +
+          ' example, "AAB" will allocate twice as many materials to the first output than the second. Enter a' +
+          " splitting pattern (AAB) on the splitter node and connect all 4 nodes.",
         idPool: [
           "minecraft:furnace",
           "minecraft:cobblestone",
