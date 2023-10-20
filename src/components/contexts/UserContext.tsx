@@ -40,12 +40,25 @@ const defaults: UserContextProviderValue = {
 export const UserContext = createContext<UserContextProviderValue>(defaults);
 
 export default function UserProvider({ children }: { children: ReactNode }) {
-  const [user, _setUser] = useState<User | null>(null);
+  const getInitialUser = () => {
+    const user = window.localStorage.getItem("userblob");
+    if (user) {
+      return JSON.parse(user) as User;
+    } else {
+      return null;
+    }
+  };
+  const [user, _setUser] = useState<User | null>(getInitialUser);
   const sendError = useNotifications((s) => s.sendError);
+
+  const saveUser = (user: User) => {
+    window.localStorage.setItem("userblob", JSON.stringify(user));
+  };
 
   const [logInMutation, { loading }] = useMutation(LOG_IN, {
     onCompleted(data) {
       _setUser({ id: data.loginOrCreate.id, name: data.loginOrCreate.name });
+      saveUser(data.loginOrCreate);
     },
     onError(error, clientOptions) {
       console.error("ERROR LOGGING IN", error, clientOptions);
