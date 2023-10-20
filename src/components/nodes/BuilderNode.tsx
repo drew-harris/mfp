@@ -28,7 +28,7 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
           )}
         </div>
       ) : (
-        <div>No Connected Node</div>
+        <div>No Connected Nodes</div>
       )}
     </BaseNode>
   );
