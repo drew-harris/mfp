@@ -8,7 +8,6 @@ import { useNodeStore } from "../../stores/nodes";
 import { timeAgo } from "../../utils/timeago";
 import { UserContext } from "../contexts/UserContext";
 import SaveDialog from "./SaveDialog";
-import { reformatSave } from "../../utils/stripOrderNodes";
 
 const SAVES = gql(`
 query AllSaves($playerId: String) {
@@ -40,13 +39,7 @@ export default function SaveList() {
 
   const quickLoadSave = (save: typeof data["saves"][0]) => {
     console.log("TODO: Load save", save);
-    const reformatted = reformatSave(
-      save.graphData.nodes,
-      save.graphData.edges
-    );
-    console.log("Random:", reformatted.nodes[0].id);
-    internal.appendNodes(reformatted.nodes);
-    internal.appendEdges(reformatted.edges);
+    internal.setNodesAndEdges(save.graphData.nodes, save.graphData.edges);
   };
 
   return (
