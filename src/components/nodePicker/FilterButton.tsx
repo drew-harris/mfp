@@ -1,6 +1,8 @@
 import { cva } from "cva";
-import { FilterType } from "../../stores/pickerFilterStore";
-import { usePickerFilterStore } from "../../stores/pickerFilterStore";
+import {
+  FilterType,
+  usePickerFilterStore,
+} from "../../stores/pickerFilterStore";
 
 interface FilterButtonProps extends React.ComponentPropsWithoutRef<"div"> {
   type: FilterType;
@@ -13,11 +15,44 @@ export default function FilterButton(props: FilterButtonProps) {
     (s) => s.switches[type] || s.switches[FilterType.all]
   );
 
+  let trueColor;
+  let falseColor;
+
+  switch (type) {
+    case FilterType.all: {
+      trueColor = "mc-200";
+      falseColor = "mc-200";
+      break;
+    }
+    case FilterType.resource: {
+      trueColor = "green-300";
+      falseColor = "green-400";
+      break;
+    }
+    case FilterType.crafter: {
+      trueColor = "blue-200";
+      falseColor = "blue-300";
+      break;
+    }
+    case FilterType.utility: {
+      trueColor = "yellow-200";
+      falseColor = "yellow-300";
+      break;
+    }
+    default: {
+      trueColor = "mc-200";
+      falseColor = "mc-200";
+    }
+  }
+
+  const trueColorString = `bg-${trueColor}`;
+  const falseColorString = `bg-${falseColor} opacity-50`;
+
   const className = cva(["p-1", "outset-4", "cursor-pointer"], {
     variants: {
       enabled: {
-        true: "bg-mc-200",
-        false: "bg-mc-500 opacity-50",
+        true: trueColorString,
+        false: falseColorString,
       },
     },
 
