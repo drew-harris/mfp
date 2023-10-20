@@ -17,6 +17,9 @@ export const getNodeName = (type: MCNodeType): string => {
     case MCNodeType.info: {
       return "Info";
     }
+    case MCNodeType.builder: {
+      return "Builder";
+    }
     default: {
       return "Unknown";
     }

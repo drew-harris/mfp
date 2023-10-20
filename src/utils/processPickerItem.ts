@@ -1,8 +1,10 @@
 import { Node, XYPosition } from "reactflow";
 import {
+  DraggableBuilder,
   DraggableInfo,
   DraggableItemData,
   DraggableSplitterData,
+  MCBuilderNode,
   MCCrafterNode,
   MCInfoNode,
   MCNodeType,
@@ -16,6 +18,7 @@ type PossibleNode =
   | Node<MCOrderNode>
   | Node<MCResourceNode>
   | Node<MCInfoNode>
+  | Node<MCBuilderNode>
   | Node<MCSplitterNode>
   | Node<MCCrafterNode>;
 
@@ -25,6 +28,7 @@ type PossibleNode =
 export function processPickerItem(
   item:
     | DraggableOrderData
+    | DraggableBuilder
     | DraggableItemData
     | DraggableInfo
     | DraggableSplitterData,
@@ -59,6 +63,22 @@ export function processPickerItem(
         id: projection.x.toString(),
       },
       type: MCNodeType.info,
+    };
+    return node;
+  }
+
+  if (item.type === MCNodeType.builder) {
+    const node: Node<MCBuilderNode> = {
+      id: projection.x.toString(),
+      position: {
+        x: projection.x,
+        y: projection.y,
+      },
+      data: {
+        dataType: MCNodeType.builder,
+        id: projection.x.toString(),
+      },
+      type: MCNodeType.builder,
     };
     return node;
   }

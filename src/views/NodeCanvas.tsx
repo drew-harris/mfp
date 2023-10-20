@@ -15,6 +15,7 @@ import SplitterNode from "../components/nodes/SplitterNode";
 import { useNodeStore } from "../stores/nodes";
 import DeleteButton from "../components/panels/DeleteButton";
 import InfoEdge from "../components/nodes/edges/InfoEdge";
+import BuilderNode from "../components/nodes/BuilderNode";
 
 const nodeTypes = {
   resource: ResourceNode,
@@ -22,6 +23,7 @@ const nodeTypes = {
   order: OrderNode,
   crafter: CrafterNode,
   info: InfoNode,
+  builder: BuilderNode,
 };
 
 const edgeTypes = {
