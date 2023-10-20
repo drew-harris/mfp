@@ -65,8 +65,9 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
         }, outgoingEdge: ${outgoingEdges.entries()}`
       );
       if (incomingEdge && i < data.ratios.length) {
+        // TODO: Actually finish rounding shhhhhhhh....
         setEdgeData(outgoingEdge.id, {
-          outputRate: data.ratios[i] * incomingEdge.data.outputRate,
+          outputRate: Math.floor(data.ratios[i] * incomingEdge.data.outputRate),
           item: incomingEdge.data.item,
         });
       } else {
