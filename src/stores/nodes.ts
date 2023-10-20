@@ -51,6 +51,7 @@ export type RFState = {
   internal: {
     appendNodes: (nodes: Node<MCNode>[]) => void;
     appendEdges: (edges: Edge<MCEdge>[]) => void;
+    setNodesAndEdges: (nodes: Node<MCNode>[], edges: Edge<MCEdge>[]) => void;
   };
 };
 
@@ -272,6 +273,13 @@ export const useNodeStore = create<RFState>((set, get) => ({
     appendEdges(edges) {
       set({
         edges: [...get().edges, ...edges],
+      });
+    },
+
+    setNodesAndEdges(nodes, edges) {
+      set({
+        nodes,
+        edges,
       });
     },
   },
