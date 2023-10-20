@@ -1,6 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Handle, Position, useUpdateNodeInternals } from "reactflow";
 import { allRecipes } from "../../hardcoded/recipes";
 import { useFullItem } from "../../hooks/useFullItem";
@@ -22,6 +22,8 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   }, [data.item]);
 
   const infoModeEnabled = useNodeStore((s) => s.infoModeEnabled);
+
+  const [isWastingMaterial, setIswastingMaterial] = useState(false);
 
   const updateNodeInternals = useUpdateNodeInternals();
   const setResouceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
@@ -57,7 +59,21 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
       return 0;
     });
 
-    const outputRate = Math.min(...multiples) * selectedRecipe.outputAmount;
+    console.log(`MULTIPLES: ${selectedRecipe.outputItemId}: ${multiples}`);
+
+    let outputRate = Math.min(...multiples) * selectedRecipe.outputAmount;
+
+    // If all multiples aren't the same
+    // TODO: Rescope for terrible inputs too
+    if (Number.isInteger(outputRate)) {
+      setIswastingMaterial(false);
+    } else {
+      setIswastingMaterial(true);
+    }
+
+    outputRate = Math.floor(outputRate);
+    console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
+
     setResouceOutputRate(data.id, outputRate);
   }, [
     inboundEdges,
@@ -104,7 +120,11 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   const efficiency = outputSets / (outputSets + leftoversSum);
 
   return (
-    <BaseNode innerClassName="px-0 py-3" data={data}>
+    <BaseNode
+      outerClassName={isWastingMaterial ? "border-red-500" : null}
+      innerClassName="px-0 py-3"
+      data={data}
+    >
       <RecipeSelector
         recipes={recipes}
         selectedRecipe={selectedRecipe}
@@ -138,6 +158,9 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
           />
         </div>
       </div>
+      {isWastingMaterial && (
+        <div className="text-xs text-red-800">You are wasting materials!</div>
+      )}
       {infoModeEnabled && (
         <div>
           <div>Sets: {outputSets}</div>
