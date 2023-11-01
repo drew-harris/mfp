@@ -70,9 +70,6 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
           {incomingEdge?.data?.item?.title && (
             <div>{incomingEdge.data?.item?.title}</div>
           )}
-          {incomingEdge.data.outputRate && (
-            <div>Rate: {incomingEdge.data.outputRate.toFixed(2)}</div>
-          )}
           {JSON.stringify(result)}
         </div>
       ) : (
