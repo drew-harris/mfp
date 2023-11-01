@@ -33,6 +33,9 @@ export type RFState = {
   removeNodeById: (nodeId: string) => void;
   removeEdgeById: (edgeId: string) => void;
   updateEdgeSpeeds: () => void;
+
+  setEdgeColors: (edgeIds: string[], color: string) => void;
+
   setResourceOutputRate: (id: string, newRate: number) => void;
 
   setNodeData: <T extends MCNode>(id: string, newData: Partial<T>) => void;
@@ -82,6 +85,35 @@ export const useNodeStore = create<RFState>((set, get) => ({
           animationDuration: `${animationDurationFromPerHour(
             e.data?.outputRate || 0
           )}ms`,
+        },
+      };
+    });
+
+    set({
+      edges: newEdges,
+    });
+  },
+
+  setEdgeColors(edgeIds, color) {
+    // Reset
+
+    const edges = get().edges;
+
+    const newEdges = edges.map((e) => {
+      if (!edgeIds.includes(e.id)) {
+        return {
+          ...e,
+          style: {
+            ...e.style,
+            color: "white",
+          },
+        };
+      }
+      return {
+        ...e,
+        data: {
+          ...e.data,
+          builderColor: color,
         },
       };
     });

@@ -52,6 +52,7 @@ export interface MCBuilderNode extends MCBaseNode {
 }
 
 export interface MCEdge {
+  builderColor?: string;
   item: MCItem;
   outputRate: number;
 }

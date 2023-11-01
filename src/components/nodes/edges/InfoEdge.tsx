@@ -30,11 +30,18 @@ function CustomEdge(props: EdgeProps) {
     targetPosition,
   });
 
+  let stroke = "darkgray";
+  if (selected) {
+    stroke = "white";
+  } else if (data.builderColor) {
+    stroke = data.builderColor;
+  }
+
   if (!infoMode) {
     return (
       <BaseEdge
         style={{
-          stroke: selected ? "white" : "darkgray",
+          stroke,
           strokeWidth: 4,
           transform: "translate(0px, 0.4%)",
           ...style,
@@ -56,7 +63,7 @@ function CustomEdge(props: EdgeProps) {
       <path
         id={id}
         style={{
-          stroke: selected ? "white" : "darkgray",
+          stroke,
           strokeWidth: 4,
           transform: "translate(0px, 0.4%)",
           ...style,
