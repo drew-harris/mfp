@@ -35,7 +35,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-delete",
         title: "Deleting Nodes",
         description:
-          "Click on the resource node and use the backspace key or the delete icon in the lower right corner to" +
+          "Click on the resource node and use the backspace key or the trash can icon in the bottom right to" +
           " delete it.",
         idPool: ["item.minecraft:diamond"],
         stateRequirement: (state) => {
@@ -87,7 +87,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-recipe-connect",
         title: "Crafting Node",
         description:
-          "Connect the resource node to the crafter by dragging the circle to create a path.",
+          "Click and drag the connector (the circle icon) from the resource node to the connector on the crafter node.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(
@@ -127,8 +127,9 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-delete",
         title: "Splitter Node",
         description:
-          "We also need to craft some cobblestone slabs. First delete the path between the resource node and the" +
-          " crafter node. Select it with the mouse and use the delete button on the bottom right of the canvas.",
+          "We also need to craft some cobblestone slabs. First, select the the path between the resource node." +
+          " Then, delete it with the backspace key or the trash can icon in the bottom." +
+          " right.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return state.edges.length === 0;
