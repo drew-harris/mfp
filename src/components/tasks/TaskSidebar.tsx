@@ -58,42 +58,45 @@ export const TaskSidebar = () => {
   }, [data.taskComplete]);
 
   const NextButton = () => {
-    if (!data.taskComplete) return null;
-    if (hasNextTask) {
-      return (
-        <div className="flex gap-2">
-          {hasPreviousTask() && currentMission.id === "tutorial" && (
-            <Button onClick={() => previousTask()}>Back</Button>
-          )}
+    const disabled = "cursor-not-allowed opacity-50 pointer-events-none";
+    return (
+      <div className="flex gap-2">
+        {
           <Button
+            onClick={() => previousTask()}
+            className={!hasPreviousTask() && disabled}
+          >
+            Back
+          </Button>
+        }
+        <Button
+          onClick={() => {
+            nextTask();
+            removeOrder();
+          }}
+          className={!data.taskComplete && disabled}
+        >
+          Next
+        </Button>
+        {!hasNextTask && (
+          <Button
+            className="mx-auto"
             onClick={() => {
-              nextTask();
-              removeOrder();
+              alert(currentMission.completeMessage ?? "Assignment Submitted!");
+              safeSendLog("AssignmentSubmitted", { currentMission });
+              cancelMission();
             }}
           >
-            Next
+            Submit
           </Button>
-        </div>
-      );
-    } else {
-      return (
-        <Button
-          className="mx-auto"
-          onClick={() => {
-            alert(currentMission.completeMessage ?? "Assignment Submitted!");
-            safeSendLog("AssignmentSubmitted", { currentMission });
-            cancelMission();
-          }}
-        >
-          Submit
-        </Button>
-      );
-    }
+        )}
+      </div>
+    );
   };
 
   if (currentTask) {
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex h-full flex-col items-center">
         <div className="mb-4 w-full text-left text-xl text-black/50">
           {currentMission?.title}
         </div>
@@ -115,7 +118,9 @@ export const TaskSidebar = () => {
             )}
           </div>
         )}
-        <NextButton />
+        <div className="mt-auto">
+          <NextButton />
+        </div>
         <div>
           {data.messages.map((m) => (
             <div className="outset bg-red-300 p-2" key={m.message}>
