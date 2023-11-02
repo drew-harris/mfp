@@ -21,22 +21,35 @@ export const usePickerFilterStore = create<FilterState>((set, get) => ({
   },
 
   toggleSwitch(key: FilterType) {
-    if (key === FilterType.all) {
-      set({
-        switches: {
-          [FilterType.all]: true,
-          [FilterType.resource]: false,
-          [FilterType.crafter]: false,
-          [FilterType.utility]: false,
-        },
-      });
-      return;
-    } else {
-      const switches = get().switches;
-      const newSwitches = { ...switches };
-      newSwitches[key] = !newSwitches[key];
-      newSwitches[FilterType.all] = false;
-      set({ switches: newSwitches });
-    }
+    const switches = {
+      [FilterType.all]: false,
+      [FilterType.resource]: false,
+      [FilterType.crafter]: false,
+      [FilterType.utility]: false,
+    };
+
+    switches[key] = true;
+
+    set({
+      switches,
+    });
+
+    // if (key === FilterType.all) {
+    //   set({
+    //     switches: {
+    //       [FilterType.all]: true,
+    //       [FilterType.resource]: false,
+    //       [FilterType.crafter]: false,
+    //       [FilterType.utility]: false,
+    //     },
+    //   });
+    //   return;
+    // } else {
+    //   const switches = get().switches;
+    //   const newSwitches = { ...switches };
+    //   newSwitches[key] = !newSwitches[key];
+    //   newSwitches[FilterType.all] = false;
+    //   set({ switches: newSwitches });
+    // }
   },
 }));
