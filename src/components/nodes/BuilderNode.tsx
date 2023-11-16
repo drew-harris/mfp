@@ -1,17 +1,13 @@
+import { useEffect, useState } from "react";
 import { Edge, Node } from "reactflow";
 import { useNodeStore } from "../../stores/nodes";
 import { MCBuilderNode, MCEdge } from "../../types/MCNodes";
+import { findCoefficients, Ratios } from "../../utils/builder";
+import { getNodeById } from "../../utils/nodes";
 import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
-import { useEffect, useState } from "react";
-import {
-  findCoefficients,
-  FindCoefficientsResult,
-  Ratios,
-} from "../../utils/builder";
-import { getNodeById } from "../../utils/nodes";
 
 interface BuilderNodeProps {
   data: MCBuilderNode;
