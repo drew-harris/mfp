@@ -32,6 +32,13 @@ export type FindCoefficientsResult =
 export function findCoefficients(
   builderNode: Node<MCBuilderNode>
 ): FindCoefficientsResult {
+  if (!builderNode?.id) {
+    return {
+      status: "invalid",
+      message: "No builder node provided",
+    };
+  }
+
   const state = useNodeStore.getState();
   const incomingEdges = state.edges.filter((e) => e.target === builderNode.id);
   const queryEdges: EdgeWithCoeff[] = incomingEdges.map((e) => ({
