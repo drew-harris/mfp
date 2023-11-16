@@ -107,6 +107,10 @@ export const useNodeStore = create<RFState>((set, get) => ({
             ...e.style,
             color: "white",
           },
+          data: {
+            ...e.data,
+            builderColor: null,
+          },
         };
       }
       return {

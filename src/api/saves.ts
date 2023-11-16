@@ -16,3 +16,14 @@ mutation CreateNewSave($newSave: NewSave!) {
     createdAt
   }
 }`);
+
+export const CREATE_CUSTOM_NODE = gql(`
+mutation CreateCustomNode($newCustomNode: NewCustomNode!) {
+  createCustomNode(input: $newCustomNode) {
+    id
+    name
+    updatedAt
+    createdAt
+  }
+}
+`);

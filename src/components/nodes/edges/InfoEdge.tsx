@@ -83,7 +83,9 @@ function CustomEdge(props: EdgeProps) {
       >
         <div className="translate-y-4">
           <SpriteDisplay size={28} url={data.item.imageUrl} />
-          <div className="-mt-1 text-center text-white">{rateString}</div>
+          {!data.builderColor && (
+            <div className="-mt-1 text-center text-white">{rateString}</div>
+          )}
         </div>
       </foreignObject>
     </>

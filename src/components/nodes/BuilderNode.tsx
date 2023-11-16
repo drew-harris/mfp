@@ -1,8 +1,11 @@
+import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { Edge, Node } from "reactflow";
+import { CREATE_CUSTOM_NODE } from "../../api/saves";
 import { useNodeStore } from "../../stores/nodes";
+import { useNotifications } from "../../stores/notifications";
 import { MCBuilderNode, MCEdge } from "../../types/MCNodes";
-import { findCoefficients, Ratios } from "../../utils/builder";
+import { Ratios, findCoefficients } from "../../utils/builder";
 import { getNodeById } from "../../utils/nodes";
 import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
@@ -50,7 +53,7 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
     const nodeRef = getNodeById(data.id) as unknown as Node<MCBuilderNode>;
     const result = findCoefficients(nodeRef);
     if (result.status === "success") {
-      setResult(result.data);
+      setResult(result.recipe);
     } else {
       setResult(null);
     }
@@ -66,7 +69,7 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
           {incomingEdge?.data?.item?.title && (
             <div>{incomingEdge.data?.item?.title}</div>
           )}
-          {JSON.stringify(result)}
+          <SubmitCustomNode ratios={result} />
         </div>
       ) : (
         <div>No Connected Nodes</div>
@@ -74,3 +77,19 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
     </BaseNode>
   );
 }
+
+const SubmitCustomNode = ({ ratios }: { ratios: Ratios | null }) => {
+  const { sendNotification } = useNotifications();
+  const [saveMutation] = useMutation(CREATE_CUSTOM_NODE, {
+    onCompleted() {
+      sendNotification("Created new node!", "success");
+      // TODO: Replace builder node with new node!
+    },
+  });
+
+  if (!ratios) {
+    return <div>None</div>;
+  }
+
+  return <div>Working</div>;
+};

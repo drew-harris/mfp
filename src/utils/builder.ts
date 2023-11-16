@@ -1,5 +1,5 @@
 import { Edge, Node } from "reactflow";
-import { MCBuilderNode, MCEdge, MCNodeType } from "../types/MCNodes";
+import { MCBuilderNode, MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 import { RFState, useNodeStore } from "../stores/nodes";
 import { allRecipes } from "../hardcoded/recipes";
 
@@ -19,10 +19,11 @@ export type Ratios = {
 export type FindCoefficientsResult =
   | {
       status: "success";
-      data: {
-        num: number;
-        itemId: string;
-      }[];
+      recipe: Ratios;
+      graph: {
+        nodes: Node<MCNode>[];
+        edges: Edge<MCEdge>[];
+      };
     }
   | {
       status: "invalid";
@@ -32,6 +33,9 @@ export type FindCoefficientsResult =
 export function findCoefficients(
   builderNode: Node<MCBuilderNode>
 ): FindCoefficientsResult {
+  const totalNodes: Node<MCNode>[] = [builderNode];
+  const totalEdges = [];
+
   if (!builderNode?.id) {
     return {
       status: "invalid",
@@ -49,7 +53,9 @@ export function findCoefficients(
 
   while (queryEdges.length > 0) {
     const toQuery = queryEdges.pop();
+    totalEdges.push(toQuery);
     const sourceNode = getSourceNodeOfEdge(toQuery, state);
+    totalNodes.push(sourceNode);
     switch (sourceNode.data.dataType) {
       case MCNodeType.resource: {
         resultEdges.push(toQuery);
@@ -102,7 +108,11 @@ export function findCoefficients(
   });
 
   return {
-    data: result,
+    recipe: result,
     status: "success",
+    graph: {
+      nodes: totalNodes,
+      edges: totalEdges,
+    },
   };
 }
