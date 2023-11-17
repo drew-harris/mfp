@@ -16,6 +16,15 @@ export type Ratios = {
   itemId: string;
 }[];
 
+export type FindCoefficientsSuccess = {
+  status: "success";
+  recipe: Ratios;
+  graph: {
+    nodes: Node<MCNode>[];
+    edges: Edge<MCEdge>[];
+  };
+};
+
 export type FindCoefficientsResult =
   | {
       status: "success";

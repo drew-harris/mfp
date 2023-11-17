@@ -1,23 +1,31 @@
 import { useMutation } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { Edge, Node } from "reactflow";
 import { CREATE_CUSTOM_NODE } from "../../api/saves";
 import { useNodeStore } from "../../stores/nodes";
 import { useNotifications } from "../../stores/notifications";
 import { MCBuilderNode, MCEdge } from "../../types/MCNodes";
-import { Ratios, findCoefficients } from "../../utils/builder";
+import { FindCoefficientsSuccess, findCoefficients } from "../../utils/builder";
 import { getNodeById } from "../../utils/nodes";
 import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from "../shadcn/ui/dialog";
+import { Button } from "../basic/Button";
+import { UserContext } from "../contexts/UserContext";
 
 interface BuilderNodeProps {
   data: MCBuilderNode;
 }
 
 export default function BuilderNode({ data }: BuilderNodeProps) {
-  const [result, setResult] = useState<Ratios | null>(null);
+  const [result, setResult] = useState<FindCoefficientsSuccess | null>(null);
   const incomingEdge = useNodeStore((s) =>
     s.edges.find((e) => e.target === data.id)
   );
@@ -44,7 +52,7 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
     console.log("UPDATE!!!");
     setEdgeColors(
       allConnectedEdges.map((e) => e.id),
-      "#ff00ff"
+      "#C084FC"
     );
   }, [allConnectedEdges, setEdgeColors]);
 
@@ -53,7 +61,7 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
     const nodeRef = getNodeById(data.id) as unknown as Node<MCBuilderNode>;
     const result = findCoefficients(nodeRef);
     if (result.status === "success") {
-      setResult(result.recipe);
+      setResult(result);
     } else {
       setResult(null);
     }
@@ -62,14 +70,14 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
   return (
     <BaseNode leftSideNodes={<SideHandle type="target" />} data={data}>
       {incomingEdge?.data ? (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-2">
           {incomingEdge?.data?.item?.imageUrl && (
             <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
           )}
           {incomingEdge?.data?.item?.title && (
             <div>{incomingEdge.data?.item?.title}</div>
           )}
-          <SubmitCustomNode ratios={result} />
+          <SubmitCustomNode result={result} />
         </div>
       ) : (
         <div>No Connected Nodes</div>
@@ -78,18 +86,62 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
   );
 }
 
-const SubmitCustomNode = ({ ratios }: { ratios: Ratios | null }) => {
+const SubmitCustomNode = ({ result }: { result: FindCoefficientsSuccess }) => {
   const { sendNotification } = useNotifications();
-  const [saveMutation] = useMutation(CREATE_CUSTOM_NODE, {
+  const [name, setName] = useState("");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const user = useContext(UserContext);
+  const [saveMutation, { loading }] = useMutation(CREATE_CUSTOM_NODE, {
     onCompleted() {
       sendNotification("Created new node!", "success");
       // TODO: Replace builder node with new node!
     },
   });
 
-  if (!ratios) {
-    return <div>None</div>;
+  const handleInput = (e: FormEvent) => {
+    e.preventDefault();
+
+    saveMutation({
+      variables: {
+        newCustomNode: {
+          graphData: { graph: result.graph },
+          recipeData: { recipes: result.recipe },
+          name,
+          playerId: user.user.id,
+        },
+      },
+    });
+  };
+
+  if (!result) {
+    return <div>Invalid</div>;
   }
 
-  return <div>Working</div>;
+  return (
+    <>
+      <Dialog onOpenChange={setDialogOpen} open={dialogOpen}>
+        <DialogTrigger asChild>
+          {loading ? (
+            <div>Loading</div>
+          ) : (
+            <Button onClick={() => setDialogOpen(true)}>Save</Button>
+          )}
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader className="text-center">Save New Node</DialogHeader>
+          <form onSubmit={handleInput} className="flex justify-center">
+            <input
+              placeholder="Custom node name..."
+              className="inset bg-mc-300 p-1 text-white outline-none placeholder:text-mc-200 focus-visible:border-white/80"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+            <Button disabled={name.length <= 0} className="p-1">
+              Create
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
 };

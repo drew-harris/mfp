@@ -35,7 +35,7 @@ export const BaseNode = ({
           [MCNodeType.order]: "bg-red-400",
           [MCNodeType.splitter]: "bg-yellow-300",
           [MCNodeType.info]: "bg-gray-300",
-          [MCNodeType.builder]: "bg-gray-300",
+          [MCNodeType.builder]: "bg-purple-400",
           other: "bg-red-500",
         },
         selected: {
