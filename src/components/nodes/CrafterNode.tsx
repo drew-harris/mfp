@@ -23,7 +23,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
 
   const infoModeEnabled = useNodeStore((s) => s.infoModeEnabled);
 
-  const [isWastingMaterial, setIswastingMaterial] = useState(false);
+  const [isWastingMaterial, setIsWastingMaterial] = useState(false);
 
   const updateNodeInternals = useUpdateNodeInternals();
   const setResouceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
@@ -49,7 +49,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   });
 
   useEffect(() => {
-    const multiples = selectedRecipe.inputs.map((input) => {
+    const numSets = selectedRecipe.inputs.map((input) => {
       const inboundEdge = inboundEdges.find(
         (e) => e.data?.item.itemId === input.itemId
       );
@@ -59,17 +59,13 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
       return 0;
     });
 
-    console.log(`MULTIPLES: ${selectedRecipe.outputItemId}: ${multiples}`);
+    console.log(`OUTPUT SETS: ${selectedRecipe.outputItemId}: ${numSets}`);
 
-    let outputRate = Math.min(...multiples) * selectedRecipe.outputAmount;
+    const minSet = Math.min(...numSets);
+    let outputRate = minSet * selectedRecipe.outputAmount;
 
-    // If all multiples aren't the same
     // TODO: Rescope for terrible inputs too
-    if (Number.isInteger(outputRate)) {
-      setIswastingMaterial(false);
-    } else {
-      setIswastingMaterial(true);
-    }
+    setIsWastingMaterial(numSets.some((set) => set !== minSet));
 
     outputRate = Math.floor(outputRate);
     console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
@@ -109,6 +105,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
       {
         itemId: edge.data.item.itemId,
         amount: edge.data.outputRate - input.amount * outputSets,
+        itemTitle: edge.data.item.title.toLowerCase(),
       },
     ];
   });
@@ -116,6 +113,28 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   const leftoversSum = leftovers.reduce((acc, curr) => {
     return acc + curr.amount;
   }, 0);
+
+  //todo: change format if item name ends in s
+  const leftoversTextArr = leftovers
+    .filter((left) => left.amount > 0)
+    .map((left) => `${left.amount} ${left.itemTitle}s`);
+
+  // eslint-disable-next-line unicorn/no-array-reduce
+  const minLeftover = leftovers.reduce(
+    (min, left) => (left.amount < min.amount ? left : min),
+    leftovers[0]
+  );
+
+  const leftoversText = (() => {
+    if (leftoversTextArr.length === 1) {
+      return leftoversTextArr[0];
+    }
+    if (leftoversTextArr.length === 2) {
+      return leftoversTextArr.join(" and ");
+    }
+    const lastItem = leftoversTextArr.pop();
+    return `${leftoversTextArr.join(", ")}, and ${lastItem}`;
+  })();
 
   const efficiency = outputSets / (outputSets + leftoversSum);
 
@@ -130,7 +149,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         selectedRecipe={selectedRecipe}
         setSelectedRecipe={setSelectedRecipe}
       />
-      <div className="flex  items-center gap-3">
+      <div className="flex items-center gap-3">
         <div>
           {selectedRecipe.inputs.map((input) => (
             <CrafterInput input={input} key={input.itemId} />
@@ -159,7 +178,12 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         </div>
       </div>
       {isWastingMaterial && (
-        <div className="text-xs text-red-800">You are wasting materials!</div>
+        <div className="text-xs text-red-800">
+          You are wasting {leftoversText}!
+        </div>
+      )}
+      {isWastingMaterial && infoModeEnabled && minLeftover && (
+        <div className="text-xs">Bottlenecked by {minLeftover.itemTitle}s.</div>
       )}
       {infoModeEnabled && (
         <div>
