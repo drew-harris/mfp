@@ -4,7 +4,12 @@ import { Edge, Node } from "reactflow";
 import { CREATE_CUSTOM_NODE } from "../../api/saves";
 import { useNodeStore } from "../../stores/nodes";
 import { useNotifications } from "../../stores/notifications";
-import { MCBuilderNode, MCEdge } from "../../types/MCNodes";
+import {
+  MCBuilderNode,
+  MCCustomNode,
+  MCEdge,
+  MCNodeType,
+} from "../../types/MCNodes";
 import { FindCoefficientsSuccess, findCoefficients } from "../../utils/builder";
 import { getNodeById } from "../../utils/nodes";
 import { edgeArrayUpdate } from "../../utils/updates";
@@ -26,8 +31,8 @@ interface BuilderNodeProps {
 
 export default function BuilderNode({ data }: BuilderNodeProps) {
   const [result, setResult] = useState<FindCoefficientsSuccess | null>(null);
-  const incomingEdge = useNodeStore((s) =>
-    s.edges.find((e) => e.target === data.id)
+  const incomingEdges = useNodeStore((s) =>
+    s.edges.filter((e) => e.target === data.id)
   );
 
   const setEdgeColors = useNodeStore((s) => s.setEdgeColors);
@@ -67,17 +72,27 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
     }
   }, [allConnectedEdges, setEdgeColors, data.id]);
 
+  // Number of connections + 1
+  const leftHandles = Array.from(
+    { length: incomingEdges.length + 1 },
+    (_, i) => <SideHandle id={`handle-${data.id}-${i}`} key={i} type="target" />
+  );
+
   return (
-    <BaseNode leftSideNodes={<SideHandle type="target" />} data={data}>
-      {incomingEdge?.data ? (
+    <BaseNode leftSideNodes={leftHandles} data={data}>
+      {incomingEdges.length > 0 ? (
         <div className="flex flex-col items-center gap-2">
-          {incomingEdge?.data?.item?.imageUrl && (
-            <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
-          )}
-          {incomingEdge?.data?.item?.title && (
-            <div>{incomingEdge.data?.item?.title}</div>
-          )}
-          <SubmitCustomNode result={result} />
+          {incomingEdges.map((incomingEdge) => (
+            <>
+              {incomingEdge?.data?.item?.imageUrl && (
+                <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
+              )}
+              {incomingEdge?.data?.item?.title && (
+                <div>{incomingEdge.data?.item?.title}</div>
+              )}
+            </>
+          ))}
+          <SubmitCustomNode builderNode={data} result={result} />
         </div>
       ) : (
         <div>No Connected Nodes</div>
@@ -86,26 +101,59 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
   );
 }
 
-const SubmitCustomNode = ({ result }: { result: FindCoefficientsSuccess }) => {
+const SubmitCustomNode = ({
+  result,
+  builderNode,
+}: {
+  result: FindCoefficientsSuccess;
+  builderNode: MCBuilderNode;
+}) => {
   const { sendNotification } = useNotifications();
   const [name, setName] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
   const user = useContext(UserContext);
+
+  const addNode = useNodeStore((s) => s.addNode);
   const [saveMutation, { loading }] = useMutation(CREATE_CUSTOM_NODE, {
-    onCompleted() {
+    onCompleted({ createCustomNode }) {
       sendNotification("Created new node!", "success");
-      // TODO: Replace builder node with new node!
+      const oldBuilder = result.graph.nodes.find(
+        (n) => n.id === builderNode.id
+      );
+      const nodeIds = result.graph.nodes.map((n) => n.id);
+      const edgeIds = result.graph.edges.map((e) => e.id);
+      remove(nodeIds, edgeIds);
+
+      // Create the new custom node
+      const node: Node<MCCustomNode> = {
+        id: builderNode.id,
+        position: {
+          x: oldBuilder.position.x,
+          y: oldBuilder.position.y,
+        },
+        data: {
+          dataType: MCNodeType.custom,
+          recipies: result.recipes,
+          id: builderNode.id,
+        },
+        type: MCNodeType.custom,
+      };
+
+      addNode(node);
     },
   });
 
+  const remove = useNodeStore((s) => s.removeEdgesAndNodes);
+
   const handleInput = (e: FormEvent) => {
     e.preventDefault();
+    setDialogOpen(false);
 
     saveMutation({
       variables: {
         newCustomNode: {
           graphData: { graph: result.graph },
-          recipeData: { recipes: result.recipe },
+          recipeData: { recipies: result.recipes },
           name,
           playerId: user.user.id,
         },

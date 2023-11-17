@@ -1,3 +1,4 @@
+import { CustomRecipe, Ratios } from "../utils/builder";
 import { DraggableOrderData, Task } from "./tasks";
 
 export enum MCNodeType {
@@ -7,6 +8,7 @@ export enum MCNodeType {
   order = "order",
   info = "info",
   builder = "builder",
+  custom = "custom",
 }
 
 export interface MCItem {
@@ -51,6 +53,11 @@ export interface MCBuilderNode extends MCBaseNode {
   dataType: MCNodeType.builder;
 }
 
+export interface MCCustomNode extends MCBaseNode {
+  dataType: MCNodeType.custom;
+  recipies: CustomRecipe[];
+}
+
 export interface MCEdge {
   builderColor?: string;
   item: MCItem;
@@ -68,6 +75,7 @@ export type MCNode =
   | MCInfoNode
   | MCCrafterNode
   | MCBuilderNode
+  | MCCustomNode
   | MCOrderNode;
 
 export interface DraggableItemData {

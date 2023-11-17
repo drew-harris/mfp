@@ -32,6 +32,7 @@ export type RFState = {
   addNode: (node: Node<MCNode>) => void;
   removeNodeById: (nodeId: string) => void;
   removeEdgeById: (edgeId: string) => void;
+  removeEdgesAndNodes: (nodeIds: string[], edgeIds: string[]) => void;
   updateEdgeSpeeds: () => void;
 
   setEdgeColors: (edgeIds: string[], color: string) => void;
@@ -174,6 +175,19 @@ export const useNodeStore = create<RFState>((set, get) => ({
     const nodes = get().nodes;
     set({
       nodes: [...nodes, node],
+    });
+  },
+
+  removeEdgesAndNodes(nodeIds, edgeIds) {
+    const nodes = get().nodes;
+    const edges = get().edges;
+
+    const newNodes = nodes.filter((n) => !nodeIds.includes(n.id));
+    const newEdges = edges.filter((e) => !edgeIds.includes(e.id));
+
+    set({
+      nodes: newNodes,
+      edges: newEdges,
     });
   },
 

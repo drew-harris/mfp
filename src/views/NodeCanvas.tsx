@@ -16,6 +16,7 @@ import { useNodeStore } from "../stores/nodes";
 import DeleteButton from "../components/panels/DeleteButton";
 import InfoEdge from "../components/nodes/edges/InfoEdge";
 import BuilderNode from "../components/nodes/BuilderNode";
+import CustomNode from "../components/nodes/CustomNode";
 
 const nodeTypes = {
   resource: ResourceNode,
@@ -24,6 +25,7 @@ const nodeTypes = {
   crafter: CrafterNode,
   info: InfoNode,
   builder: BuilderNode,
+  custom: CustomNode,
 };
 
 const edgeTypes = {
