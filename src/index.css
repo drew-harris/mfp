@@ -30,6 +30,10 @@
   .outset-8 {
     @apply border-8 border-[#ffffff40] border-b-[#00000050];
   }
+
+  .without-ring {
+    @apply focus:ring-0 focus:ring-offset-0;
+  }
 }
 
 body {

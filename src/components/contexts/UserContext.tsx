@@ -1,17 +1,20 @@
 import { createContext, type ReactNode, useState } from "react";
 
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { gql } from "../../__generated__/gql";
 import { useNotifications } from "../../stores/notifications";
+import { client } from "../../api/client";
 
-const LOG_IN = gql(/* GraphQL */ `
-  mutation LogIn($username: String!) {
-    loginOrCreate(playerName: $username) {
-      id
-      name
-    }
+
+const LOG_IN = gql(`
+query getPlayerByCode($code: ID!) {
+  player(id: $code) {
+    id
+    name
   }
+}
 `);
+
 
 type User = {
   id: string;
@@ -49,30 +52,33 @@ export default function UserProvider({ children }: { children: ReactNode }) {
     }
   };
   const [user, _setUser] = useState<User | null>(getInitialUser);
+  const [loading, setLoading] = useState(false);
   const sendError = useNotifications((s) => s.sendError);
 
   const saveUser = (user: User) => {
     window.localStorage.setItem("userblob", JSON.stringify(user));
   };
 
-  const [logInMutation, { loading }] = useMutation(LOG_IN, {
-    onCompleted(data) {
-      _setUser({ id: data.loginOrCreate.id, name: data.loginOrCreate.name });
-      saveUser(data.loginOrCreate);
-    },
-    onError(error, clientOptions) {
-      console.error("ERROR LOGGING IN", error, clientOptions);
-      sendError(error.message);
-    },
-  });
 
-  const logIn = (username: string) => {
-    console.log("LOGGING IN", username);
-    logInMutation({
+
+  const logIn = async(code: string) => {
+    try {
+    setLoading(true);
+    const result = await client.query({
+      query: LOG_IN,
       variables: {
-        username: username,
-      },
-    });
+        code: code
+      }
+    })
+
+    _setUser(result.data.player)
+      saveUser(result.data.player);
+    setLoading(false);
+      
+    } catch {
+      alert("error signing in")
+    }
+
   };
 
   const logOut = () => {

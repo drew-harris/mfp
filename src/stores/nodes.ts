@@ -32,7 +32,11 @@ export type RFState = {
   addNode: (node: Node<MCNode>) => void;
   removeNodeById: (nodeId: string) => void;
   removeEdgeById: (edgeId: string) => void;
+  removeEdgesAndNodes: (nodeIds: string[], edgeIds: string[]) => void;
   updateEdgeSpeeds: () => void;
+
+  setEdgeColors: (edgeIds: string[], color: string) => void;
+
   setResourceOutputRate: (id: string, newRate: number) => void;
 
   setNodeData: <T extends MCNode>(id: string, newData: Partial<T>) => void;
@@ -91,6 +95,39 @@ export const useNodeStore = create<RFState>((set, get) => ({
     });
   },
 
+  setEdgeColors(edgeIds, color) {
+    // Reset
+
+    const edges = get().edges;
+
+    const newEdges = edges.map((e) => {
+      if (!edgeIds.includes(e.id)) {
+        return {
+          ...e,
+          style: {
+            ...e.style,
+            color: "white",
+          },
+          data: {
+            ...e.data,
+            builderColor: null,
+          },
+        };
+      }
+      return {
+        ...e,
+        data: {
+          ...e.data,
+          builderColor: color,
+        },
+      };
+    });
+
+    set({
+      edges: newEdges,
+    });
+  },
+
   onConnect: (connection: Connection) => {
     const nodes = get().nodes;
     const sourceNode = nodes.find((node) => node.id === connection.source);
@@ -101,7 +138,9 @@ export const useNodeStore = create<RFState>((set, get) => ({
 
     if (
       sourceNode.data.dataType === MCNodeType.order ||
-      sourceNode.data.dataType === MCNodeType.info
+      sourceNode.data.dataType === MCNodeType.info ||
+      sourceNode.data.dataType === MCNodeType.builder||
+      sourceNode.data.dataType === MCNodeType.custom
     ) {
       return;
     }
@@ -117,7 +156,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
           ...connection,
           animated: true,
           data: {
-            item: sourceNode?.data.item,
+            item: sourceNode?.data?.item,
             outputRate: 0,
           },
           // label: "0",
@@ -137,6 +176,19 @@ export const useNodeStore = create<RFState>((set, get) => ({
     const nodes = get().nodes;
     set({
       nodes: [...nodes, node],
+    });
+  },
+
+  removeEdgesAndNodes(nodeIds, edgeIds) {
+    const nodes = get().nodes;
+    const edges = get().edges;
+
+    const newNodes = nodes.filter((n) => !nodeIds.includes(n.id));
+    const newEdges = edges.filter((e) => !edgeIds.includes(e.id));
+
+    set({
+      nodes: newNodes,
+      edges: newEdges,
     });
   },
 

@@ -1,3 +1,4 @@
+import { CustomRecipe, Ratios } from "../utils/builder";
 import { DraggableOrderData, Task } from "./tasks";
 
 export enum MCNodeType {
@@ -6,6 +7,8 @@ export enum MCNodeType {
   splitter = "splitter",
   order = "order",
   info = "info",
+  builder = "builder",
+  custom = "custom",
 }
 
 export interface MCItem {
@@ -46,7 +49,17 @@ export interface MCInfoNode extends MCBaseNode {
   dataType: MCNodeType.info;
 }
 
+export interface MCBuilderNode extends MCBaseNode {
+  dataType: MCNodeType.builder;
+}
+
+export interface MCCustomNode extends MCBaseNode {
+  dataType: MCNodeType.custom;
+  recipies: CustomRecipe[];
+}
+
 export interface MCEdge {
+  builderColor?: string;
   item: MCItem;
   outputRate: number;
 }
@@ -61,6 +74,8 @@ export type MCNode =
   | MCSplitterNode
   | MCInfoNode
   | MCCrafterNode
+  | MCBuilderNode
+  | MCCustomNode
   | MCOrderNode;
 
 export interface DraggableItemData {
@@ -74,6 +89,11 @@ export interface DraggableInfo {
   draggableType: DraggableType.info;
 }
 
+export interface DraggableBuilder {
+  type: MCNodeType.builder;
+  draggableType: DraggableType.builder;
+}
+
 export interface DraggableSplitterData {
   type: MCNodeType.splitter;
   draggableType: DraggableType.splitter;
@@ -84,12 +104,14 @@ export enum DraggableType {
   order = "order",
   info = "info",
   splitter = "splitter",
+  builder = "builder",
 }
 
 export type DraggableData =
   | DraggableItemData
   | DraggableOrderData
   | DraggableSplitterData
+  | DraggableBuilder
   | DraggableInfo;
 
 export interface Recipe {

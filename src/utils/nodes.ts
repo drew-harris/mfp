@@ -1,4 +1,6 @@
-import { MCNodeType } from "../types/MCNodes";
+import { Edge, Node } from "reactflow";
+import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
+import { useNodeStore } from "../stores/nodes";
 
 export const getNodeName = (type: MCNodeType): string => {
   switch (type) {
@@ -17,8 +19,20 @@ export const getNodeName = (type: MCNodeType): string => {
     case MCNodeType.info: {
       return "Info";
     }
+    case MCNodeType.builder: {
+      return "Builder";
+    }
+    case MCNodeType.custom: {
+      return "Custom";
+    }
     default: {
       return "Unknown";
     }
   }
+};
+
+export const getNodeById = (id: string) => {
+  const { nodes } = useNodeStore.getState();
+
+  return nodes.find((n) => n.id === id);
 };

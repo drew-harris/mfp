@@ -20,6 +20,7 @@ import { useNodeStore } from "./stores/nodes";
 import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import NodeCanvas from "./views/NodeCanvas";
+import DraggableBuilderSquare from "./components/DraggableBuilder";
 
 function FactoryPlanner() {
   const [active, setActive] = useState<Active | null>(null);
@@ -62,6 +63,9 @@ function FactoryPlanner() {
     } else if (data.draggableType === DraggableType.info) {
       console.log("Dragging info");
       draggedItem = <DraggableInfoSquare />;
+    } else if (data.draggableType === DraggableType.builder) {
+      console.log("Dragging info");
+      draggedItem = <DraggableBuilderSquare />;
     } else {
       draggedItem = <DraggableSplitter />;
     }

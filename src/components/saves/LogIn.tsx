@@ -3,13 +3,13 @@ import { Button } from "../basic/Button";
 import { UserContext } from "../contexts/UserContext";
 
 export default function LogIn() {
-  const [usernameInput, setUsernameInput] = useState("");
+  const [codeInput, setCodeInput] = useState("");
   const { logIn, loading } = useContext(UserContext);
 
   const handleLogIn = (e: FormEvent) => {
     e.preventDefault();
-    logIn(usernameInput);
-    setUsernameInput("");
+    logIn(codeInput);
+    setCodeInput("");
   };
 
   return (
@@ -18,9 +18,9 @@ export default function LogIn() {
       <input
         disabled={loading}
         className="inset w-full min-w-0 bg-mc-400 p-1 text-white placeholder:text-mc-100/60 disabled:opacity-50"
-        placeholder="Minecraft Username..."
-        value={usernameInput}
-        onChange={(e) => setUsernameInput(e.target.value)}
+        placeholder="Player code..."
+        value={codeInput}
+        onChange={(e) => setCodeInput(e.target.value)}
       ></input>
       <Button
         disabled={loading}

@@ -16,12 +16,17 @@ export function checkIfNodesConnect(
   // Source should always have an item to pass
   if (
     source.data.dataType === MCNodeType.order ||
-    source.data.dataType === MCNodeType.info
+    source.data.dataType === MCNodeType.builder ||
+    source.data.dataType === MCNodeType.info||
+    source.data.dataType === MCNodeType.custom
   ) {
     return false;
   }
 
   if (target.data.dataType === MCNodeType.info) {
+    return true;
+  }
+  if (target.data.dataType === MCNodeType.builder) {
     return true;
   }
 

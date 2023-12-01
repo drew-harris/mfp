@@ -5,6 +5,7 @@ import { FilterType } from "../../stores/pickerFilterStore";
 import DraggableItem from "../DraggableItem";
 import DraggableSplitter from "../DraggableSplitter";
 import FilterButton from "./FilterButton";
+import DraggableBuilderSquare from "../DraggableBuilder";
 
 export default function ItemPicker() {
   const [input, setInput] = useState("");
@@ -55,6 +56,7 @@ export default function ItemPicker() {
       {/* BUG:  Not sure why 1vh works */}
       <div className="z-40 grid max-h-[1vh] grid-cols-6 gap-2 px-2">
         <DraggableSplitter />
+        <DraggableBuilderSquare />
         {filteredItems.map((item) => (
           <DraggableItem item={item} key={item.itemId + item.dataType} />
         ))}
