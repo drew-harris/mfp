@@ -139,7 +139,8 @@ export const useNodeStore = create<RFState>((set, get) => ({
     if (
       sourceNode.data.dataType === MCNodeType.order ||
       sourceNode.data.dataType === MCNodeType.info ||
-      sourceNode.data.dataType === MCNodeType.builder
+      sourceNode.data.dataType === MCNodeType.builder||
+      sourceNode.data.dataType === MCNodeType.custom
     ) {
       return;
     }
@@ -155,7 +156,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
           ...connection,
           animated: true,
           data: {
-            item: sourceNode?.data.item,
+            item: sourceNode?.data?.item,
             outputRate: 0,
           },
           // label: "0",

@@ -10,17 +10,12 @@ export default function UserDisplay() {
   }
 
   return (
-    <div className="flex items-center justify-center gap-6 p-2">
-      <img
-        className="transition-all"
-        src={`https://crafatar.com/renders/body/${user.id}?scale=3`}
-      />
-      <div className="flex flex-col gap-2 opacity-75">
-        <div className="text-lg font-bold">{user.name}</div>
-        <Button className="group opacity-80" onClick={logOut}>
+    <div className="p-2">
+        <div className="text-lg text-center">Logged in as: {user.name}</div>
+      <div className="p-2"/>
+        <Button className="group block m-auto opacity-80" onClick={logOut}>
           Log Out
         </Button>
       </div>
-    </div>
   );
 }
