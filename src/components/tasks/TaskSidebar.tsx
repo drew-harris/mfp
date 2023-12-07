@@ -46,7 +46,8 @@ export const TaskSidebar = () => {
     if (data.taskComplete && !completeNotificationSent) {
       setCompleteNotificationSent(true);
       if (hasNextTask) {
-        sendNotification("Task Complete!");
+        // NOTE: Happens too often
+        // sendNotification("Task Complete!");
         safeSendLog("TaskComplete", { currentTask });
       } else {
         sendNotification("Lesson Complete", "success");
