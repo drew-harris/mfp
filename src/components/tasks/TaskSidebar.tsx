@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { safeSendLog } from "../../api/logs";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
@@ -11,6 +10,8 @@ import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
+import { sendLog } from "../../api/logs";
+import { LogType } from "../../__generated__/graphql";
 
 export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -48,10 +49,11 @@ export const TaskSidebar = () => {
       if (hasNextTask) {
         // NOTE: Happens too often
         // sendNotification("Task Complete!");
-        safeSendLog("TaskComplete", { currentTask });
+        sendLog(LogType.MfpTaskComplete, {
+          task: currentTask.id,
+        });
       } else {
         sendNotification("Lesson Complete", "success");
-        safeSendLog("LessonComplete", { currentMission });
       }
     } else {
       setCompleteNotificationSent(false);
@@ -84,7 +86,9 @@ export const TaskSidebar = () => {
             className="mx-auto"
             onClick={() => {
               alert(currentMission.completeMessage ?? "Assignment Submitted!");
-              safeSendLog("AssignmentSubmitted", { currentMission });
+              sendLog(LogType.MfpAssignmentSubmitted, {
+                task: currentMission.id,
+              });
               cancelMission();
             }}
           >

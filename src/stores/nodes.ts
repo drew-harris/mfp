@@ -15,13 +15,14 @@ import {
   OnNodesChange,
 } from "reactflow";
 import create from "zustand";
-import { safeSendLog } from "../api/logs";
 import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 import { Task } from "../types/tasks";
 import {
   animationDurationFromPerHour,
   checkIfNodesConnect,
 } from "./nodeStoreUtils";
+import { sendLog } from "../api/logs";
+import { LogType } from "../__generated__/graphql";
 
 export type RFState = {
   nodes: Node<MCNode>[];
@@ -139,7 +140,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
     if (
       sourceNode.data.dataType === MCNodeType.order ||
       sourceNode.data.dataType === MCNodeType.info ||
-      sourceNode.data.dataType === MCNodeType.builder||
+      sourceNode.data.dataType === MCNodeType.builder ||
       sourceNode.data.dataType === MCNodeType.custom
     ) {
       return;
@@ -148,7 +149,8 @@ export const useNodeStore = create<RFState>((set, get) => ({
     if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
       return;
     }
-    safeSendLog("ConnectNodes", { connection });
+
+    sendLog(LogType.MfpConnectNodes);
 
     set({
       edges: addEdge(
@@ -309,7 +311,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
   },
 
   toggleInfoMode() {
-    safeSendLog("ToggleInfoMode", { enable: !get().infoModeEnabled });
+    sendLog(LogType.MfpToggleInfoMode);
     set({
       infoModeEnabled: !get().infoModeEnabled,
     });
@@ -337,7 +339,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
   },
 
   clearAllNodes() {
-    safeSendLog("ClearCanvas", {});
+    sendLog(LogType.MfpClearCanvas);
     set({
       nodes: [],
       edges: [],

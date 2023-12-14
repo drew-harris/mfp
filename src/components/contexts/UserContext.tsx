@@ -16,7 +16,7 @@ query getPlayerByCode($code: ID!) {
 `);
 
 
-type User = {
+export type User = {
   id: string;
   name: string;
 };

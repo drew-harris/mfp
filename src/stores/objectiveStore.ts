@@ -1,7 +1,8 @@
 import create from "zustand";
-import { safeSendLog } from "../api/logs";
 import { Mission, Task } from "../types/tasks";
 import { useNodeStore } from "./nodes";
+import { sendLog } from "../api/logs";
+import { LogType } from "../__generated__/graphql";
 
 export type ObjectiveState = {
   currentMission: Mission | null;
@@ -21,7 +22,7 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
 
   beginMission: (mission: Mission) => {
     useNodeStore.getState().clearAllNodes();
-    safeSendLog("LessonBegin", { mission });
+    sendLog(LogType.MfpLessonBegin, { lesson: mission.id });
     if (mission.tasks.length === 0) {
       throw new Error("Mission must have at least one task");
     }
@@ -48,7 +49,9 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
     set({
       currentTask: currentMission.tasks[currentIndex + 1],
     });
-    safeSendLog("NextTask", { mission: currentMission, task: currentTask });
+    sendLog(LogType.MfpNextTask, {
+      task: currentMission.tasks[currentIndex + 1].id,
+    });
   },
 
   previousTask() {
