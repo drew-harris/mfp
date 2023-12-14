@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { AxisOptions, Chart } from "react-charts";
-import { safeSendLog } from "../../api/logs";
+import { sendLog } from "../../api/logs";
 import { itemFromId } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
@@ -8,6 +8,7 @@ import { MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { SpriteDisplay } from "../SpriteDisplay";
+import { LogType } from "../../__generated__/graphql";
 
 export default function Graph() {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -97,7 +98,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
           className="w-full"
           onClick={() => {
             setDialogOpen(true);
-            safeSendLog("OpenGraph", {});
+            sendLog(LogType.MfpOpenGraph);
           }}
         >
           Open Graph
