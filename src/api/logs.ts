@@ -19,6 +19,8 @@ export const sendLog = (
   if (!userBlob) return;
   const user = JSON.parse(userBlob) as User;
 
+  console.log("LOGGING: with id:", user.id);
+
   client.mutate({
     mutation: SUBMIT_LOG,
     variables: {

@@ -5,7 +5,6 @@ import { gql } from "../../__generated__/gql";
 import { useNotifications } from "../../stores/notifications";
 import { client } from "../../api/client";
 
-
 const LOG_IN = gql(`
 query getPlayerByCode($code: ID!) {
   player(id: $code) {
@@ -14,7 +13,6 @@ query getPlayerByCode($code: ID!) {
   }
 }
 `);
-
 
 export type User = {
   id: string;
@@ -59,26 +57,22 @@ export default function UserProvider({ children }: { children: ReactNode }) {
     window.localStorage.setItem("userblob", JSON.stringify(user));
   };
 
-
-
-  const logIn = async(code: string) => {
+  const logIn = async (code: string) => {
     try {
-    setLoading(true);
-    const result = await client.query({
-      query: LOG_IN,
-      variables: {
-        code: code
-      }
-    })
+      setLoading(true);
+      const result = await client.query({
+        query: LOG_IN,
+        variables: {
+          code: code,
+        },
+      });
 
-    _setUser(result.data.player)
+      _setUser(result.data.player);
       saveUser(result.data.player);
-    setLoading(false);
-      
+      setLoading(false);
     } catch {
-      alert("error signing in")
+      alert("error signing in");
     }
-
   };
 
   const logOut = () => {
