@@ -8,24 +8,12 @@ import {
 } from "../types/MCNodes";
 import { RFState, useNodeStore } from "../stores/nodes";
 import { allRecipes } from "../hardcoded/recipes";
+import { CustomRecipe, EdgeWithCoeff } from "../types/CustomNodes";
 
 const getSourceNodeOfEdge = (edge: Edge<MCEdge>, state: RFState) => {
   return state.nodes.find((n) => n.id === edge.source);
 };
 
-type EdgeWithCoeff = Edge<MCEdge> & {
-  coeff: number;
-};
-
-export type Ratios = {
-  num: number;
-  itemId: string;
-}[];
-
-export type CustomRecipe = {
-  item: MCItem;
-  inputs: Ratios;
-};
 
 export type FindCoefficientsSuccess = {
   status: "success";
