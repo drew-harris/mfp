@@ -1,3 +1,4 @@
+import { CustomNode } from "../__generated__/graphql";
 import { CustomRecipe, Ratios } from "../utils/builder";
 import { DraggableOrderData, Task } from "./tasks";
 

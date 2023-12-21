@@ -41,6 +41,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
     singleEdgeUpdate
   );
 
+  // TODO: Add filter to prevent excessive re-filters
   const outgoingEdges = useNodeStore((s) =>
     s.edges.filter((e) => e?.source === data.id)
   );
