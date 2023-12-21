@@ -10,20 +10,21 @@ import {
   MCEdge,
   MCNodeType,
 } from "../../types/MCNodes";
-import { FindCoefficientsSuccess, findCoefficients } from "../../utils/builder";
+import { FindCoefficientsSuccess } from "../../utils/builder";
+import { findCoefficients } from "../../utils/findCoefficients";
 import { getNodeById } from "../../utils/nodes";
 import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
-import { BaseNode } from "./BaseNode";
-import { SideHandle } from "./nodeDetails/SideHandle";
+import { Button } from "../basic/Button";
+import { UserContext } from "../contexts/UserContext";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTrigger,
 } from "../shadcn/ui/dialog";
-import { Button } from "../basic/Button";
-import { UserContext } from "../contexts/UserContext";
+import { BaseNode } from "./BaseNode";
+import { SideHandle } from "./nodeDetails/SideHandle";
 
 interface BuilderNodeProps {
   data: MCBuilderNode;

@@ -1,14 +1,13 @@
 import { Edge, Node } from "reactflow";
-import {
-  MCBuilderNode,
-  MCEdge,
-  MCItem,
-  MCNode,
-  MCNodeType,
-} from "../types/MCNodes";
-import { RFState, useNodeStore } from "../stores/nodes";
 import { allRecipes } from "../hardcoded/recipes";
+import { RFState, useNodeStore } from "../stores/nodes";
 import { CustomRecipe, EdgeWithCoeff } from "../types/CustomNodes";
+import {
+    MCBuilderNode,
+    MCEdge,
+    MCNode,
+    MCNodeType
+} from "../types/MCNodes";
 
 const getSourceNodeOfEdge = (edge: Edge<MCEdge>, state: RFState) => {
   return state.nodes.find((n) => n.id === edge.source);
