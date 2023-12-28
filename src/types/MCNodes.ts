@@ -1,4 +1,4 @@
-import { CustomRecipe, Ratios } from "../utils/builder";
+import { CustomRecipe } from "../utils/builder";
 import { DraggableOrderData, Task } from "./tasks";
 
 export enum MCNodeType {
@@ -29,7 +29,7 @@ export interface MCResourceNode extends MCBaseNode {
 
 export interface MCSplitterNode extends MCBaseNode {
   item?: MCItem;
-  ratios: Map<string, number>;
+  ratios: { [key: string]: number };
   splitString: string;
   dataType: MCNodeType.splitter;
 }

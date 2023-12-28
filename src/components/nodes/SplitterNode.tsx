@@ -12,24 +12,25 @@ interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
-export function getRatioFromInputString(input: string): Map<string, number> {
+export function getRatioFromInputString(input: string): { [key: string]: number } {
   input = input.toLowerCase().replaceAll(" ", "");
-  const map = new Map();
+  const obj: { [key: string]: number } = {};
   // eslint-disable-next-line unicorn/prefer-spread
   for (const c of input.split("")) {
-    if (map.has(c)) {
-      map.set(c, map.get(c) + 1);
+    if (c in obj) {
+      obj[c] = obj[c] + 1;
     } else {
-      map.set(c, 1);
+      obj[c] = 1;
     }
   }
   const total = input.length;
   // eslint-disable-next-line prefer-const
-  for (let [key, value] of map) {
+  for (const key in obj) {
+    let value = obj[key];
     value = value / total;
-    map.set(key, value);
+    obj[key] = value;
   }
-  return map;
+  return obj;
 }
 
 export default function SplitterNode({ data }: SplitterNodeProps) {
@@ -65,15 +66,15 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
     for (const [i, outgoingEdge] of outgoingEdges.entries()) {
       console.log(
         `i: ${i}, ratios length: ${
-          data.ratios.size
+          Object.keys(data.ratios).length
         }, outgoingEdge: ${outgoingEdges.entries()},
         sourceHandle: ${outgoingEdge.sourceHandle}`
       );
-      if (incomingEdge && data.ratios.has(outgoingEdge.sourceHandle)) {
+      if (incomingEdge && outgoingEdge.sourceHandle in data.ratios) {
         // TODO: Actually finish rounding shhhhhhhh....
         setEdgeData(outgoingEdge.id, {
           outputRate: Math.floor(
-            data.ratios.get(outgoingEdge.sourceHandle) *
+            data.ratios[outgoingEdge.sourceHandle] *
               incomingEdge.data.outputRate
           ),
           item: incomingEdge.data.item,
@@ -104,19 +105,18 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
     <BaseNode
       data={data}
       leftSideNodes={<SideHandle type="target" />}
-      rightSideNodes={[...data.ratios.keys()].map((l, i) => {
+      rightSideNodes={Object.keys(data.ratios).map((label, index) => {
         return (
           <SideHandle
+            key={index}
+            type="source"
+            id={`${label}`}
+            label={label.toUpperCase()}
             className={
-              outgoingEdges.filter((edge) => edge.sourceHandle === l).length ===
-              0
+              outgoingEdges.filter((edge) => edge.sourceHandle === label).length === 0
                 ? "border-black bg-red-500"
                 : null /* todo: has pretty long jank (74.5ms in worst case when n=3), maybe look into refactoring?*/
             }
-            key={i}
-            type="source"
-            id={`${l}`}
-            label={l.toUpperCase()}
           />
         );
       })}
