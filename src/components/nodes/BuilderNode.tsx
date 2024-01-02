@@ -10,8 +10,7 @@ import {
   MCEdge,
   MCNodeType,
 } from "../../types/MCNodes";
-import { FindCoefficientsSuccess } from "../../utils/builder";
-import { findCoefficients } from "../../utils/findCoefficients";
+import { FindCoefficientsSuccess, findCoefficients } from "../../utils/builder";
 import { getNodeById } from "../../utils/nodes";
 import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
@@ -116,7 +115,7 @@ const SubmitCustomNode = ({
 
   const addNode = useNodeStore((s) => s.addNode);
   const [saveMutation, { loading }] = useMutation(CREATE_CUSTOM_NODE, {
-    onCompleted({ createCustomNode }) {
+    onCompleted() {
       sendNotification("Created new node!", "success");
       const oldBuilder = result.graph.nodes.find(
         (n) => n.id === builderNode.id

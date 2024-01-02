@@ -14,4 +14,3 @@ export type CustomRecipe = {
   item: MCItem;
   inputs: Ratios;
 };
-

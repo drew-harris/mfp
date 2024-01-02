@@ -1,5 +1,5 @@
 import { CustomNode } from "../__generated__/graphql";
-import { CustomRecipe, Ratios } from "../utils/builder";
+import { CustomRecipe } from "./CustomNodes";
 import { DraggableOrderData, Task } from "./tasks";
 
 export enum MCNodeType {

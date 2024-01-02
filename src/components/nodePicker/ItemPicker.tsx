@@ -8,7 +8,7 @@ import FilterButton from "./FilterButton";
 import DraggableBuilderSquare from "../DraggableBuilder";
 
 export default function ItemPicker() {
-  const [input, setInput] = useState("");
+  const [search, setSearch] = useState("");
   const currentMission = useObjectiveStore((s) => s.currentMission);
   const currentTask = useObjectiveStore((s) => s.currentTask);
 
@@ -26,15 +26,15 @@ export default function ItemPicker() {
         if (!pool.includes(item.itemId)) return false;
       }
 
-      if (input === "") return true;
+      if (search === "") return true;
 
-      if (item.title.toLowerCase().includes(input.toLowerCase())) {
+      if (item.title.toLowerCase().includes(search.toLowerCase())) {
         return true;
       }
 
       return false;
     });
-  }, [currentTask, currentMission, input]);
+  }, [currentTask, currentMission, search]);
 
   return (
     <>
@@ -42,8 +42,8 @@ export default function ItemPicker() {
         <input
           className="inset bg-mc-300 p-1 text-white placeholder:text-mc-100"
           placeholder="Search for items..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         ></input>
         <div className="flex gap-2">
           <FilterButton type={FilterType.all} />
