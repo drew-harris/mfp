@@ -1,16 +1,22 @@
-import { useMemo, useState } from "react";
-import { crafterItems, resourceItems } from "../../hardcoded/resourceItems";
-import { useObjectiveStore } from "../../stores/objectiveStore";
-import { FilterType } from "../../stores/pickerFilterStore";
-import { MCNodeType } from "../../types/MCNodes";
-import { SpriteDisplay } from "../SpriteDisplay";
-import FilterButton from "./FilterButton";
-import PickerSquare, { DraggableProps } from "./PickerSquare";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowsSplitUpAndLeft,
   faGears,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useMemo, useState } from "react";
+import { crafterItems, resourceItems } from "../../hardcoded/resourceItems";
+import { useObjectiveStore } from "../../stores/objectiveStore";
+import { MCNodeType } from "../../types/MCNodes";
+import { SpriteDisplay } from "../SpriteDisplay";
+import PickerSquare, { DraggableProps } from "./PickerSquare";
+import { PickerSelect } from "./TypeSelect";
+
+export type SelectOption =
+  | "all"
+  | "resource"
+  | "crafter"
+  | "utility"
+  | "custom";
 
 const createItemSearchList = (): DraggableProps[] => {
   const searchItems: DraggableProps[] = [
@@ -56,6 +62,7 @@ const createItemSearchList = (): DraggableProps[] => {
 
 export default function ItemPicker() {
   const [search, setSearch] = useState("");
+  const [selectOption, setSelectOption] = useState<SelectOption>("all");
   const currentMission = useObjectiveStore((s) => s.currentMission);
   const currentTask = useObjectiveStore((s) => s.currentTask);
 
@@ -79,15 +86,43 @@ export default function ItemPicker() {
           return false;
       }
 
+      if (selectOption !== "all") {
+        console.log("Select option:", selectOption);
+        switch (selectOption) {
+          case "resource": {
+            if (prop.payload.type === MCNodeType.resource) return true;
+            return false;
+          }
+          case "crafter": {
+            if (prop.payload.type === MCNodeType.crafter) return true;
+            return false;
+          }
+          case "utility": {
+            if (prop.payload.type === MCNodeType.splitter) return true;
+            if (prop.payload.type === MCNodeType.builder) return true;
+            return false;
+          }
+          // case "custom": {
+          //   if (prop.payload.type === MCNodeType.custom) return true;
+          //   break;
+          // }
+        }
+        return false;
+      }
+
       if (search === "") return true;
 
-      if (prop.topLabel.toLowerCase().includes(search.toLowerCase())) {
+      if (prop.topLabel?.toLowerCase().includes(search?.toLowerCase())) {
+        return true;
+      }
+
+      if (prop?.mainLabel?.toLowerCase()?.includes(search?.toLowerCase())) {
         return true;
       }
 
       return false;
     });
-  }, [currentTask, currentMission, search]);
+  }, [currentTask, currentMission, search, selectOption]);
 
   return (
     <>
@@ -98,12 +133,7 @@ export default function ItemPicker() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         ></input>
-        <div className="flex gap-2">
-          <FilterButton type={FilterType.all} />
-          <FilterButton type={FilterType.resource} />
-          <FilterButton type={FilterType.crafter} />
-          <FilterButton type={FilterType.utility} />
-        </div>
+        <PickerSelect selected={selectOption} setSelected={setSelectOption} />
       </div>
 
       {/* BUG:  Not sure why 1vh works */}

@@ -33,7 +33,7 @@ export default function PickerSquare(props: DraggableProps) {
           [MCNodeType.crafter]: "bg-blue-200",
           [MCNodeType.order]: "bg-red-500",
           [MCNodeType.splitter]: "bg-gray-300",
-          [MCNodeType.builder]: "bg-red-100",
+          [MCNodeType.builder]: "bg-gray-300",
         },
       },
     }
@@ -45,7 +45,7 @@ export default function PickerSquare(props: DraggableProps) {
       {...attributes}
       className={className({ nodeType: props.payload.type })}
       style={{
-        zIndex: props.higher ? 500 : 40,
+        zIndex: props.higher ? 500 : 10,
       }}
     >
       <div className="text-xs">{props.topLabel}</div>
