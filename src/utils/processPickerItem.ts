@@ -1,12 +1,9 @@
 import { Node, XYPosition } from "reactflow";
 import {
-  DraggableBuilder,
-  DraggableInfo,
+  DraggableData,
   DraggableItemData,
-  DraggableSplitterData,
   MCBuilderNode,
   MCCrafterNode,
-  MCInfoNode,
   MCNodeType,
   MCOrderNode,
   MCResourceNode,
@@ -17,7 +14,6 @@ import { DraggableOrderData } from "../types/tasks";
 type PossibleNode =
   | Node<MCOrderNode>
   | Node<MCResourceNode>
-  | Node<MCInfoNode>
   | Node<MCBuilderNode>
   | Node<MCSplitterNode>
   | Node<MCCrafterNode>;
@@ -26,16 +22,11 @@ type PossibleNode =
   Processes a draggable data and returns a node to add to the graph.
 */
 export function processPickerItem(
-  item:
-    | DraggableOrderData
-    | DraggableBuilder
-    | DraggableItemData
-    | DraggableInfo
-    | DraggableSplitterData,
+  payload: DraggableData,
   projection: XYPosition
 ): PossibleNode {
-  if (item.type === MCNodeType.order) {
-    const orderItem = item as DraggableOrderData;
+  if (payload.type === MCNodeType.order) {
+    const orderItem = payload as DraggableOrderData;
     return {
       id: orderItem.task.id,
       position: {
@@ -51,23 +42,23 @@ export function processPickerItem(
     } as Node<MCOrderNode>;
   }
 
-  if (item.type === MCNodeType.info) {
-    const node: Node<MCInfoNode> = {
-      id: projection.x.toString(),
-      position: {
-        x: projection.x,
-        y: projection.y,
-      },
-      data: {
-        dataType: MCNodeType.info,
-        id: projection.x.toString(),
-      },
-      type: MCNodeType.info,
-    };
-    return node;
-  }
+  // if (item.type === MCNodeType.info) {
+  //   const node: Node<MCInfoNode> = {
+  //     id: projection.x.toString(),
+  //     position: {
+  //       x: projection.x,
+  //       y: projection.y,
+  //     },
+  //     data: {
+  //       dataType: MCNodeType.info,
+  //       id: projection.x.toString(),
+  //     },
+  //     type: MCNodeType.info,
+  //   };
+  //   return node;
+  // }
 
-  if (item.type === MCNodeType.builder) {
+  if (payload.type === MCNodeType.builder) {
     const node: Node<MCBuilderNode> = {
       id: projection.x.toString(),
       position: {
@@ -83,7 +74,7 @@ export function processPickerItem(
     return node;
   }
 
-  if (item.type === MCNodeType.splitter) {
+  if (payload.type === MCNodeType.splitter) {
     const node: Node<MCSplitterNode> = {
       id: projection.x.toString(),
       position: {
@@ -101,7 +92,7 @@ export function processPickerItem(
     return node;
   }
 
-  const regularItem = item as DraggableItemData;
+  const regularItem = payload as DraggableItemData;
 
   navigator.clipboard
     .writeText(regularItem.item.itemId)

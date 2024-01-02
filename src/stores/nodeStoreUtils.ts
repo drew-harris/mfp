@@ -17,7 +17,7 @@ export function checkIfNodesConnect(
   if (
     source.data.dataType === MCNodeType.order ||
     source.data.dataType === MCNodeType.builder ||
-    source.data.dataType === MCNodeType.info||
+    source.data.dataType === MCNodeType.info ||
     source.data.dataType === MCNodeType.custom
   ) {
     return false;

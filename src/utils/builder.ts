@@ -2,17 +2,11 @@ import { Edge, Node } from "reactflow";
 import { allRecipes } from "../hardcoded/recipes";
 import { RFState, useNodeStore } from "../stores/nodes";
 import { CustomRecipe, EdgeWithCoeff } from "../types/CustomNodes";
-import {
-    MCBuilderNode,
-    MCEdge,
-    MCNode,
-    MCNodeType
-} from "../types/MCNodes";
+import { MCBuilderNode, MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 
 const getSourceNodeOfEdge = (edge: Edge<MCEdge>, state: RFState) => {
   return state.nodes.find((n) => n.id === edge.source);
 };
-
 
 export type FindCoefficientsSuccess = {
   status: "success";

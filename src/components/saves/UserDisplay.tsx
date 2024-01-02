@@ -11,11 +11,11 @@ export default function UserDisplay() {
 
   return (
     <div className="p-2">
-        <div className="text-lg text-center">Logged in as: {user.name}</div>
-      <div className="p-2"/>
-        <Button className="group block m-auto opacity-80" onClick={logOut}>
-          Log Out
-        </Button>
-      </div>
+      <div className="text-center text-lg">Logged in as: {user.name}</div>
+      <div className="p-2" />
+      <Button className="group m-auto block opacity-80" onClick={logOut}>
+        Log Out
+      </Button>
+    </div>
   );
 }

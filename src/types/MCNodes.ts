@@ -1,4 +1,3 @@
-import { CustomNode } from "../__generated__/graphql";
 import { CustomRecipe } from "./CustomNodes";
 import { DraggableOrderData, Task } from "./tasks";
 
@@ -73,31 +72,22 @@ interface MCBaseNode {
 export type MCNode =
   | MCResourceNode
   | MCSplitterNode
-  | MCInfoNode
   | MCCrafterNode
   | MCBuilderNode
   | MCCustomNode
   | MCOrderNode;
 
 export interface DraggableItemData {
-  type: MCNodeType;
-  draggableType: DraggableType.item;
+  type: MCNodeType.crafter | MCNodeType.resource;
   item: MCPickerItem;
-}
-
-export interface DraggableInfo {
-  type: MCNodeType.info;
-  draggableType: DraggableType.info;
 }
 
 export interface DraggableBuilder {
   type: MCNodeType.builder;
-  draggableType: DraggableType.builder;
 }
 
 export interface DraggableSplitterData {
   type: MCNodeType.splitter;
-  draggableType: DraggableType.splitter;
 }
 
 export enum DraggableType {
@@ -112,8 +102,7 @@ export type DraggableData =
   | DraggableItemData
   | DraggableOrderData
   | DraggableSplitterData
-  | DraggableBuilder
-  | DraggableInfo;
+  | DraggableBuilder;
 
 export interface Recipe {
   outputItemId: string;

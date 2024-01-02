@@ -12,7 +12,9 @@ interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
-export function getRatioFromInputString(input: string): { [key: string]: number } {
+export function getRatioFromInputString(input: string): {
+  [key: string]: number;
+} {
   input = input.toLowerCase().replaceAll(" ", "");
   const obj: { [key: string]: number } = {};
   // eslint-disable-next-line unicorn/prefer-spread
@@ -114,7 +116,8 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
             id={`${label}`}
             label={label.toUpperCase()}
             className={
-              outgoingEdges.filter((edge) => edge.sourceHandle === label).length === 0
+              outgoingEdges.filter((edge) => edge.sourceHandle === label)
+                .length === 0
                 ? "border-black bg-red-500"
                 : null /* TODO: has pretty long jank (74.5ms in worst case when n=3), maybe look into refactoring?*/
             }
