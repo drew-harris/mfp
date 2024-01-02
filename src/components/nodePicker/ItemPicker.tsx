@@ -6,18 +6,25 @@ import { MCNodeType } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import FilterButton from "./FilterButton";
 import PickerSquare, { DraggableProps } from "./PickerSquare";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowsSplitUpAndLeft,
+  faGears,
+} from "@fortawesome/free-solid-svg-icons";
 
 const createItemSearchList = (): DraggableProps[] => {
   const searchItems: DraggableProps[] = [
     {
       mainLabel: "Splitter",
       payload: { type: MCNodeType.splitter },
+      image: <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} size="2x" />,
     },
     {
       mainLabel: "Builder",
       payload: {
         type: MCNodeType.builder,
       },
+      image: <FontAwesomeIcon icon={faGears} size="2x" />,
     },
   ];
 
