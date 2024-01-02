@@ -9,6 +9,7 @@ export interface DraggableProps {
   mainLabel?: string;
   image?: ReactNode;
   higher?: boolean;
+  className?: string;
 }
 
 export default function PickerSquare(props: DraggableProps) {
@@ -25,16 +26,25 @@ export default function PickerSquare(props: DraggableProps) {
       "p-3",
       "outset-4",
       "justify-between",
+      props.className,
     ],
     {
       variants: {
         nodeType: {
           [MCNodeType.resource]: "bg-green-300",
           [MCNodeType.crafter]: "bg-blue-200",
-          [MCNodeType.order]: "bg-red-500",
+          [MCNodeType.order]: "bg-red-200",
           [MCNodeType.splitter]: "bg-gray-300",
           [MCNodeType.builder]: "bg-gray-300",
         },
+        isOrder: {
+          true: "border-red-500 border",
+          false: "",
+        },
+      },
+      defaultVariants: {
+        nodeType: MCNodeType.builder,
+        isOrder: false,
       },
     }
   );

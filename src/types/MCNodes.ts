@@ -102,6 +102,7 @@ export type DraggableData =
   | DraggableItemData
   | DraggableOrderData
   | DraggableSplitterData
+  | DraggableOrderData
   | DraggableBuilder;
 
 export interface Recipe {

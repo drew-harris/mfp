@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { LogType } from "../../__generated__/graphql";
+import { sendLog } from "../../api/logs";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
 import { useNotifications } from "../../stores/notifications";
 import { useObjectiveStore } from "../../stores/objectiveStore";
+import { MCNodeType } from "../../types/MCNodes";
 import { Mission, Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
-import { DroppableOrder } from "./DroppableOrder";
-import { sendLog } from "../../api/logs";
-import { LogType } from "../../__generated__/graphql";
+import PickerSquare from "../nodePicker/PickerSquare";
+import { RequirementView } from "./RequirementView";
 
 export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -172,11 +174,31 @@ interface SideTaskViewProperties {
 }
 
 const SideTaskView = ({ task }: SideTaskViewProperties) => {
+  const hasOrderNodeAlready = useNodeStore((n) =>
+    n.nodes.some((n) => n.data.dataType === MCNodeType.order)
+  );
   return (
-    <div className="p-2">
+    <div className="flex flex-col items-center gap-4 p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
       <div className="text-left text-mc-700">{task.description}</div>
-      <DroppableOrder task={task} />
+      {!hasOrderNodeAlready && (
+        <PickerSquare
+          className="max-w-[200px]"
+          topLabel="Order"
+          image={task.itemRequirements?.map((requirement) => (
+            <div className="flex items-center gap-3" key={requirement.itemId}>
+              <RequirementView
+                className="my-2 text-black"
+                requirement={requirement}
+              />
+            </div>
+          ))}
+          payload={{
+            task: task,
+            type: MCNodeType.order,
+          }}
+        />
+      )}
     </div>
   );
 };

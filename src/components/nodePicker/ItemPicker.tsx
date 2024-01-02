@@ -21,11 +21,13 @@ export type SelectOption =
 const createItemSearchList = (): DraggableProps[] => {
   const searchItems: DraggableProps[] = [
     {
+      topLabel: "Utility",
       mainLabel: "Splitter",
       payload: { type: MCNodeType.splitter },
       image: <FontAwesomeIcon icon={faArrowsSplitUpAndLeft} size="2x" />,
     },
     {
+      topLabel: "Utility",
       mainLabel: "Builder",
       payload: {
         type: MCNodeType.builder,
