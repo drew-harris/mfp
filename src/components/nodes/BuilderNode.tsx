@@ -148,12 +148,12 @@ const SubmitCustomNode = ({
   const handleInput = (e: FormEvent) => {
     e.preventDefault();
     setDialogOpen(false);
-
+    console.log("SAVING");
     saveMutation({
       variables: {
         newCustomNode: {
           graphData: { graph: result.graph },
-          recipeData: { recipies: result.recipes },
+          recipeData: { recipes: result.recipes },
           name,
           playerId: user.user.id,
         },
