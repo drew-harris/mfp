@@ -12,7 +12,9 @@ interface SplitterNodeProps {
   data: MCSplitterNode;
 }
 
-export function getRatioFromInputString(input: string): { [key: string]: number } {
+export function getRatioFromInputString(input: string): {
+  [key: string]: number;
+} {
   input = input.toLowerCase().replaceAll(" ", "");
   const obj: { [key: string]: number } = {};
   // eslint-disable-next-line unicorn/prefer-spread
@@ -113,7 +115,8 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
             id={`${label}`}
             label={label.toUpperCase()}
             className={
-              outgoingEdges.filter((edge) => edge.sourceHandle === label).length === 0
+              outgoingEdges.filter((edge) => edge.sourceHandle === label)
+                .length === 0
                 ? "border-black bg-red-500"
                 : null /* todo: has pretty long jank (74.5ms in worst case when n=3), maybe look into refactoring?*/
             }
@@ -129,7 +132,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       )}
       <input
         type="text"
-        placeholder="Enter Splitting Pattern..."
+        placeholder="Enter splitting pattern..."
         className="rounded-xl border border-black bg-gray-300 px-5 py-1 text-xs text-black placeholder:text-gray-400"
         value={data.splitString}
         onChange={(e) => updateString(e.target.value.toUpperCase())}

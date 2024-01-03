@@ -5,12 +5,12 @@ export const allMissions: Mission[] = [
   {
     id: "tutorial",
     title: "Tutorial",
-    completeMessage: "Well done! You completed the Tutorial",
+    completeMessage: "Well done! You completed the tutorial!",
     tasks: [
       {
         id: "tutorial-resource",
         title: "Resource Node",
-        description: "Drag a diamond resource node to the canvas",
+        description: "Drag a diamond resource node to the canvas.",
         idPool: ["item.minecraft:diamond"],
         stateRequirement: (state) => {
           return Boolean(
@@ -26,8 +26,8 @@ export const allMissions: Mission[] = [
         id: "tutorial-resource-desc",
         title: "Resource Node",
         description:
-          "This is a resource node, it represents an infinite supply of a basic item needed for crafting. You can" +
-          " adjust how many are being output by entering in an amount.",
+          "This is a resource node. It represents an infinite supply of a basic item needed for crafting.\n\nYou can" +
+          " adjust the output amount by entering in a number.",
         idPool: ["item.minecraft:diamond"],
         continuation: true,
       },
@@ -35,8 +35,8 @@ export const allMissions: Mission[] = [
         id: "tutorial-delete",
         title: "Deleting Nodes",
         description:
-          "Click on the resource node and use the backspace key or the trash can icon in the bottom right to" +
-          " delete it.",
+          "Delete the resource node.\n\nTo do this, click the node to select it. Then, click the trash can icon" +
+          " in the bottom right or press the backspace key to delete it.",
         idPool: ["item.minecraft:diamond"],
         stateRequirement: (state) => {
           return !state.nodes.some(
@@ -48,10 +48,10 @@ export const allMissions: Mission[] = [
       },
       {
         id: "tutorial-recipe",
-        title: "Crafting Node",
+        title: "Crafter Node",
         description:
-          "Crafting nodes are a way to turn a resource into a new item with a crafting recipe. In this example, we" +
-          " will craft a furnace, which requires 9 cobblestone to build, drag the furnace crafting node to the canvas.",
+          "Crafter nodes create new items by using resources.\n\nIn this example, we will craft a furnace using 8" +
+          " cobblestone. Drag the furnace crafter node to the canvas.",
         idPool: ["minecraft:furnace"],
         stateRequirement: (state) => {
           return Boolean(
@@ -61,17 +61,17 @@ export const allMissions: Mission[] = [
       },
       {
         id: "tutorial-recipe-multiple",
-        title: "Crafting Node",
+        title: "Crafter Node",
         description:
-          "Notice that you can use the arrows at the top of the crafter to select different recipes, for this" +
-          " tutorial we use recipe 1/3 which uses cobblestone.",
+          "Some items can be crafted from different resources by using different crafting recipes. You can change" +
+          " the recipe by clicking the arrows at the top of the node.\n\nFor now, just use the cobblestone recipe.",
         idPool: ["minecraft:furnace"],
         continuation: true,
       },
       {
         id: "tutorial-recipe-bring-in",
-        title: "Crafting Node",
-        description: "Now, drag a cobblestone resource node to the canvas.",
+        title: "Crafter Node",
+        description: "Drag a cobblestone node to the canvas.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(
@@ -85,25 +85,33 @@ export const allMissions: Mission[] = [
       },
       {
         id: "tutorial-recipe-connect",
-        title: "Crafting Node",
+        title: "Connecting Nodes",
         description:
-          "Click and drag the connector (the circle icon) from the resource node to the connector on the crafter node.",
+          "Find the circle icon on the right side of the resource node. This is the resource node's output.\n\n" +
+          "Then, find the circle icon on the left side of the crafter node. This is the crafter node's input.\n\n" +
+          "Click and drag the output of the resource node to the input of the crafter node.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return Boolean(
             state.edges.some(
-              (n) => (n.data.item.itemId = "minecraft:cobblestone")
+              (n) => (n.data.item.itemId === "minecraft:cobblestone")
             )
           );
         },
       },
       {
         id: "tutorial-recipe-connect",
-        title: "Crafting Node",
+        title: "Crafter Node",
         description:
-          "Try adjusting the amount of cobblestone in the resource node",
+          "Try adjusting the amount of cobblestone in the resource node.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
-        continuation: true,
+        stateRequirement(state) {
+          return Boolean(
+            state.edges.some(
+              (n) => (n.data.item.itemId === "minecraft:cobblestone" && n.data.outputRate)
+            )
+          );
+        },
       },
       {
         id: "tutorial-info-mode",
