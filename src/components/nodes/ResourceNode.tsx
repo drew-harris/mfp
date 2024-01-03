@@ -19,10 +19,12 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
     return Boolean(s.edges.some((edge) => edge.source === data.id));
   });
 
+  const outputRate = Number.parseInt(data.inputString) || 0;
+
+  // Sets edge rate when connected
   useEffect(() => {
-    setOutputRate(data.id, data.outputRate);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOutputting]);
+    setOutputRate(data.id, outputRate);
+  }, [isOutputting, data.inputString]);
 
   return (
     <BaseNode
@@ -38,11 +40,11 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
           className="w-28 rounded-xl border border-black bg-gray-300 pl-4 text-xs text-black placeholder:text-gray-400"
           placeholder="Enter amount..."
           onChange={(event) => {
-            const inputValue = Number.parseInt(event.target.value);
-            setData({ outputRate: inputValue || 0 });
-            setOutputRate(data.id, inputValue || 0);
+            //const inputValue = event.target.value;
+            setData({ inputString: event.target.value.replace(/[^0-9]/g, "") });
+            setOutputRate(data.id, outputRate || 0);
           }}
-          value={data.outputRate}
+          value={data.inputString}
         />
         <div className="text-xs text-gray-400">/ Minute</div>
       </>
