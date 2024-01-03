@@ -1,5 +1,5 @@
 import { RFState } from "../stores/nodes";
-import { DraggableType, MCNodeType } from "./MCNodes";
+import { MCNodeType } from "./MCNodes";
 
 export interface Mission {
   title: string;

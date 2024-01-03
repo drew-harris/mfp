@@ -7,7 +7,6 @@ export enum MCNodeType {
   crafter = "crafter",
   splitter = "splitter",
   order = "order",
-  info = "info",
   builder = "builder",
   custom = "custom",
 }
@@ -45,10 +44,6 @@ export interface MCCrafterNode extends MCBaseNode {
   item: MCItem;
   dataType: MCNodeType.crafter;
   recipeIndex: number;
-}
-
-export interface MCInfoNode extends MCBaseNode {
-  dataType: MCNodeType.info;
 }
 
 export interface MCBuilderNode extends MCBaseNode {
@@ -97,14 +92,6 @@ export interface DraggableSplitterData {
 export interface DraggableCustomNodeData {
   type: MCNodeType.custom;
   queryData: GetCustomNodesQuery["customNodes"][0];
-}
-
-export enum DraggableType {
-  item = "item",
-  order = "order",
-  info = "info",
-  splitter = "splitter",
-  builder = "builder",
 }
 
 export type DraggableData =
