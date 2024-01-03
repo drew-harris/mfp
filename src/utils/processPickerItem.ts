@@ -111,9 +111,9 @@ export function processPickerItem(
           imageUrl: regularItem.item.imageUrl,
           title: regularItem.item.title,
         },
-        ratio: [1],
         dataType: regularItem.type,
         id: projection.x.toString(),
+        inputString: "",
       },
       type: regularItem.type,
     } as Node<MCResourceNode>;
