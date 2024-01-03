@@ -1,11 +1,10 @@
+import { useEffect } from "react";
+import { useSetNodeData } from "../../hooks/useSetNodeData";
 import { useNodeStore } from "../../stores/nodes";
-import { MCResourceNode, MCSplitterNode } from "../../types/MCNodes";
+import { MCResourceNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
-import { useSetNodeData } from "../../hooks/useSetNodeData";
-import { useEffect } from "react";
-import { getRatioFromInputString } from "./SplitterNode";
 interface ResourceNodeProps {
   data: MCResourceNode;
 }
@@ -41,7 +40,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
           placeholder="Enter amount..."
           onChange={(event) => {
             //const inputValue = event.target.value;
-            setData({ inputString: event.target.value.replace(/[^0-9]/g, "") });
+            setData({ inputString: event.target.value.replace(/\D/g, "") });
             setOutputRate(data.id, outputRate || 0);
           }}
           value={data.inputString}
