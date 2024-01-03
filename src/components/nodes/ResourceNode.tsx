@@ -23,6 +23,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
   // Sets edge rate when connected
   useEffect(() => {
     setOutputRate(data.id, outputRate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOutputting, data.inputString]);
 
   return (
