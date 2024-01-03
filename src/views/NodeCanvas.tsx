@@ -8,7 +8,6 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import { MenuBar } from "../components/panels/MenuBar";
 import CrafterNode from "../components/nodes/CrafterNode";
-import InfoNode from "../components/nodes/InfoNode";
 import OrderNode from "../components/nodes/OrderNode";
 import ResourceNode from "../components/nodes/ResourceNode";
 import SplitterNode from "../components/nodes/SplitterNode";
@@ -23,7 +22,6 @@ const nodeTypes = {
   splitter: SplitterNode,
   order: OrderNode,
   crafter: CrafterNode,
-  info: InfoNode,
   builder: BuilderNode,
   custom: CustomNode,
 };
