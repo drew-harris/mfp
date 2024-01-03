@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { Edge, Node } from "reactflow";
 import { CREATE_CUSTOM_NODE } from "../../api/saves";
@@ -113,6 +113,7 @@ const SubmitCustomNode = ({
   result: FindCoefficientsSuccess;
   builderNode: MCBuilderNode;
 }) => {
+  const client = useApolloClient();
   const { sendNotification } = useNotifications();
   const [name, setName] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -147,6 +148,9 @@ const SubmitCustomNode = ({
       };
 
       addNode(node);
+
+      // Invalidate query for picker
+      client.refetchQueries({ include: "active" });
     },
   });
 

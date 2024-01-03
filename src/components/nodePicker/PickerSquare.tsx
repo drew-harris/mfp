@@ -36,6 +36,7 @@ export default function PickerSquare(props: DraggableProps) {
           [MCNodeType.order]: "bg-red-200",
           [MCNodeType.splitter]: "bg-gray-300",
           [MCNodeType.builder]: "bg-gray-300",
+          [MCNodeType.custom]: "bg-purple-200",
         },
         isOrder: {
           true: "border-red-500 border",
@@ -58,7 +59,7 @@ export default function PickerSquare(props: DraggableProps) {
         zIndex: props.higher ? 500 : 10,
       }}
     >
-      <div className="text-xs">{props.topLabel}</div>
+      <div className="text-center text-xs">{props.topLabel}</div>
       {props.image}
       <div className="text-center font-bold">{props.mainLabel}</div>
     </div>

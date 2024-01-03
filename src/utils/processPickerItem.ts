@@ -1,9 +1,11 @@
 import { Node, XYPosition } from "reactflow";
 import {
+  DraggableCustomNodeData,
   DraggableData,
   DraggableItemData,
   MCBuilderNode,
   MCCrafterNode,
+  MCCustomNode,
   MCNodeType,
   MCOrderNode,
   MCResourceNode,
@@ -14,6 +16,7 @@ import { DraggableOrderData } from "../types/tasks";
 type PossibleNode =
   | Node<MCOrderNode>
   | Node<MCResourceNode>
+  | Node<MCCustomNode>
   | Node<MCBuilderNode>
   | Node<MCSplitterNode>
   | Node<MCCrafterNode>;
@@ -42,6 +45,24 @@ export function processPickerItem(
     } as Node<MCOrderNode>;
   }
 
+  if (payload.type === MCNodeType.custom) {
+    const queryData = payload as DraggableCustomNodeData;
+    return {
+      id: projection.x.toString(),
+      position: {
+        x: projection.x,
+        y: projection.y,
+      },
+      data: {
+        dataType: MCNodeType.custom,
+        name: queryData.queryData.name,
+        id: projection.x.toString(),
+        lapisId: queryData.queryData.id,
+        recipes: queryData.queryData.recipeData.recipes, // TODO: Strengthen
+      },
+      type: MCNodeType.custom,
+    } as Node<MCCustomNode>;
+  }
   // if (item.type === MCNodeType.info) {
   //   const node: Node<MCInfoNode> = {
   //     id: projection.x.toString(),

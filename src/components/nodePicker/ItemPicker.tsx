@@ -10,6 +10,7 @@ import { MCNodeType } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import PickerSquare, { DraggableProps } from "./PickerSquare";
 import { PickerSelect } from "./TypeSelect";
+import { useCustomNodeList } from "../../hooks/useCustomNodeList";
 
 export type SelectOption =
   | "all"
@@ -18,7 +19,9 @@ export type SelectOption =
   | "utility"
   | "custom";
 
-const createItemSearchList = (): DraggableProps[] => {
+const createItemSearchList = (
+  customNodes: ReturnType<typeof useCustomNodeList>
+): DraggableProps[] => {
   const searchItems: DraggableProps[] = [
     {
       topLabel: "Utility",
@@ -34,6 +37,16 @@ const createItemSearchList = (): DraggableProps[] => {
       },
       image: <FontAwesomeIcon icon={faGears} size="2x" />,
     },
+    ...customNodes.map((cn) => {
+      return {
+        payload: {
+          type: MCNodeType.custom,
+          queryData: cn
+        },
+        topLabel: "Custom Node",
+        mainLabel: cn.name
+      } satisfies DraggableProps;
+    }),
   ];
 
   // Add the resource items
@@ -67,10 +80,11 @@ export default function ItemPicker() {
   const [selectOption, setSelectOption] = useState<SelectOption>("all");
   const currentMission = useObjectiveStore((s) => s.currentMission);
   const currentTask = useObjectiveStore((s) => s.currentTask);
+  const customNodes = useCustomNodeList();
 
   // TODO: Optimize
   const filteredItems = useMemo(() => {
-    const searchables = createItemSearchList();
+    const searchables = createItemSearchList(customNodes);
     return searchables.filter((prop) => {
       if (currentTask?.idPool) {
         let pool: string[] = [];
@@ -89,7 +103,6 @@ export default function ItemPicker() {
       }
 
       if (selectOption !== "all") {
-        console.log("Select option:", selectOption);
         switch (selectOption) {
           case "resource": {
             if (prop.payload.type === MCNodeType.resource) return true;
@@ -104,10 +117,10 @@ export default function ItemPicker() {
             if (prop.payload.type === MCNodeType.builder) return true;
             return false;
           }
-          // case "custom": {
-          //   if (prop.payload.type === MCNodeType.custom) return true;
-          //   break;
-          // }
+          case "custom": {
+            if (prop.payload.type === MCNodeType.custom) return true;
+            break;
+          }
         }
         return false;
       }
@@ -124,7 +137,7 @@ export default function ItemPicker() {
 
       return false;
     });
-  }, [currentTask, currentMission, search, selectOption]);
+  }, [currentTask, currentMission, search, selectOption, customNodes]);
 
   return (
     <>

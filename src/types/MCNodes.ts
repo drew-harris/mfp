@@ -1,3 +1,4 @@
+import { GetCustomNodesQuery } from "../__generated__/graphql";
 import { CustomNodePayload } from "./CustomNodes";
 import { DraggableOrderData, Task } from "./tasks";
 
@@ -58,7 +59,7 @@ export interface MCCustomNode extends MCBaseNode {
   dataType: MCNodeType.custom;
   lapisId: string;
   name: string;
-  recipes: CustomNodePayload["recipeData"]["recipes"];
+  recipes?: CustomNodePayload["recipeData"]["recipes"];
 }
 
 export interface MCEdge {
@@ -93,6 +94,11 @@ export interface DraggableSplitterData {
   type: MCNodeType.splitter;
 }
 
+export interface DraggableCustomNodeData {
+  type: MCNodeType.custom;
+  queryData: GetCustomNodesQuery["customNodes"][0];
+}
+
 export enum DraggableType {
   item = "item",
   order = "order",
@@ -106,6 +112,7 @@ export type DraggableData =
   | DraggableOrderData
   | DraggableSplitterData
   | DraggableOrderData
+  | DraggableCustomNodeData
   | DraggableBuilder;
 
 export interface Recipe {
