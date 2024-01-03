@@ -25,6 +25,7 @@ export interface MCPickerItem extends MCItem {
 export interface MCResourceNode extends MCBaseNode {
   item: MCItem;
   dataType: MCNodeType.resource;
+  inputString: string;
 }
 
 export interface MCSplitterNode extends MCBaseNode {
