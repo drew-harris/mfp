@@ -139,7 +139,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
 
     if (
       sourceNode.data.dataType === MCNodeType.order ||
-      sourceNode.data.dataType === MCNodeType.info ||
       sourceNode.data.dataType === MCNodeType.builder ||
       sourceNode.data.dataType === MCNodeType.custom
     ) {
