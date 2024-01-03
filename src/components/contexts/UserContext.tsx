@@ -43,6 +43,7 @@ export const UserContext = createContext<UserContextProviderValue>(defaults);
 export default function UserProvider({ children }: { children: ReactNode }) {
   const getInitialUser = () => {
     const user = window.localStorage.getItem("userblob");
+    console.log("GOT INITIAL USER", user);
     if (user) {
       return JSON.parse(user) as User;
     } else {

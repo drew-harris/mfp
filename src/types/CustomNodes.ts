@@ -1,5 +1,5 @@
-import { Edge } from "reactflow";
-import { MCEdge, MCItem } from "./MCNodes";
+import { Edge, Node } from "reactflow";
+import { MCEdge, MCItem, MCNode } from "./MCNodes";
 
 export type EdgeWithCoeff = Edge<MCEdge> & {
   coeff: number;
@@ -13,4 +13,14 @@ export type Ratios = {
 export type CustomRecipe = {
   item: MCItem;
   inputs: Ratios;
+};
+
+export type CustomNodePayload = {
+  graphData: {
+    nodes: Node<MCNode>;
+    edges: Edge<MCEdge>;
+  };
+  recipeData: {
+    recipes: CustomRecipe[];
+  };
 };

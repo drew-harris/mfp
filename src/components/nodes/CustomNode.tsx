@@ -11,10 +11,10 @@ interface CustomNodeProps {
 }
 
 export default function CustomNode({ data }: CustomNodeProps) {
-  const items = data.recipies.map((r) => r.item);
+  const items = data.recipes.map((r) => r.item);
   const [showRequired, setShowRequired] = useState(false);
 
-  const collapsed = data.recipies.map((r) => r.inputs).flatMap((r) => r.flat());
+  const collapsed = data.recipes.map((r) => r.inputs).flatMap((r) => r.flat());
 
   const leftSideNodes = collapsed.map((i) => (
     <SideHandle type="target" id={`${data.id}-input-${i}`} key={i.itemId} />

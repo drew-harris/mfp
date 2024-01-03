@@ -1,4 +1,4 @@
-import { CustomRecipe } from "./CustomNodes";
+import { CustomNodePayload } from "./CustomNodes";
 import { DraggableOrderData, Task } from "./tasks";
 
 export enum MCNodeType {
@@ -56,7 +56,9 @@ export interface MCBuilderNode extends MCBaseNode {
 
 export interface MCCustomNode extends MCBaseNode {
   dataType: MCNodeType.custom;
-  recipies: CustomRecipe[];
+  lapisId: string;
+  name: string;
+  recipes: CustomNodePayload["recipeData"]["recipes"];
 }
 
 export interface MCEdge {

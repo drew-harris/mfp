@@ -85,10 +85,15 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
           {incomingEdges.map((incomingEdge) => (
             <>
               {incomingEdge?.data?.item?.imageUrl && (
-                <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
+                <SpriteDisplay
+                  key={incomingEdge.id}
+                  url={incomingEdge.data.item.imageUrl}
+                />
               )}
               {incomingEdge?.data?.item?.title && (
-                <div>{incomingEdge.data?.item?.title}</div>
+                <div key={incomingEdge.id + "title"}>
+                  {incomingEdge.data?.item?.title}
+                </div>
               )}
             </>
           ))}
@@ -115,7 +120,7 @@ const SubmitCustomNode = ({
 
   const addNode = useNodeStore((s) => s.addNode);
   const [saveMutation, { loading }] = useMutation(CREATE_CUSTOM_NODE, {
-    onCompleted() {
+    onCompleted(data) {
       sendNotification("Created new node!", "success");
       const oldBuilder = result.graph.nodes.find(
         (n) => n.id === builderNode.id
@@ -133,7 +138,9 @@ const SubmitCustomNode = ({
         },
         data: {
           dataType: MCNodeType.custom,
-          recipies: result.recipes,
+          lapisId: data.createCustomNode.id,
+          name: data.createCustomNode.name,
+          recipes: data.createCustomNode.recipeData.recipes, // TODO: Verify
           id: builderNode.id,
         },
         type: MCNodeType.custom,
@@ -149,10 +156,11 @@ const SubmitCustomNode = ({
     e.preventDefault();
     setDialogOpen(false);
     console.log("SAVING");
+    console.log("Muataion");
     saveMutation({
       variables: {
         newCustomNode: {
-          graphData: { graph: result.graph },
+          graphData: result.graph,
           recipeData: { recipes: result.recipes },
           name,
           playerId: user.user.id,

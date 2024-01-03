@@ -221,7 +221,10 @@ const CrafterInput = ({
         <div className="flex items-center gap-2">
           <SpriteDisplay url={item.imageUrl} />x {input.amount}
         </div>
-        <div className="text-center text-xs text-gray-500 w-20">{item.title}</div> {/*Length is arbitrary*/}
+        <div className="w-20 text-center text-xs text-gray-500">
+          {item.title}
+        </div>{" "}
+        {/*Length is arbitrary*/}
       </div>
     </div>
   );
