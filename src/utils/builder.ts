@@ -52,6 +52,15 @@ export function findCoefficients(
   }));
   const results: CustomRecipe[] = [];
 
+  // Two incoming edges can't have the same item
+  const incomingEdgeItems = incomingEdges.map((e) => e.data.item.itemId);
+  if (new Set(incomingEdgeItems).size !== incomingEdgeItems.length) {
+    return {
+      status: "invalid",
+      message: "You can't craft duplicate items in a custom node.",
+    };
+  }
+
   while (queryEdges.length > 0) {
     const initialQueryEdge = queryEdges.pop();
     const roundQueryEdges = [initialQueryEdge];

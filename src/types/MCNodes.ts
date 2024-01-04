@@ -54,7 +54,7 @@ export interface MCCustomNode extends MCBaseNode {
   dataType: MCNodeType.custom;
   lapisId: string;
   name: string;
-  recipes?: CustomNodePayload["recipeData"]["recipes"];
+  recipes: CustomNodePayload["recipeData"]["recipes"];
 }
 
 export interface MCEdge {

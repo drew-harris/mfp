@@ -27,5 +27,6 @@ export default defineConfig({
   // @ts-ignore
   test: {
     environment: "jsdom",
+    includeSource: ["src/**/*.{js,jsx,ts,tsx}"],
   },
 });
