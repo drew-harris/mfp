@@ -26,7 +26,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   const [isWastingMaterial, setIsWastingMaterial] = useState(false);
 
   const updateNodeInternals = useUpdateNodeInternals();
-  const setResouceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
+  const setResourceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
   const removeEdge = useNodeStore((s) => s.removeEdgeById);
 
   const inboundEdges = useNodeStore((s) => {
@@ -48,8 +48,13 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return Boolean(s.edges.some((edge) => edge.source === data.id));
   });
 
+  // todo const pluralize = (s: string) => {};
+
+  let numSets: number[]; // todo is this good practice???
+  let minSet: number;
+
   useEffect(() => {
-    const numSets = selectedRecipe.inputs.map((input) => {
+    numSets = selectedRecipe.inputs.map((input) => {
       const inboundEdge = inboundEdges.find(
         (e) => e.data?.item.itemId === input.itemId
       );
@@ -59,24 +64,24 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
       return 0;
     });
 
-    console.log(`OUTPUT SETS: ${selectedRecipe.outputItemId}: ${numSets}`);
+    // console.log(`OUTPUT SETS: ${selectedRecipe.outputItemId}: ${numSets}`);
 
-    const minSet = Math.min(...numSets);
+    minSet = Math.min(...numSets);
     let outputRate = minSet * selectedRecipe.outputAmount;
 
     // TODO: Rescope for terrible inputs too
-    setIsWastingMaterial(numSets.some((set) => set !== minSet));
+    setIsWastingMaterial(numSets.some((set) => set % minSet !== 0));
 
     outputRate = Math.floor(outputRate);
     console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
 
-    setResouceOutputRate(data.id, outputRate);
+    setResourceOutputRate(data.id, outputRate);
   }, [
     inboundEdges,
     outboundEdges,
     selectedRecipe,
     data.id,
-    setResouceOutputRate,
+    setResourceOutputRate,
   ]);
 
   useEffect(() => {
@@ -91,8 +96,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     updateNodeInternals(data.id);
   }, [selectedRecipe, data.id, inboundEdges, removeEdge, updateNodeInternals]);
 
-  const outputSets =
-    outboundEdges[0]?.data.outputRate / selectedRecipe.outputAmount;
+  const outputSets = minSet;
 
   const leftovers = inboundEdges.flatMap((edge) => {
     const input = selectedRecipe.inputs.find(
@@ -119,21 +123,34 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     .filter((left) => left.amount > 0)
     .map((left) => `${left.amount} ${left.itemTitle}s`);
 
-  // eslint-disable-next-line unicorn/no-array-reduce
-  const minLeftover = leftovers.reduce(
-    (min, left) => (left.amount < min.amount ? left : min),
-    leftovers[0]
-  );
+  const minLeftover =
+    leftovers.length > 0
+      ? // eslint-disable-next-line unicorn/no-array-reduce
+        leftovers.reduce(
+          (min, left) => (left.amount < min.amount ? left : min),
+          leftovers[0]
+        )
+      : null;
 
   const leftoversText = (() => {
-    if (leftoversTextArr.length === 1) {
-      return leftoversTextArr[0];
+    const arrLength = leftoversTextArr.length;
+    switch (arrLength) {
+      case 0: {
+        return "ERROR"; //todo: replace value for something better
+      }
+      case 1: {
+        return leftoversTextArr[0];
+      }
+      case 2: {
+        return leftoversTextArr.join(" and ");
+      }
+      default: {
+        console.log("before pop: " + leftoversTextArr);
+        const lastItem = leftoversTextArr.pop();
+        console.log("before pop: " + leftoversTextArr);
+        return `${leftoversTextArr.join(", ")}, and ${lastItem}`;
+      }
     }
-    if (leftoversTextArr.length === 2) {
-      return leftoversTextArr.join(" and ");
-    }
-    const lastItem = leftoversTextArr.pop();
-    return `${leftoversTextArr.join(", ")}, and ${lastItem}`;
   })();
 
   const efficiency = outputSets / (outputSets + leftoversSum);
@@ -183,12 +200,16 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
         </div>
       )}
       {isWastingMaterial && infoModeEnabled && minLeftover && (
-        <div className="text-xs">Bottlenecked by {minLeftover.itemTitle}s.</div>
+        <div className="whitespace-pre-wrap text-xs">
+          Bottlenecked by &quot;{minLeftover.itemTitle}&quot;.
+        </div>
       )}
       {infoModeEnabled && (
         <div>
-          <div>Sets: {outputSets}</div>
-          <div>Efficiency: {Math.round(efficiency * 100)}%</div>
+          <div>Sets: {outputSets || 0}</div>
+          <div>
+            Efficiency: {efficiency ? Math.round(efficiency * 100) : 0}%
+          </div>
         </div>
       )}
     </BaseNode>
@@ -221,7 +242,10 @@ const CrafterInput = ({
         <div className="flex items-center gap-2">
           <SpriteDisplay url={item.imageUrl} />x {input.amount}
         </div>
-        <div className="text-center text-xs text-gray-500 w-20">{item.title}</div> {/*Length is arbitrary*/}
+        <div className="w-20 text-center text-xs text-gray-500">
+          {item.title}
+        </div>
+        {/*Length is arbitrary*/}
       </div>
     </div>
   );
