@@ -11,6 +11,7 @@ import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { RecipeSelector } from "./nodeDetails/RecipeSelector";
+import pluralize from "pluralize";
 
 interface CrafterNodeProps {
   data: MCCrafterNode;
@@ -26,7 +27,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   const [isWastingMaterial, setIsWastingMaterial] = useState(false);
 
   const updateNodeInternals = useUpdateNodeInternals();
-  const setResouceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
+  const setResourceOutputRate = useNodeStore((s) => s.setResourceOutputRate);
   const removeEdge = useNodeStore((s) => s.removeEdgeById);
 
   const inboundEdges = useNodeStore((s) => {
@@ -48,35 +49,79 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return Boolean(s.edges.some((edge) => edge.source === data.id));
   });
 
+  // const pluralize = (s: string) => {
+  //   const endChars = s.substring(s.length - 2);
+  //   const lastChar = s[s.length - 1];
+  //
+  //   const
+  //   if (lastChar !== "s") {
+  //     return s + "s";
+  //   }
+  //   if (endChars[1] === "x" or "z") {
+  //
+  //   }
+  //
+  //   return s;
+  // };
+
+  const inputAmounts = selectedRecipe.inputs.map((input) => {
+    const edge = inboundEdges.find(
+      (e) => e.data?.item.itemId === input.itemId
+    );
+    if (!edge) {
+      return {
+        itemId: input.itemId,
+        amount: 0,
+        itemTitle: input.itemId,
+        recipeAmount: input.amount
+      };
+    }
+    return {
+      itemId: edge.data.item.itemId,
+      amount: edge.data.outputRate ?? 0,
+      itemTitle: edge.data.item.title.toLowerCase(),
+      recipeAmount: input.amount
+    }
+  });
+
+  const numSets = selectedRecipe.inputs.map((input) => {
+    const inboundEdge = inboundEdges.find(
+      (e) => e.data?.item.itemId === input.itemId
+    );
+    if (inboundEdge?.data?.outputRate) {
+      return Math.floor(inboundEdge.data?.outputRate / input.amount);
+    }
+    return 0;
+  });
+
+  const minSet = Math.min(...numSets);
+
+  const leftovers = inputAmounts.map((input) => {
+    return {
+      itemId: input.itemId,
+      amount: minSet ? input.amount - (minSet * input.recipeAmount) : input.amount,
+      itemTitle: input.itemTitle,
+    };
+  });
+
   useEffect(() => {
-    const numSets = selectedRecipe.inputs.map((input) => {
-      const inboundEdge = inboundEdges.find(
-        (e) => e.data?.item.itemId === input.itemId
-      );
-      if (inboundEdge?.data?.outputRate) {
-        return inboundEdge.data?.outputRate / input.amount;
-      }
-      return 0;
-    });
+    // console.log(`OUTPUT SETS: ${selectedRecipe.outputItemId}: ${numSets}`);
+    const outputRate = minSet * selectedRecipe.outputAmount;
 
-    console.log(`OUTPUT SETS: ${selectedRecipe.outputItemId}: ${numSets}`);
-
-    const minSet = Math.min(...numSets);
-    let outputRate = minSet * selectedRecipe.outputAmount;
+    console.log("leftovers: " + leftovers.map(item => `itemId: ${item.itemId}, amount: ${item.amount}, itemTitle: ${item.itemTitle}`).join(', '));
 
     // TODO: Rescope for terrible inputs too
-    setIsWastingMaterial(numSets.some((set) => set !== minSet));
+    setIsWastingMaterial( isOutputting && leftovers.some((left) => left.amount !== 0));
 
-    outputRate = Math.floor(outputRate);
-    console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
+    // console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
 
-    setResouceOutputRate(data.id, outputRate);
+    setResourceOutputRate(data.id, outputRate);
   }, [
     inboundEdges,
     outboundEdges,
     selectedRecipe,
     data.id,
-    setResouceOutputRate,
+    setResourceOutputRate,
   ]);
 
   useEffect(() => {
@@ -91,52 +136,50 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     updateNodeInternals(data.id);
   }, [selectedRecipe, data.id, inboundEdges, removeEdge, updateNodeInternals]);
 
-  const outputSets =
-    outboundEdges[0]?.data.outputRate / selectedRecipe.outputAmount;
+  //todo: change format if item name ends in s
+  const leftoversTextArr = leftovers
+    .filter((left) => left.amount > 0)
+    .map((left) => `${left.amount} ${pluralize(left.itemTitle, left.amount)}`);
 
-  const leftovers = inboundEdges.flatMap((edge) => {
-    const input = selectedRecipe.inputs.find(
-      (i) => i.itemId === edge.data?.item.itemId
-    );
-    if (!input) {
-      return [];
+  const minLeftover =
+    leftovers.length > 0
+      ? // eslint-disable-next-line unicorn/no-array-reduce
+        leftovers.reduce(
+          (min, left) => (left.amount < min.amount ? left : min),
+          leftovers[0]
+        )
+      : null;
+
+  const leftoversText = (() => {
+    const arrLength = leftoversTextArr.length;
+    switch (arrLength) {
+      case 0: {
+        return "ERROR"; //todo: replace value for something better
+      }
+      case 1: {
+        return leftoversTextArr[0];
+      }
+      case 2: {
+        return leftoversTextArr.join(" and ");
+      }
+      default: {
+        console.log("before pop: " + leftoversTextArr);
+        const lastItem = leftoversTextArr.pop();
+        console.log("before pop: " + leftoversTextArr);
+        return `${leftoversTextArr.join(", ")}, and ${lastItem}`;
+      }
     }
-    return [
-      {
-        itemId: edge.data.item.itemId,
-        amount: edge.data.outputRate - input.amount * outputSets,
-        itemTitle: edge.data.item.title.toLowerCase(),
-      },
-    ];
-  });
+  })();
 
   const leftoversSum = leftovers.reduce((acc, curr) => {
     return acc + curr.amount;
   }, 0);
 
-  //todo: change format if item name ends in s
-  const leftoversTextArr = leftovers
-    .filter((left) => left.amount > 0)
-    .map((left) => `${left.amount} ${left.itemTitle}s`);
+  const totalSum = inputAmounts.reduce((acc, curr) => {
+    return acc + curr.amount;
+  }, 0);
 
-  // eslint-disable-next-line unicorn/no-array-reduce
-  const minLeftover = leftovers.reduce(
-    (min, left) => (left.amount < min.amount ? left : min),
-    leftovers[0]
-  );
-
-  const leftoversText = (() => {
-    if (leftoversTextArr.length === 1) {
-      return leftoversTextArr[0];
-    }
-    if (leftoversTextArr.length === 2) {
-      return leftoversTextArr.join(" and ");
-    }
-    const lastItem = leftoversTextArr.pop();
-    return `${leftoversTextArr.join(", ")}, and ${lastItem}`;
-  })();
-
-  const efficiency = outputSets / (outputSets + leftoversSum);
+  const efficiency = 1 - (leftoversSum / totalSum);
 
   return (
     <BaseNode
@@ -182,13 +225,18 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
           You are wasting {leftoversText}!
         </div>
       )}
-      {isWastingMaterial && infoModeEnabled && minLeftover && (
-        <div className="text-xs">Bottlenecked by {minLeftover.itemTitle}s.</div>
+      {infoModeEnabled && isWastingMaterial && (selectedRecipe.inputs.length > 1) && minLeftover &&
+        !inputAmounts.some((input) => { return input.amount === 0; }) && (
+          <div className="whitespace-pre-wrap text-xs">
+            Bottlenecked by &quot;{minLeftover.itemTitle}&quot;.
+          </div>
       )}
       {infoModeEnabled && (
         <div>
-          <div>Sets: {outputSets}</div>
-          <div>Efficiency: {Math.round(efficiency * 100)}%</div>
+          <div>Sets: {minSet || 0}</div>
+          <div>
+            Efficiency: {efficiency ? Math.round(efficiency * 100) : 0}%
+          </div>
         </div>
       )}
     </BaseNode>
@@ -221,7 +269,10 @@ const CrafterInput = ({
         <div className="flex items-center gap-2">
           <SpriteDisplay url={item.imageUrl} />x {input.amount}
         </div>
-        <div className="text-center text-xs text-gray-500 w-20">{item.title}</div> {/*Length is arbitrary*/}
+        <div className="w-20 text-center text-xs text-gray-500">
+          {item.title}
+        </div>
+        {/*Length is arbitrary*/}
       </div>
     </div>
   );

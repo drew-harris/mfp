@@ -195,7 +195,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
   },
 
   setResourceOutputRate: (id: string, newRate: number) => {
-    console.log("Setting output rate", newRate);
+    // console.log("Setting output rate", newRate);
     const edges = get().edges;
     set({
       edges: edges.map((edge) => {
