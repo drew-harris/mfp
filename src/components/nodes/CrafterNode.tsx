@@ -11,6 +11,8 @@ import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { RecipeSelector } from "./nodeDetails/RecipeSelector";
+import pluralize from "pluralize";
+
 interface CrafterNodeProps {
   data: MCCrafterNode;
 }
@@ -137,7 +139,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   //todo: change format if item name ends in s
   const leftoversTextArr = leftovers
     .filter((left) => left.amount > 0)
-    .map((left) => `${left.amount} ${left.itemTitle}s`);
+    .map((left) => `${left.amount} ${pluralize(left.itemTitle, left.amount)}`);
 
   const minLeftover =
     leftovers.length > 0
