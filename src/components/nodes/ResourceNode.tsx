@@ -41,7 +41,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
           placeholder="Enter amount..."
           onChange={(event) => {
             //const inputValue = event.target.value;
-            setData({ inputString: event.target.value.replace(/[^0-9]/g, "") });
+            setData({ inputString: event.target.value.replace(/\D/g, "") });
             setOutputRate(data.id, outputRate || 0);
           }}
           value={data.inputString}
