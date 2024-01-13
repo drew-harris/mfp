@@ -220,6 +220,7 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l2-planks",
+        title: "Planks",
         description: "Produce 8 oak planks per minute",
         itemRequirements: [
           {
@@ -229,7 +230,8 @@ export const allMissions: Mission[] = [
         ],
       },
       {
-        id: "u1l2-sticks",
+        id: "u1l2-stick",
+        title: "Sticks",
         description: "Produce 32 sticks per minute",
         itemRequirements: [
           {
@@ -240,6 +242,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-diamond-axe",
+        title: "Diamond Axe",
         description: "Produce 1 diamond axe per minute",
         itemRequirements: [
           {
@@ -250,6 +253,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "u1l2-chest",
+        title: "Chests",
         description: "Produce 10 chests per minute",
         itemRequirements: [
           {
@@ -265,7 +269,8 @@ export const allMissions: Mission[] = [
     id: "u1l7",
     tasks: [
       {
-        id: "u1l7-planks",
+        id: "u1l7-iron-pickaxe",
+        title: "Iron Pickaxe",
         description: "Produce 10 iron pickaxes per minute",
         itemRequirements: [
           {
@@ -275,7 +280,8 @@ export const allMissions: Mission[] = [
         ],
       },
       {
-        id: "u1l7-sticks",
+        id: "u1l7-furnace",
+        title: "Furnace",
         description: "Produce 1 furnace",
         itemRequirements: [
           {

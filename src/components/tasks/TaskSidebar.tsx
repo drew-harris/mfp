@@ -107,7 +107,7 @@ export const TaskSidebar = () => {
   if (currentTask) {
     return (
       <div className="flex h-full flex-col items-center">
-        <div className="mb-4 w-full text-left text-xl text-black/50">
+        <div className="mb-2 w-full text-left text-xl text-black/50">
           {currentMission?.title}
         </div>
         <SideTaskView clearTask={clearTask} task={currentTask} />
@@ -132,7 +132,7 @@ export const TaskSidebar = () => {
             <div className="outset bg-red-300 p-2" key={m.message}>
               {m.message}
             </div>
-          ))}
+          )) /*todo: This doesn't seem to do anything*/}
         </div>
       </div>
     );
@@ -158,8 +158,7 @@ export function findMissionFromTask(
   missions: Mission[] = allMissions
 ): Mission | null {
   const foundMissions = missions.filter((m) => {
-    if (m.tasks.some((t) => t.id === task.id)) return true;
-    return false;
+    return m.tasks.some((t) => t.id === task.id);
   });
 
   if (foundMissions.length !== 1) return null;
@@ -176,7 +175,7 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
   return (
     <div className="p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
-      <div className="text-left text-mc-700 whitespace-pre-wrap py-3">{task.description}</div>
+      <div className="text-center text-mc-900 whitespace-pre-wrap py-3">{task.description}</div>
       <DroppableOrder task={task} />
     </div>
   );
