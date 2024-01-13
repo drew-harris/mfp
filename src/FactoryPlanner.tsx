@@ -109,7 +109,7 @@ function FactoryPlanner() {
             </div>
           </SplitPane>
           <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
-            <div className="h-full pb-11">
+            <div className="h-full">
               <Sidebar />
               <Graph />
             </div>

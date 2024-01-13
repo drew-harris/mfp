@@ -175,7 +175,7 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
   return (
     <div className="p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
-      <div className="text-center text-mc-900 whitespace-pre-wrap py-3">{task.description}</div>
+      <div className="text-left text-mc-900 whitespace-pre-wrap py-3">{task.description}</div>
       <DroppableOrder task={task} />
     </div>
   );
