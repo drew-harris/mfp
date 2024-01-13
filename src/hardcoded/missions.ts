@@ -203,11 +203,11 @@ export const allMissions: Mission[] = [
         ],
         itemRequirements: [
           {
-            perHour: 1,
+            rate: 1,
             itemId: "minecraft:furnace",
           },
           {
-            perHour: 8,
+            rate: 8,
             itemId: "minecraft:cobblestone_slab",
           },
         ],
@@ -224,7 +224,7 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:oak_planks",
-            perHour: 8,
+            rate: 8,
           },
         ],
       },
@@ -234,7 +234,7 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "item.minecraft:stick",
-            perHour: 32,
+            rate: 32,
           },
         ],
       },
@@ -244,7 +244,7 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "item.minecraft:diamond_axe",
-            perHour: 1,
+            rate: 1,
           },
         ],
       },
@@ -254,7 +254,7 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:chest",
-            perHour: 10,
+            rate: 10,
           },
         ],
       },
@@ -270,7 +270,7 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "item.minecraft:iron_pickaxe",
-            perHour: 10,
+            rate: 10,
           },
         ],
       },
@@ -280,7 +280,7 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:furnace",
-            perHour: 1,
+            rate: 1,
           },
         ],
       },
@@ -298,11 +298,11 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:crafting_table",
-            perHour: 14,
+            rate: 14,
           },
           {
             itemId: "minecraft:ladder",
-            perHour: 24,
+            rate: 24,
           },
         ],
       },
@@ -313,11 +313,11 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:chest",
-            perHour: 5,
+            rate: 5,
           },
           {
             itemId: "item.minecraft:oak_sign",
-            perHour: 15,
+            rate: 15,
           },
         ],
       },
@@ -328,11 +328,11 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:oak_fence",
-            perHour: 48,
+            rate: 48,
           },
           {
             itemId: "minecraft:fence_gate",
-            perHour: 8,
+            rate: 8,
           },
         ],
       },
@@ -343,15 +343,15 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "item.minecraft:wooden_axe",
-            perHour: 30,
+            rate: 30,
           },
           {
             itemId: "item.minecraft:wooden_shovel",
-            perHour: 30,
+            rate: 30,
           },
           {
             itemId: "item.minecraft:wooden_pickaxe",
-            perHour: 30,
+            rate: 30,
           },
         ],
       },

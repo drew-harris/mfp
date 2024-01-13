@@ -12,6 +12,7 @@ import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import { DroppableOrder } from "./DroppableOrder";
 import { sendLog } from "../../api/logs";
 import { LogType } from "../../__generated__/graphql";
+import { MCNodeType } from "../../types/MCNodes";
 
 export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -60,10 +61,10 @@ export const TaskSidebar = () => {
     }
   }, [data.taskComplete]);
 
-  const NextButton = () => {
+  const NextBackButtonSet = () => {
     const disabled = "cursor-not-allowed opacity-50 pointer-events-none";
     return (
-      <div className="flex gap-2">
+      <div className="flex gap-5">
         {
           <Button
             onClick={() => previousTask()}
@@ -99,6 +100,10 @@ export const TaskSidebar = () => {
     );
   };
 
+  const orderNodeOnCanvas = useNodeStore((s) =>
+    Boolean(s.nodes.some((n) => n.data.dataType === MCNodeType.order))
+  );
+
   if (currentTask) {
     return (
       <div className="flex h-full flex-col items-center">
@@ -106,25 +111,21 @@ export const TaskSidebar = () => {
           {currentMission?.title}
         </div>
         <SideTaskView clearTask={clearTask} task={currentTask} />
-        {data.taskComplete && data.efficiency > 0 && (
+        { orderNodeOnCanvas &&
           <div className="mb-4 text-center">
             <div className="text-lg">
-              Efficiency: {(data.efficiency * 100).toFixed(0)}%
+              Efficiency: {data.efficiency ? (data.efficiency * 100).toFixed(2) : 0}%
             </div>
-            {data.efficiency > 1 && (
-              <div className="text-sm text-black/75">
-                You are producing too much!
-              </div>
-            )}
             {data.efficiency < 1 && (
               <div className="text-sm text-black/75">
-                You are not producing enough!
+                Deficit: {Number.isNaN(data.deficit) ? 0 : (data.deficit * 100).toFixed(2)}% |
+                Excess: {Number.isNaN(data.deficit) ? 0 : (data.excess * 100).toFixed(2)}%
               </div>
             )}
           </div>
-        )}
+        }
         <div className="mt-auto">
-          <NextButton />
+          <NextBackButtonSet />
         </div>
         <div>
           {data.messages.map((m) => (

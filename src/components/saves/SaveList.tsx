@@ -48,7 +48,7 @@ export default function SaveList() {
       {data?.saves?.map((save) => {
         return (
           <div
-            className="outset-4 flex cursor-pointer items-baseline justify-between overflow-scroll bg-mc-200 p-2"
+            className="outset-4 flex cursor-pointer items-baseline justify-between bg-mc-200 p-2"
             key={save.id}
             onClick={() => quickLoadSave(save)}
           >

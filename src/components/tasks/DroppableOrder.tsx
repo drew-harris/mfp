@@ -37,10 +37,10 @@ export const DroppableOrder = ({ task }: DroppableOrderProps) => {
 
   return (
     <>
-      <div className="mt-12 mb-4 text-center text-sm text-mc-700">
+      <div className="mt-3 mb-6 text-center text-sm text-mc-700">
         Drag the order onto the canvas to begin.
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-5">
         <div
           ref={setNodeRef}
           {...listeners}

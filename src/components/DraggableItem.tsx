@@ -44,7 +44,7 @@ export default function DraggableItem({
       "overflow-hidden",
       "items-center",
       "p-3",
-      "outset-4",
+      "outset",
       "justify-between",
     ],
     {
