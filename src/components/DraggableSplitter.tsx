@@ -33,7 +33,7 @@ export default function DraggableSplitter({
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className="outset flex flex-col items-center justify-between border-4 bg-yellow-200 p-3"
+      className="outset flex flex-col items-center justify-between bg-yellow-200 p-3"
       style={{
         zIndex: higher ? 500 : 40,
       }}

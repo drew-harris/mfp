@@ -49,21 +49,6 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return Boolean(s.edges.some((edge) => edge.source === data.id));
   });
 
-  // const pluralize = (s: string) => {
-  //   const endChars = s.substring(s.length - 2);
-  //   const lastChar = s[s.length - 1];
-  //
-  //   const
-  //   if (lastChar !== "s") {
-  //     return s + "s";
-  //   }
-  //   if (endChars[1] === "x" or "z") {
-  //
-  //   }
-  //
-  //   return s;
-  // };
-
   const inputAmounts = selectedRecipe.inputs.map((input) => {
     const edge = inboundEdges.find(
       (e) => e.data?.item.itemId === input.itemId
@@ -108,9 +93,8 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     // console.log(`OUTPUT SETS: ${selectedRecipe.outputItemId}: ${numSets}`);
     const outputRate = minSet * selectedRecipe.outputAmount;
 
-    console.log("leftovers: " + leftovers.map(item => `itemId: ${item.itemId}, amount: ${item.amount}, itemTitle: ${item.itemTitle}`).join(', '));
+    //console.log("leftovers: " + leftovers.map(item => `itemId: ${item.itemId}, amount: ${item.amount}, itemTitle: ${item.itemTitle}`).join(', '));
 
-    // TODO: Rescope for terrible inputs too
     setIsWastingMaterial( isOutputting && leftovers.some((left) => left.amount !== 0));
 
     // console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
@@ -183,7 +167,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
 
   return (
     <BaseNode
-      outerClassName={isWastingMaterial ? "border-red-500" : null}
+      //outerClassName={isWastingMaterial ? "border-red-500" : null}
       innerClassName="px-0 py-3"
       data={data}
     >
@@ -225,10 +209,15 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
           You are wasting {leftoversText}!
         </div>
       )}
+      {isWastingMaterial && isOutputting && (outboundEdges[0].data.outputRate === 0) && (
+        <div className="text-xs text-red-800">
+          This node produces nothing.
+        </div>
+      )}
       {infoModeEnabled && isWastingMaterial && (selectedRecipe.inputs.length > 1) && minLeftover &&
         !inputAmounts.some((input) => { return input.amount === 0; }) && (
           <div className="whitespace-pre-wrap text-xs">
-            Bottlenecked by &quot;{minLeftover.itemTitle}&quot;.
+            Bottlenecked by {minLeftover.itemTitle}.
           </div>
       )}
       {infoModeEnabled && (

@@ -3,6 +3,7 @@ import { faGears, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePickerFilterStore } from "../stores/pickerFilterStore";
 import { DraggableBuilder, DraggableType, MCNodeType } from "../types/MCNodes";
+import { cva } from "cva";
 
 interface DraggableBuilderProps {
   higher?: boolean;
@@ -30,7 +31,7 @@ export default function DraggableBuilderSquare({
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className="outset flex flex-col items-center justify-between bg-mc-100 p-3"
+      className="outset flex flex-col items-center justify-between bg-purple-300 p-3"
       style={{
         zIndex: higher ? 500 : 40,
       }}

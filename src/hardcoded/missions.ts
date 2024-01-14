@@ -101,7 +101,7 @@ export const allMissions: Mission[] = [
       },
       {
         id: "tutorial-recipe-connect",
-        title: "Adjusting Resource Rate",
+        title: "Adjusting the Rate",
         description:
           "Try adjusting the rate of cobblestone in the resource node by in a number.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
@@ -123,11 +123,12 @@ export const allMissions: Mission[] = [
         continuation: true,
       },
       {
-        id: "tutorial-splitter-delete",
-        title: "Splitter Node",
+        id: "tutorial-edge-delete",
+        title: "Deleting Edges",
         description:
-          "We also need to craft some cobblestone slabs.\n\nSelect and delete the the path between the nodes.\n\n" +
-          "Remember that you can delete nodes using the backspace key or the trash can button in the bottom right.",
+          "Now, let's modify our factory plan to craft cobblestone slabs.\n\nLet's start by selecting and deleting " +
+          "the path between the nodes.\n\nRemember that you can delete nodes using the backspace key or the trash " +
+          "can button in the bottom right.",
         idPool: ["minecraft:furnace", "minecraft:cobblestone"],
         stateRequirement(state) {
           return state.edges.length === 0;
@@ -190,10 +191,22 @@ export const allMissions: Mission[] = [
         },
       },
       {
-        id: "tutorial-splitter-finish",
-        title: "Splitter Node",
+        id: "tutorial-splitter-order",
+        title: "Order Node",
         description:
-          "An order node shows the amount of items your factory plan should make.\n\nDrag the order node below to" +
+          "An order node shows the amount of items your factory plan should make.",
+        idPool: [
+          "minecraft:furnace",
+          "minecraft:cobblestone",
+          "minecraft:cobblestone_slab",
+        ],
+        continuation: true,
+      },
+      {
+        id: "tutorial-splitter-finish",
+        title: "Order Node",
+        description:
+          "Drag the order node below to" +
           " the canvas and connect it to the crafter nodes. Adjust the resource rate and the splitting pattern until" +
           " the Xs on the order node change to check marks. Then click the submit button to complete the tutorial.",
         idPool: [
@@ -203,11 +216,11 @@ export const allMissions: Mission[] = [
         ],
         itemRequirements: [
           {
-            perHour: 1,
+            rate: 1,
             itemId: "minecraft:furnace",
           },
           {
-            perHour: 8,
+            rate: 8,
             itemId: "minecraft:cobblestone_slab",
           },
         ],
@@ -220,41 +233,45 @@ export const allMissions: Mission[] = [
     tasks: [
       {
         id: "u1l2-planks",
+        title: "Planks",
         description: "Produce 8 oak planks per minute",
         itemRequirements: [
           {
             itemId: "minecraft:oak_planks",
-            perHour: 8,
+            rate: 8,
           },
         ],
       },
       {
-        id: "u1l2-sticks",
+        id: "u1l2-stick",
+        title: "Sticks",
         description: "Produce 32 sticks per minute",
         itemRequirements: [
           {
             itemId: "item.minecraft:stick",
-            perHour: 32,
+            rate: 32,
           },
         ],
       },
       {
         id: "u1l2-diamond-axe",
+        title: "Diamond Axe",
         description: "Produce 1 diamond axe per minute",
         itemRequirements: [
           {
             itemId: "item.minecraft:diamond_axe",
-            perHour: 1,
+            rate: 1,
           },
         ],
       },
       {
         id: "u1l2-chest",
+        title: "Chests",
         description: "Produce 10 chests per minute",
         itemRequirements: [
           {
             itemId: "minecraft:chest",
-            perHour: 10,
+            rate: 10,
           },
         ],
       },
@@ -265,22 +282,24 @@ export const allMissions: Mission[] = [
     id: "u1l7",
     tasks: [
       {
-        id: "u1l7-planks",
+        id: "u1l7-iron-pickaxe",
+        title: "Iron Pickaxe",
         description: "Produce 10 iron pickaxes per minute",
         itemRequirements: [
           {
             itemId: "item.minecraft:iron_pickaxe",
-            perHour: 10,
+            rate: 10,
           },
         ],
       },
       {
-        id: "u1l7-sticks",
+        id: "u1l7-furnace",
+        title: "Furnace",
         description: "Produce 1 furnace",
         itemRequirements: [
           {
             itemId: "minecraft:furnace",
-            perHour: 1,
+            rate: 1,
           },
         ],
       },
@@ -298,11 +317,11 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:crafting_table",
-            perHour: 14,
+            rate: 14,
           },
           {
             itemId: "minecraft:ladder",
-            perHour: 24,
+            rate: 24,
           },
         ],
       },
@@ -313,11 +332,11 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:chest",
-            perHour: 5,
+            rate: 5,
           },
           {
             itemId: "item.minecraft:oak_sign",
-            perHour: 15,
+            rate: 15,
           },
         ],
       },
@@ -328,11 +347,11 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "minecraft:oak_fence",
-            perHour: 48,
+            rate: 48,
           },
           {
             itemId: "minecraft:fence_gate",
-            perHour: 8,
+            rate: 8,
           },
         ],
       },
@@ -343,15 +362,15 @@ export const allMissions: Mission[] = [
         itemRequirements: [
           {
             itemId: "item.minecraft:wooden_axe",
-            perHour: 30,
+            rate: 30,
           },
           {
             itemId: "item.minecraft:wooden_shovel",
-            perHour: 30,
+            rate: 30,
           },
           {
             itemId: "item.minecraft:wooden_pickaxe",
-            perHour: 30,
+            rate: 30,
           },
         ],
       },
