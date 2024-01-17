@@ -13,7 +13,7 @@ export default function Sidebar() {
         <TabsContent value="tasks" className="h-3/5">
           <TaskSidebar />
         </TabsContent>
-        <TabsContent value="saves" className="h-full">
+        <TabsContent value="saves" className="h-[calc(100vh-46px)]">
           <UserPanel />
         </TabsContent>
       </Tabs>

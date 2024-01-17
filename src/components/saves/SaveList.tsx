@@ -45,16 +45,20 @@ export default function SaveList() {
   return (
     <div className="flex flex-col gap-2">
       <SaveDialog refetch={refetch} />
-      {data?.saves?.map((save) => {
+      {data?.saves?.slice().sort(
+        (a, b) => {
+          return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+        })
+        .map((save) => {
         return (
           <div
             className="outset-4 flex cursor-pointer items-baseline justify-between bg-mc-200 p-2"
             key={save.id}
             onClick={() => quickLoadSave(save)}
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 leading-none">
               <FontAwesomeIcon icon={faSave} className="opacity-50" />
-              <div className="font-semibold">{save.name}</div>
+              <div className="font-semibold mb-1 mx-1">{save.name}</div>
             </div>
             <div className="text-xs opacity-30">
               {timeAgo.format(new Date(save.updatedAt), "mini")}
