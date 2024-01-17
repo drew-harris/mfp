@@ -1,6 +1,5 @@
 /* eslint-disable no-undefined */
 import { describe, expect, it } from "vitest";
-import { MCEdge } from "../types/MCNodes";
 import {
   CustomNodeResult,
   _testGetResults,

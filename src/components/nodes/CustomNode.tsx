@@ -1,11 +1,11 @@
-/* eslint-disable no-undefined */
-import { useEffect, useState } from "react";
+import { faRightLong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 import { itemFromId } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { CustomRecipe } from "../../types/CustomNodes";
 import { MCCustomNode, MCEdge } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
-import { Button } from "../basic/Button";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
 
@@ -55,46 +55,57 @@ function getResults(
 
 export default function CustomNode({ data }: CustomNodeProps) {
   const items = data.recipes.map((r) => r.item);
-  const [showRequired, setShowRequired] = useState(false);
-  const incomingEdges = useNodeStore((s) =>
-    s.edges.filter((e) => e.target === data.id)
-  ).map((e) => e.data);
 
-  const collapsed = data.recipes.map((r) => r.inputs).flatMap((r) => r.flat());
+  const collapsed = data.recipes
+    .map((r) => r.inputs)
+    .flatMap((r) => r.flat())
+    // Remove duplicattes
+    .filter((v, i, a) => a.findIndex((t) => t.itemId === v.itemId) === i);
 
   const leftSideNodes = collapsed.map((i) => (
-    <SideHandle type="target" id={`${data.id}-input-${i}`} key={i.itemId} />
+    <SideHandle type="target" id={i.itemId} key={i.itemId} />
   ));
 
-  useEffect(() => {
-    console.log(data.recipes);
-  }, [incomingEdges]);
+  const rightSideNodes = data.recipes.map((r) => (
+    <SideHandle type="source" id={r.item.itemId} key={r.item.itemId} />
+  ));
 
   return (
-    <BaseNode leftSideNodes={leftSideNodes} data={data}>
-      {items.map((i) => (
-        <div key={i.itemId}>
-          <div>{i.title}</div>
-          <SpriteDisplay url={i.imageUrl} />
+    <BaseNode
+      rightSideNodes={rightSideNodes}
+      leftSideNodes={leftSideNodes}
+      data={data}
+    >
+      <a
+        className="text-sm text-black/75"
+        target="_blank"
+        rel="noreferrer"
+        href={`/edit/${data.lapisId}`}
+      >
+        Edit
+      </a>
+      <div className="flex items-stretch gap-5">
+        <div className="flex flex-col justify-around">
+          {collapsed.map((i) => (
+            <div key={i.itemId}>
+              <div className="text-center">{itemFromId(i.itemId).title}</div>
+              <div className="text-center text-xs text-black/50">{i.num}</div>
+              <SpriteDisplay url={itemFromId(i.itemId).imageUrl} />
+            </div>
+          ))}
         </div>
-      ))}
-      <Button className="my-2" onClick={() => setShowRequired((s) => !s)}>
-        Toggle requirements (DEBUG)
-      </Button>
-      {showRequired && (
-        <>
-          <div className="my-10">Requires</div>
-          {collapsed.map((i) => {
-            const item = itemFromId(i.itemId);
-            return (
-              <div key={i.itemId}>
-                <div>{item.title}</div>
-                <SpriteDisplay url={item.imageUrl} />
-              </div>
-            );
-          })}
-        </>
-      )}
+        <div className="grid place-items-center">
+          <FontAwesomeIcon icon={faRightLong}></FontAwesomeIcon>
+        </div>
+        <div>
+          {items.map((i) => (
+            <div key={i.itemId}>
+              <div className="text-center">{i.title}</div>
+              <SpriteDisplay url={i.imageUrl} />
+            </div>
+          ))}
+        </div>
+      </div>
     </BaseNode>
   );
 }

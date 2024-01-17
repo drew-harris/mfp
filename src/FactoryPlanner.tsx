@@ -6,9 +6,11 @@ import {
   DragOverlay,
   DragStartEvent,
 } from "@dnd-kit/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import SplitPane from "react-split-pane";
 import { useReactFlow } from "reactflow";
+import { GetCustomNodeQuery } from "./__generated__/graphql";
 import Notifications from "./components/Notifications";
 import Sidebar from "./components/Sidebar";
 import Graph from "./components/graph/Graph";
@@ -20,15 +22,29 @@ import { useNodeStore } from "./stores/nodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import NodeCanvas from "./views/NodeCanvas";
 
-function FactoryPlanner() {
+interface FactoryPlannerProps {
+  customNodeEdit?: boolean;
+}
+
+function FactoryPlanner(props: FactoryPlannerProps) {
   const [active, setActive] = useState<Active | null>(null);
   const { project } = useReactFlow();
 
   const addNode = useNodeStore((state) => state.addNode);
+  const setNodesAndEdges = useNodeStore((s) => s.internal.setNodesAndEdges);
 
   function handleDragStart(event: DragStartEvent) {
     setActive(event.active);
   }
+
+  const data = useLoaderData() as GetCustomNodeQuery["customNode"];
+
+  useEffect(() => {
+    console.log("oloader data", data);
+    if (data) {
+      setNodesAndEdges(data.graphData.nodes, data.graphData.edges);
+    }
+  }, [data, setNodesAndEdges]);
 
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
