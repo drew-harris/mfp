@@ -28,7 +28,7 @@ export interface Task {
 
 export interface ItemRequirement {
   itemId: string;
-  perHour: number;
+  rate: number;
 }
 
 export interface NodeRequirement {

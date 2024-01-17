@@ -57,7 +57,7 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
           completed: incomingEdgesToOrder.some(
             (e) =>
               e?.data?.item.itemId === req.itemId &&
-              e?.data?.outputRate >= req.perHour
+              e?.data?.outputRate >= req.rate
           ),
         };
       })
@@ -78,7 +78,7 @@ export const SidebarTaskChecks = ({ task }: SidebarTaskChecksProps) => {
 export const ItemCheck = ({
   req,
 }: {
-  req: { completed: boolean; itemId: string; perHour: number };
+  req: { completed: boolean; itemId: string; rate: number };
 }) => {
   return (
     <div

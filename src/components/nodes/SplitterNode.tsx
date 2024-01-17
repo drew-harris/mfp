@@ -67,12 +67,12 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
 
   useEffect(() => {
     for (const [i, outgoingEdge] of outgoingEdges.entries()) {
-      console.log(
-        `i: ${i}, ratios length: ${
-          Object.keys(data.ratios).length
-        }, outgoingEdge: ${outgoingEdges.entries()},
-        sourceHandle: ${outgoingEdge.sourceHandle}`
-      );
+      // console.log(
+      //   `i: ${i}, ratios length: ${
+      //     Object.keys(data.ratios).length
+      //   }, outgoingEdge: ${outgoingEdges.entries()},
+      //   sourceHandle: ${outgoingEdge.sourceHandle}`
+      // );
       if (incomingEdge && outgoingEdge.sourceHandle in data.ratios) {
         // TODO: Actually finish rounding shhhhhhhh....
         setEdgeData(outgoingEdge.id, {
@@ -133,7 +133,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
       )}
       <input
         type="text"
-        placeholder="Enter Splitting Pattern..."
+        placeholder="Enter splitting pattern..."
         className="rounded-xl border border-black bg-gray-300 px-5 py-1 text-xs text-black placeholder:text-gray-400"
         value={data.splitString}
         onChange={(e) => updateString(e.target.value.toUpperCase())}

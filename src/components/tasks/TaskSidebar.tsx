@@ -14,6 +14,10 @@ import { Button } from "../basic/Button";
 import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import PickerSquare from "../nodePicker/PickerSquare";
 import { RequirementView } from "./RequirementView";
+import { DroppableOrder } from "./DroppableOrder";
+import { sendLog } from "../../api/logs";
+import { LogType } from "../../__generated__/graphql";
+import { MCNodeType } from "../../types/MCNodes";
 
 export const TaskSidebar = () => {
   const currentTask = useObjectiveStore((s) => s.currentTask);
@@ -62,10 +66,10 @@ export const TaskSidebar = () => {
     }
   }, [data.taskComplete]);
 
-  const NextButton = () => {
+  const NextBackButtonSet = () => {
     const disabled = "cursor-not-allowed opacity-50 pointer-events-none";
     return (
-      <div className="flex gap-2">
+      <div className="flex gap-5">
         {
           <Button
             onClick={() => previousTask()}
@@ -101,39 +105,39 @@ export const TaskSidebar = () => {
     );
   };
 
+  const orderNodeOnCanvas = useNodeStore((s) =>
+    Boolean(s.nodes.some((n) => n.data.dataType === MCNodeType.order))
+  );
+
   if (currentTask) {
     return (
       <div className="flex h-full flex-col items-center">
-        <div className="mb-4 w-full text-left text-xl text-black/50">
+        <div className="mb-2 w-full text-left text-xl text-black/50">
           {currentMission?.title}
         </div>
         <SideTaskView clearTask={clearTask} task={currentTask} />
-        {data.taskComplete && data.efficiency > 0 && (
+        {orderNodeOnCanvas &&
           <div className="mb-4 text-center">
             <div className="text-lg">
-              Efficiency: {(data.efficiency * 100).toFixed(0)}%
+              Efficiency: {data.efficiency ? (data.efficiency * 100).toFixed(2) : 0}%
             </div>
-            {data.efficiency > 1 && (
-              <div className="text-sm text-black/75">
-                You are producing too much!
-              </div>
-            )}
             {data.efficiency < 1 && (
               <div className="text-sm text-black/75">
-                You are not producing enough!
+                Deficit: {Number.isNaN(data.deficit) ? 0 : (data.deficit * 100).toFixed(2)}% |
+                Excess: {Number.isNaN(data.deficit) ? 0 : (data.excess * 100).toFixed(2)}%
               </div>
             )}
           </div>
-        )}
+        }
         <div className="mt-auto">
-          <NextButton />
+          <NextBackButtonSet />
         </div>
         <div>
           {data.messages.map((m) => (
             <div className="outset bg-red-300 p-2" key={m.message}>
               {m.message}
             </div>
-          ))}
+          )) /*todo: This doesn't seem to do anything*/}
         </div>
       </div>
     );
@@ -159,8 +163,7 @@ export function findMissionFromTask(
   missions: Mission[] = allMissions
 ): Mission | null {
   const foundMissions = missions.filter((m) => {
-    if (m.tasks.some((t) => t.id === task.id)) return true;
-    return false;
+    return m.tasks.some((t) => t.id === task.id);
   });
 
   if (foundMissions.length !== 1) return null;
@@ -180,26 +183,28 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
   return (
     <div className="flex flex-col items-center gap-4 p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
-      <div className="text-left text-mc-700">{task.description}</div>
-      {!hasOrderNodeAlready && (
-        <PickerSquare
-          className="max-w-[200px]"
-          topLabel="Order"
-          image={task.itemRequirements?.map((requirement) => (
-            <div className="flex items-center gap-3" key={requirement.itemId}>
-              <RequirementView
-                className="my-2 text-black"
-                requirement={requirement}
-              />
-            </div>
-          ))}
-          payload={{
-            task: task,
-            type: MCNodeType.order,
-          }}
-        />
-      )}
-    </div>
+  <div className="text-left text-mc-700">{task.description}</div>
+  {
+    !hasOrderNodeAlready && (
+      <PickerSquare
+        className="max-w-[200px]"
+        topLabel="Order"
+        image={task.itemRequirements?.map((requirement) => (
+          <div className="flex items-center gap-3" key={requirement.itemId}>
+            <RequirementView
+              className="my-2 text-black"
+              requirement={requirement}
+            />
+          </div>
+        ))}
+        payload={{
+          task: task,
+          type: MCNodeType.order,
+        }}
+      />
+    )
+  }
+    </div >
   );
 };
 

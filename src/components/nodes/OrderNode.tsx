@@ -63,7 +63,7 @@ function doesEdgePassRequirement(
   if (!edge || !edge.data || !edge.data?.outputRate) {
     return false;
   }
-  if (edge.data?.outputRate < requirement.perHour) {
+  if (edge.data?.outputRate < requirement.rate) {
     return false;
   }
   return true;
