@@ -1,8 +1,6 @@
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
 import { itemFromId } from "../../hooks/useFullItem";
-import { useNodeStore } from "../../stores/nodes";
 import { CustomRecipe } from "../../types/CustomNodes";
 import { MCCustomNode, MCEdge } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
