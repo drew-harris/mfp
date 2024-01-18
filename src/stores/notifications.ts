@@ -10,11 +10,11 @@ interface Notification {
   hideDelay: number;
 }
 
-type InputNoticication = Omit<Notification, "id" | "isShown">;
+type InputNotification = Omit<Notification, "id" | "isShown">;
 
 interface NotificationsState {
   notifications: Notification[];
-  sendFullNotification: (notification: InputNoticication) => void;
+  sendFullNotification: (notification: InputNotification) => void;
   sendNotification: (message: string, type?: NotificationType) => void;
   sendError: (message: string) => void;
 
