@@ -94,7 +94,12 @@ export default function TaskCompleteProvider({
             (e) => e.data?.item.itemId === req.itemId
           );
           if (edge?.data?.outputRate) {
-            console.log("edge detected: " + edge.data.item.title + " " + edge.data.outputRate)
+            console.log(
+              "edge detected: " +
+                edge.data.item.title +
+                " " +
+                edge.data.outputRate
+            );
             if (edge.data.outputRate < req.rate) {
               complete = false;
               // newMessages.push({
@@ -135,20 +140,30 @@ export default function TaskCompleteProvider({
     );
     const totalAchieved = efficiencyInfo.reduce((a, b) => a + b.output, 0);
     // divide by total achieved or total requirement?
-    const totalDeficit = efficiencyInfo.reduce(
-      (a, b) => a + Math.max(b.requirement - b.output, 0), 0) / totalRequirement;
-    const totalExcess = efficiencyInfo.reduce(
-          (a, b) => a + Math.max(b.output - b.requirement, 0), 0) / totalAchieved;
-    const totalEfficiency = efficiencyInfo.map(
-      (item) => (Math.min(item.output, item.requirement) / Math.max(item.output, item.requirement))
-        * (item.requirement / totalRequirement)
-    ).reduce((a, b) => a + b, 0); // todo: FIX FORMULA
+    const totalDeficit =
+      efficiencyInfo.reduce(
+        (a, b) => a + Math.max(b.requirement - b.output, 0),
+        0
+      ) / totalRequirement;
+    const totalExcess =
+      efficiencyInfo.reduce(
+        (a, b) => a + Math.max(b.output - b.requirement, 0),
+        0
+      ) / totalAchieved;
+    const totalEfficiency = efficiencyInfo
+      .map(
+        (item) =>
+          (Math.min(item.output, item.requirement) /
+            Math.max(item.output, item.requirement)) *
+          (item.requirement / totalRequirement)
+      )
+      .reduce((a, b) => a + b, 0); // todo: FIX FORMULA
 
-    console.log('Total Requirement:', totalRequirement);
-    console.log('Total Achieved:', totalAchieved);
-    console.log('Total Efficiency:', totalEfficiency);
-    console.log('Total Deficit:', totalDeficit);
-    console.log('Total Excess:', totalExcess);
+    console.log("Total Requirement:", totalRequirement);
+    console.log("Total Achieved:", totalAchieved);
+    console.log("Total Efficiency:", totalEfficiency);
+    console.log("Total Deficit:", totalDeficit);
+    console.log("Total Excess:", totalExcess);
 
     console.log("New Messages", newMessages);
 

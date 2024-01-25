@@ -1,7 +1,7 @@
 {
   "name": "mfp",
   "private": true,
-  "version": "2.1.149",
+  "version": "2.1.150",
   "type": "module",
   "scripts": {
     "dev": "vite",

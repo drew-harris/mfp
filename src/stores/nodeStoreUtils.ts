@@ -16,14 +16,22 @@ export function checkIfNodesConnect(
   // Source should always have an item to pass
   if (
     source.data.dataType === MCNodeType.order ||
-    source.data.dataType === MCNodeType.builder ||
-    source.data.dataType === MCNodeType.custom
+    source.data.dataType === MCNodeType.builder
   ) {
     return false;
   }
 
   if (target.data.dataType === MCNodeType.builder) {
     return true;
+  }
+
+  // Custom node to others
+  if (source.data.dataType === MCNodeType.custom) {
+    if (target.data.dataType === MCNodeType.crafter) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // The source node must have an item

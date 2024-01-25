@@ -6,6 +6,8 @@ import { MCCustomNode, MCEdge } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
+import { useEffect } from "react";
+import { useNodeStore } from "../../stores/nodes";
 
 interface CustomNodeProps {
   data: MCCustomNode;
@@ -15,6 +17,7 @@ export interface CustomNodeResult {
   itemId: string;
   amount: number;
 }
+
 function getResults(
   inputEdges: MCEdge[],
   recipes: CustomRecipe[]
@@ -59,6 +62,16 @@ export default function CustomNode({ data }: CustomNodeProps) {
     .flatMap((r) => r.flat())
     // Remove duplicattes
     .filter((v, i, a) => a.findIndex((t) => t.itemId === v.itemId) === i);
+
+  const inputEdges = useNodeStore((s) => {
+    return s.edges
+      .filter((edge) => edge.target === data.id)
+      .map((edge) => edge.data);
+  });
+
+  useEffect(() => {
+    const result = getResults(inputEdges, data.recipes);
+  }, [inputEdges]);
 
   const leftSideNodes = collapsed.map((i) => (
     <SideHandle type="target" id={i.itemId} key={i.itemId} />

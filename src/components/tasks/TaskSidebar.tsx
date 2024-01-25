@@ -164,19 +164,6 @@ export const TaskSidebar = () => {
   }
 };
 
-export function findMissionFromTask(
-  task: Task,
-  missions: Mission[] = allMissions
-): Mission | null {
-  const foundMissions = missions.filter((m) => {
-    return m.tasks.some((t) => t.id === task.id);
-  });
-
-  if (foundMissions.length !== 1) return null;
-
-  return foundMissions[0] || null;
-}
-
 interface SideTaskViewProperties {
   task: Task;
   clearTask: () => void;
