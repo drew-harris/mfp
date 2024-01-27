@@ -13,7 +13,6 @@ export enum MCNodeType {
 
 export interface MCItem {
   title: string;
-  spriteIndex?: number;
   imageUrl: string;
   itemId: string;
 }
