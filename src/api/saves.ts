@@ -24,6 +24,7 @@ mutation CreateCustomNode($newCustomNode: NewCustomNode!) {
     name
     updatedAt
     createdAt
+    recipeData
   }
 }
 `);

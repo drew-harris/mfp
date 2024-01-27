@@ -50,23 +50,21 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   });
 
   const inputAmounts = selectedRecipe.inputs.map((input) => {
-    const edge = inboundEdges.find(
-      (e) => e.data?.item.itemId === input.itemId
-    );
+    const edge = inboundEdges.find((e) => e.data?.item.itemId === input.itemId);
     if (!edge) {
       return {
         itemId: input.itemId,
         amount: 0,
         itemTitle: input.itemId,
-        recipeAmount: input.amount
+        recipeAmount: input.amount,
       };
     }
     return {
       itemId: edge.data.item.itemId,
       amount: edge.data.outputRate ?? 0,
       itemTitle: edge.data.item.title.toLowerCase(),
-      recipeAmount: input.amount
-    }
+      recipeAmount: input.amount,
+    };
   });
 
   const numSets = selectedRecipe.inputs.map((input) => {
@@ -84,7 +82,9 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   const leftovers = inputAmounts.map((input) => {
     return {
       itemId: input.itemId,
-      amount: minSet ? input.amount - (minSet * input.recipeAmount) : input.amount,
+      amount: minSet
+        ? input.amount - minSet * input.recipeAmount
+        : input.amount,
       itemTitle: input.itemTitle,
     };
   });
@@ -95,7 +95,9 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
 
     //console.log("leftovers: " + leftovers.map(item => `itemId: ${item.itemId}, amount: ${item.amount}, itemTitle: ${item.itemTitle}`).join(', '));
 
-    setIsWastingMaterial( isOutputting && leftovers.some((left) => left.amount !== 0));
+    setIsWastingMaterial(
+      isOutputting && leftovers.some((left) => left.amount !== 0)
+    );
 
     // console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
 
@@ -163,7 +165,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     return acc + curr.amount;
   }, 0);
 
-  const efficiency = 1 - (leftoversSum / totalSum);
+  const efficiency = 1 - leftoversSum / totalSum;
 
   return (
     <BaseNode
@@ -209,17 +211,24 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
           You are wasting {leftoversText}!
         </div>
       )}
-      {isWastingMaterial && isOutputting && (outboundEdges[0].data.outputRate === 0) && (
-        <div className="text-xs text-red-800">
-          This node produces nothing.
-        </div>
-      )}
-      {infoModeEnabled && isWastingMaterial && (selectedRecipe.inputs.length > 1) && minLeftover &&
-        !inputAmounts.some((input) => { return input.amount === 0; }) && (
+      {isWastingMaterial &&
+        isOutputting &&
+        outboundEdges[0].data.outputRate === 0 && (
+          <div className="text-xs text-red-800">
+            This node produces nothing.
+          </div>
+        )}
+      {infoModeEnabled &&
+        isWastingMaterial &&
+        selectedRecipe.inputs.length > 1 &&
+        minLeftover &&
+        !inputAmounts.some((input) => {
+          return input.amount === 0;
+        }) && (
           <div className="whitespace-pre-wrap text-xs">
             Bottlenecked by {minLeftover.itemTitle}.
           </div>
-      )}
+        )}
       {infoModeEnabled && (
         <div>
           <div>Sets: {minSet || 0}</div>

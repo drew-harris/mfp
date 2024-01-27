@@ -1,11 +1,10 @@
+import { useEffect } from "react";
+import { useSetNodeData } from "../../hooks/useSetNodeData";
 import { useNodeStore } from "../../stores/nodes";
-import { MCResourceNode, MCSplitterNode } from "../../types/MCNodes";
+import { MCResourceNode } from "../../types/MCNodes";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
-import { useSetNodeData } from "../../hooks/useSetNodeData";
-import { useEffect } from "react";
-import { getRatioFromInputString } from "./SplitterNode";
 interface ResourceNodeProps {
   data: MCResourceNode;
 }
@@ -24,6 +23,7 @@ export default function ResourceNode({ data }: ResourceNodeProps) {
   // Sets edge rate when connected
   useEffect(() => {
     setOutputRate(data.id, outputRate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOutputting, data.inputString]);
 
   return (

@@ -44,6 +44,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
     singleEdgeUpdate
   );
 
+  // TODO: Add filter to prevent excessive re-filters
   const outgoingEdges = useNodeStore((s) =>
     s.edges.filter((e) => e?.source === data.id)
   );
@@ -118,7 +119,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
               outgoingEdges.filter((edge) => edge.sourceHandle === label)
                 .length === 0
                 ? "border-black bg-red-500"
-                : null /* todo: has pretty long jank (74.5ms in worst case when n=3), maybe look into refactoring?*/
+                : null /* TODO: has pretty long jank (74.5ms in worst case when n=3), maybe look into refactoring?*/
             }
           />
         );

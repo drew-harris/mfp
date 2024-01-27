@@ -1,30 +1,11 @@
 import { Edge, Node } from "reactflow";
-import {
-  MCBuilderNode,
-  MCEdge,
-  MCItem,
-  MCNode,
-  MCNodeType,
-} from "../types/MCNodes";
-import { RFState, useNodeStore } from "../stores/nodes";
 import { allRecipes } from "../hardcoded/recipes";
+import { RFState, useNodeStore } from "../stores/nodes";
+import { CustomRecipe, EdgeWithCoeff } from "../types/CustomNodes";
+import { MCBuilderNode, MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 
 const getSourceNodeOfEdge = (edge: Edge<MCEdge>, state: RFState) => {
   return state.nodes.find((n) => n.id === edge.source);
-};
-
-type EdgeWithCoeff = Edge<MCEdge> & {
-  coeff: number;
-};
-
-export type Ratios = {
-  num: number;
-  itemId: string;
-}[];
-
-export type CustomRecipe = {
-  item: MCItem;
-  inputs: Ratios;
 };
 
 export type FindCoefficientsSuccess = {
@@ -70,6 +51,15 @@ export function findCoefficients(
     coeff: 1,
   }));
   const results: CustomRecipe[] = [];
+
+  // Two incoming edges can't have the same item
+  const incomingEdgeItems = incomingEdges.map((e) => e.data.item.itemId);
+  if (new Set(incomingEdgeItems).size !== incomingEdgeItems.length) {
+    return {
+      status: "invalid",
+      message: "You can't craft duplicate items in a custom node.",
+    };
+  }
 
   while (queryEdges.length > 0) {
     const initialQueryEdge = queryEdges.pop();

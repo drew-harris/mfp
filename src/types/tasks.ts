@@ -1,5 +1,5 @@
 import { RFState } from "../stores/nodes";
-import { DraggableType, MCNodeType } from "./MCNodes";
+import { MCNodeType } from "./MCNodes";
 
 export interface Mission {
   title: string;
@@ -40,5 +40,4 @@ export interface NodeRequirement {
 export interface DraggableOrderData {
   type: MCNodeType.order;
   task: Task;
-  draggableType: DraggableType.order;
 }
