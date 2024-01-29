@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SplitPane from "react-split-pane";
 import { useReactFlow } from "reactflow";
-import { GetCustomNodeQuery } from "./__generated__/graphql";
+import { GetCustomNodeQuery, LogType } from "./__generated__/graphql";
 import Notifications from "./components/Notifications";
 import Sidebar from "./components/Sidebar";
 import Graph from "./components/graph/Graph";
@@ -21,6 +21,7 @@ import PickerSquare, {
 import { useNodeStore } from "./stores/nodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import NodeCanvas from "./views/NodeCanvas";
+import { sendLog } from "./api/logs";
 
 interface FactoryPlannerProps {
   customNodeEdit?: boolean;
@@ -55,6 +56,10 @@ function FactoryPlanner(props: FactoryPlannerProps) {
       });
       const item = event.active.data.current as unknown as DraggableProps;
       const node = processPickerItem(item.payload, projection);
+      sendLog(LogType.MfpDropNode, {
+        type: node.data.dataType,
+      });
+
       if (node) {
         addNode(node);
       } else {
