@@ -80,7 +80,7 @@ function FactoryPlanner() {
         {/*@ts-ignore*/}
         <SplitPane
           resizerStyle={{
-            border: "2px solid #5d5d5d",
+            border: "2px solid #343a40",
             cursor: "col-resize",
           }}
           split="vertical"
@@ -93,7 +93,7 @@ function FactoryPlanner() {
           <SplitPane
             split="horizontal"
             resizerStyle={{
-              border: "2px solid #5d5d5d",
+              border: "2px solid #343a40",
               cursor: "row-resize",
             }}
             defaultSize={screenHeight * 0.7}
