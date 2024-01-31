@@ -23,6 +23,7 @@ import {
 } from "./nodeStoreUtils";
 import { sendLog } from "../api/logs";
 import { LogType } from "../__generated__/graphql";
+import { SaveData } from "../api/saves";
 
 export type RFState = {
   nodes: Node<MCNode>[];
@@ -49,6 +50,13 @@ export type RFState = {
   infoModeEnabled: boolean;
   toggleInfoMode: () => void;
 
+  workDone: boolean;
+
+  lastSave: SaveData;
+  lastTimeSaved: Date;
+  unsavedNotifSent: boolean;
+  setNotifSentTrue: () => void;
+
   queries: {
     hasNodeType: (nodeType: MCNodeType) => boolean;
   };
@@ -65,15 +73,21 @@ export const useNodeStore = create<RFState>((set, get) => ({
   nodes: [],
   edges: [],
   infoModeEnabled: false,
+  workDone: false,
+  lastSave: { nodes: [], edges: [] },
+  lastTimeSaved: new Date(),
+  unsavedNotifSent: false,
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
+      workDone: true,
     });
   },
 
   onEdgesChange: (changes: EdgeChange[]) => {
     set({
       edges: applyEdgeChanges(changes, get().edges),
+      workDone: true,
     });
   },
 
@@ -296,6 +310,20 @@ export const useNodeStore = create<RFState>((set, get) => ({
     if (possibleOrder) {
       get().removeNodeById(possibleOrder.id);
     }
+  },
+
+  resetSave() {
+    set({
+      lastSave: {nodes: this.nodes, edges: this.edges},
+      lastTimeSaved: new Date(),
+      unsavedNotifSent: false,
+    })
+  },
+
+  setNotifSentTrue() {
+    set({
+      unsavedNotifSent: true,
+    })
   },
 
   queries: {

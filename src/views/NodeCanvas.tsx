@@ -17,6 +17,7 @@ import DeleteButton from "../components/panels/DeleteButton";
 import InfoEdge from "../components/nodes/edges/InfoEdge";
 import BuilderNode from "../components/nodes/BuilderNode";
 import CustomNode from "../components/nodes/CustomNode";
+import { WorkSavedBar } from "../components/panels/WorkSavedBar"
 
 const nodeTypes = {
   resource: ResourceNode,
@@ -75,6 +76,7 @@ export default function NodeCanvas() {
           position="top-left"
         >
           <MenuBar />
+          <WorkSavedBar />
         </Panel>
         <Panel
           style={{

@@ -27,6 +27,7 @@ export const TaskSidebar = () => {
   const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
   const hasNextTask = useHasNextStep();
   const sendNotification = useNotifications((s) => s.sendNotification);
+  const infoModeEnabled = useNodeStore((s) => s.infoModeEnabled);
 
   const [searchParams] = useSearchParams();
 
@@ -114,12 +115,12 @@ export const TaskSidebar = () => {
         { orderNodeOnCanvas &&
           <div className="mb-4 text-center">
             <div className="text-lg">
-              Efficiency: {data.efficiency ? (data.efficiency * 100).toFixed(2) : 0}%
+              Efficiency: {data.efficiency ? (data.efficiency * 100).toFixed(0) : 0}%
             </div>
-            {data.efficiency < 1 && (
+            { data.efficiency < 1 && infoModeEnabled && (
               <div className="text-sm text-black/75">
-                Deficit: {Number.isNaN(data.deficit) ? 0 : (data.deficit * 100).toFixed(2)}% |
-                Excess: {Number.isNaN(data.deficit) ? 0 : (data.excess * 100).toFixed(2)}%
+                Deficit: {Number.isNaN(data.deficit) ? 0 : (data.deficit * 100).toFixed(0)}% |
+                Excess: {Number.isNaN(data.excess) ? 0 : (data.excess * 100).toFixed(0)}%
               </div>
             )}
           </div>
