@@ -28,7 +28,7 @@ export const WorkSavedBar = () => {
     }
   }, [lastTimeSaved, timeSinceLastSave, unsavedNotifSent]);
 
-  const updateInterval = 1000;
+  const updateInterval = 1000; // in ms, 1000ms = 1s
 
   useEffect(() => {
     const interval =
