@@ -15,15 +15,45 @@ export default function Graph() {
   const orderNodeId = useNodeStore(
     (s) => s.nodes.find((n) => n.data.dataType === MCNodeType.order)?.id
   );
-  if (!currentTask) return null;
-  if (!orderNodeId) return null;
 
-  return <GraphDetails task={currentTask} orderNodeId={orderNodeId} />;
+  const validNodeTypes = [MCNodeType.crafter, MCNodeType.resource]; //todo: add back in order node
+
+  const nodes = useNodeStore((s) => s.nodes)
+    .filter((n) => validNodeTypes
+      .find((type) => type === n.data.dataType));
+  const edges = useNodeStore((s) => s.edges);
+
+  const blocks = nodes.map((node) => node.data.item);
+
+  const data = useMemo(() => {
+    return nodes.map((n) => {
+      const matchedEdge = edges
+        .filter((e) => e.source === n.id)
+        .find((e) => e.data.item.title === n.data.item.title);
+      return {
+        label: n.data.item.title,
+        data: hours.map(
+          (hour) =>
+            ({
+              hour: hour,
+              rate: matchedEdge?.data.outputRate * hour || 0,
+              itemId: n.data.item.itemId
+            } as Datum)
+        )
+      };
+    });
+  }, [nodes, edges]);
+
+  // if (!currentTask) return null;
+  // if (!orderNodeId) return null;
+
+  return <GraphDetails task={currentTask} orderNodeId={orderNodeId} data={data} />;
 }
 
 interface GraphDetailsProps {
   task: Task;
   orderNodeId: string;
+  data: { label: string, data: Datum[] }[];
 }
 
 type Datum = {
@@ -34,48 +64,18 @@ type Datum = {
 
 const hours = [0, 1, 2, 3, 4, 5];
 
-function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
+function GraphDetails({ orderNodeId, task, data }: GraphDetailsProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const incomingEdges = useNodeStore((s) =>
     s.edges.filter((e) => e.target === orderNodeId)
   );
 
-  const data = useMemo(() => {
-    return task.itemRequirements.map((r) => {
-      const matchedEdge = incomingEdges.find(
-        (e) => e.data.item.itemId === r.itemId
-      );
-      if (matchedEdge) {
-        return {
-          label: matchedEdge.data.item.title,
-          data: hours.map(
-            (hour) =>
-              ({
-                hour: hour,
-                rate: matchedEdge.data.outputRate * hour,
-                itemId: r.itemId,
-              } as Datum)
-          ),
-        };
-      } else {
-        return {
-          label: itemFromId(r.itemId).title,
-          data: hours.map((h) => ({
-            rate: 0,
-            hour: h,
-            itemId: r.itemId,
-          })),
-        };
-      }
-    });
-  }, [incomingEdges, task]);
-
   const primaryAxis = useMemo(
     (): AxisOptions<Datum> => ({
       getValue: (datum) => datum.hour,
       show: true,
-      scaleType: "linear",
+      scaleType: "linear"
     }),
     []
   );
@@ -84,8 +84,8 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
     (): AxisOptions<Datum>[] => [
       {
         getValue: (datum) => datum.rate,
-        scaleType: "linear",
-      },
+        scaleType: "linear"
+      }
     ],
     []
   );
@@ -131,7 +131,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                           position: "fixed",
                           left: anchor.style.left,
                           top: anchor.style.top,
-                          textAlign: "center",
+                          textAlign: "center"
                         }}
                         className="m-2 rounded-md bg-mc-300 p-2"
                       >
@@ -142,7 +142,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                         </div>
                       </div>
                     );
-                  },
+                  }
                 },
                 interactionMode: "closest",
                 data,
@@ -150,9 +150,9 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                 secondaryAxes,
                 getSeriesStyle: () => ({
                   line: {
-                    strokeWidth: "4px",
-                  },
-                }),
+                    strokeWidth: "4px"
+                  }
+                })
               }}
             />
           </div>

@@ -12,7 +12,6 @@ import { useReactFlow } from "reactflow";
 import DraggableInfoSquare from "./components/DraggableInfo";
 import DraggableItem from "./components/DraggableItem";
 import DraggableSplitter from "./components/DraggableSplitter";
-import Graph from "./components/graph/Graph";
 import ItemPicker from "./components/nodePicker/ItemPicker";
 import Notifications from "./components/Notifications";
 import Sidebar from "./components/Sidebar";
@@ -111,7 +110,6 @@ function FactoryPlanner() {
           <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
             <div className="h-full">
               <Sidebar />
-              <Graph />
             </div>
           </div>
         </SplitPane>

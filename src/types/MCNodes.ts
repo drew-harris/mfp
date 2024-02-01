@@ -46,6 +46,7 @@ export interface MCCrafterNode extends MCBaseNode {
   recipeIndex: number;
 }
 
+//Deprecated
 export interface MCInfoNode extends MCBaseNode {
   dataType: MCNodeType.info;
 }
@@ -68,6 +69,7 @@ export interface MCEdge {
 interface MCBaseNode {
   id: string;
   dataType: MCNodeType;
+  item?: MCItem;
 }
 
 export type MCNode =
