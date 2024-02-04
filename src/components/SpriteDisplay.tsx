@@ -17,7 +17,7 @@ export const SpriteDisplay: React.FC<SpriteDisplayProps> = ({
     <div className="flex flex-col items-center">
       <img
         {...props}
-        src={`https://storage.googleapis.com/mfp-item-images/${url}`}
+        src={`https://humin-mc-mfp-images.s3.amazonaws.com/${url}`}
         style={{
           width: size,
           height: size,
