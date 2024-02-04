@@ -12,7 +12,7 @@ export const useCustomNodeList = () => {
 
   const data = useQuery(GET_CUSTOM_NODES, {
     variables: {
-      playerId: user.id,
+      playerId: user?.id,
     },
     onCompleted(data) {
       console.log("got custom nodes");
