@@ -1,7 +1,7 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  schema: "https://lapis.drewh.net/query",
+  schema: "https://lapis.humingamelab.com/query",
   documents: ["src/**/*.{tsx,ts,js,jsx}"],
   generates: {
     "./src/__generated__/": {

@@ -1,4 +1,5 @@
-import { CustomRecipe } from "../utils/builder";
+import { GetCustomNodesQuery } from "../__generated__/graphql";
+import { CustomNodePayload } from "./CustomNodes";
 import { DraggableOrderData, Task } from "./tasks";
 
 export enum MCNodeType {
@@ -6,14 +7,12 @@ export enum MCNodeType {
   crafter = "crafter",
   splitter = "splitter",
   order = "order",
-  info = "info",
   builder = "builder",
   custom = "custom",
 }
 
 export interface MCItem {
   title: string;
-  spriteIndex?: number;
   imageUrl: string;
   itemId: string;
 }
@@ -46,18 +45,15 @@ export interface MCCrafterNode extends MCBaseNode {
   recipeIndex: number;
 }
 
-//Deprecated
-export interface MCInfoNode extends MCBaseNode {
-  dataType: MCNodeType.info;
-}
-
 export interface MCBuilderNode extends MCBaseNode {
   dataType: MCNodeType.builder;
 }
 
 export interface MCCustomNode extends MCBaseNode {
   dataType: MCNodeType.custom;
-  recipies: CustomRecipe[];
+  lapisId: string;
+  name: string;
+  recipes: CustomNodePayload["recipeData"]["recipes"];
 }
 
 export interface MCEdge {
@@ -75,47 +71,36 @@ interface MCBaseNode {
 export type MCNode =
   | MCResourceNode
   | MCSplitterNode
-  | MCInfoNode
   | MCCrafterNode
   | MCBuilderNode
   | MCCustomNode
   | MCOrderNode;
 
 export interface DraggableItemData {
-  type: MCNodeType;
-  draggableType: DraggableType.item;
+  type: MCNodeType.crafter | MCNodeType.resource;
   item: MCPickerItem;
-}
-
-export interface DraggableInfo {
-  type: MCNodeType.info;
-  draggableType: DraggableType.info;
 }
 
 export interface DraggableBuilder {
   type: MCNodeType.builder;
-  draggableType: DraggableType.builder;
 }
 
 export interface DraggableSplitterData {
   type: MCNodeType.splitter;
-  draggableType: DraggableType.splitter;
 }
 
-export enum DraggableType {
-  item = "item",
-  order = "order",
-  info = "info",
-  splitter = "splitter",
-  builder = "builder",
+export interface DraggableCustomNodeData {
+  type: MCNodeType.custom;
+  queryData: GetCustomNodesQuery["customNodes"][0];
 }
 
 export type DraggableData =
   | DraggableItemData
   | DraggableOrderData
   | DraggableSplitterData
-  | DraggableBuilder
-  | DraggableInfo;
+  | DraggableOrderData
+  | DraggableCustomNodeData
+  | DraggableBuilder;
 
 export interface Recipe {
   outputItemId: string;

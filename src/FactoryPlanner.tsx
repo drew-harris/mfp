@@ -6,30 +6,46 @@ import {
   DragOverlay,
   DragStartEvent,
 } from "@dnd-kit/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import SplitPane from "react-split-pane";
 import { useReactFlow } from "reactflow";
-import DraggableInfoSquare from "./components/DraggableInfo";
-import DraggableItem from "./components/DraggableItem";
-import DraggableSplitter from "./components/DraggableSplitter";
-import ItemPicker from "./components/nodePicker/ItemPicker";
+import { GetCustomNodeQuery, LogType } from "./__generated__/graphql";
 import Notifications from "./components/Notifications";
 import Sidebar from "./components/Sidebar";
+import Graph from "./components/graph/Graph";
+import ItemPicker from "./components/nodePicker/ItemPicker";
+import PickerSquare, {
+  DraggableProps,
+} from "./components/nodePicker/PickerSquare";
 import { useNodeStore } from "./stores/nodes";
-import { DraggableData, DraggableType, MCNodeType } from "./types/MCNodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import NodeCanvas from "./views/NodeCanvas";
-import DraggableBuilderSquare from "./components/DraggableBuilder";
+import { sendLog } from "./api/logs";
 
-function FactoryPlanner() {
+interface FactoryPlannerProps {
+  customNodeEdit?: boolean;
+}
+
+function FactoryPlanner(props: FactoryPlannerProps) {
   const [active, setActive] = useState<Active | null>(null);
   const { project } = useReactFlow();
 
   const addNode = useNodeStore((state) => state.addNode);
+  const setNodesAndEdges = useNodeStore((s) => s.internal.setNodesAndEdges);
 
   function handleDragStart(event: DragStartEvent) {
     setActive(event.active);
   }
+
+  const data = useLoaderData() as GetCustomNodeQuery["customNode"];
+
+  useEffect(() => {
+    console.log("oloader data", data);
+    if (data) {
+      setNodesAndEdges(data.graphData.nodes, data.graphData.edges);
+    }
+  }, [data, setNodesAndEdges]);
 
   function handleDragEnd(event: DragEndEvent) {
     setActive(null);
@@ -38,8 +54,12 @@ function FactoryPlanner() {
         x: event.active.rect.current.translated?.left || 0,
         y: event.active.rect.current.translated?.top || 0,
       });
-      const item = event.active.data.current as unknown as DraggableData;
-      const node = processPickerItem(item, projection);
+      const item = event.active.data.current as unknown as DraggableProps;
+      const node = processPickerItem(item.payload, projection);
+      sendLog(LogType.MfpDropNode, {
+        type: node.data.dataType,
+      });
+
       if (node) {
         addNode(node);
       } else {
@@ -51,23 +71,8 @@ function FactoryPlanner() {
   let draggedItem = null;
 
   if (active) {
-    console.log(active.data.current);
-    const data = active.data.current as unknown as DraggableData;
-    if (data.draggableType === DraggableType.item) {
-      draggedItem = <DraggableItem item={data.item} higher />;
-    } else if (active.data.current["type"] === MCNodeType.order) {
-      // The draggable order is translated directly in the component so it does not
-      // render a duplicate
-      draggedItem = null;
-    } else if (data.draggableType === DraggableType.info) {
-      console.log("Dragging info");
-      draggedItem = <DraggableInfoSquare />;
-    } else if (data.draggableType === DraggableType.builder) {
-      console.log("Dragging info");
-      draggedItem = <DraggableBuilderSquare />;
-    } else {
-      draggedItem = <DraggableSplitter />;
-    }
+    const data = active.data.current as unknown as DraggableProps;
+    draggedItem = <PickerSquare {...data} higher={true} />;
   }
 
   const screenHeight = window.innerHeight;

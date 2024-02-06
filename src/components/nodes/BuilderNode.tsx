@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { Edge, Node } from "reactflow";
 import { CREATE_CUSTOM_NODE } from "../../api/saves";
@@ -14,16 +14,16 @@ import { FindCoefficientsSuccess, findCoefficients } from "../../utils/builder";
 import { getNodeById } from "../../utils/nodes";
 import { edgeArrayUpdate } from "../../utils/updates";
 import { SpriteDisplay } from "../SpriteDisplay";
-import { BaseNode } from "./BaseNode";
-import { SideHandle } from "./nodeDetails/SideHandle";
+import { Button } from "../basic/Button";
+import { UserContext } from "../contexts/UserContext";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTrigger,
 } from "../shadcn/ui/dialog";
-import { Button } from "../basic/Button";
-import { UserContext } from "../contexts/UserContext";
+import { BaseNode } from "./BaseNode";
+import { SideHandle } from "./nodeDetails/SideHandle";
 
 interface BuilderNodeProps {
   data: MCBuilderNode;
@@ -85,10 +85,15 @@ export default function BuilderNode({ data }: BuilderNodeProps) {
           {incomingEdges.map((incomingEdge) => (
             <>
               {incomingEdge?.data?.item?.imageUrl && (
-                <SpriteDisplay url={incomingEdge.data.item.imageUrl} />
+                <SpriteDisplay
+                  key={incomingEdge.id}
+                  url={incomingEdge.data.item.imageUrl}
+                />
               )}
               {incomingEdge?.data?.item?.title && (
-                <div>{incomingEdge.data?.item?.title}</div>
+                <div key={incomingEdge.id + "title"}>
+                  {incomingEdge.data?.item?.title}
+                </div>
               )}
             </>
           ))}
@@ -108,6 +113,7 @@ const SubmitCustomNode = ({
   result: FindCoefficientsSuccess;
   builderNode: MCBuilderNode;
 }) => {
+  const client = useApolloClient();
   const { sendNotification } = useNotifications();
   const [name, setName] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -115,7 +121,7 @@ const SubmitCustomNode = ({
 
   const addNode = useNodeStore((s) => s.addNode);
   const [saveMutation, { loading }] = useMutation(CREATE_CUSTOM_NODE, {
-    onCompleted({ createCustomNode }) {
+    onCompleted(data) {
       sendNotification("Created new node!", "success");
       const oldBuilder = result.graph.nodes.find(
         (n) => n.id === builderNode.id
@@ -133,13 +139,18 @@ const SubmitCustomNode = ({
         },
         data: {
           dataType: MCNodeType.custom,
-          recipies: result.recipes,
+          lapisId: data.createCustomNode.id,
+          name: data.createCustomNode.name,
+          recipes: data.createCustomNode.recipeData.recipes, // TODO: Verify
           id: builderNode.id,
         },
         type: MCNodeType.custom,
       };
 
       addNode(node);
+
+      // Invalidate query for picker
+      client.refetchQueries({ include: "active" });
     },
   });
 
@@ -148,12 +159,13 @@ const SubmitCustomNode = ({
   const handleInput = (e: FormEvent) => {
     e.preventDefault();
     setDialogOpen(false);
-
+    console.log("SAVING");
+    console.log("Muataion");
     saveMutation({
       variables: {
         newCustomNode: {
-          graphData: { graph: result.graph },
-          recipeData: { recipies: result.recipes },
+          graphData: result.graph,
+          recipeData: { recipes: result.recipes },
           name,
           playerId: user.user.id,
         },
