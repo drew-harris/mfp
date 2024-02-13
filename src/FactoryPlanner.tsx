@@ -71,7 +71,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
 
   if (active) {
     const data = active.data.current as unknown as DraggableProps;
-    draggedItem = <PickerSquare {...data} higher={true} />;
+    draggedItem = <PickerSquare {...data} />;
   }
 
   const screenHeight = window.innerHeight;
@@ -89,7 +89,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
           split="vertical"
           primary="second"
           minSize={300}
-          maxSize={screenWidth * 0.5}z
+          maxSize={screenWidth * 0.5}
           defaultSize={300}
         >
           {/*@ts-ignore*/}
