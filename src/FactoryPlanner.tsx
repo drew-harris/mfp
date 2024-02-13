@@ -4,7 +4,7 @@ import {
   DndContext,
   DragEndEvent,
   DragOverlay,
-  DragStartEvent,
+  DragStartEvent
 } from "@dnd-kit/core";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
@@ -13,10 +13,9 @@ import { useReactFlow } from "reactflow";
 import { GetCustomNodeQuery, LogType } from "./__generated__/graphql";
 import Notifications from "./components/Notifications";
 import Sidebar from "./components/Sidebar";
-import Graph from "./components/graph/Graph";
 import ItemPicker from "./components/nodePicker/ItemPicker";
 import PickerSquare, {
-  DraggableProps,
+  DraggableProps
 } from "./components/nodePicker/PickerSquare";
 import { useNodeStore } from "./stores/nodes";
 import { processPickerItem } from "./utils/processPickerItem";
@@ -52,12 +51,12 @@ function FactoryPlanner(props: FactoryPlannerProps) {
     if (event.over && event.over.id === "droppable") {
       const projection = project({
         x: event.active.rect.current.translated?.left || 0,
-        y: event.active.rect.current.translated?.top || 0,
+        y: event.active.rect.current.translated?.top || 0
       });
       const item = event.active.data.current as unknown as DraggableProps;
       const node = processPickerItem(item.payload, projection);
       sendLog(LogType.MfpDropNode, {
-        type: node.data.dataType,
+        type: node.data.dataType
       });
 
       if (node) {
@@ -85,12 +84,12 @@ function FactoryPlanner(props: FactoryPlannerProps) {
         <SplitPane
           resizerStyle={{
             border: "2px solid #343a40",
-            cursor: "col-resize",
+            cursor: "col-resize"
           }}
           split="vertical"
           primary="second"
           minSize={300}
-          maxSize={screenWidth * 0.5}
+          maxSize={screenWidth * 0.5}z
           defaultSize={300}
         >
           {/*@ts-ignore*/}
@@ -98,7 +97,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
             split="horizontal"
             resizerStyle={{
               border: "2px solid #343a40",
-              cursor: "row-resize",
+              cursor: "row-resize"
             }}
             defaultSize={screenHeight * 0.7}
             minSize={200}

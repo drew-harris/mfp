@@ -16,6 +16,7 @@ import DeleteButton from "../components/panels/DeleteButton";
 import InfoEdge from "../components/nodes/edges/InfoEdge";
 import BuilderNode from "../components/nodes/BuilderNode";
 import CustomNode from "../components/nodes/CustomNode";
+import Graph from "../components/graph/Graph";
 
 const nodeTypes = {
   resource: ResourceNode,
@@ -67,12 +68,14 @@ export default function NodeCanvas() {
           variant={BackgroundVariant.Lines}
         ></Background>
         <Panel
+          className="flex flex-row gap-3 z-20"
           style={{
             margin: 4,
           }}
           position="top-left"
         >
           <MenuBar />
+          <Graph />
         </Panel>
         <Panel
           style={{
@@ -87,6 +90,7 @@ export default function NodeCanvas() {
           style={{
             margin: 4,
           }}
+          className="z-10"
         >
           <DeleteButton />
         </Panel>
