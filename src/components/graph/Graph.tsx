@@ -87,6 +87,10 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
   const [XYGraphMode, setXYGraphMode] = useState(false);
   const [visibleData, setVisibleData] = useState(nodeData);
 
+  const data = useMemo(() => {
+    return visibleData.filter((n) => !n.item.isHidden).map(n => n.graphPoint);
+  }, [visibleData]);
+
   const primaryAxis = useMemo(
     (): AxisOptions<Datum> => ({
       getValue: (datum) => datum.hour,
@@ -109,6 +113,7 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
   const handleOptionChange = (option: string) => {
     setVisibleData((prevData) =>
       prevData.map((node) => {
+        console.log(node.item.name, "===", option, ":", node.item.isHidden, "->", !node.item.isHidden)
         if (node.item.name === option) {
           return {...node, item: { ...node.item, isHidden: !node.item.isHidden }};
         }
@@ -117,6 +122,10 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
   };
 
   const toggleXYGraphMode = () => setXYGraphMode(!XYGraphMode)
+
+  useEffect(() => {
+    setVisibleData(nodeData)
+  }, [nodeData]);
 
   useEffect(() => {
     console.log("dialogOpen value:", dialogOpen);
@@ -176,7 +185,7 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
                   }
                 },
                 interactionMode: "closest",
-                data: visibleData.map(n => n.graphPoint),
+                data,
                 primaryAxis,
                 secondaryAxes,
                 getSeriesStyle: () => ({
@@ -195,10 +204,9 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
                 {XYGraphMode ? "Hide Equations" : "Show Equations"}
               </Button>
             </div>
-            <div>{nodeData?.length > 0 ? "data passed" : "no data"}</div>
             <div className="px-4 py-2">
               <div className="font-bold">Items:</div>
-              {nodeData?.length > 0 && nodeData.map((node) => (
+              {nodeData?.length > 0 && visibleData.map((node) => (
                 <div key={node.item.name} className="flex items-center">
                   <input
                     type="checkbox"
