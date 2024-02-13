@@ -65,6 +65,7 @@ export interface MCEdge {
 interface MCBaseNode {
   id: string;
   dataType: MCNodeType;
+  item?: MCItem;
 }
 
 export type MCNode =

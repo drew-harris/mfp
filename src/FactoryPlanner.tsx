@@ -4,7 +4,7 @@ import {
   DndContext,
   DragEndEvent,
   DragOverlay,
-  DragStartEvent,
+  DragStartEvent
 } from "@dnd-kit/core";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
@@ -13,10 +13,9 @@ import { useReactFlow } from "reactflow";
 import { GetCustomNodeQuery, LogType } from "./__generated__/graphql";
 import Notifications from "./components/Notifications";
 import Sidebar from "./components/Sidebar";
-import Graph from "./components/graph/Graph";
 import ItemPicker from "./components/nodePicker/ItemPicker";
 import PickerSquare, {
-  DraggableProps,
+  DraggableProps
 } from "./components/nodePicker/PickerSquare";
 import { useNodeStore } from "./stores/nodes";
 import { processPickerItem } from "./utils/processPickerItem";
@@ -52,12 +51,12 @@ function FactoryPlanner(props: FactoryPlannerProps) {
     if (event.over && event.over.id === "droppable") {
       const projection = project({
         x: event.active.rect.current.translated?.left || 0,
-        y: event.active.rect.current.translated?.top || 0,
+        y: event.active.rect.current.translated?.top || 0
       });
       const item = event.active.data.current as unknown as DraggableProps;
       const node = processPickerItem(item.payload, projection);
       sendLog(LogType.MfpDropNode, {
-        type: node.data.dataType,
+        type: node.data.dataType
       });
 
       if (node) {
@@ -72,7 +71,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
 
   if (active) {
     const data = active.data.current as unknown as DraggableProps;
-    draggedItem = <PickerSquare {...data} higher={true} />;
+    draggedItem = <PickerSquare {...data} />;
   }
 
   const screenHeight = window.innerHeight;
@@ -84,8 +83,8 @@ function FactoryPlanner(props: FactoryPlannerProps) {
         {/*@ts-ignore*/}
         <SplitPane
           resizerStyle={{
-            border: "2px solid #5d5d5d",
-            cursor: "col-resize",
+            border: "2px solid #343a40",
+            cursor: "col-resize"
           }}
           split="vertical"
           primary="second"
@@ -97,8 +96,8 @@ function FactoryPlanner(props: FactoryPlannerProps) {
           <SplitPane
             split="horizontal"
             resizerStyle={{
-              border: "2px solid #5d5d5d",
-              cursor: "row-resize",
+              border: "2px solid #343a40",
+              cursor: "row-resize"
             }}
             defaultSize={screenHeight * 0.7}
             minSize={200}
@@ -115,7 +114,6 @@ function FactoryPlanner(props: FactoryPlannerProps) {
           <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">
             <div className="h-full">
               <Sidebar />
-              <Graph />
             </div>
           </div>
         </SplitPane>

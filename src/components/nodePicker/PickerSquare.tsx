@@ -8,7 +8,6 @@ export interface DraggableProps {
   topLabel?: string;
   mainLabel?: string;
   image?: ReactNode;
-  higher?: boolean;
   className?: string;
 }
 
@@ -56,7 +55,7 @@ export default function PickerSquare(props: DraggableProps) {
       {...attributes}
       className={className({ nodeType: props.payload.type })}
       style={{
-        zIndex: props.higher ? 500 : 10,
+        zIndex: 0,
       }}
     >
       <div className="text-center text-xs">{props.topLabel}</div>

@@ -152,7 +152,7 @@ export default function ItemPicker() {
       </div>
 
       {/* BUG:  Not sure why 1vh works */}
-      <div className="z-40 grid max-h-[1vh] grid-cols-6 gap-2 px-2">
+      <div className="grid max-h-[1vh] grid-cols-6 gap-2 px-2">
         {filteredItems.map((i) => (
           <PickerSquare {...i} key={JSON.stringify(i.payload)} />
         ))}

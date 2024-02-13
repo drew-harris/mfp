@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AxisOptions, Chart } from "react-charts";
 import { sendLog } from "../../api/logs";
 import { itemFromId } from "../../hooks/useFullItem";
@@ -10,20 +10,68 @@ import { Button } from "../basic/Button";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { LogType } from "../../__generated__/graphql";
 
+interface item {
+  name: string,
+  isHidden: boolean,
+  nodeType: MCNodeType,
+}
+
 export default function Graph() {
+  // todo: currentTask and orderNode may be deprecated, use to highlight order resources?
   const currentTask = useObjectiveStore((s) => s.currentTask);
   const orderNodeId = useNodeStore(
     (s) => s.nodes.find((n) => n.data.dataType === MCNodeType.order)?.id
   );
-  if (!currentTask) return null;
-  if (!orderNodeId) return null;
 
-  return <GraphDetails task={currentTask} orderNodeId={orderNodeId} />;
+  const validNodeTypes = new Set([MCNodeType.crafter, MCNodeType.resource]);
+
+  const nodes = useNodeStore((s) => s.nodes)
+    .filter((n) => validNodeTypes
+      .has(n.data.dataType));
+  const edges = useNodeStore((s) => s.edges);
+
+  const data = useMemo(() => {
+    return nodes.map((n) => {
+      const matchedEdge = edges
+        .filter((e) => e.source === n.id)
+        .find((e) => e.data.item.title === n.data.item.title);
+      const graph = {
+        label: n.data.item.title,
+        data: hours.map(
+          (hour) =>
+            ({
+              hour: hour,
+              rate: matchedEdge?.data.outputRate * hour || 0,
+              itemId: n.data.item.itemId
+            } as Datum)
+        )
+      }
+      const item: item = {
+        name: n.data.item.title,
+        isHidden: false,
+        nodeType: n.data.dataType
+      };
+      return {
+        graphPoint: graph,
+        item: item,
+      };
+    });
+  }, [nodes, edges]);
+
+  // if (!currentTask) return null;
+  // if (!orderNodeId) return null;
+
+  return (
+    <>
+      <GraphDetails task={currentTask} orderNodeId={orderNodeId} nodeData={data} />
+    </>
+  );
 }
 
 interface GraphDetailsProps {
   task: Task;
   orderNodeId: string;
+  nodeData: { graphPoint: { label: string; data: Datum[]; }; item: item; }[];
 }
 
 type Datum = {
@@ -34,48 +82,20 @@ type Datum = {
 
 const hours = [0, 1, 2, 3, 4, 5];
 
-function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
+function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
-
-  const incomingEdges = useNodeStore((s) =>
-    s.edges.filter((e) => e.target === orderNodeId)
-  );
+  const [XYGraphMode, setXYGraphMode] = useState(false);
+  const [visibleData, setVisibleData] = useState(nodeData);
 
   const data = useMemo(() => {
-    return task.itemRequirements.map((r) => {
-      const matchedEdge = incomingEdges.find(
-        (e) => e.data.item.itemId === r.itemId
-      );
-      if (matchedEdge) {
-        return {
-          label: matchedEdge.data.item.title,
-          data: hours.map(
-            (hour) =>
-              ({
-                hour: hour,
-                rate: matchedEdge.data.outputRate * hour,
-                itemId: r.itemId,
-              } as Datum)
-          ),
-        };
-      } else {
-        return {
-          label: itemFromId(r.itemId).title,
-          data: hours.map((h) => ({
-            rate: 0,
-            hour: h,
-            itemId: r.itemId,
-          })),
-        };
-      }
-    });
-  }, [incomingEdges, task]);
+    return visibleData.filter((n) => !n.item.isHidden).map(n => n.graphPoint);
+  }, [visibleData]);
 
   const primaryAxis = useMemo(
     (): AxisOptions<Datum> => ({
       getValue: (datum) => datum.hour,
       show: true,
-      scaleType: "linear",
+      scaleType: "linear"
     }),
     []
   );
@@ -84,16 +104,37 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
     (): AxisOptions<Datum>[] => [
       {
         getValue: (datum) => datum.rate,
-        scaleType: "linear",
-      },
+        scaleType: "linear"
+      }
     ],
     []
   );
 
+  const handleOptionChange = (option: string) => {
+    setVisibleData((prevData) =>
+      prevData.map((node) => {
+        console.log(node.item.name, "===", option, ":", node.item.isHidden, "->", !node.item.isHidden)
+        if (node.item.name === option) {
+          return {...node, item: { ...node.item, isHidden: !node.item.isHidden }};
+        }
+        return node;
+      }));
+  };
+
+  const toggleXYGraphMode = () => setXYGraphMode(!XYGraphMode)
+
+  useEffect(() => {
+    setVisibleData(nodeData)
+  }, [nodeData]);
+
+  useEffect(() => {
+    console.log("dialogOpen value:", dialogOpen);
+  }, [dialogOpen, setDialogOpen]);
+
   // TODO: Replace with shadcn dialog
   return (
     <>
-      <div className="m-2">
+      <div className="">
         <Button
           className="w-full"
           onClick={() => {
@@ -105,13 +146,12 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
         </Button>
       </div>
       {dialogOpen && (
-        <>
+        <div className="isolate">
           <div
             onClick={() => setDialogOpen(false)}
-            className="fixed left-0 bottom-0 top-0 right-0 z-[60] bg-black/70"
+            className="fixed left-0 bottom-0 top-0 right-0 z-10 bg-black/70"
           />
-          <div className="fixed left-24 bottom-24 top-24 right-24 z-[70] bg-mc-200">
-            <Button onClick={() => setDialogOpen(false)}>Close</Button>
+          <div className="outset fixed left-96 bottom-24 top-24 right-24 z-30 bg-mc-200">
             <Chart
               options={{
                 padding: 40,
@@ -131,7 +171,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                           position: "fixed",
                           left: anchor.style.left,
                           top: anchor.style.top,
-                          textAlign: "center",
+                          textAlign: "center"
                         }}
                         className="m-2 rounded-md bg-mc-300 p-2"
                       >
@@ -142,7 +182,7 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                         </div>
                       </div>
                     );
-                  },
+                  }
                 },
                 interactionMode: "closest",
                 data,
@@ -150,13 +190,43 @@ function GraphDetails({ orderNodeId, task }: GraphDetailsProps) {
                 secondaryAxes,
                 getSeriesStyle: () => ({
                   line: {
-                    strokeWidth: "4px",
-                  },
-                }),
+                    strokeWidth: "4px"
+                  }
+                })
               }}
             />
+
           </div>
-        </>
+          <div className="outset fixed left-24 bottom-24 top-24 right-24 z-20 bg-mc-300">
+            <div className="flex flex-row gap-2">
+              <Button onClick={() => setDialogOpen(false)}>Close</Button>
+              <Button className={XYGraphMode ? "bg-mc-200" : null} onClick={toggleXYGraphMode}>
+                {XYGraphMode ? "Hide Equations" : "Show Equations"}
+              </Button>
+            </div>
+            <div className="px-4 py-2">
+              <div className="font-bold">Items:</div>
+              {nodeData?.length > 0 && visibleData.map((node) => (
+                <div key={node.item.name} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id={node.item.name}
+                    onChange={() => {
+                      handleOptionChange(node.item.name);
+                    }}
+                    className="mr-2"
+                    checked={!node.item.isHidden}
+                  />
+                  <label htmlFor={node.item.name} className="text-sm">
+                    {node.item.name} {XYGraphMode ? (
+                    <>| y = {node.graphPoint.data[1].rate}x</>
+                  ) : ""}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
