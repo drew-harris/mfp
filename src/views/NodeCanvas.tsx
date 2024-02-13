@@ -68,7 +68,7 @@ export default function NodeCanvas() {
           variant={BackgroundVariant.Lines}
         ></Background>
         <Panel
-          className="flex flex-row gap-3 z-20"
+          className="flex flex-row gap-3 z-10"
           style={{
             margin: 4,
           }}
@@ -90,7 +90,6 @@ export default function NodeCanvas() {
           style={{
             margin: 4,
           }}
-          className="z-10"
         >
           <DeleteButton />
         </Panel>

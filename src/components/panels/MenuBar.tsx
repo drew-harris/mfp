@@ -9,8 +9,6 @@ export const MenuBar = () => {
     r.toggleInfoMode,
   ]);
 
-  // This is a test comment
-
   return (
     <div className="flex gap-2">
       <Button className={infoMode ? "bg-mc-200" : null} onClick={toggleInfo}>

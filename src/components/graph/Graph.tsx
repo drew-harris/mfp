@@ -4,12 +4,11 @@ import { sendLog } from "../../api/logs";
 import { itemFromId } from "../../hooks/useFullItem";
 import { useNodeStore } from "../../stores/nodes";
 import { useObjectiveStore } from "../../stores/objectiveStore";
-import { MCItem, MCNodeType } from "../../types/MCNodes";
+import { MCNodeType } from "../../types/MCNodes";
 import { Task } from "../../types/tasks";
 import { Button } from "../basic/Button";
 import { SpriteDisplay } from "../SpriteDisplay";
 import { LogType } from "../../__generated__/graphql";
-import SplitPane from "react-split-pane";
 
 interface item {
   name: string,
@@ -31,24 +30,12 @@ export default function Graph() {
       .has(n.data.dataType));
   const edges = useNodeStore((s) => s.edges);
 
-  const itemList = useMemo(() => {
-    return nodes.map((n) => {
-      const item: item = {
-        name: n.data.item.title,
-        isHidden: false,
-        nodeType: n.data.dataType
-      };
-      //console.log("item: " + item.name)
-      return item;
-    });
-  }, [nodes]);
-
   const data = useMemo(() => {
     return nodes.map((n) => {
       const matchedEdge = edges
         .filter((e) => e.source === n.id)
         .find((e) => e.data.item.title === n.data.item.title);
-      return {
+      const graph = {
         label: n.data.item.title,
         data: hours.map(
           (hour) =>
@@ -58,6 +45,15 @@ export default function Graph() {
               itemId: n.data.item.itemId
             } as Datum)
         )
+      }
+      const item: item = {
+        name: n.data.item.title,
+        isHidden: false,
+        nodeType: n.data.dataType
+      };
+      return {
+        graphPoint: graph,
+        item: item,
       };
     });
   }, [nodes, edges]);
@@ -67,7 +63,7 @@ export default function Graph() {
 
   return (
     <>
-      <GraphDetails task={currentTask} orderNodeId={orderNodeId} nodeData={data} itemList={itemList} />
+      <GraphDetails task={currentTask} orderNodeId={orderNodeId} nodeData={data} />
     </>
   );
 }
@@ -75,8 +71,7 @@ export default function Graph() {
 interface GraphDetailsProps {
   task: Task;
   orderNodeId: string;
-  nodeData: { label: string, data: Datum[], itemId?: string }[];
-  itemList: item[];
+  nodeData: { graphPoint: { label: string; data: Datum[]; }; item: item; }[];
 }
 
 type Datum = {
@@ -87,18 +82,10 @@ type Datum = {
 
 const hours = [0, 1, 2, 3, 4, 5];
 
-function GraphDetails({ orderNodeId, task, nodeData, itemList }: GraphDetailsProps) {
+function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [newItemList, setNewItemList] = useState(itemList);
-  const [data, setData] =
-    useState(nodeData.filter(
-      (datum) => newItemList
-        ?.find((item) => item.name === datum.label)
-        ?.isHidden === false));
-
-  const incomingEdges = useNodeStore((s) =>
-    s.edges.filter((e) => e.target === orderNodeId)
-  );
+  const [XYGraphMode, setXYGraphMode] = useState(false);
+  const [visibleData, setVisibleData] = useState(nodeData);
 
   const primaryAxis = useMemo(
     (): AxisOptions<Datum> => ({
@@ -120,29 +107,20 @@ function GraphDetails({ orderNodeId, task, nodeData, itemList }: GraphDetailsPro
   );
 
   const handleOptionChange = (option: string) => {
-    setNewItemList((prevItemList) =>
-      prevItemList.map((item) => {
-        if (item.name === option) {
-          return { ...item, isHidden: !item.isHidden };
+    setVisibleData((prevData) =>
+      prevData.map((node) => {
+        if (node.item.name === option) {
+          return {...node, item: { ...node.item, isHidden: !node.item.isHidden }};
         }
-        return item;
+        return node;
       }));
-    console.log(newItemList)
   };
+
+  const toggleXYGraphMode = () => setXYGraphMode(!XYGraphMode)
 
   useEffect(() => {
     console.log("dialogOpen value:", dialogOpen);
   }, [dialogOpen, setDialogOpen]);
-
-  useEffect(() => {
-    setNewItemList(itemList)
-  }, [itemList]);
-
-  useEffect(() => {
-    setData(nodeData.filter(
-      (datum) => newItemList?.find(
-        (item) => item.name === datum.label).isHidden === false))
-  }, [nodeData, newItemList]);
 
   // TODO: Replace with shadcn dialog
   return (
@@ -159,12 +137,12 @@ function GraphDetails({ orderNodeId, task, nodeData, itemList }: GraphDetailsPro
         </Button>
       </div>
       {dialogOpen && (
-        <>
+        <div className="isolate">
           <div
             onClick={() => setDialogOpen(false)}
             className="fixed left-0 bottom-0 top-0 right-0 z-10 bg-black/70"
           />
-          <div className="fixed left-96 bottom-24 top-24 right-24 z-30 bg-mc-200">
+          <div className="outset fixed left-96 bottom-24 top-24 right-24 z-30 bg-mc-200">
             <Chart
               options={{
                 padding: 40,
@@ -198,7 +176,7 @@ function GraphDetails({ orderNodeId, task, nodeData, itemList }: GraphDetailsPro
                   }
                 },
                 interactionMode: "closest",
-                data,
+                data: visibleData.map(n => n.graphPoint),
                 primaryAxis,
                 secondaryAxes,
                 getSeriesStyle: () => ({
@@ -208,29 +186,39 @@ function GraphDetails({ orderNodeId, task, nodeData, itemList }: GraphDetailsPro
                 })
               }}
             />
+
           </div>
-          <div className="fixed left-24 bottom-24 top-24 right-24 z-20 bg-mc-300">
-            <Button onClick={() => setDialogOpen(false)}>Close</Button>
-            <div>{itemList.length > 0 ? "item list exists" : "item list does not exist"}</div>
-            <div>{newItemList.length > 0 ? "new item list exists" : "new item list does not exist"}</div>
-            {newItemList.map((item) => (
-              <div key={item.name} className="flex items-center">
-                <input
-                  type="checkbox"
-                  id={item.name}
-                  onChange={() => {
-                    handleOptionChange(item.name);
-                  }}
-                  className="mr-2"
-                  checked={!item.isHidden}
-                />
-                <label htmlFor={item.name} className="text-sm">
-                  {item.name}
-                </label>
-              </div>
-            ))}
+          <div className="outset fixed left-24 bottom-24 top-24 right-24 z-20 bg-mc-300">
+            <div className="flex flex-row gap-2">
+              <Button onClick={() => setDialogOpen(false)}>Close</Button>
+              <Button className={XYGraphMode ? "bg-mc-200" : null} onClick={toggleXYGraphMode}>
+                {XYGraphMode ? "Hide Equations" : "Show Equations"}
+              </Button>
+            </div>
+            <div>{nodeData?.length > 0 ? "data passed" : "no data"}</div>
+            <div className="px-4 py-2">
+              <div className="font-bold">Items:</div>
+              {nodeData?.length > 0 && nodeData.map((node) => (
+                <div key={node.item.name} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id={node.item.name}
+                    onChange={() => {
+                      handleOptionChange(node.item.name);
+                    }}
+                    className="mr-2"
+                    checked={!node.item.isHidden}
+                  />
+                  <label htmlFor={node.item.name} className="text-sm">
+                    {node.item.name} {XYGraphMode ? (
+                    <>| y = {node.graphPoint.data[1].rate}x</>
+                  ) : ""}
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );
