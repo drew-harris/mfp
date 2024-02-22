@@ -66,13 +66,7 @@ export default function SplitterNode({ data }: SplitterNodeProps) {
   }, [data.splitString]);
 
   useEffect(() => {
-    for (const [i, outgoingEdge] of outgoingEdges.entries()) {
-      // console.log(
-      //   `i: ${i}, ratios length: ${
-      //     Object.keys(data.ratios).length
-      //   }, outgoingEdge: ${outgoingEdges.entries()},
-      //   sourceHandle: ${outgoingEdge.sourceHandle}`
-      // );
+    for (const [_, outgoingEdge] of outgoingEdges.entries()) {
       if (incomingEdge && outgoingEdge.sourceHandle in data.ratios) {
         // TODO: Actually finish rounding shhhhhhhh....
         setEdgeData(outgoingEdge.id, {

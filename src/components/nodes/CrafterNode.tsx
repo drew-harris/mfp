@@ -50,7 +50,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   });
 
   const inputAmounts = selectedRecipe.inputs.map((input) => {
-    const edge = inboundEdges.find((e) => e.data?.item.itemId === input.itemId);
+    const edge = inboundEdges.find((e) => e.data?.item?.itemId === input.itemId);
     if (!edge) {
       return {
         itemId: input.itemId,
@@ -69,7 +69,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
 
   const numSets = selectedRecipe.inputs.map((input) => {
     const inboundEdge = inboundEdges.find(
-      (e) => e.data?.item.itemId === input.itemId
+      (e) => e.data?.item?.itemId === input.itemId
     );
     if (inboundEdge?.data?.outputRate) {
       return Math.floor(inboundEdge.data?.outputRate / input.amount);
@@ -102,6 +102,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
     // console.log(`${selectedRecipe.outputItemId}: ${outputRate}`);
 
     setResourceOutputRate(data.id, outputRate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     inboundEdges,
     outboundEdges,
@@ -113,7 +114,7 @@ export default function CrafterNode({ data }: CrafterNodeProps) {
   useEffect(() => {
     for (const edge of inboundEdges) {
       const input = selectedRecipe.inputs.find(
-        (i) => i.itemId === edge.data?.item.itemId
+        (i) => i.itemId === edge.data?.item?.itemId
       );
       if (!input) {
         removeEdge(edge.id);

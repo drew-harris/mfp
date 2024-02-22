@@ -18,18 +18,22 @@ export function checkIfNodesConnect(
     source.data.dataType === MCNodeType.order ||
     source.data.dataType === MCNodeType.builder
   ) {
+    console.log("Node connection invalid. Rejecting connection.");
     return false;
   }
 
   if (target.data.dataType === MCNodeType.builder) {
+    console.log("Node connection valid. Connection should be accepted.");
     return true;
   }
 
   // Custom node to others
   if (source.data.dataType === MCNodeType.custom) {
     if (target.data.dataType === MCNodeType.crafter) {
+      console.log("Node connection valid. Connection should be accepted.");
       return true;
     } else {
+      console.log("Node connection invalid. Rejecting connection.");
       return false;
     }
   }
@@ -38,6 +42,7 @@ export function checkIfNodesConnect(
   const sourceItem = source.data.item;
   if (!sourceItem) {
     console.log("Source node has no item");
+    console.log("Node connection invalid. Rejecting connection.");
     return false;
   }
 
@@ -48,6 +53,7 @@ export function checkIfNodesConnect(
       requirements &&
       !requirements.some((request) => request.itemId === sourceItem.itemId)
     ) {
+      console.log("Node connection invalid. Rejecting connection.");
       return false;
     }
   }
@@ -57,8 +63,10 @@ export function checkIfNodesConnect(
     connection.targetHandle &&
     sourceItem.itemId.toString() !== connection.targetHandle
   ) {
+    console.log("Node connection invalid. Rejecting connection.");
     return false;
   }
 
+  console.log("Node connection valid. Connection should be accepted.");
   return true;
 }
