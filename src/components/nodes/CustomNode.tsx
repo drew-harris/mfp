@@ -37,6 +37,7 @@ function getResults(
 
       const sets = Math.floor(found.outputRate / input.num);
       if (sets < 1) {
+        minGroup = 0;
         break;
       }
       if (sets < minGroup) {
@@ -130,7 +131,7 @@ export default function CustomNode({ data }: CustomNodeProps) {
           {items.map((i) => (
             <div key={i.itemId}>
               <div className="text-center">{i.title}</div>
-              <div className="text-center text-xs text-black/50">{-1}</div>
+              <div className="text-center text-xs text-black/50"></div>
               <SpriteDisplay url={i.imageUrl} />
             </div>
           ))}
