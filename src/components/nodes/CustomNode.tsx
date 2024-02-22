@@ -37,6 +37,7 @@ function getResults(
 
       const sets = Math.floor(found.outputRate / input.num);
       if (sets < 1) {
+        minGroup = 0;
         break;
       }
       if (sets < minGroup) {
@@ -60,26 +61,43 @@ export default function CustomNode({ data }: CustomNodeProps) {
   const collapsed = data.recipes
     .map((r) => r.inputs)
     .flatMap((r) => r.flat())
-    // Remove duplicattes
+    // Remove duplicates
     .filter((v, i, a) => a.findIndex((t) => t.itemId === v.itemId) === i);
 
   const inputEdges = useNodeStore((s) => {
     return s.edges
-      .filter((edge) => edge.target === data.id)
-      .map((edge) => edge.data);
+      .filter((edge) => edge.target === data.id);
   });
 
+  const outputEdges = useNodeStore((s) => {
+    return s.edges
+      .filter((edge) => edge.source === data.id);
+  });
+
+  const setEdgeData = useNodeStore((s) => s.setEdgeData);
+
   useEffect(() => {
-    const result = getResults(inputEdges, data.recipes);
-  }, [inputEdges]);
+    const result = getResults(inputEdges.map((edge) => edge.data), data.recipes);
+
+    for (const output of outputEdges) {
+      const numSets = result.find((r) => r.itemId === output.data.item.itemId);
+      setEdgeData(output.id, {
+        outputRate: numSets?.amount || 0,
+        item: output.data.item,
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputEdges.length, outputEdges.length, inputEdges.map((e) => e.data).map((e) => e.outputRate).join(',')]);
 
   const leftSideNodes = collapsed.map((i) => (
     <SideHandle type="target" id={i.itemId} key={i.itemId} />
   ));
 
-  const rightSideNodes = data.recipes.map((r) => (
-    <SideHandle type="source" id={r.item.itemId} key={r.item.itemId} />
-  ));
+  const rightSideNodes = data.recipes.map((r) => {
+    // console.log("source:", r.item.title)
+    return <SideHandle type="source" id={r.item.itemId} key={r.item.itemId} />
+  });
 
   return (
     <BaseNode
@@ -95,6 +113,7 @@ export default function CustomNode({ data }: CustomNodeProps) {
       >
         Edit
       </a>
+      <div>{}</div>
       <div className="flex items-stretch gap-5">
         <div className="flex flex-col justify-around">
           {collapsed.map((i) => (
@@ -112,6 +131,7 @@ export default function CustomNode({ data }: CustomNodeProps) {
           {items.map((i) => (
             <div key={i.itemId}>
               <div className="text-center">{i.title}</div>
+              <div className="text-center text-xs text-black/50"></div>
               <SpriteDisplay url={i.imageUrl} />
             </div>
           ))}

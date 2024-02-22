@@ -12,17 +12,15 @@ import {
   NodeRemoveChange,
   OnConnect,
   OnEdgesChange,
-  OnNodesChange,
+  OnNodesChange
 } from "reactflow";
 import create from "zustand";
-import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
+import { MCEdge, MCItem, MCNode, MCNodeType } from "../types/MCNodes";
 import { Task } from "../types/tasks";
-import {
-  animationDurationFromPerHour,
-  checkIfNodesConnect,
-} from "./nodeStoreUtils";
+import { animationDurationFromPerHour, checkIfNodesConnect } from "./nodeStoreUtils";
 import { sendLog } from "../api/logs";
 import { LogType } from "../__generated__/graphql";
+import { itemFromId } from "../hooks/useFullItem";
 
 export type RFState = {
   nodes: Node<MCNode>[];
@@ -133,23 +131,35 @@ export const useNodeStore = create<RFState>((set, get) => ({
     const nodes = get().nodes;
     const sourceNode = nodes.find((node) => node.id === connection.source);
     const targetNode = nodes.find((node) => node.id === connection.target);
+    console.log("edge connection attempted")
     if (!targetNode || !sourceNode) {
+      console.log("connection aborted")
       return;
     }
 
     if (
       sourceNode.data.dataType === MCNodeType.order ||
-      sourceNode.data.dataType === MCNodeType.builder ||
-      sourceNode.data.dataType === MCNodeType.custom
+      sourceNode.data.dataType === MCNodeType.builder
     ) {
+      console.log("connection aborted")
       return;
     }
 
     if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
+      console.log("connection aborted")
       return;
     }
 
     sendLog(LogType.MfpConnectNodes);
+    console.log("item:", sourceNode?.data)
+
+    let edgeItem: MCItem;
+
+    if (sourceNode.data.dataType === MCNodeType.custom) {
+      edgeItem = itemFromId(connection.sourceHandle);
+    } else {
+      edgeItem = sourceNode?.data?.item;
+    }
 
     set({
       edges: addEdge(
@@ -157,7 +167,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
           ...connection,
           animated: true,
           data: {
-            item: sourceNode?.data?.item,
+            item: edgeItem,
             outputRate: 0,
           },
           // label: "0",

@@ -160,7 +160,7 @@ const SubmitCustomNode = ({
     e.preventDefault();
     setDialogOpen(false);
     console.log("SAVING");
-    console.log("Muataion");
+    console.log("Mutation");
     saveMutation({
       variables: {
         newCustomNode: {
@@ -174,7 +174,7 @@ const SubmitCustomNode = ({
   };
 
   if (!result) {
-    return <div>Invalid</div>;
+    return <div className="text-xs text-red-800">Invalid</div>;
   }
 
   return (
