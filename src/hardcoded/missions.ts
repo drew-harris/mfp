@@ -358,7 +358,7 @@ export const allMissions: Mission[] = [
       {
         id: "u2l3-o4",
         title: "Fourth Order",
-        description: "Produce 48 oak fences and 8 fence gates per minute.",
+        description: "Produce 30 wooden axes, 30 wooden pickaxes, and 30 wooden shovels per minute",
         itemRequirements: [
           {
             itemId: "item.minecraft:wooden_axe",
@@ -376,6 +376,103 @@ export const allMissions: Mission[] = [
       },
     ],
   },
+  {
+    title: "Unit 3, Lesson 1",
+    id: "u3l1",
+    tasks: [
+      {
+        id: "u3l1-o1",
+        title: "First Order",
+        description: "Produce 30 beacons per minute.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:beacon",
+            rate: 30,
+          }
+        ],
+      },
+      {
+        id: "u3l1-o2",
+        title: "Second Order",
+        description: "Produce 270 iron blocks.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:iron_block",
+            rate: 270,
+          }
+        ],
+      },
+      {
+        id: "u3l1-o3",
+        title: "Third Order",
+        description: "Produce 10 blue, red, and brown stained glass panes per minute.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:blue_stained_glass_pane",
+            rate: 10,
+          },
+          {
+            itemId: "minecraft:red_stained_glass_pane",
+            rate: 10,
+          },
+          {
+            itemId: "minecraft:brown_stained_glass_pane",
+            rate: 10,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Unit 3, Lesson 2",
+    id: "u3l2",
+    tasks: [
+      {
+        id: "u3l2-o1",
+        title: "First Order",
+        description: "Produce 1 beacon per minute.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:beacon",
+            rate: 1,
+          }
+        ],
+      },
+      {
+        id: "u3l2-o2",
+        title: "Second Order",
+        description: "Produce 9 iron blocks.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:iron_block",
+            rate: 9,
+          }
+        ],
+      },
+      {
+        id: "u3l2-o3",
+        title: "Third Order",
+        description: "Produce 10 blue, red, and brown stained glass pane per minute.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:blue_stained_glass_pane",
+            rate: 1,
+          },
+          {
+            itemId: "minecraft:red_stained_glass_pane",
+            rate: 1,
+          },
+          {
+            itemId: "minecraft:brown_stained_glass_pane",
+            rate: 1,
+          },
+        ],
+      },
+    ],
+  },
+
+
+
   // {
   //   title: "test",
   //   id: "test",

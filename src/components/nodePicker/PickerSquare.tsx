@@ -23,7 +23,7 @@ export default function PickerSquare(props: DraggableProps) {
       "overflow-hidden",
       "items-center",
       "p-3",
-      "outset-4",
+      "outset-dark",
       "justify-between",
       props.className,
     ],
