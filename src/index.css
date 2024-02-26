@@ -21,11 +21,14 @@
 
   .outset {
     @apply border-4 border-[#00000020] border-b-[#00000050];
-  /*  todo change values maybe*/
+  }
+
+  .outset-dark {
+    @apply border-4 border-[#33333340] border-b-[#22222290];
   }
 
   .outset-4 {
-    @apply border-4 border-[#ffffff60] border-b-[#00000050];
+    @apply border-4 border-[#ffffff70] border-b-[#00000060];
   }
 
   .outset-8 {

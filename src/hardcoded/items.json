@@ -1,6 +1,6 @@
 [
   {
-    "itemId": "item.minecraft:netherbrick",
+    "itemId": "minecraft:netherbrick",
     "imageUrl": "nether_brick.png",
     "title": "Nether Brick"
   },
@@ -8,11 +8,6 @@
     "imageUrl": "nether_bricks.png",
     "itemId": "minecraft:nether_bricks",
     "title": "Nether Bricks"
-  },
-  {
-    "imageUrl": "nether_wart.png",
-    "itemId": "minecraft:nether_wart",
-    "title": "Nether Wart"
   },
   {
     "imageUrl": "red_nether_brick_wall.png",
@@ -31,7 +26,7 @@
   },
   {
     "imageUrl": "quartz.png",
-    "itemId": "item.minecraft:quartz",
+    "itemId": "minecraft:quartz",
     "title": "Quartz"
   },
   {
@@ -61,7 +56,7 @@
   },
   {
     "imageUrl": "wheat.png",
-    "itemId": "item.minecraft:wheat",
+    "itemId": "minecraft:wheat",
     "title": "Wheat"
   },
   {
@@ -76,7 +71,7 @@
   },
   {
     "imageUrl": "pink_dye.png",
-    "itemId": "item.minecraft:pink_dye",
+    "itemId": "minecraft:pink_dye",
     "title": "Pink Dye"
   },
   {
@@ -86,7 +81,7 @@
   },
   {
     "imageUrl": "magenta_dye.png",
-    "itemId": "item.minecraft:magenta_dye",
+    "itemId": "minecraft:magenta_dye",
     "title": "Magenta Dye"
   },
   {
@@ -96,7 +91,7 @@
   },
   {
     "imageUrl": "light_blue_dye.png",
-    "itemId": "item.minecraft:light_blue_dye",
+    "itemId": "minecraft:light_blue_dye",
     "title": "Light Blue Dye"
   },
   {
@@ -106,7 +101,7 @@
   },
   {
     "imageUrl": "yellow_dye.png",
-    "itemId": "item.minecraft:yellow_dye",
+    "itemId": "minecraft:yellow_dye",
     "title": "Yellow Dye"
   },
   {
@@ -116,7 +111,7 @@
   },
   {
     "imageUrl": "lime_dye.png",
-    "itemId": "item.minecraft:lime_dye",
+    "itemId": "minecraft:lime_dye",
     "title": "Lime Dye"
   },
   {
@@ -126,7 +121,7 @@
   },
   {
     "imageUrl": "gray_dye.png",
-    "itemId": "item.minecraft:gray_dye",
+    "itemId": "minecraft:gray_dye",
     "title": "Gray Dye"
   },
   {
@@ -136,7 +131,7 @@
   },
   {
     "imageUrl": "light_gray_dye.png",
-    "itemId": "item.minecraft:light_gray_dye",
+    "itemId": "minecraft:light_gray_dye",
     "title": "Light Gray Dye"
   },
   {
@@ -146,7 +141,7 @@
   },
   {
     "imageUrl": "cyan_dye.png",
-    "itemId": "item.minecraft:cyan_dye",
+    "itemId": "minecraft:cyan_dye",
     "title": "Cyan Dye"
   },
   {
@@ -156,7 +151,7 @@
   },
   {
     "imageUrl": "purple_dye.png",
-    "itemId": "item.minecraft:purple_dye",
+    "itemId": "minecraft:purple_dye",
     "title": "Purple Dye"
   },
   {
@@ -166,7 +161,7 @@
   },
   {
     "imageUrl": "blue_dye.png",
-    "itemId": "item.minecraft:blue_dye",
+    "itemId": "minecraft:blue_dye",
     "title": "Blue Dye"
   },
   {
@@ -176,7 +171,7 @@
   },
   {
     "imageUrl": "brown_dye.png",
-    "itemId": "item.minecraft:brown_dye",
+    "itemId": "minecraft:brown_dye",
     "title": "Brown Dye"
   },
   {
@@ -186,7 +181,7 @@
   },
   {
     "imageUrl": "green_dye.png",
-    "itemId": "item.minecraft:green_dye",
+    "itemId": "minecraft:green_dye",
     "title": "Green Dye"
   },
   {
@@ -196,7 +191,7 @@
   },
   {
     "imageUrl": "red_dye.png",
-    "itemId": "item.minecraft:red_dye",
+    "itemId": "minecraft:red_dye",
     "title": "Red Dye"
   },
   {
@@ -206,7 +201,7 @@
   },
   {
     "imageUrl": "black_dye.png",
-    "itemId": "item.minecraft:black_dye",
+    "itemId": "minecraft:black_dye",
     "title": "Black Dye"
   },
   {
@@ -216,7 +211,7 @@
   },
   {
     "imageUrl": "orange_dye.png",
-    "itemId": "item.minecraft:orange_dye",
+    "itemId": "minecraft:orange_dye",
     "title": "Orange Dye"
   },
   {
@@ -231,7 +226,7 @@
   },
   {
     "imageUrl": "white_dye.png",
-    "itemId": "item.minecraft:white_dye",
+    "itemId": "minecraft:white_dye",
     "title": "White Dye"
   },
   {
@@ -341,12 +336,12 @@
   },
   {
     "imageUrl": "prismarine_crystals.png",
-    "itemId": "item.minecraft:prismarine_crystals",
+    "itemId": "minecraft:prismarine_crystals",
     "title": "Prismarine Crystals"
   },
   {
     "imageUrl": "prismarine_shard.png",
-    "itemId": "item.minecraft:prismarine_shard",
+    "itemId": "minecraft:prismarine_shard",
     "title": "Prismarine Shard"
   },
   {
@@ -401,7 +396,7 @@
   },
   {
     "imageUrl": "magma_cream.png",
-    "itemId": "item.minecraft:magma_cream",
+    "itemId": "minecraft:magma_cream",
     "title": "Magma Cream"
   },
   {
@@ -421,7 +416,7 @@
   },
   {
     "imageUrl": "bone_meal.png",
-    "itemId": "item.minecraft:bone_meal",
+    "itemId": "minecraft:bone_meal",
     "title": "Bone Meal"
   },
   {
@@ -431,7 +426,7 @@
   },
   {
     "imageUrl": "nether_wart.png",
-    "itemId": "item.minecraft:nether_wart",
+    "itemId": "minecraft:nether_wart",
     "title": "Nether Wart"
   },
   {
@@ -441,7 +436,7 @@
   },
   {
     "imageUrl": "popped_chorus_fruit.png",
-    "itemId": "item.minecraft:popped_chorus_fruit",
+    "itemId": "minecraft:popped_chorus_fruit",
     "title": "Popped Chorus Fruit"
   },
   {
@@ -546,27 +541,27 @@
   },
   {
     "imageUrl": "lapis_lazuli.png",
-    "itemId": "item.minecraft:lapis_lazuli",
+    "itemId": "minecraft:lapis_lazuli",
     "title": "Lapis Lazuli"
   },
   {
     "imageUrl": "cocoa_beans.png",
-    "itemId": "item.minecraft:cocoa_beans",
+    "itemId": "minecraft:cocoa_beans",
     "title": "Cocoa Beans"
   },
   {
     "imageUrl": "ink_sac.png",
-    "itemId": "item.minecraft:ink_sac",
+    "itemId": "minecraft:ink_sac",
     "title": "Ink Sac"
   },
   {
     "imageUrl": "nautilus_shell.png",
-    "itemId": "item.minecraft:nautilus_shell",
+    "itemId": "minecraft:nautilus_shell",
     "title": "Nautilus Shell"
   },
   {
     "imageUrl": "heart_of_the_sea.png",
-    "itemId": "item.minecraft:heart_of_the_sea",
+    "itemId": "minecraft:heart_of_the_sea",
     "title": "Heart Of The Sea"
   },
   {
@@ -576,7 +571,7 @@
   },
   {
     "imageUrl": "dried_kelp.png",
-    "itemId": "item.minecraft:dried_kelp",
+    "itemId": "minecraft:dried_kelp",
     "title": "Dried Kelp"
   },
   {
@@ -636,7 +631,7 @@
   },
   {
     "imageUrl": "emerald.png",
-    "itemId": "item.minecraft:emerald",
+    "itemId": "minecraft:emerald",
     "title": "Emerald"
   },
   {
@@ -646,7 +641,7 @@
   },
   {
     "imageUrl": "coal.png",
-    "itemId": "item.minecraft:coal",
+    "itemId": "minecraft:coal",
     "title": "Coal"
   },
   {
@@ -666,12 +661,12 @@
   },
   {
     "imageUrl": "iron_ingot.png",
-    "itemId": "item.minecraft:iron_ingot",
+    "itemId": "minecraft:iron_ingot",
     "title": "Iron Ingot"
   },
   {
     "imageUrl": "iron_nugget.png",
-    "itemId": "item.minecraft:iron_nugget",
+    "itemId": "minecraft:iron_nugget",
     "title": "Iron Nugget"
   },
   {
@@ -681,7 +676,7 @@
   },
   {
     "imageUrl": "netherite_ingot.png",
-    "itemId": "item.minecraft:netherite_ingot",
+    "itemId": "minecraft:netherite_ingot",
     "title": "Netherite Ingot"
   },
   {
@@ -706,7 +701,7 @@
   },
   {
     "imageUrl": "gold_ingot.png",
-    "itemId": "item.minecraft:gold_ingot",
+    "itemId": "minecraft:gold_ingot",
     "title": "Gold Ingot"
   },
   {
@@ -1111,7 +1106,7 @@
   },
   {
     "imageUrl": "honeycomb.png",
-    "itemId": "item.minecraft:honeycomb",
+    "itemId": "minecraft:honeycomb",
     "title": "Honeycomb"
   },
   {
@@ -1156,7 +1151,7 @@
   },
   {
     "imageUrl": "brick.png",
-    "itemId": "item.minecraft:brick",
+    "itemId": "minecraft:brick",
     "title": "Brick"
   },
   {
@@ -1166,7 +1161,7 @@
   },
   {
     "imageUrl": "book.png",
-    "itemId": "item.minecraft:book",
+    "itemId": "minecraft:book",
     "title": "Book"
   },
   {
@@ -1211,7 +1206,7 @@
   },
   {
     "imageUrl": "snowball.png",
-    "itemId": "item.minecraft:snowball",
+    "itemId": "minecraft:snowball",
     "title": "Snowball"
   },
   {
@@ -1221,7 +1216,7 @@
   },
   {
     "imageUrl": "clay_ball.png",
-    "itemId": "item.minecraft:clay_ball",
+    "itemId": "minecraft:clay_ball",
     "title": "Clay Ball"
   },
   {
@@ -1246,7 +1241,7 @@
   },
   {
     "imageUrl": "glowstone_dust.png",
-    "itemId": "item.minecraft:glowstone_dust",
+    "itemId": "minecraft:glowstone_dust",
     "title": "Glowstone Dust"
   },
   {
@@ -1521,7 +1516,7 @@
   },
   {
     "imageUrl": "melon_slice.png",
-    "itemId": "item.minecraft:melon_slice",
+    "itemId": "minecraft:melon_slice",
     "title": "Melon Slice"
   },
   {
@@ -1551,7 +1546,7 @@
   },
   {
     "imageUrl": "amethyst_shard.png",
-    "itemId": "item.minecraft:amethyst_shard",
+    "itemId": "minecraft:amethyst_shard",
     "title": "Amethyst Shard"
   },
   {
@@ -1566,7 +1561,7 @@
   },
   {
     "imageUrl": "string.png",
-    "itemId": "item.minecraft:string",
+    "itemId": "minecraft:string",
     "title": "String"
   },
   {
@@ -1681,7 +1676,7 @@
   },
   {
     "imageUrl": "copper_ingot.png",
-    "itemId": "item.minecraft:copper_ingot",
+    "itemId": "minecraft:copper_ingot",
     "title": "Copper Ingot"
   },
   {
@@ -1726,7 +1721,7 @@
   },
   {
     "imageUrl": "raw_gold.png",
-    "itemId": "item.minecraft:raw_gold",
+    "itemId": "minecraft:raw_gold",
     "title": "Raw Gold"
   },
   {
@@ -1736,7 +1731,7 @@
   },
   {
     "imageUrl": "raw_iron.png",
-    "itemId": "item.minecraft:raw_iron",
+    "itemId": "minecraft:raw_iron",
     "title": "Raw Iron"
   },
   {
@@ -1746,7 +1741,7 @@
   },
   {
     "imageUrl": "diamond.png",
-    "itemId": "item.minecraft:diamond",
+    "itemId": "minecraft:diamond",
     "title": "Diamond"
   },
   {
@@ -1756,7 +1751,7 @@
   },
   {
     "imageUrl": "raw_copper.png",
-    "itemId": "item.minecraft:raw_copper",
+    "itemId": "minecraft:raw_copper",
     "title": "Raw Copper"
   },
   {
@@ -1881,12 +1876,12 @@
   },
   {
     "imageUrl": "stick.png",
-    "itemId": "item.minecraft:stick",
+    "itemId": "minecraft:stick",
     "title": "Stick"
   },
   {
     "imageUrl": "leather.png",
-    "itemId": "item.minecraft:leather",
+    "itemId": "minecraft:leather",
     "title": "Leather"
   },
   {
@@ -1896,7 +1891,7 @@
   },
   {
     "imageUrl": "glow_ink_sac.png",
-    "itemId": "item.minecraft:glow_ink_sac",
+    "itemId": "minecraft:glow_ink_sac",
     "title": "Glow Ink Sac"
   },
   {
@@ -1906,167 +1901,167 @@
   },
   {
     "imageUrl": "white_bed.png",
-    "itemId": "item.minecraft:white_bed",
+    "itemId": "minecraft:white_bed",
     "title": "White Bed"
   },
   {
     "imageUrl": "orange_bed.png",
-    "itemId": "item.minecraft:orange_bed",
+    "itemId": "minecraft:orange_bed",
     "title": "Orange Bed"
   },
   {
     "imageUrl": "magenta_bed.png",
-    "itemId": "item.minecraft:magenta_bed",
+    "itemId": "minecraft:magenta_bed",
     "title": "Magenta Bed"
   },
   {
     "imageUrl": "light_blue_bed.png",
-    "itemId": "item.minecraft:light_blue_bed",
+    "itemId": "minecraft:light_blue_bed",
     "title": "Light Blue Bed"
   },
   {
     "imageUrl": "yellow_bed.png",
-    "itemId": "item.minecraft:yellow_bed",
+    "itemId": "minecraft:yellow_bed",
     "title": "Yellow Bed"
   },
   {
     "imageUrl": "lime_bed.png",
-    "itemId": "item.minecraft:lime_bed",
+    "itemId": "minecraft:lime_bed",
     "title": "Lime Bed"
   },
   {
     "imageUrl": "pink_bed.png",
-    "itemId": "item.minecraft:pink_bed",
+    "itemId": "minecraft:pink_bed",
     "title": "Pink Bed"
   },
   {
     "imageUrl": "gray_bed.png",
-    "itemId": "item.minecraft:gray_bed",
+    "itemId": "minecraft:gray_bed",
     "title": "Gray Bed"
   },
   {
     "imageUrl": "light_gray_bed.png",
-    "itemId": "item.minecraft:light_gray_bed",
+    "itemId": "minecraft:light_gray_bed",
     "title": "Light Gray Bed"
   },
   {
     "imageUrl": "cyan_bed.png",
-    "itemId": "item.minecraft:cyan_bed",
+    "itemId": "minecraft:cyan_bed",
     "title": "Cyan Bed"
   },
   {
     "imageUrl": "purple_bed.png",
-    "itemId": "item.minecraft:purple_bed",
+    "itemId": "minecraft:purple_bed",
     "title": "Purple Bed"
   },
   {
     "imageUrl": "blue_bed.png",
-    "itemId": "item.minecraft:blue_bed",
+    "itemId": "minecraft:blue_bed",
     "title": "Blue Bed"
   },
   {
     "imageUrl": "brown_bed.png",
-    "itemId": "item.minecraft:brown_bed",
+    "itemId": "minecraft:brown_bed",
     "title": "Brown Bed"
   },
   {
     "imageUrl": "green_bed.png",
-    "itemId": "item.minecraft:green_bed",
+    "itemId": "minecraft:green_bed",
     "title": "Green Bed"
   },
   {
     "imageUrl": "red_bed.png",
-    "itemId": "item.minecraft:red_bed",
+    "itemId": "minecraft:red_bed",
     "title": "Red Bed"
   },
   {
     "imageUrl": "black_bed.png",
-    "itemId": "item.minecraft:black_bed",
+    "itemId": "minecraft:black_bed",
     "title": "Black Bed"
   },
   {
     "imageUrl": "white_banner.png",
-    "itemId": "item.minecraft:white_banner",
+    "itemId": "minecraft:white_banner",
     "title": "White Banner"
   },
   {
     "imageUrl": "orange_banner.png",
-    "itemId": "item.minecraft:orange_banner",
+    "itemId": "minecraft:orange_banner",
     "title": "Orange Banner"
   },
   {
     "imageUrl": "magenta_banner.png",
-    "itemId": "item.minecraft:magenta_banner",
+    "itemId": "minecraft:magenta_banner",
     "title": "Magenta Banner"
   },
   {
     "imageUrl": "light_blue_banner.png",
-    "itemId": "item.minecraft:light_blue_banner",
+    "itemId": "minecraft:light_blue_banner",
     "title": "Light Blue Banner"
   },
   {
     "imageUrl": "yellow_banner.png",
-    "itemId": "item.minecraft:yellow_banner",
+    "itemId": "minecraft:yellow_banner",
     "title": "Yellow Banner"
   },
   {
     "imageUrl": "lime_banner.png",
-    "itemId": "item.minecraft:lime_banner",
+    "itemId": "minecraft:lime_banner",
     "title": "Lime Banner"
   },
   {
     "imageUrl": "pink_banner.png",
-    "itemId": "item.minecraft:pink_banner",
+    "itemId": "minecraft:pink_banner",
     "title": "Pink Banner"
   },
   {
     "imageUrl": "gray_banner.png",
-    "itemId": "item.minecraft:gray_banner",
+    "itemId": "minecraft:gray_banner",
     "title": "Gray Banner"
   },
   {
     "imageUrl": "light_gray_banner.png",
-    "itemId": "item.minecraft:light_gray_banner",
+    "itemId": "minecraft:light_gray_banner",
     "title": "Light Gray Banner"
   },
   {
     "imageUrl": "cyan_banner.png",
-    "itemId": "item.minecraft:cyan_banner",
+    "itemId": "minecraft:cyan_banner",
     "title": "Cyan Banner"
   },
   {
     "imageUrl": "purple_banner.png",
-    "itemId": "item.minecraft:purple_banner",
+    "itemId": "minecraft:purple_banner",
     "title": "Purple Banner"
   },
   {
     "imageUrl": "blue_banner.png",
-    "itemId": "item.minecraft:blue_banner",
+    "itemId": "minecraft:blue_banner",
     "title": "Blue Banner"
   },
   {
     "imageUrl": "brown_banner.png",
-    "itemId": "item.minecraft:brown_banner",
+    "itemId": "minecraft:brown_banner",
     "title": "Brown Banner"
   },
   {
     "imageUrl": "green_banner.png",
-    "itemId": "item.minecraft:green_banner",
+    "itemId": "minecraft:green_banner",
     "title": "Green Banner"
   },
   {
     "imageUrl": "red_banner.png",
-    "itemId": "item.minecraft:red_banner",
+    "itemId": "minecraft:red_banner",
     "title": "Red Banner"
   },
   {
     "imageUrl": "black_banner.png",
-    "itemId": "item.minecraft:black_banner",
+    "itemId": "minecraft:black_banner",
     "title": "Black Banner"
   },
   {
     "imageUrl": "slime_ball.png",
-    "itemId": "item.minecraft:slime_ball",
+    "itemId": "minecraft:slime_ball",
     "title": "Slime Ball"
   },
   {
@@ -2081,7 +2076,7 @@
   },
   {
     "imageUrl": "charcoal.png",
-    "itemId": "item.minecraft:charcoal",
+    "itemId": "minecraft:charcoal",
     "title": "Charcoal"
   },
   {
@@ -2191,12 +2186,12 @@
   },
   {
     "imageUrl": "flower_pot.png",
-    "itemId": "item.minecraft:flower_pot",
+    "itemId": "minecraft:flower_pot",
     "title": "Flower Pot"
   },
   {
     "imageUrl": "armor_stand.png",
-    "itemId": "item.minecraft:armor_stand",
+    "itemId": "minecraft:armor_stand",
     "title": "Armor Stand"
   },
   {
@@ -2221,7 +2216,7 @@
   },
   {
     "imageUrl": "honey_bottle.png",
-    "itemId": "item.minecraft:honey_bottle",
+    "itemId": "minecraft:honey_bottle",
     "title": "Honey Bottle"
   },
   {
@@ -2241,7 +2236,7 @@
   },
   {
     "imageUrl": "blaze_rod.png",
-    "itemId": "item.minecraft:blaze_rod",
+    "itemId": "minecraft:blaze_rod",
     "title": "Blaze Rod"
   },
   {
@@ -2251,7 +2246,7 @@
   },
   {
     "imageUrl": "painting.png",
-    "itemId": "item.minecraft:painting",
+    "itemId": "minecraft:painting",
     "title": "Painting"
   },
   {
@@ -2261,42 +2256,42 @@
   },
   {
     "imageUrl": "oak_sign.png",
-    "itemId": "item.minecraft:oak_sign",
+    "itemId": "minecraft:oak_sign",
     "title": "Oak Sign"
   },
   {
     "imageUrl": "spruce_sign.png",
-    "itemId": "item.minecraft:spruce_sign",
+    "itemId": "minecraft:spruce_sign",
     "title": "Spruce Sign"
   },
   {
     "imageUrl": "birch_sign.png",
-    "itemId": "item.minecraft:birch_sign",
+    "itemId": "minecraft:birch_sign",
     "title": "Birch Sign"
   },
   {
     "imageUrl": "jungle_sign.png",
-    "itemId": "item.minecraft:jungle_sign",
+    "itemId": "minecraft:jungle_sign",
     "title": "Jungle Sign"
   },
   {
     "imageUrl": "acacia_sign.png",
-    "itemId": "item.minecraft:acacia_sign",
+    "itemId": "minecraft:acacia_sign",
     "title": "Acacia Sign"
   },
   {
     "imageUrl": "dark_oak_sign.png",
-    "itemId": "item.minecraft:dark_oak_sign",
+    "itemId": "minecraft:dark_oak_sign",
     "title": "Dark Oak Sign"
   },
   {
     "imageUrl": "crimson_sign.png",
-    "itemId": "item.minecraft:crimson_sign",
+    "itemId": "minecraft:crimson_sign",
     "title": "Crimson Sign"
   },
   {
     "imageUrl": "warped_sign.png",
-    "itemId": "item.minecraft:warped_sign",
+    "itemId": "minecraft:warped_sign",
     "title": "Warped Sign"
   },
   {
@@ -2386,7 +2381,7 @@
   },
   {
     "imageUrl": "flint.png",
-    "itemId": "item.minecraft:flint",
+    "itemId": "minecraft:flint",
     "title": "Flint"
   },
   {
@@ -2396,7 +2391,7 @@
   },
   {
     "imageUrl": "paper.png",
-    "itemId": "item.minecraft:paper",
+    "itemId": "minecraft:paper",
     "title": "Paper"
   },
   {
@@ -2426,8 +2421,13 @@
   },
   {
     "imageUrl": "shulker_shell.png",
-    "itemId": "item.minecraft:shulker_shell",
+    "itemId": "minecraft:shulker_shell",
     "title": "Shulker Shell"
+  },
+  {
+    "imageUrl": "shulker_box.png",
+    "itemId": "minecraft:shulker_box",
+    "title": "Shulker Box"
   },
   {
     "imageUrl": "white_shulker_box.png",
@@ -2516,17 +2516,17 @@
   },
   {
     "imageUrl": "ghast_tear.png",
-    "itemId": "item.minecraft:ghast_tear",
+    "itemId": "minecraft:ghast_tear",
     "title": "Ghast Tear"
   },
   {
     "imageUrl": "ender_eye.png",
-    "itemId": "item.minecraft:ender_eye",
+    "itemId": "minecraft:ender_eye",
     "title": "Ender Eye"
   },
   {
     "imageUrl": "end_crystal.png",
-    "itemId": "item.minecraft:end_crystal",
+    "itemId": "minecraft:end_crystal",
     "title": "End Crystal"
   },
   {
@@ -2641,7 +2641,7 @@
   },
   {
     "imageUrl": "redstone.png",
-    "itemId": "item.minecraft:redstone",
+    "itemId": "minecraft:redstone",
     "title": "Redstone"
   },
   {
@@ -2731,7 +2731,7 @@
   },
   {
     "imageUrl": "comparator.png",
-    "itemId": "item.minecraft:comparator",
+    "itemId": "minecraft:comparator",
     "title": "Comparator"
   },
   {
@@ -2901,7 +2901,7 @@
   },
   {
     "imageUrl": "repeater.png",
-    "itemId": "item.minecraft:repeater",
+    "itemId": "minecraft:repeater",
     "title": "Repeater"
   },
   {
@@ -2946,7 +2946,7 @@
   },
   {
     "imageUrl": "bow.png",
-    "itemId": "item.minecraft:bow",
+    "itemId": "minecraft:bow",
     "title": "Bow"
   },
   {
@@ -2961,7 +2961,7 @@
   },
   {
     "imageUrl": "gunpowder.png",
-    "itemId": "item.minecraft:gunpowder",
+    "itemId": "minecraft:gunpowder",
     "title": "Gunpowder"
   },
   {
@@ -2981,27 +2981,27 @@
   },
   {
     "imageUrl": "carrot.png",
-    "itemId": "item.minecraft:carrot",
+    "itemId": "minecraft:carrot",
     "title": "Carrot"
   },
   {
     "imageUrl": "fishing_rod.png",
-    "itemId": "item.minecraft:fishing_rod",
+    "itemId": "minecraft:fishing_rod",
     "title": "Fishing Rod"
   },
   {
     "imageUrl": "carrot_on_a_stick.png",
-    "itemId": "item.minecraft:carrot_on_a_stick",
+    "itemId": "minecraft:carrot_on_a_stick",
     "title": "Carrot On A Stick"
   },
   {
     "imageUrl": "minecart.png",
-    "itemId": "item.minecraft:minecart",
+    "itemId": "minecraft:minecart",
     "title": "Minecart"
   },
   {
     "imageUrl": "tnt_minecart.png",
-    "itemId": "item.minecraft:tnt_minecart",
+    "itemId": "minecraft:tnt_minecart",
     "title": "Tnt Minecart"
   },
   {
@@ -3011,42 +3011,42 @@
   },
   {
     "imageUrl": "hopper_minecart.png",
-    "itemId": "item.minecraft:hopper_minecart",
+    "itemId": "minecraft:hopper_minecart",
     "title": "Hopper Minecart"
   },
   {
     "imageUrl": "wooden_shovel.png",
-    "itemId": "item.minecraft:wooden_shovel",
+    "itemId": "minecraft:wooden_shovel",
     "title": "Wooden Shovel"
   },
   {
     "imageUrl": "oak_boat.png",
-    "itemId": "item.minecraft:oak_boat",
+    "itemId": "minecraft:oak_boat",
     "title": "Oak Boat"
   },
   {
     "imageUrl": "spruce_boat.png",
-    "itemId": "item.minecraft:spruce_boat",
+    "itemId": "minecraft:spruce_boat",
     "title": "Spruce Boat"
   },
   {
     "imageUrl": "birch_boat.png",
-    "itemId": "item.minecraft:birch_boat",
+    "itemId": "minecraft:birch_boat",
     "title": "Birch Boat"
   },
   {
     "imageUrl": "jungle_boat.png",
-    "itemId": "item.minecraft:jungle_boat",
+    "itemId": "minecraft:jungle_boat",
     "title": "Jungle Boat"
   },
   {
     "imageUrl": "acacia_boat.png",
-    "itemId": "item.minecraft:acacia_boat",
+    "itemId": "minecraft:acacia_boat",
     "title": "Acacia Boat"
   },
   {
     "imageUrl": "dark_oak_boat.png",
-    "itemId": "item.minecraft:dark_oak_boat",
+    "itemId": "minecraft:dark_oak_boat",
     "title": "Dark Oak Boat"
   },
   {
@@ -3056,12 +3056,12 @@
   },
   {
     "imageUrl": "chest_minecart.png",
-    "itemId": "item.minecraft:chest_minecart",
+    "itemId": "minecraft:chest_minecart",
     "title": "Chest Minecart"
   },
   {
     "imageUrl": "furnace_minecart.png",
-    "itemId": "item.minecraft:furnace_minecart",
+    "itemId": "minecraft:furnace_minecart",
     "title": "Furnace Minecart"
   },
   {
@@ -3071,57 +3071,57 @@
   },
   {
     "imageUrl": "warped_fungus_on_a_stick.png",
-    "itemId": "item.minecraft:warped_fungus_on_a_stick",
+    "itemId": "minecraft:warped_fungus_on_a_stick",
     "title": "Warped Fungus On A Stick"
   },
   {
     "imageUrl": "gold_nugget.png",
-    "itemId": "item.minecraft:gold_nugget",
+    "itemId": "minecraft:gold_nugget",
     "title": "Gold Nugget"
   },
   {
     "imageUrl": "golden_carrot.png",
-    "itemId": "item.minecraft:golden_carrot",
+    "itemId": "minecraft:golden_carrot",
     "title": "Golden Carrot"
   },
   {
     "imageUrl": "milk_bucket.png",
-    "itemId": "item.minecraft:milk_bucket",
+    "itemId": "minecraft:milk_bucket",
     "title": "Milk Bucket"
   },
   {
     "imageUrl": "egg.png",
-    "itemId": "item.minecraft:egg",
+    "itemId": "minecraft:egg",
     "title": "Egg"
   },
   {
     "imageUrl": "sugar.png",
-    "itemId": "item.minecraft:sugar",
+    "itemId": "minecraft:sugar",
     "title": "Sugar"
   },
   {
     "imageUrl": "cake.png",
-    "itemId": "item.minecraft:cake",
+    "itemId": "minecraft:cake",
     "title": "Cake"
   },
   {
     "imageUrl": "beetroot.png",
-    "itemId": "item.minecraft:beetroot",
+    "itemId": "minecraft:beetroot",
     "title": "Beetroot"
   },
   {
     "imageUrl": "bowl.png",
-    "itemId": "item.minecraft:bowl",
+    "itemId": "minecraft:bowl",
     "title": "Bowl"
   },
   {
     "imageUrl": "beetroot_soup.png",
-    "itemId": "item.minecraft:beetroot_soup",
+    "itemId": "minecraft:beetroot_soup",
     "title": "Beetroot Soup"
   },
   {
     "imageUrl": "glass_bottle.png",
-    "itemId": "item.minecraft:glass_bottle",
+    "itemId": "minecraft:glass_bottle",
     "title": "Glass Bottle"
   },
   {
@@ -3131,17 +3131,17 @@
   },
   {
     "imageUrl": "baked_potato.png",
-    "itemId": "item.minecraft:baked_potato",
+    "itemId": "minecraft:baked_potato",
     "title": "Baked Potato"
   },
   {
     "imageUrl": "cooked_rabbit.png",
-    "itemId": "item.minecraft:cooked_rabbit",
+    "itemId": "minecraft:cooked_rabbit",
     "title": "Cooked Rabbit"
   },
   {
     "imageUrl": "rabbit_stew.png",
-    "itemId": "item.minecraft:rabbit_stew",
+    "itemId": "minecraft:rabbit_stew",
     "title": "Rabbit Stew"
   },
   {
@@ -3151,22 +3151,22 @@
   },
   {
     "imageUrl": "bread.png",
-    "itemId": "item.minecraft:bread",
+    "itemId": "minecraft:bread",
     "title": "Bread"
   },
   {
     "imageUrl": "mushroom_stew.png",
-    "itemId": "item.minecraft:mushroom_stew",
+    "itemId": "minecraft:mushroom_stew",
     "title": "Mushroom Stew"
   },
   {
     "imageUrl": "cookie.png",
-    "itemId": "item.minecraft:cookie",
+    "itemId": "minecraft:cookie",
     "title": "Cookie"
   },
   {
     "imageUrl": "suspicious_stew.png",
-    "itemId": "item.minecraft:suspicious_stew",
+    "itemId": "minecraft:suspicious_stew",
     "title": "Suspicious Stew"
   },
   {
@@ -3231,12 +3231,12 @@
   },
   {
     "imageUrl": "apple.png",
-    "itemId": "item.minecraft:apple",
+    "itemId": "minecraft:apple",
     "title": "Apple"
   },
   {
     "imageUrl": "golden_apple.png",
-    "itemId": "item.minecraft:golden_apple",
+    "itemId": "minecraft:golden_apple",
     "title": "Golden Apple"
   },
   {
@@ -3246,307 +3246,317 @@
   },
   {
     "imageUrl": "pumpkin_pie.png",
-    "itemId": "item.minecraft:pumpkin_pie",
+    "itemId": "minecraft:pumpkin_pie",
     "title": "Pumpkin Pie"
   },
   {
     "imageUrl": "flint_and_steel.png",
-    "itemId": "item.minecraft:flint_and_steel",
+    "itemId": "minecraft:flint_and_steel",
     "title": "Flint And Steel"
   },
   {
     "imageUrl": "diamond_hoe.png",
-    "itemId": "item.minecraft:diamond_hoe",
+    "itemId": "minecraft:diamond_hoe",
     "title": "Diamond Hoe"
   },
   {
     "imageUrl": "iron_hoe.png",
-    "itemId": "item.minecraft:iron_hoe",
+    "itemId": "minecraft:iron_hoe",
     "title": "Iron Hoe"
   },
   {
     "imageUrl": "golden_hoe.png",
-    "itemId": "item.minecraft:golden_hoe",
+    "itemId": "minecraft:golden_hoe",
     "title": "Golden Hoe"
   },
   {
     "imageUrl": "wooden_hoe.png",
-    "itemId": "item.minecraft:wooden_hoe",
+    "itemId": "minecraft:wooden_hoe",
     "title": "Wooden Hoe"
   },
   {
     "imageUrl": "stone_hoe.png",
-    "itemId": "item.minecraft:stone_hoe",
+    "itemId": "minecraft:stone_hoe",
     "title": "Stone Hoe"
   },
   {
     "imageUrl": "diamond_axe.png",
-    "itemId": "item.minecraft:diamond_axe",
+    "itemId": "minecraft:diamond_axe",
     "title": "Diamond Axe"
   },
   {
     "imageUrl": "iron_axe.png",
-    "itemId": "item.minecraft:iron_axe",
+    "itemId": "minecraft:iron_axe",
     "title": "Iron Axe"
   },
   {
     "imageUrl": "golden_axe.png",
-    "itemId": "item.minecraft:golden_axe",
+    "itemId": "minecraft:golden_axe",
     "title": "Golden Axe"
   },
   {
     "imageUrl": "stone_axe.png",
-    "itemId": "item.minecraft:stone_axe",
+    "itemId": "minecraft:stone_axe",
     "title": "Stone Axe"
   },
   {
     "imageUrl": "wooden_axe.png",
-    "itemId": "item.minecraft:wooden_axe",
+    "itemId": "minecraft:wooden_axe",
     "title": "Wooden Axe"
   },
   {
     "imageUrl": "diamond_shovel.png",
-    "itemId": "item.minecraft:diamond_shovel",
+    "itemId": "minecraft:diamond_shovel",
     "title": "Diamond Shovel"
   },
   {
     "imageUrl": "iron_shovel.png",
-    "itemId": "item.minecraft:iron_shovel",
+    "itemId": "minecraft:iron_shovel",
     "title": "Iron Shovel"
   },
   {
     "imageUrl": "golden_shovel.png",
-    "itemId": "item.minecraft:golden_shovel",
+    "itemId": "minecraft:golden_shovel",
     "title": "Golden Shovel"
   },
   {
     "imageUrl": "stone_shovel.png",
-    "itemId": "item.minecraft:stone_shovel",
+    "itemId": "minecraft:stone_shovel",
     "title": "Stone Shovel"
   },
   {
     "imageUrl": "clock.png",
-    "itemId": "item.minecraft:clock",
+    "itemId": "minecraft:clock",
     "title": "Clock"
   },
   {
     "imageUrl": "lead.png",
-    "itemId": "item.minecraft:lead",
+    "itemId": "minecraft:lead",
     "title": "Lead"
   },
   {
     "imageUrl": "compass.png",
-    "itemId": "item.minecraft:compass",
+    "itemId": "minecraft:compass",
     "title": "Compass"
   },
   {
     "imageUrl": "shears.png",
-    "itemId": "item.minecraft:shears",
+    "itemId": "minecraft:shears",
     "title": "Shears"
   },
   {
     "imageUrl": "diamond_pickaxe.png",
-    "itemId": "item.minecraft:diamond_pickaxe",
+    "itemId": "minecraft:diamond_pickaxe",
     "title": "Diamond Pickaxe"
   },
   {
     "imageUrl": "iron_pickaxe.png",
-    "itemId": "item.minecraft:iron_pickaxe",
+    "itemId": "minecraft:iron_pickaxe",
     "title": "Iron Pickaxe"
   },
   {
     "imageUrl": "golden_pickaxe.png",
-    "itemId": "item.minecraft:golden_pickaxe",
+    "itemId": "minecraft:golden_pickaxe",
     "title": "Golden Pickaxe"
   },
   {
     "imageUrl": "wooden_pickaxe.png",
-    "itemId": "item.minecraft:wooden_pickaxe",
+    "itemId": "minecraft:wooden_pickaxe",
     "title": "Wooden Pickaxe"
   },
   {
     "imageUrl": "stone_pickaxe.png",
-    "itemId": "item.minecraft:stone_pickaxe",
+    "itemId": "minecraft:stone_pickaxe",
     "title": "Stone Pickaxe"
   },
   {
     "imageUrl": "spyglass.png",
-    "itemId": "item.minecraft:spyglass",
+    "itemId": "minecraft:spyglass",
     "title": "Spyglass"
   },
   {
     "imageUrl": "feather.png",
-    "itemId": "item.minecraft:feather",
+    "itemId": "minecraft:feather",
     "title": "Feather"
   },
   {
     "imageUrl": "arrow.png",
-    "itemId": "item.minecraft:arrow",
+    "itemId": "minecraft:arrow",
     "title": "Arrow"
   },
   {
     "imageUrl": "leather_boots.png",
-    "itemId": "item.minecraft:leather_boots",
+    "itemId": "minecraft:leather_boots",
     "title": "Leather Boots"
   },
   {
     "imageUrl": "diamond_boots.png",
-    "itemId": "item.minecraft:diamond_boots",
+    "itemId": "minecraft:diamond_boots",
     "title": "Diamond Boots"
   },
   {
     "imageUrl": "iron_boots.png",
-    "itemId": "item.minecraft:iron_boots",
+    "itemId": "minecraft:iron_boots",
     "title": "Iron Boots"
   },
   {
     "imageUrl": "golden_boots.png",
-    "itemId": "item.minecraft:golden_boots",
+    "itemId": "minecraft:golden_boots",
     "title": "Golden Boots"
   },
   {
     "imageUrl": "diamond_chestplate.png",
-    "itemId": "item.minecraft:diamond_chestplate",
+    "itemId": "minecraft:diamond_chestplate",
     "title": "Diamond Chestplate"
   },
   {
     "imageUrl": "iron_chestplate.png",
-    "itemId": "item.minecraft:iron_chestplate",
+    "itemId": "minecraft:iron_chestplate",
     "title": "Iron Chestplate"
   },
   {
     "imageUrl": "golden_chestplate.png",
-    "itemId": "item.minecraft:golden_chestplate",
+    "itemId": "minecraft:golden_chestplate",
     "title": "Golden Chestplate"
   },
   {
     "imageUrl": "leather_chestplate.png",
-    "itemId": "item.minecraft:leather_chestplate",
+    "itemId": "minecraft:leather_chestplate",
     "title": "Leather Chestplate"
   },
   {
     "imageUrl": "crossbow.png",
-    "itemId": "item.minecraft:crossbow",
+    "itemId": "minecraft:crossbow",
     "title": "Crossbow"
   },
   {
     "imageUrl": "diamond_helmet.png",
-    "itemId": "item.minecraft:diamond_helmet",
+    "itemId": "minecraft:diamond_helmet",
     "title": "Diamond Helmet"
   },
   {
     "imageUrl": "iron_helmet.png",
-    "itemId": "item.minecraft:iron_helmet",
+    "itemId": "minecraft:iron_helmet",
     "title": "Iron Helmet"
   },
   {
     "imageUrl": "golden_helmet.png",
-    "itemId": "item.minecraft:golden_helmet",
+    "itemId": "minecraft:golden_helmet",
     "title": "Golden Helmet"
   },
   {
     "imageUrl": "leather_helmet.png",
-    "itemId": "item.minecraft:leather_helmet",
+    "itemId": "minecraft:leather_helmet",
     "title": "Leather Helmet"
   },
   {
     "imageUrl": "scute.png",
-    "itemId": "item.minecraft:scute",
+    "itemId": "minecraft:scute",
     "title": "Scute"
   },
   {
     "imageUrl": "turtle_helmet.png",
-    "itemId": "item.minecraft:turtle_helmet",
+    "itemId": "minecraft:turtle_helmet",
     "title": "Turtle Helmet"
   },
   {
     "imageUrl": "diamond_leggings.png",
-    "itemId": "item.minecraft:diamond_leggings",
+    "itemId": "minecraft:diamond_leggings",
     "title": "Diamond Leggings"
   },
   {
     "imageUrl": "iron_leggings.png",
-    "itemId": "item.minecraft:iron_leggings",
+    "itemId": "minecraft:iron_leggings",
     "title": "Iron Leggings"
   },
   {
     "imageUrl": "golden_leggings.png",
-    "itemId": "item.minecraft:golden_leggings",
+    "itemId": "minecraft:golden_leggings",
     "title": "Golden Leggings"
   },
   {
     "imageUrl": "leather_leggings.png",
-    "itemId": "item.minecraft:leather_leggings",
+    "itemId": "minecraft:leather_leggings",
     "title": "Leather Leggings"
   },
   {
     "imageUrl": "shield.png",
-    "itemId": "item.minecraft:shield",
+    "itemId": "minecraft:shield",
     "title": "Shield"
   },
   {
     "imageUrl": "wooden_sword.png",
-    "itemId": "item.minecraft:wooden_sword",
+    "itemId": "minecraft:wooden_sword",
     "title": "Wooden Sword"
   },
   {
     "imageUrl": "diamond_sword.png",
-    "itemId": "item.minecraft:diamond_sword",
+    "itemId": "minecraft:diamond_sword",
     "title": "Diamond Sword"
   },
   {
     "imageUrl": "iron_sword.png",
-    "itemId": "item.minecraft:iron_sword",
+    "itemId": "minecraft:iron_sword",
     "title": "Iron Sword"
   },
   {
     "imageUrl": "golden_sword.png",
-    "itemId": "item.minecraft:golden_sword",
+    "itemId": "minecraft:golden_sword",
     "title": "Golden Sword"
   },
   {
     "imageUrl": "stone_sword.png",
-    "itemId": "item.minecraft:stone_sword",
+    "itemId": "minecraft:stone_sword",
     "title": "Stone Sword"
   },
   {
     "imageUrl": "blaze_powder.png",
-    "itemId": "item.minecraft:blaze_powder",
+    "itemId": "minecraft:blaze_powder",
     "title": "Blaze Powder"
   },
   {
     "imageUrl": "glistering_melon_slice.png",
-    "itemId": "item.minecraft:glistering_melon_slice",
+    "itemId": "minecraft:glistering_melon_slice",
     "title": "Glistering Melon Slice"
   },
   {
     "imageUrl": "spider_eye.png",
-    "itemId": "item.minecraft:spider_eye",
+    "itemId": "minecraft:spider_eye",
     "title": "Spider Eye"
   },
   {
     "imageUrl": "fermented_spider_eye.png",
-    "itemId": "item.minecraft:fermented_spider_eye",
+    "itemId": "minecraft:fermented_spider_eye",
     "title": "Fermented Spider Eye"
   },
   {
     "imageUrl": "cauldron.png",
-    "itemId": "item.minecraft:cauldron",
+    "itemId": "minecraft:cauldron",
     "title": "Cauldron"
   },
   {
     "imageUrl": "brewing_stand.png",
-    "itemId": "item.minecraft:brewing_stand",
+    "itemId": "minecraft:brewing_stand",
     "title": "Brewing Stand"
   },
   {
     "imageUrl": "melon_seeds.png",
-    "itemId": "item.minecraft:melon_seeds",
+    "itemId": "minecraft:melon_seeds",
     "title": "Melon Seeds"
   },
   {
     "imageUrl": "pumpkin_seeds.png",
-    "itemId": "item.minecraft:pumpkin_seeds",
+    "itemId": "minecraft:pumpkin_seeds",
     "title": "Pumpkin Seeds"
+  },
+  {
+    "imageUrl": "nether_star.png",
+    "itemId": "minecraft:nether_star",
+    "title": "Nether Star"
+  },
+  {
+    "imageUrl": "beacon.png",
+    "itemId": "minecraft:beacon",
+    "title": "Beacon"
   }
 ]

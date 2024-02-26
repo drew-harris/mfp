@@ -87,7 +87,7 @@ export default function ItemPicker() {
     const searchables = createItemSearchList(customNodes);
     return searchables.filter((prop) => {
       if (currentTask?.idPool) {
-        let pool: string[] = [];
+        let pool: string[];
         if (currentTask.idPool === "inherit") {
           pool = currentMission?.idPool || [];
         } else {
@@ -141,7 +141,7 @@ export default function ItemPicker() {
 
   return (
     <>
-      <div className="top-0 z-50 mb-2 flex items-center justify-between border-2 border-b-mc-600 bg-mc-200 p-2">
+      <div className="sticky top-0 z-50 mb-2 flex items-center justify-between border-2 border-b-mc-600 bg-mc-200 p-2">
         <input
           className="inset bg-mc-300 p-1 text-white placeholder:text-mc-100"
           placeholder="Search for items..."
