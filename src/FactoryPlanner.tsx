@@ -103,7 +103,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
             minSize={200}
             maxSize={screenHeight * 0.9}
           >
-            <div className="outset-4 relative col-span-2 h-full w-full border-4 bg-mc-300">
+            <div className="outset-4 relative col-span-2 h-full w-full border-4 bg-mc-300 z-50">
               <NodeCanvas />
               <Notifications className="absolute top-0 right-0 z-30 p-2" />
             </div>
