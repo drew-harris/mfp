@@ -125,7 +125,7 @@ export const TaskSidebar = () => {
                   ? 0
                   : (data.deficit * 100).toFixed(2)}
                 % | Excess:{" "}
-                {Number.isNaN(data.deficit)
+                {Number.isNaN(data.excess)
                   ? 0
                   : (data.excess * 100).toFixed(2)}
                 %
