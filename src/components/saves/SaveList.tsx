@@ -8,6 +8,8 @@ import { useNodeStore } from "../../stores/nodes";
 import { timeAgo } from "../../utils/timeago";
 import { UserContext } from "../contexts/UserContext";
 import SaveDialog from "./SaveDialog";
+import { LogType } from "../../__generated__/graphql";
+import { sendLog } from "../../api/logs";
 
 const SAVES = gql(`
 query AllSaves($playerId: String) {
@@ -39,6 +41,7 @@ export default function SaveList() {
 
   const quickLoadSave = (save: typeof data["saves"][0]) => {
     console.log("TODO: Load save", save);
+    sendLog(LogType.MfpLoadSave)
     internal.setNodesAndEdges(save.graphData.nodes, save.graphData.edges);
   };
 

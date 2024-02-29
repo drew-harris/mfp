@@ -8,6 +8,8 @@ import { useNodeStore } from "../../stores/nodes";
 import { useNotifications } from "../../stores/notifications";
 import { UserContext } from "../contexts/UserContext";
 import { SaveListRefetchFn } from "./SaveList";
+import { LogType } from "../../__generated__/graphql";
+import { sendLog } from "../../api/logs";
 
 export default function SaveDialog({
   refetch,
@@ -20,6 +22,7 @@ export default function SaveDialog({
   const { user } = useContext(UserContext);
   const [saveMutation] = useMutation(CREATE_NEW_SAVE, {
     onCompleted() {
+      sendLog(LogType.MfpCreateSave)
       sendNotification("Saved!", "success");
       refetch();
       setActive(false);

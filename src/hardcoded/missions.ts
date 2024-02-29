@@ -11,13 +11,13 @@ export const allMissions: Mission[] = [
         id: "tutorial-resource",
         title: "Resource Node",
         description: "Drag a diamond resource node to the canvas.",
-        idPool: ["item.minecraft:diamond"],
+        idPool: ["minecraft:diamond"],
         stateRequirement: (state) => {
           return Boolean(
             state.nodes.some(
               (n) =>
                 n.data.dataType === "resource" &&
-                n.data.item.itemId === "item.minecraft:diamond"
+                n.data.item.itemId === "minecraft:diamond"
             )
           );
         },
@@ -28,7 +28,7 @@ export const allMissions: Mission[] = [
         description:
           "This is a resource node. It represents an infinite supply of a basic item needed for crafting.\n\nYou can" +
           " adjust the output amount by entering a number into its input box.",
-        idPool: ["item.minecraft:diamond"],
+        idPool: ["minecraft:diamond"],
         continuation: true,
       },
       {
@@ -37,12 +37,12 @@ export const allMissions: Mission[] = [
         description:
           "Delete the resource node.\n\nTo do this, click the node to select it. Then, click the trash can button" +
           " in the bottom right or press the backspace key to delete it.",
-        idPool: ["item.minecraft:diamond"],
+        idPool: ["minecraft:diamond"],
         stateRequirement: (state) => {
           return !state.nodes.some(
             (n) =>
               n.data.dataType === "resource" &&
-              n.data.item.itemId === "item.minecraft:diamond"
+              n.data.item.itemId === "minecraft:diamond"
           );
         },
       },
@@ -250,7 +250,7 @@ export const allMissions: Mission[] = [
         description: "Produce 32 sticks per minute",
         itemRequirements: [
           {
-            itemId: "item.minecraft:stick",
+            itemId: "minecraft:stick",
             rate: 32,
           },
         ],
@@ -261,7 +261,7 @@ export const allMissions: Mission[] = [
         description: "Produce 1 diamond axe per minute",
         itemRequirements: [
           {
-            itemId: "item.minecraft:diamond_axe",
+            itemId: "minecraft:diamond_axe",
             rate: 1,
           },
         ],
@@ -290,7 +290,7 @@ export const allMissions: Mission[] = [
         description: "Produce 10 iron pickaxes per minute",
         itemRequirements: [
           {
-            itemId: "item.minecraft:iron_pickaxe",
+            itemId: "minecraft:iron_pickaxe",
             rate: 10,
           },
         ],
@@ -339,7 +339,7 @@ export const allMissions: Mission[] = [
             rate: 5,
           },
           {
-            itemId: "item.minecraft:oak_sign",
+            itemId: "minecraft:oak_sign",
             rate: 15,
           },
         ],
@@ -365,15 +365,15 @@ export const allMissions: Mission[] = [
         description: "Produce 30 wooden axes, 30 wooden pickaxes, and 30 wooden shovels per minute",
         itemRequirements: [
           {
-            itemId: "item.minecraft:wooden_axe",
+            itemId: "minecraft:wooden_axe",
             rate: 30,
           },
           {
-            itemId: "item.minecraft:wooden_shovel",
+            itemId: "minecraft:wooden_shovel",
             rate: 30,
           },
           {
-            itemId: "item.minecraft:wooden_pickaxe",
+            itemId: "minecraft:wooden_pickaxe",
             rate: 30,
           },
         ],
@@ -675,11 +675,11 @@ export const allMissions: Mission[] = [
   //       title: "Create Nether Brick",
   //       itemRequirements: [
   //         {
-  //           itemId: "item.minecraft:netherbrick",
+  //           itemId: "minecraft:netherbrick",
   //           perHour: 8,
   //         },
   //         // {
-  //         //   itemId: "item.minecraft:quartz",
+  //         //   itemId: "minecraft:quartz",
   //         //   perHour: 8,
   //         // },
   //       ],
