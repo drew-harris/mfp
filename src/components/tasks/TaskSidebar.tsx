@@ -177,7 +177,7 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
     <div className="flex flex-col items-center gap-4 p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
       <div className="text-left text-mc-700">{task.description}</div>
-      {!hasOrderNodeAlready && (
+      {!hasOrderNodeAlready && task.itemRequirements?.length <= 0 && (
         <PickerSquare
           className="max-w-[200px]"
           topLabel="Order"
