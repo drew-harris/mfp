@@ -28,6 +28,7 @@ export const TaskSidebar = () => {
   const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
   const hasNextTask = useHasNextStep();
   const sendNotification = useNotifications((s) => s.sendNotification);
+  const infoModeEnabled = useNodeStore((s) => s.infoModeEnabled);
 
   const [searchParams] = useSearchParams();
 
@@ -118,7 +119,7 @@ export const TaskSidebar = () => {
               Efficiency:{" "}
               {data.efficiency ? (data.efficiency * 100).toFixed(2) : 0}%
             </div>
-            {data.efficiency < 1 && (
+            { data.efficiency < 1 && infoModeEnabled && (
               <div className="text-sm text-black/75">
                 Deficit:{" "}
                 {Number.isNaN(data.deficit)
