@@ -113,12 +113,13 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
   const handleOptionChange = (option: string) => {
     setVisibleData((prevData) =>
       prevData.map((node) => {
-        console.log(node.item.name, "===", option, ":", node.item.isHidden, "->", !node.item.isHidden)
+        //console.log(node.item.name, "===", option, ":", node.item.isHidden, "->", !node.item.isHidden)
         if (node.item.name === option) {
           return {...node, item: { ...node.item, isHidden: !node.item.isHidden }};
         }
         return node;
       }));
+    sendLog(LogType.MfpGraphItemToggle);
   };
 
   const toggleXYGraphMode = () => setXYGraphMode(!XYGraphMode)

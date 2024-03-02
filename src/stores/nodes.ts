@@ -67,12 +67,22 @@ export const useNodeStore = create<RFState>((set, get) => ({
     set({
       nodes: applyNodeChanges(changes, get().nodes),
     });
+    for (const change of changes) {
+      if (change.type === "remove") {
+        sendLog(LogType.MfpDeleteNode);
+      }
+    }
   },
 
   onEdgesChange: (changes: EdgeChange[]) => {
     set({
       edges: applyEdgeChanges(changes, get().edges),
     });
+    for (const change of changes) {
+      if (change.type === "remove") {
+        sendLog(LogType.MfpBreakNodeConnection);
+      }
+    }
   },
 
   updateEdgeSpeeds() {

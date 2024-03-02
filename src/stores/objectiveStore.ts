@@ -71,6 +71,9 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
     set({
       currentTask: currentMission.tasks[currentIndex - 1],
     });
+    sendLog(LogType.MfpTaskBack, {
+      task: currentMission.tasks[currentIndex - 1].id,
+    });
   },
 
   hasNextTask: () => {

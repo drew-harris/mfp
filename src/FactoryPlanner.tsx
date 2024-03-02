@@ -26,6 +26,10 @@ interface FactoryPlannerProps {
   customNodeEdit?: boolean;
 }
 
+function handleResize() {
+  sendLog(LogType.MfpResizeWindow);
+}
+
 function FactoryPlanner(props: FactoryPlannerProps) {
   const [active, setActive] = useState<Active | null>(null);
   const { project } = useReactFlow();
@@ -91,6 +95,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
           minSize={300}
           maxSize={screenWidth * 0.5}
           defaultSize={300}
+          onDragFinished={handleResize}
         >
           {/*@ts-ignore*/}
           <SplitPane
@@ -102,6 +107,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
             defaultSize={screenHeight * 0.7}
             minSize={200}
             maxSize={screenHeight * 0.9}
+            onDragFinished={handleResize}
           >
             <div className="outset-4 relative col-span-2 h-full w-full border-4 bg-mc-300 z-50">
               <NodeCanvas />

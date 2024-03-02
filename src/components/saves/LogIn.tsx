@@ -1,6 +1,8 @@
 import { FormEvent, useContext, useState } from "react";
 import { Button } from "../basic/Button";
 import { UserContext } from "../contexts/UserContext";
+import { sendLog } from "../../api/logs";
+import { LogType } from "../../__generated__/graphql";
 
 export default function LogIn() {
   const [codeInput, setCodeInput] = useState("");
@@ -10,6 +12,7 @@ export default function LogIn() {
     e.preventDefault();
     logIn(codeInput);
     setCodeInput("");
+    sendLog(LogType.MfpLogIn);
   };
 
   return (

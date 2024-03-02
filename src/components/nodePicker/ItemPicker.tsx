@@ -1,7 +1,4 @@
-import {
-  faArrowsSplitUpAndLeft,
-  faGears,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowsSplitUpAndLeft, faGears } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMemo, useState } from "react";
 import { crafterItems, resourceItems } from "../../hardcoded/resourceItems";
@@ -11,6 +8,8 @@ import { SpriteDisplay } from "../SpriteDisplay";
 import PickerSquare, { DraggableProps } from "./PickerSquare";
 import { PickerSelect } from "./TypeSelect";
 import { useCustomNodeList } from "../../hooks/useCustomNodeList";
+import { sendLog } from "../../api/logs";
+import { LogType } from "../../__generated__/graphql";
 
 export type SelectOption =
   | "all"
@@ -103,6 +102,7 @@ export default function ItemPicker() {
       }
 
       if (selectOption !== "all") {
+        sendLog(LogType.MfpLoadFilter)
         switch (selectOption) {
           case "resource": {
             if (prop.payload.type === MCNodeType.resource) return true;
