@@ -29,7 +29,7 @@ export function checkIfNodesConnect(
 
   // Custom node to others
   if (source.data.dataType === MCNodeType.custom) {
-    if (target.data.dataType === MCNodeType.crafter) {
+    if (target.data.dataType === MCNodeType.crafter || target.data.dataType === MCNodeType.splitter) {
       console.log("Node connection valid. Connection should be accepted.");
       return true;
     } else {
