@@ -108,7 +108,7 @@ function FactoryPlanner(props: FactoryPlannerProps) {
               <Notifications className="absolute top-0 right-0 z-30 p-2" />
             </div>
             <div className="outset-4 col-span-2 h-full overflow-y-scroll border-4 bg-mc-300">
-              <ItemPicker />
+            <ItemPicker />
             </div>
           </SplitPane>
           <div className="outset-4 relative row-span-2 flex h-full flex-col justify-between border-4 bg-mc-300">

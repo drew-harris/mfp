@@ -51,7 +51,7 @@ export default function TaskCompleteProvider({
 
   const [messages, setMessages] = useState<DebugMessage[]>([]);
   const [taskComplete, setTaskComplete] = useState(false);
-  const [efficiency, setEfficiency] = useState(1);
+  const [efficiency, setEfficiency] = useState(0);
   const [deficit, setDeficit] = useState(0);
   const [excess, setExcess] = useState(0);
 

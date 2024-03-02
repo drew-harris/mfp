@@ -68,7 +68,7 @@ export default function NodeCanvas() {
           variant={BackgroundVariant.Lines}
         ></Background>
         <Panel
-          className="flex flex-row gap-3 z-10"
+          className="flex flex-row gap-3 z-20"
           style={{
             margin: 4,
           }}
