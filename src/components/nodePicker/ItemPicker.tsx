@@ -141,7 +141,7 @@ export default function ItemPicker() {
 
   return (
     <>
-      <div className="sticky top-0 z-50 mb-2 flex space-x-5 border-2 border-b-mc-600 bg-mc-200 py-2 px-3">
+      <div className="sticky top-0 z-10 mb-2 flex space-x-5 border-2 border-b-mc-600 bg-mc-200 py-2 px-3">
         <input
           className="inset bg-mc-300 p-1 text-white placeholder:text-mc-100"
           placeholder="Search for items..."
