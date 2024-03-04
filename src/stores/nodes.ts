@@ -80,7 +80,7 @@ export const useNodeStore = create<RFState>((set, get) => ({
     });
     for (const change of changes) {
       if (change.type === "remove") {
-        //sendLog(LogType.MfpBreakNodeConnection); //uncomment once log gets added
+        sendLog(LogType.MfpBreakNodeConnection);
       }
     }
   },
