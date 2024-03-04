@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { LogType } from "../../__generated__/graphql";
 import { allMissions } from "../../hardcoded/missions";
 import { useHasNextStep } from "../../hooks/useHasNextStep";
 import { useNodeStore } from "../../stores/nodes";
@@ -13,6 +12,7 @@ import { TaskCompleteContext } from "../contexts/TaskCompleteProvider";
 import PickerSquare from "../nodePicker/PickerSquare";
 import { RequirementView } from "./RequirementView";
 import { MCNodeType } from "../../types/MCNodes";
+import { LogType } from "../../__generated__/graphql";
 import { sendLog } from "../../api/logs";
 
 export const TaskSidebar = () => {
@@ -126,7 +126,7 @@ export const TaskSidebar = () => {
                   ? 0
                   : (data.deficit * 100).toFixed(2)}
                 % | Excess:{" "}
-                {Number.isNaN(data.deficit)
+                {Number.isNaN(data.excess)
                   ? 0
                   : (data.excess * 100).toFixed(2)}
                 %

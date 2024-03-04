@@ -8,6 +8,8 @@ import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
 import { useEffect } from "react";
 import { useNodeStore } from "../../stores/nodes";
+import { sendLog } from "../../api/logs";
+import { LogType } from "../../__generated__/graphql";
 
 interface CustomNodeProps {
   data: MCCustomNode;
@@ -55,6 +57,7 @@ function getResults(
   return result;
 }
 
+const handleClick = () => sendLog(LogType.MfpCustomNodeEdit);
 export default function CustomNode({ data }: CustomNodeProps) {
   const items = data.recipes.map((r) => r.item);
 
@@ -110,8 +113,9 @@ export default function CustomNode({ data }: CustomNodeProps) {
         target="_blank"
         rel="noreferrer"
         href={`/edit/${data.lapisId}`}
+        onClick={handleClick}
       >
-        Edit
+        Edit Node
       </a>
       <div>{}</div>
       <div className="flex items-stretch gap-5">

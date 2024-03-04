@@ -113,12 +113,13 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
   const handleOptionChange = (option: string) => {
     setVisibleData((prevData) =>
       prevData.map((node) => {
-        console.log(node.item.name, "===", option, ":", node.item.isHidden, "->", !node.item.isHidden)
+        //console.log(node.item.name, "===", option, ":", node.item.isHidden, "->", !node.item.isHidden)
         if (node.item.name === option) {
           return {...node, item: { ...node.item, isHidden: !node.item.isHidden }};
         }
         return node;
       }));
+    sendLog(LogType.MfpGraphItemToggle);
   };
 
   const toggleXYGraphMode = () => setXYGraphMode(!XYGraphMode)
@@ -148,7 +149,10 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
       {dialogOpen && (
         <div className="isolate">
           <div
-            onClick={() => setDialogOpen(false)}
+            onClick={() => {
+              setDialogOpen(false);
+              sendLog(LogType.MfpCloseGraph);
+            }}
             className="fixed left-0 bottom-0 top-0 right-0 z-10 bg-black/70"
           />
           <div className="outset fixed left-96 bottom-24 top-24 right-24 z-30 bg-mc-200">
