@@ -34,8 +34,8 @@ export default function SaveList() {
   const { user } = useContext(UserContext);
   const { data, refetch } = useQuery(SAVES, {
     variables: {
-      playerId: user.id,
-    },
+      playerId: user.id
+    }
   });
 
   const [numDefaultSaves, setNumDefaultSaves] = useState(0);

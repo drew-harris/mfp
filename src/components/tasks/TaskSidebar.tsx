@@ -28,6 +28,7 @@ export const TaskSidebar = () => {
   const hasPreviousTask = useObjectiveStore((s) => s.hasPreviousTask);
   const hasNextTask = useHasNextStep();
   const sendNotification = useNotifications((s) => s.sendNotification);
+  const infoModeEnabled = useNodeStore((s) => s.infoModeEnabled);
 
   const [searchParams] = useSearchParams();
 
@@ -118,7 +119,7 @@ export const TaskSidebar = () => {
               Efficiency:{" "}
               {data.efficiency ? (data.efficiency * 100).toFixed(2) : 0}%
             </div>
-            {data.efficiency < 1 && (
+            { data.efficiency < 1 && infoModeEnabled && (
               <div className="text-sm text-black/75">
                 Deficit:{" "}
                 {Number.isNaN(data.deficit)
@@ -176,8 +177,8 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
   return (
     <div className="flex flex-col items-center gap-4 p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
-      <div className="text-left text-mc-700">{task.description}</div>
-      {!hasOrderNodeAlready && task.itemRequirements?.length <= 0 && (
+      <div className="text-left text-mc-700 whitespace-pre-line">{task.description}</div>
+      {!hasOrderNodeAlready && task.itemRequirements?.length > 0 && (
         <PickerSquare
           className="max-w-[200px]"
           topLabel="Order"

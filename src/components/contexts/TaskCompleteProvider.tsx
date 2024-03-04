@@ -51,7 +51,7 @@ export default function TaskCompleteProvider({
 
   const [messages, setMessages] = useState<DebugMessage[]>([]);
   const [taskComplete, setTaskComplete] = useState(false);
-  const [efficiency, setEfficiency] = useState(1);
+  const [efficiency, setEfficiency] = useState(0);
   const [deficit, setDeficit] = useState(0);
   const [excess, setExcess] = useState(0);
 
@@ -77,10 +77,10 @@ export default function TaskCompleteProvider({
     if (currentTask.itemRequirements) {
       const inputEdges = getEdgesIntoOrderNode(state);
       const requirements = currentTask.itemRequirements;
-      console.log("Requirements:");
-      for (const entry of requirements) {
-        console.log(`ItemId: ${entry.itemId}, Rate: ${entry.rate}`);
-      }
+      // console.log("Requirements:");
+      // for (const entry of requirements) {
+      //   console.log(`ItemId: ${entry.itemId}, Rate: ${entry.rate}`);
+      // }
       if (inputEdges.length === 0 && orderNodeOnCanvas) {
         complete = false;
         // newMessages.push({
@@ -94,12 +94,12 @@ export default function TaskCompleteProvider({
             (e) => e.data?.item.itemId === req.itemId
           );
           if (edge?.data?.outputRate) {
-            console.log(
-              "edge detected: " +
-                edge.data.item.title +
-                " " +
-                edge.data.outputRate
-            );
+            // console.log(
+            //   "edge detected: " +
+            //     edge.data.item.title +
+            //     " " +
+            //     edge.data.outputRate
+            // );
             if (edge.data.outputRate < req.rate) {
               complete = false;
               // newMessages.push({
@@ -111,7 +111,7 @@ export default function TaskCompleteProvider({
               requirement: req.rate,
               output: edge.data?.outputRate,
             });
-            console.log("Ratio", ratio);
+            // console.log("Ratio", ratio);
           } else {
             complete = false; //todo: refactor repetitive code
             const ratio = 0;
@@ -119,7 +119,7 @@ export default function TaskCompleteProvider({
               requirement: req.rate,
               output: 0,
             });
-            console.log("Ratio", ratio);
+            // console.log("Ratio", ratio);
             // newMessages.push({
             //   message: `Missing order input for ${item.title}`,
             // });
@@ -133,7 +133,7 @@ export default function TaskCompleteProvider({
     // // newMessages.push(...craftingMessages);
 
     // Efficiency
-    console.log("Efficiency Info", efficiencyInfo);
+    // console.log("Efficiency Info", efficiencyInfo);
     const totalRequirement = efficiencyInfo.reduce(
       (a, b) => a + b.requirement,
       0
@@ -159,18 +159,19 @@ export default function TaskCompleteProvider({
       )
       .reduce((a, b) => a + b, 0); // todo: FIX FORMULA
 
-    console.log("Total Requirement:", totalRequirement);
-    console.log("Total Achieved:", totalAchieved);
-    console.log("Total Efficiency:", totalEfficiency);
-    console.log("Total Deficit:", totalDeficit);
-    console.log("Total Excess:", totalExcess);
-
-    console.log("New Messages", newMessages);
+    // console.log("Total Requirement:", totalRequirement);
+    // console.log("Total Achieved:", totalAchieved);
+    // console.log("Total Efficiency:", totalEfficiency);
+    // console.log("Total Deficit:", totalDeficit);
+    // console.log("Total Excess:", totalExcess);
+    //
+    // console.log("New Messages", newMessages);
 
     // Check for state requirement
     if (currentTask.stateRequirement) {
       const stateRequirement = currentTask.stateRequirement;
       console.log(useNodeStore.getState().nodes);
+      console.log(useNodeStore.getState().edges);
       const passes = stateRequirement(useNodeStore.getState());
       if (!passes) {
         console.log("State requirement failed");

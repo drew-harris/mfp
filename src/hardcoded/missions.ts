@@ -1,11 +1,12 @@
 import { MCNodeType } from "../types/MCNodes";
 import { Mission } from "../types/tasks";
+import { getNodeById } from "../utils/nodes";
 
 export const allMissions: Mission[] = [
   {
-    title: "Tutorial",
+    title: "Tutorial: Beginner",
     id: "tutorial",
-    completeMessage: "Well done! You completed the tutorial!",
+    completeMessage: "Well done! You completed the beginner tutorial!",
     tasks: [
       {
         id: "tutorial-resource",
@@ -191,6 +192,16 @@ export const allMissions: Mission[] = [
         },
       },
       {
+        id: "tutorial-graph",
+        title: "Graph",
+        description:
+          "The graph shows the production rate of every item on the canvas. You can turn it on by " +
+          "clicking the \"Open Graph\" button at the top left of the canvas. Individual items can be hidden by " +
+          "pressing the checkbox next to an item's name.",
+        idPool: ["minecraft:furnace", "minecraft:cobblestone"],
+        continuation: true,
+      },
+      {
         id: "tutorial-splitter-order",
         title: "Order Node",
         description:
@@ -226,6 +237,145 @@ export const allMissions: Mission[] = [
         ],
       },
     ],
+  },
+
+  {
+    title: "Tutorial: Advanced",
+    id: "tutorial2",
+    completeMessage: "Well done! You completed the advanced tutorial!",
+    tasks: [
+      {
+        id: "tutorial2-start",
+        title: "Builder Node",
+        description: "Sometimes, you want to condense a whole part of your factory into one node. This can be done " +
+          "with custom nodes.\n\nTo make a custom node, we have to use a builder node. Let's make a custom node that " +
+          "can make iron tools.\n\nTo start, create a chain of nodes that makes sticks",
+        idPool: ["minecraft:oak_log", "minecraft:oak_planks", "minecraft:stick"],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.nodes.some((n) => n?.data.item?.itemId === "minecraft:oak_log") &&
+            state.nodes.some((n) => n?.data.item?.itemId === "minecraft:oak_planks") &&
+            state.nodes.some((n) => n?.data.item?.itemId === "minecraft:stick") &&
+            state.edges.length >= 2
+          );
+        },
+      },
+      {
+        id: "tutorial2-drag",
+        title: "Builder Node",
+        description: "The builder node takes all the nodes that are connected to it and condenses it into a custom " +
+          "node that has the same inputs and outputs.\n\nDrag a builder node onto the canvas now.",
+        idPool: [],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.nodes.some(
+              (n) =>
+                n?.data.dataType === "builder"
+            )
+          );
+        },
+      },
+      {
+        id: "tutorial2-builder",
+        title: "Builder Node",
+        description: "Now, connect the sticks to the builder.",
+        idPool: [],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.edges.some((e) =>
+              (e?.data.item.itemId === "minecraft:stick")
+            )
+          );
+        },
+      },
+      {
+        id: "tutorial2-builder2",
+        title: "Builder Node",
+        description: "Notice that the builder has gained a new output. The builder gains inputs and outputs " +
+          "for each node \"chain\" it has. Add a new node chain that adds iron ingots to the builder node.",
+        idPool: ["minecraft:iron_ingot", "minecraft:iron_nugget"],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.edges.some((e) =>
+              (e?.data.item.itemId === "minecraft:iron_nugget")
+            )
+          );
+        },
+      },
+      {
+        id: "tutorial2-save",
+        title: "Save System",
+        description: "Now that we have done a decent amount of work, try creating a save of what you've done so far. " +
+          "You can do so by clicking the \"Saves\" tab on the top right and clicking the \"New Saves\" button. " +
+          "This saves the layout of the board to be loaded later. To load a save, click a save on the save list.",
+        idPool: [],
+        continuation: true,
+      },
+      {
+        id: "tutorial2-custom",
+        title: "Creating Custom Nodes",
+        description: "Now click save on the builder node to finalize your custom node. Give it a name that describes " +
+          "it well.",
+        idPool: [],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.nodes.some((n) => n.data.dataType === MCNodeType.custom)
+          );
+        },
+      },
+      {
+        id: "tutorial2-custom2",
+        title: "Using Custom Nodes",
+        description: "Now use your new custom node to make some iron pickaxes.",
+        idPool: ["minecraft:iron_pickaxe"],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.edges.some((e) =>
+              (e?.data.item.itemId === "minecraft:iron_ingot")
+            ) &&
+            state.edges.some((e) =>
+              (e?.data.item.itemId === "minecraft:stick")
+            )
+          );
+        },
+      },
+      {
+        id: "tutorial2-edit",
+        title: "Edit Custom Nodes",
+        description: "We're also going to need some diamond tools to complete our final order. Let's make another " +
+          "custom node but for diamonds this time. Instead of starting from scratch, we can edit our iron tools node " +
+          "and modify a copy of it.\n\nWhen you click \"edit node\", you will be brought to another tab with the recipe " +
+          "of your iron tools node. Replace the iron ingots for diamonds, save the new node, then come back here to use " +
+          "it to make some diamond axes.",
+        idPool: ["minecraft:diamond_axe"],
+        stateRequirement: (state) => {
+          return Boolean(
+            state.edges.some((e) =>
+              (e?.data.item.itemId === "minecraft:diamond")
+            ) &&
+            state.edges.some((e) =>
+              (e?.data.item.itemId === "minecraft:stick")
+            )
+          );
+        },
+      },
+      {
+        id: "tutorial2-finish",
+        title: "Tools",
+        description: "Now, use your two custom nodes to produce 4 iron pickaxes and 10 diamond axes. Then submit " +
+          "your factory plan to finish the tutorial.",
+        itemRequirements: [
+          {
+            itemId: "minecraft:iron_pickaxe",
+            rate: 8,
+          },
+          {
+            itemId: "minecraft:diamond_axe",
+            rate: 16,
+          },
+        ],
+      },
+    ]
   },
 
   // Unit 1
