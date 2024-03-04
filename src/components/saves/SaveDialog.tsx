@@ -11,10 +11,9 @@ import { SaveListRefetchFn } from "./SaveList";
 import { LogType } from "../../__generated__/graphql";
 import { sendLog } from "../../api/logs";
 
-export default function SaveDialog({
-  refetch,
-}: {
+export default function SaveDialog({ refetch, numDefaultSaves }: {
   refetch: SaveListRefetchFn;
+  numDefaultSaves: number
 }) {
   const [active, setActive] = useState(false);
   const [saveName, setSaveName] = useState("");
@@ -27,7 +26,7 @@ export default function SaveDialog({
       refetch();
       setActive(false);
       setSaveName("");
-    },
+    }
   });
 
   const submit = (e: FormEvent) => {
@@ -35,23 +34,24 @@ export default function SaveDialog({
     // Get the save data
     const state = useNodeStore.getState();
     console.log("USER", user);
+    console.log("numDefaultSaves:", numDefaultSaves)
 
     if (state.nodes.length === 0) {
       sendNotification("Can't save empty graph", "error");
+    } else {
+      saveMutation({
+        variables: {
+          newSave: {
+            playerId: user.id,
+            name: saveName || ("Save " + (numDefaultSaves + 1)),
+            graphData: {
+              nodes: state.nodes,
+              edges: state.edges
+            }
+          }
+        }
+      });
     }
-
-    saveMutation({
-      variables: {
-        newSave: {
-          playerId: user.id,
-          name: saveName,
-          graphData: {
-            nodes: state.nodes,
-            edges: state.edges,
-          },
-        },
-      },
-    });
   };
 
   return (
@@ -75,7 +75,7 @@ export default function SaveDialog({
             !active && "p-2"
           )}
         >
-          <div className="font-semibold">Save</div>
+          <div className="font-semibold">Create Save</div>
         </button>
       ) : (
         <button
@@ -86,7 +86,7 @@ export default function SaveDialog({
           )}
         >
           {!active && <FontAwesomeIcon icon={faPlus} />}
-          <div className="font-semibold">New Save</div>
+          <div className="font-bold text-lg">Create New Save</div>
         </button>
       )}
     </div>
