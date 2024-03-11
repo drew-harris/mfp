@@ -119,7 +119,7 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
         }
         return node;
       }));
-    sendLog(LogType.MfpGraphItemToggle);
+    sendLog(LogType.MfpGraphItemToggle, {task: currentTask});
   };
 
   const toggleXYGraphMode = () => setXYGraphMode(!XYGraphMode)
@@ -132,6 +132,8 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
     console.log("dialogOpen value:", dialogOpen);
   }, [dialogOpen, setDialogOpen]);
 
+  const currentTask = useObjectiveStore((s) => s.currentTask)?.id;
+
   // TODO: Replace with shadcn dialog
   return (
     <>
@@ -140,7 +142,7 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
           className="w-full"
           onClick={() => {
             setDialogOpen(true);
-            sendLog(LogType.MfpOpenGraph);
+            sendLog(LogType.MfpOpenGraph, {task: currentTask});
           }}
         >
           Open Graph
@@ -151,7 +153,7 @@ function GraphDetails({ orderNodeId, task, nodeData }: GraphDetailsProps) {
           <div
             onClick={() => {
               setDialogOpen(false);
-              sendLog(LogType.MfpCloseGraph);
+              sendLog(LogType.MfpCloseGraph, {task: currentTask});
             }}
             className="fixed left-0 bottom-0 top-0 right-0 z-10 bg-black/70"
           />

@@ -1,11 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import {
-  Active,
-  DndContext,
-  DragEndEvent,
-  DragOverlay,
-  DragStartEvent
-} from "@dnd-kit/core";
+import { Active, DndContext, DragEndEvent, DragOverlay, DragStartEvent } from "@dnd-kit/core";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SplitPane from "react-split-pane";
@@ -14,23 +8,26 @@ import { GetCustomNodeQuery, LogType } from "./__generated__/graphql";
 import Notifications from "./components/Notifications";
 import Sidebar from "./components/Sidebar";
 import ItemPicker from "./components/nodePicker/ItemPicker";
-import PickerSquare, {
-  DraggableProps
-} from "./components/nodePicker/PickerSquare";
+import PickerSquare, { DraggableProps } from "./components/nodePicker/PickerSquare";
 import { useNodeStore } from "./stores/nodes";
 import { processPickerItem } from "./utils/processPickerItem";
 import NodeCanvas from "./views/NodeCanvas";
-import { sendLog } from "./api/logs";
+import { logNode, sendLog } from "./api/logs";
+import { useObjectiveStore } from "./stores/objectiveStore";
+import { MCNodeType } from "./types/MCNodes";
+import { allRecipes } from "./hardcoded/recipes";
 
 interface FactoryPlannerProps {
   customNodeEdit?: boolean;
 }
 
-function handleResize() {
+function handleResize(): null {
   sendLog(LogType.MfpResizeWindow);
+  return null
 }
 
 function FactoryPlanner(props: FactoryPlannerProps) {
+  const currentTask = useObjectiveStore((s) => s.currentTask)?.id || "no task";
   const [active, setActive] = useState<Active | null>(null);
   const { project } = useReactFlow();
 
@@ -59,9 +56,8 @@ function FactoryPlanner(props: FactoryPlannerProps) {
       });
       const item = event.active.data.current as unknown as DraggableProps;
       const node = processPickerItem(item.payload, projection);
-      sendLog(LogType.MfpDropNode, {
-        type: node.data.dataType
-      });
+
+      logNode(LogType.MfpDropNode, node)
 
       if (node) {
         addNode(node);
@@ -95,7 +91,6 @@ function FactoryPlanner(props: FactoryPlannerProps) {
           minSize={300}
           maxSize={screenWidth * 0.5}
           defaultSize={300}
-          onDragFinished={handleResize}
         >
           {/*@ts-ignore*/}
           <SplitPane
@@ -107,7 +102,6 @@ function FactoryPlanner(props: FactoryPlannerProps) {
             defaultSize={screenHeight * 0.7}
             minSize={200}
             maxSize={screenHeight * 0.9}
-            onDragFinished={handleResize}
           >
             <div className="outset-4 relative col-span-2 h-full w-full border-4 bg-mc-300 z-50">
               <NodeCanvas />

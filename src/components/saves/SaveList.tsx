@@ -11,6 +11,7 @@ import { UserContext } from "../contexts/UserContext";
 import SaveDialog from "./SaveDialog";
 import { LogType } from "../../__generated__/graphql";
 import { sendLog } from "../../api/logs";
+import { useObjectiveStore } from "../../stores/objectiveStore";
 
 const SAVES = gql(`
 query AllSaves($playerId: String) {
@@ -49,10 +50,11 @@ export default function SaveList() {
   }, [data]);
 
   const internal = useNodeStore((s) => s.internal);
+  const currentTask = useObjectiveStore((s) => s.currentTask)?.id;
 
   const quickLoadSave = (save: typeof data["saves"][0]) => {
     console.log("TODO: Load save", save);
-    sendLog(LogType.MfpLoadSave)
+    sendLog(LogType.MfpLoadSave, {task: currentTask})
     internal.setNodesAndEdges(save.graphData.nodes, save.graphData.edges);
   };
 

@@ -10,6 +10,7 @@ import { UserContext } from "../contexts/UserContext";
 import { SaveListRefetchFn } from "./SaveList";
 import { LogType } from "../../__generated__/graphql";
 import { sendLog } from "../../api/logs";
+import { useObjectiveStore } from "../../stores/objectiveStore";
 
 export default function SaveDialog({ refetch, numDefaultSaves }: {
   refetch: SaveListRefetchFn;
@@ -19,9 +20,10 @@ export default function SaveDialog({ refetch, numDefaultSaves }: {
   const [saveName, setSaveName] = useState("");
   const { sendNotification } = useNotifications();
   const { user } = useContext(UserContext);
+  const currentTask = useObjectiveStore((s) => s.currentTask)?.id;
   const [saveMutation] = useMutation(CREATE_NEW_SAVE, {
     onCompleted() {
-      sendLog(LogType.MfpCreateSave)
+      sendLog(LogType.MfpCreateSave, {task: currentTask})
       sendNotification("Saved!", "success");
       refetch();
       setActive(false);

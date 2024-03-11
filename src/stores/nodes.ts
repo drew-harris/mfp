@@ -25,6 +25,8 @@ import { sendLog } from "../api/logs";
 import { LogType } from "../__generated__/graphql";
 import { SaveData } from "../api/saves";
 import { itemFromId } from "../hooks/useFullItem";
+import { getNodeById, getEdgeById } from "../utils/nodes";
+import { logNode, logEdge } from "../api/logs"
 
 export type RFState = {
   nodes: Node<MCNode>[];
@@ -70,7 +72,7 @@ export type RFState = {
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
-export const useNodeStore = create<RFState>((set, get) => ({
+export const useNodeStore = create<RFState>((set, get)=> ({
   nodes: [],
   edges: [],
   infoModeEnabled: false,
@@ -79,27 +81,49 @@ export const useNodeStore = create<RFState>((set, get) => ({
   lastTimeSaved: new Date(),
   unsavedNotifSent: false,
   onNodesChange: (changes: NodeChange[]) => {
+    for (const change of changes) {
+      let node
+
+      if (change.type === "remove") {
+        const node = getNodeById(change.id);
+      }
+
+      if (!node) continue;
+      logNode(LogType.MfpDeleteNode, node)
+    }
     set({
       nodes: applyNodeChanges(changes, get().nodes),
       workDone: true,
     });
-    for (const change of changes) {
-      if (change.type === "remove") {
-        sendLog(LogType.MfpDeleteNode);
-      }
-    }
   },
 
   onEdgesChange: (changes: EdgeChange[]) => {
+    // for (const change of changes) {
+    //   let edge;
+    //
+    //   if (change.type === "remove") {
+    //     edge = getEdgeById(change.id);
+    //   } else if (change.type === "add") {
+    //     edge = change.item;
+    //   }
+    //
+    //   if (!edge) continue;
+    //   logEdge(LogType.MfpBreakNodeConnection, edge);
+    // }
+    console.log("add edge")
+    for (const change of changes) {
+
+      if (change.type === "add") {
+        if (!change.item) continue;
+        logEdge(LogType.MfpConnectNodes, change.item);
+      }
+    }
     set({
       edges: applyEdgeChanges(changes, get().edges),
       workDone: true,
     });
-    for (const change of changes) {
-      if (change.type === "remove") {
-        sendLog(LogType.MfpBreakNodeConnection);
-      }
-    }
+
+
   },
 
   updateEdgeSpeeds() {
@@ -158,7 +182,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
     const nodes = get().nodes;
     const sourceNode = nodes.find((node) => node.id === connection.source);
     const targetNode = nodes.find((node) => node.id === connection.target);
-    console.log("edge connection attempted")
     if (!targetNode || !sourceNode) {
       console.log("connection aborted")
       return;
@@ -172,12 +195,6 @@ export const useNodeStore = create<RFState>((set, get) => ({
       return;
     }
 
-    if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
-      console.log("connection aborted")
-      return;
-    }
-
-    sendLog(LogType.MfpConnectNodes);
     console.log("item:", sourceNode?.data)
 
     let edgeItem: MCItem;
@@ -208,6 +225,11 @@ export const useNodeStore = create<RFState>((set, get) => ({
         get().edges
       ),
     });
+
+    if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
+      console.log("connection aborted")
+      return;
+    }
   },
 
   addNode: (node: Node<MCNode>) => {

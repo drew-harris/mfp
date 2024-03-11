@@ -24,7 +24,7 @@ import {
 } from "../shadcn/ui/dialog";
 import { BaseNode } from "./BaseNode";
 import { SideHandle } from "./nodeDetails/SideHandle";
-import { sendLog } from "../../api/logs";
+import { logNode, sendLog } from "../../api/logs";
 import { LogType } from "../../__generated__/graphql";
 
 interface BuilderNodeProps {
@@ -125,7 +125,6 @@ const SubmitCustomNode = ({
   const [saveMutation, { loading }] = useMutation(CREATE_CUSTOM_NODE, {
     onCompleted(data) {
       sendNotification("Created new node!", "success");
-      sendLog(LogType.MfpCreateCustomNode);
       const oldBuilder = result.graph.nodes.find(
         (n) => n.id === builderNode.id
       );
@@ -151,6 +150,8 @@ const SubmitCustomNode = ({
       };
 
       addNode(node);
+
+      logNode(LogType.MfpCreateCustomNode, node);
 
       // Invalidate query for picker
       client.refetchQueries({ include: "active" });

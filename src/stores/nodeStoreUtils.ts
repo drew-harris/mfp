@@ -1,5 +1,7 @@
 import { Connection, Node } from "reactflow";
 import { MCNode, MCNodeType } from "../types/MCNodes";
+import { logConnection, logEdge } from "../api/logs";
+import { LogType } from "../__generated__/graphql";
 
 export function animationDurationFromPerHour(perHour: number): number {
   if (perHour === 0) return 1_000_000;
@@ -23,6 +25,7 @@ export function checkIfNodesConnect(
   }
 
   if (target.data.dataType === MCNodeType.builder) {
+    logConnection(LogType.MfpConnectNodes, connection)
     console.log("Node connection valid. Connection should be accepted.");
     return true;
   }
@@ -31,6 +34,7 @@ export function checkIfNodesConnect(
   if (source.data.dataType === MCNodeType.custom) {
     if (target.data.dataType === MCNodeType.crafter || target.data.dataType === MCNodeType.splitter) {
       console.log("Node connection valid. Connection should be accepted.");
+      logConnection(LogType.MfpConnectNodes, connection)
       return true;
     } else {
       console.log("Node connection invalid. Rejecting connection.");
@@ -68,5 +72,6 @@ export function checkIfNodesConnect(
   }
 
   console.log("Node connection valid. Connection should be accepted.");
+  logConnection(LogType.MfpConnectNodes, connection)
   return true;
 }

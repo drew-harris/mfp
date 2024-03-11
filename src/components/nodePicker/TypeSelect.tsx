@@ -11,7 +11,7 @@ export const PickerSelect = (props: TypeSelectProps) => {
     <select
       value={props.selected}
       onChange={(v) => {
-        sendLog(LogType.MfpChangeFilter)
+        sendLog(LogType.MfpChangeFilter, { filter: v.target.value })
         return props.setSelected(v.target.value as SelectOption);
       }}
       className="inset bg-mc-300 p-2 text-white"

@@ -1,3562 +1,3562 @@
 [
   {
-    "itemId": "minecraft:netherbrick",
+    "itemId": "netherbrick",
     "imageUrl": "nether_brick.png",
     "title": "Nether Brick"
   },
   {
     "imageUrl": "nether_bricks.png",
-    "itemId": "minecraft:nether_bricks",
+    "itemId": "nether_bricks",
     "title": "Nether Bricks"
   },
   {
     "imageUrl": "red_nether_brick_wall.png",
-    "itemId": "minecraft:red_nether_brick_wall",
+    "itemId": "red_nether_brick_wall",
     "title": "Red Nether Brick Wall"
   },
   {
     "imageUrl": "nether_brick_slab.png",
-    "itemId": "minecraft:nether_brick_slab",
+    "itemId": "nether_brick_slab",
     "title": "Nether Brick Slab"
   },
   {
     "imageUrl": "chiseled_nether_bricks.png",
-    "itemId": "minecraft:chiseled_nether_bricks",
+    "itemId": "chiseled_nether_bricks",
     "title": "Chiseled Nether Bricks"
   },
   {
     "imageUrl": "quartz.png",
-    "itemId": "minecraft:quartz",
+    "itemId": "quartz",
     "title": "Quartz"
   },
   {
     "imageUrl": "quartz_block.png",
-    "itemId": "minecraft:quartz_block",
+    "itemId": "quartz_block",
     "title": "Quartz Block"
   },
   {
     "imageUrl": "quartz_slab.png",
-    "itemId": "minecraft:quartz_slab",
+    "itemId": "quartz_slab",
     "title": "Quartz Slab"
   },
   {
     "imageUrl": "chiseled_quartz_block.png",
-    "itemId": "minecraft:chiseled_quartz_block",
+    "itemId": "chiseled_quartz_block",
     "title": "Chiseled Quartz Block"
   },
   {
     "imageUrl": "quartz_pillar.png",
-    "itemId": "minecraft:quartz_pillar",
+    "itemId": "quartz_pillar",
     "title": "Quartz Pillar"
   },
   {
     "imageUrl": "quartz_bricks.png",
-    "itemId": "minecraft:quartz_bricks",
+    "itemId": "quartz_bricks",
     "title": "Quartz Bricks"
   },
   {
     "imageUrl": "wheat.png",
-    "itemId": "minecraft:wheat",
+    "itemId": "wheat",
     "title": "Wheat"
   },
   {
     "imageUrl": "hay_block.png",
-    "itemId": "minecraft:hay_block",
+    "itemId": "hay_block",
     "title": "Hay Block"
   },
   {
     "imageUrl": "white_carpet.png",
-    "itemId": "minecraft:white_carpet",
+    "itemId": "white_carpet",
     "title": "White Carpet"
   },
   {
     "imageUrl": "pink_dye.png",
-    "itemId": "minecraft:pink_dye",
+    "itemId": "pink_dye",
     "title": "Pink Dye"
   },
   {
     "imageUrl": "pink_carpet.png",
-    "itemId": "minecraft:pink_carpet",
+    "itemId": "pink_carpet",
     "title": "Pink Carpet"
   },
   {
     "imageUrl": "magenta_dye.png",
-    "itemId": "minecraft:magenta_dye",
+    "itemId": "magenta_dye",
     "title": "Magenta Dye"
   },
   {
     "imageUrl": "magenta_carpet.png",
-    "itemId": "minecraft:magenta_carpet",
+    "itemId": "magenta_carpet",
     "title": "Magenta Carpet"
   },
   {
     "imageUrl": "light_blue_dye.png",
-    "itemId": "minecraft:light_blue_dye",
+    "itemId": "light_blue_dye",
     "title": "Light Blue Dye"
   },
   {
     "imageUrl": "light_blue_carpet.png",
-    "itemId": "minecraft:light_blue_carpet",
+    "itemId": "light_blue_carpet",
     "title": "Light Blue Carpet"
   },
   {
     "imageUrl": "yellow_dye.png",
-    "itemId": "minecraft:yellow_dye",
+    "itemId": "yellow_dye",
     "title": "Yellow Dye"
   },
   {
     "imageUrl": "yellow_carpet.png",
-    "itemId": "minecraft:yellow_carpet",
+    "itemId": "yellow_carpet",
     "title": "Yellow Carpet"
   },
   {
     "imageUrl": "lime_dye.png",
-    "itemId": "minecraft:lime_dye",
+    "itemId": "lime_dye",
     "title": "Lime Dye"
   },
   {
     "imageUrl": "lime_carpet.png",
-    "itemId": "minecraft:lime_carpet",
+    "itemId": "lime_carpet",
     "title": "Lime Carpet"
   },
   {
     "imageUrl": "gray_dye.png",
-    "itemId": "minecraft:gray_dye",
+    "itemId": "gray_dye",
     "title": "Gray Dye"
   },
   {
     "imageUrl": "gray_carpet.png",
-    "itemId": "minecraft:gray_carpet",
+    "itemId": "gray_carpet",
     "title": "Gray Carpet"
   },
   {
     "imageUrl": "light_gray_dye.png",
-    "itemId": "minecraft:light_gray_dye",
+    "itemId": "light_gray_dye",
     "title": "Light Gray Dye"
   },
   {
     "imageUrl": "light_gray_carpet.png",
-    "itemId": "minecraft:light_gray_carpet",
+    "itemId": "light_gray_carpet",
     "title": "Light Gray Carpet"
   },
   {
     "imageUrl": "cyan_dye.png",
-    "itemId": "minecraft:cyan_dye",
+    "itemId": "cyan_dye",
     "title": "Cyan Dye"
   },
   {
     "imageUrl": "cyan_carpet.png",
-    "itemId": "minecraft:cyan_carpet",
+    "itemId": "cyan_carpet",
     "title": "Cyan Carpet"
   },
   {
     "imageUrl": "purple_dye.png",
-    "itemId": "minecraft:purple_dye",
+    "itemId": "purple_dye",
     "title": "Purple Dye"
   },
   {
     "imageUrl": "purple_carpet.png",
-    "itemId": "minecraft:purple_carpet",
+    "itemId": "purple_carpet",
     "title": "Purple Carpet"
   },
   {
     "imageUrl": "blue_dye.png",
-    "itemId": "minecraft:blue_dye",
+    "itemId": "blue_dye",
     "title": "Blue Dye"
   },
   {
     "imageUrl": "blue_carpet.png",
-    "itemId": "minecraft:blue_carpet",
+    "itemId": "blue_carpet",
     "title": "Blue Carpet"
   },
   {
     "imageUrl": "brown_dye.png",
-    "itemId": "minecraft:brown_dye",
+    "itemId": "brown_dye",
     "title": "Brown Dye"
   },
   {
     "imageUrl": "brown_carpet.png",
-    "itemId": "minecraft:brown_carpet",
+    "itemId": "brown_carpet",
     "title": "Brown Carpet"
   },
   {
     "imageUrl": "green_dye.png",
-    "itemId": "minecraft:green_dye",
+    "itemId": "green_dye",
     "title": "Green Dye"
   },
   {
     "imageUrl": "green_carpet.png",
-    "itemId": "minecraft:green_carpet",
+    "itemId": "green_carpet",
     "title": "Green Carpet"
   },
   {
     "imageUrl": "red_dye.png",
-    "itemId": "minecraft:red_dye",
+    "itemId": "red_dye",
     "title": "Red Dye"
   },
   {
     "imageUrl": "red_carpet.png",
-    "itemId": "minecraft:red_carpet",
+    "itemId": "red_carpet",
     "title": "Red Carpet"
   },
   {
     "imageUrl": "black_dye.png",
-    "itemId": "minecraft:black_dye",
+    "itemId": "black_dye",
     "title": "Black Dye"
   },
   {
     "imageUrl": "black_carpet.png",
-    "itemId": "minecraft:black_carpet",
+    "itemId": "black_carpet",
     "title": "Black Carpet"
   },
   {
     "imageUrl": "orange_dye.png",
-    "itemId": "minecraft:orange_dye",
+    "itemId": "orange_dye",
     "title": "Orange Dye"
   },
   {
     "imageUrl": "orange_carpet.png",
-    "itemId": "minecraft:orange_carpet",
+    "itemId": "orange_carpet",
     "title": "Orange Carpet"
   },
   {
     "imageUrl": "terracotta.png",
-    "itemId": "minecraft:terracotta",
+    "itemId": "terracotta",
     "title": "Terracotta"
   },
   {
     "imageUrl": "white_dye.png",
-    "itemId": "minecraft:white_dye",
+    "itemId": "white_dye",
     "title": "White Dye"
   },
   {
     "imageUrl": "white_terracotta.png",
-    "itemId": "minecraft:white_terracotta",
+    "itemId": "white_terracotta",
     "title": "White Terracotta"
   },
   {
     "imageUrl": "magenta_terracotta.png",
-    "itemId": "minecraft:magenta_terracotta",
+    "itemId": "magenta_terracotta",
     "title": "Magenta Terracotta"
   },
   {
     "imageUrl": "light_blue_terracotta.png",
-    "itemId": "minecraft:light_blue_terracotta",
+    "itemId": "light_blue_terracotta",
     "title": "Light Blue Terracotta"
   },
   {
     "imageUrl": "yellow_terracotta.png",
-    "itemId": "minecraft:yellow_terracotta",
+    "itemId": "yellow_terracotta",
     "title": "Yellow Terracotta"
   },
   {
     "imageUrl": "lime_terracotta.png",
-    "itemId": "minecraft:lime_terracotta",
+    "itemId": "lime_terracotta",
     "title": "Lime Terracotta"
   },
   {
     "imageUrl": "pink_terracotta.png",
-    "itemId": "minecraft:pink_terracotta",
+    "itemId": "pink_terracotta",
     "title": "Pink Terracotta"
   },
   {
     "imageUrl": "gray_terracotta.png",
-    "itemId": "minecraft:gray_terracotta",
+    "itemId": "gray_terracotta",
     "title": "Gray Terracotta"
   },
   {
     "imageUrl": "light_gray_terracotta.png",
-    "itemId": "minecraft:light_gray_terracotta",
+    "itemId": "light_gray_terracotta",
     "title": "Light Gray Terracotta"
   },
   {
     "imageUrl": "cyan_terracotta.png",
-    "itemId": "minecraft:cyan_terracotta",
+    "itemId": "cyan_terracotta",
     "title": "Cyan Terracotta"
   },
   {
     "imageUrl": "purple_terracotta.png",
-    "itemId": "minecraft:purple_terracotta",
+    "itemId": "purple_terracotta",
     "title": "Purple Terracotta"
   },
   {
     "imageUrl": "blue_terracotta.png",
-    "itemId": "minecraft:blue_terracotta",
+    "itemId": "blue_terracotta",
     "title": "Blue Terracotta"
   },
   {
     "imageUrl": "brown_terracotta.png",
-    "itemId": "minecraft:brown_terracotta",
+    "itemId": "brown_terracotta",
     "title": "Brown Terracotta"
   },
   {
     "imageUrl": "green_terracotta.png",
-    "itemId": "minecraft:green_terracotta",
+    "itemId": "green_terracotta",
     "title": "Green Terracotta"
   },
   {
     "imageUrl": "red_terracotta.png",
-    "itemId": "minecraft:red_terracotta",
+    "itemId": "red_terracotta",
     "title": "Red Terracotta"
   },
   {
     "imageUrl": "black_terracotta.png",
-    "itemId": "minecraft:black_terracotta",
+    "itemId": "black_terracotta",
     "title": "Black Terracotta"
   },
   {
     "imageUrl": "orange_terracotta.png",
-    "itemId": "minecraft:orange_terracotta",
+    "itemId": "orange_terracotta",
     "title": "Orange Terracotta"
   },
   {
     "imageUrl": "ice.png",
-    "itemId": "minecraft:ice",
+    "itemId": "ice",
     "title": "Ice"
   },
   {
     "imageUrl": "packed_ice.png",
-    "itemId": "minecraft:packed_ice",
+    "itemId": "packed_ice",
     "title": "Packed Ice"
   },
   {
     "imageUrl": "diorite.png",
-    "itemId": "minecraft:diorite",
+    "itemId": "diorite",
     "title": "Diorite"
   },
   {
     "imageUrl": "granite.png",
-    "itemId": "minecraft:granite",
+    "itemId": "granite",
     "title": "Granite"
   },
   {
     "imageUrl": "polished_granite.png",
-    "itemId": "minecraft:polished_granite",
+    "itemId": "polished_granite",
     "title": "Polished Granite"
   },
   {
     "imageUrl": "prismarine_crystals.png",
-    "itemId": "minecraft:prismarine_crystals",
+    "itemId": "prismarine_crystals",
     "title": "Prismarine Crystals"
   },
   {
     "imageUrl": "prismarine_shard.png",
-    "itemId": "minecraft:prismarine_shard",
+    "itemId": "prismarine_shard",
     "title": "Prismarine Shard"
   },
   {
     "imageUrl": "sea_lantern.png",
-    "itemId": "minecraft:sea_lantern",
+    "itemId": "sea_lantern",
     "title": "Sea Lantern"
   },
   {
     "imageUrl": "dirt.png",
-    "itemId": "minecraft:dirt",
+    "itemId": "dirt",
     "title": "Dirt"
   },
   {
     "imageUrl": "gravel.png",
-    "itemId": "minecraft:gravel",
+    "itemId": "gravel",
     "title": "Gravel"
   },
   {
     "imageUrl": "coarse_dirt.png",
-    "itemId": "minecraft:coarse_dirt",
+    "itemId": "coarse_dirt",
     "title": "Coarse Dirt"
   },
   {
     "imageUrl": "cobblestone.png",
-    "itemId": "minecraft:cobblestone",
+    "itemId": "cobblestone",
     "title": "Cobblestone"
   },
   {
     "imageUrl": "andesite.png",
-    "itemId": "minecraft:andesite",
+    "itemId": "andesite",
     "title": "Andesite"
   },
   {
     "imageUrl": "polished_andesite.png",
-    "itemId": "minecraft:polished_andesite",
+    "itemId": "polished_andesite",
     "title": "Polished Andesite"
   },
   {
     "imageUrl": "prismarine.png",
-    "itemId": "minecraft:prismarine",
+    "itemId": "prismarine",
     "title": "Prismarine"
   },
   {
     "imageUrl": "prismarine_bricks.png",
-    "itemId": "minecraft:prismarine_bricks",
+    "itemId": "prismarine_bricks",
     "title": "Prismarine Bricks"
   },
   {
     "imageUrl": "dark_prismarine.png",
-    "itemId": "minecraft:dark_prismarine",
+    "itemId": "dark_prismarine",
     "title": "Dark Prismarine"
   },
   {
     "imageUrl": "magma_cream.png",
-    "itemId": "minecraft:magma_cream",
+    "itemId": "magma_cream",
     "title": "Magma Cream"
   },
   {
     "imageUrl": "magma_block.png",
-    "itemId": "minecraft:magma_block",
+    "itemId": "magma_block",
     "title": "Magma Block"
   },
   {
     "imageUrl": "end_stone.png",
-    "itemId": "minecraft:end_stone",
+    "itemId": "end_stone",
     "title": "End Stone"
   },
   {
     "imageUrl": "end_stone_bricks.png",
-    "itemId": "minecraft:end_stone_bricks",
+    "itemId": "end_stone_bricks",
     "title": "End Stone Bricks"
   },
   {
     "imageUrl": "bone_meal.png",
-    "itemId": "minecraft:bone_meal",
+    "itemId": "bone_meal",
     "title": "Bone Meal"
   },
   {
     "imageUrl": "bone_block.png",
-    "itemId": "minecraft:bone_block",
+    "itemId": "bone_block",
     "title": "Bone Block"
   },
   {
     "imageUrl": "nether_wart.png",
-    "itemId": "minecraft:nether_wart",
+    "itemId": "nether_wart",
     "title": "Nether Wart"
   },
   {
     "imageUrl": "nether_wart_block.png",
-    "itemId": "minecraft:nether_wart_block",
+    "itemId": "nether_wart_block",
     "title": "Nether Wart Block"
   },
   {
     "imageUrl": "popped_chorus_fruit.png",
-    "itemId": "minecraft:popped_chorus_fruit",
+    "itemId": "popped_chorus_fruit",
     "title": "Popped Chorus Fruit"
   },
   {
     "imageUrl": "purpur_block.png",
-    "itemId": "minecraft:purpur_block",
+    "itemId": "purpur_block",
     "title": "Purpur Block"
   },
   {
     "imageUrl": "purpur_slab.png",
-    "itemId": "minecraft:purpur_slab",
+    "itemId": "purpur_slab",
     "title": "Purpur Slab"
   },
   {
     "imageUrl": "purpur_pillar.png",
-    "itemId": "minecraft:purpur_pillar",
+    "itemId": "purpur_pillar",
     "title": "Purpur Pillar"
   },
   {
     "imageUrl": "sand.png",
-    "itemId": "minecraft:sand",
+    "itemId": "sand",
     "title": "Sand"
   },
   {
     "imageUrl": "orange_concrete_powder.png",
-    "itemId": "minecraft:orange_concrete_powder",
+    "itemId": "orange_concrete_powder",
     "title": "Orange Concrete Powder"
   },
   {
     "imageUrl": "white_concrete_powder.png",
-    "itemId": "minecraft:white_concrete_powder",
+    "itemId": "white_concrete_powder",
     "title": "White Concrete Powder"
   },
   {
     "imageUrl": "magenta_concrete_powder.png",
-    "itemId": "minecraft:magenta_concrete_powder",
+    "itemId": "magenta_concrete_powder",
     "title": "Magenta Concrete Powder"
   },
   {
     "imageUrl": "light_blue_concrete_powder.png",
-    "itemId": "minecraft:light_blue_concrete_powder",
+    "itemId": "light_blue_concrete_powder",
     "title": "Light Blue Concrete Powder"
   },
   {
     "imageUrl": "yellow_concrete_powder.png",
-    "itemId": "minecraft:yellow_concrete_powder",
+    "itemId": "yellow_concrete_powder",
     "title": "Yellow Concrete Powder"
   },
   {
     "imageUrl": "lime_concrete_powder.png",
-    "itemId": "minecraft:lime_concrete_powder",
+    "itemId": "lime_concrete_powder",
     "title": "Lime Concrete Powder"
   },
   {
     "imageUrl": "pink_concrete_powder.png",
-    "itemId": "minecraft:pink_concrete_powder",
+    "itemId": "pink_concrete_powder",
     "title": "Pink Concrete Powder"
   },
   {
     "imageUrl": "gray_concrete_powder.png",
-    "itemId": "minecraft:gray_concrete_powder",
+    "itemId": "gray_concrete_powder",
     "title": "Gray Concrete Powder"
   },
   {
     "imageUrl": "light_gray_concrete_powder.png",
-    "itemId": "minecraft:light_gray_concrete_powder",
+    "itemId": "light_gray_concrete_powder",
     "title": "Light Gray Concrete Powder"
   },
   {
     "imageUrl": "cyan_concrete_powder.png",
-    "itemId": "minecraft:cyan_concrete_powder",
+    "itemId": "cyan_concrete_powder",
     "title": "Cyan Concrete Powder"
   },
   {
     "imageUrl": "purple_concrete_powder.png",
-    "itemId": "minecraft:purple_concrete_powder",
+    "itemId": "purple_concrete_powder",
     "title": "Purple Concrete Powder"
   },
   {
     "imageUrl": "blue_concrete_powder.png",
-    "itemId": "minecraft:blue_concrete_powder",
+    "itemId": "blue_concrete_powder",
     "title": "Blue Concrete Powder"
   },
   {
     "imageUrl": "brown_concrete_powder.png",
-    "itemId": "minecraft:brown_concrete_powder",
+    "itemId": "brown_concrete_powder",
     "title": "Brown Concrete Powder"
   },
   {
     "imageUrl": "green_concrete_powder.png",
-    "itemId": "minecraft:green_concrete_powder",
+    "itemId": "green_concrete_powder",
     "title": "Green Concrete Powder"
   },
   {
     "imageUrl": "red_concrete_powder.png",
-    "itemId": "minecraft:red_concrete_powder",
+    "itemId": "red_concrete_powder",
     "title": "Red Concrete Powder"
   },
   {
     "imageUrl": "black_concrete_powder.png",
-    "itemId": "minecraft:black_concrete_powder",
+    "itemId": "black_concrete_powder",
     "title": "Black Concrete Powder"
   },
   {
     "imageUrl": "lapis_lazuli.png",
-    "itemId": "minecraft:lapis_lazuli",
+    "itemId": "lapis_lazuli",
     "title": "Lapis Lazuli"
   },
   {
     "imageUrl": "cocoa_beans.png",
-    "itemId": "minecraft:cocoa_beans",
+    "itemId": "cocoa_beans",
     "title": "Cocoa Beans"
   },
   {
     "imageUrl": "ink_sac.png",
-    "itemId": "minecraft:ink_sac",
+    "itemId": "ink_sac",
     "title": "Ink Sac"
   },
   {
     "imageUrl": "nautilus_shell.png",
-    "itemId": "minecraft:nautilus_shell",
+    "itemId": "nautilus_shell",
     "title": "Nautilus Shell"
   },
   {
     "imageUrl": "heart_of_the_sea.png",
-    "itemId": "minecraft:heart_of_the_sea",
+    "itemId": "heart_of_the_sea",
     "title": "Heart Of The Sea"
   },
   {
     "imageUrl": "conduit.png",
-    "itemId": "minecraft:conduit",
+    "itemId": "conduit",
     "title": "Conduit"
   },
   {
     "imageUrl": "dried_kelp.png",
-    "itemId": "minecraft:dried_kelp",
+    "itemId": "dried_kelp",
     "title": "Dried Kelp"
   },
   {
     "imageUrl": "dried_kelp_block.png",
-    "itemId": "minecraft:dried_kelp_block",
+    "itemId": "dried_kelp_block",
     "title": "Dried Kelp Block"
   },
   {
     "imageUrl": "oak_log.png",
-    "itemId": "minecraft:oak_log",
+    "itemId": "oak_log",
     "title": "Oak Log"
   },
   {
     "imageUrl": "acacia_log.png",
-    "itemId": "minecraft:acacia_log",
+    "itemId": "acacia_log",
     "title": "Acacia Log"
   },
   {
     "imageUrl": "birch_log.png",
-    "itemId": "minecraft:birch_log",
+    "itemId": "birch_log",
     "title": "Birch Log"
   },
   {
     "imageUrl": "dark_oak_log.png",
-    "itemId": "minecraft:dark_oak_log",
+    "itemId": "dark_oak_log",
     "title": "Dark Oak Log"
   },
   {
     "imageUrl": "jungle_log.png",
-    "itemId": "minecraft:jungle_log",
+    "itemId": "jungle_log",
     "title": "Jungle Log"
   },
   {
     "imageUrl": "spruce_log.png",
-    "itemId": "minecraft:spruce_log",
+    "itemId": "spruce_log",
     "title": "Spruce Log"
   },
   {
     "imageUrl": "crimson_stem.png",
-    "itemId": "minecraft:crimson_stem",
+    "itemId": "crimson_stem",
     "title": "Crimson Stem"
   },
   {
     "imageUrl": "crimson_hyphae.png",
-    "itemId": "minecraft:crimson_hyphae",
+    "itemId": "crimson_hyphae",
     "title": "Crimson Hyphae"
   },
   {
     "imageUrl": "warped_stem.png",
-    "itemId": "minecraft:warped_stem",
+    "itemId": "warped_stem",
     "title": "Warped Stem"
   },
   {
     "imageUrl": "warped_hyphae.png",
-    "itemId": "minecraft:warped_hyphae",
+    "itemId": "warped_hyphae",
     "title": "Warped Hyphae"
   },
   {
     "imageUrl": "emerald.png",
-    "itemId": "minecraft:emerald",
+    "itemId": "emerald",
     "title": "Emerald"
   },
   {
     "imageUrl": "emerald_block.png",
-    "itemId": "minecraft:emerald_block",
+    "itemId": "emerald_block",
     "title": "Emerald Block"
   },
   {
     "imageUrl": "coal.png",
-    "itemId": "minecraft:coal",
+    "itemId": "coal",
     "title": "Coal"
   },
   {
     "imageUrl": "coal_block.png",
-    "itemId": "minecraft:coal_block",
+    "itemId": "coal_block",
     "title": "Coal Block"
   },
   {
     "imageUrl": "polished_blackstone.png",
-    "itemId": "minecraft:polished_blackstone",
+    "itemId": "polished_blackstone",
     "title": "Polished Blackstone"
   },
   {
     "imageUrl": "polished_blackstone_bricks.png",
-    "itemId": "minecraft:polished_blackstone_bricks",
+    "itemId": "polished_blackstone_bricks",
     "title": "Polished Blackstone Bricks"
   },
   {
     "imageUrl": "iron_ingot.png",
-    "itemId": "minecraft:iron_ingot",
+    "itemId": "iron_ingot",
     "title": "Iron Ingot"
   },
   {
     "imageUrl": "iron_nugget.png",
-    "itemId": "minecraft:iron_nugget",
+    "itemId": "iron_nugget",
     "title": "Iron Nugget"
   },
   {
     "imageUrl": "chain.png",
-    "itemId": "minecraft:chain",
+    "itemId": "chain",
     "title": "Chain"
   },
   {
     "imageUrl": "netherite_ingot.png",
-    "itemId": "minecraft:netherite_ingot",
+    "itemId": "netherite_ingot",
     "title": "Netherite Ingot"
   },
   {
     "imageUrl": "netherite_block.png",
-    "itemId": "minecraft:netherite_block",
+    "itemId": "netherite_block",
     "title": "Netherite Block"
   },
   {
     "imageUrl": "blackstone.png",
-    "itemId": "minecraft:blackstone",
+    "itemId": "blackstone",
     "title": "Blackstone"
   },
   {
     "imageUrl": "polished_blackstone_slab.png",
-    "itemId": "minecraft:polished_blackstone_slab",
+    "itemId": "polished_blackstone_slab",
     "title": "Polished Blackstone Slab"
   },
   {
     "imageUrl": "chiseled_polished_blackstone.png",
-    "itemId": "minecraft:chiseled_polished_blackstone",
+    "itemId": "chiseled_polished_blackstone",
     "title": "Chiseled Polished Blackstone"
   },
   {
     "imageUrl": "gold_ingot.png",
-    "itemId": "minecraft:gold_ingot",
+    "itemId": "gold_ingot",
     "title": "Gold Ingot"
   },
   {
     "imageUrl": "gold_block.png",
-    "itemId": "minecraft:gold_block",
+    "itemId": "gold_block",
     "title": "Gold Block"
   },
   {
     "imageUrl": "glass.png",
-    "itemId": "minecraft:glass",
+    "itemId": "glass",
     "title": "Glass"
   },
   {
     "imageUrl": "white_stained_glass.png",
-    "itemId": "minecraft:white_stained_glass",
+    "itemId": "white_stained_glass",
     "title": "White Stained Glass"
   },
   {
     "imageUrl": "magenta_stained_glass.png",
-    "itemId": "minecraft:magenta_stained_glass",
+    "itemId": "magenta_stained_glass",
     "title": "Magenta Stained Glass"
   },
   {
     "imageUrl": "light_blue_stained_glass.png",
-    "itemId": "minecraft:light_blue_stained_glass",
+    "itemId": "light_blue_stained_glass",
     "title": "Light Blue Stained Glass"
   },
   {
     "imageUrl": "yellow_stained_glass.png",
-    "itemId": "minecraft:yellow_stained_glass",
+    "itemId": "yellow_stained_glass",
     "title": "Yellow Stained Glass"
   },
   {
     "imageUrl": "lime_stained_glass.png",
-    "itemId": "minecraft:lime_stained_glass",
+    "itemId": "lime_stained_glass",
     "title": "Lime Stained Glass"
   },
   {
     "imageUrl": "pink_stained_glass.png",
-    "itemId": "minecraft:pink_stained_glass",
+    "itemId": "pink_stained_glass",
     "title": "Pink Stained Glass"
   },
   {
     "imageUrl": "gray_stained_glass.png",
-    "itemId": "minecraft:gray_stained_glass",
+    "itemId": "gray_stained_glass",
     "title": "Gray Stained Glass"
   },
   {
     "imageUrl": "cyan_stained_glass.png",
-    "itemId": "minecraft:cyan_stained_glass",
+    "itemId": "cyan_stained_glass",
     "title": "Cyan Stained Glass"
   },
   {
     "imageUrl": "purple_stained_glass.png",
-    "itemId": "minecraft:purple_stained_glass",
+    "itemId": "purple_stained_glass",
     "title": "Purple Stained Glass"
   },
   {
     "imageUrl": "blue_stained_glass.png",
-    "itemId": "minecraft:blue_stained_glass",
+    "itemId": "blue_stained_glass",
     "title": "Blue Stained Glass"
   },
   {
     "imageUrl": "brown_stained_glass.png",
-    "itemId": "minecraft:brown_stained_glass",
+    "itemId": "brown_stained_glass",
     "title": "Brown Stained Glass"
   },
   {
     "imageUrl": "green_stained_glass.png",
-    "itemId": "minecraft:green_stained_glass",
+    "itemId": "green_stained_glass",
     "title": "Green Stained Glass"
   },
   {
     "imageUrl": "red_stained_glass.png",
-    "itemId": "minecraft:red_stained_glass",
+    "itemId": "red_stained_glass",
     "title": "Red Stained Glass"
   },
   {
     "imageUrl": "black_stained_glass.png",
-    "itemId": "minecraft:black_stained_glass",
+    "itemId": "black_stained_glass",
     "title": "Black Stained Glass"
   },
   {
     "imageUrl": "orange_stained_glass.png",
-    "itemId": "minecraft:orange_stained_glass",
+    "itemId": "orange_stained_glass",
     "title": "Orange Stained Glass"
   },
   {
     "imageUrl": "jungle_stairs.png",
-    "itemId": "minecraft:jungle_stairs",
+    "itemId": "jungle_stairs",
     "title": "Jungle Stairs"
   },
   {
     "imageUrl": "acacia_stairs.png",
-    "itemId": "minecraft:acacia_stairs",
+    "itemId": "acacia_stairs",
     "title": "Acacia Stairs"
   },
   {
     "imageUrl": "birch_stairs.png",
-    "itemId": "minecraft:birch_stairs",
+    "itemId": "birch_stairs",
     "title": "Birch Stairs"
   },
   {
     "imageUrl": "dark_oak_stairs.png",
-    "itemId": "minecraft:dark_oak_stairs",
+    "itemId": "dark_oak_stairs",
     "title": "Dark Oak Stairs"
   },
   {
     "imageUrl": "oak_stairs.png",
-    "itemId": "minecraft:oak_stairs",
+    "itemId": "oak_stairs",
     "title": "Oak Stairs"
   },
   {
     "imageUrl": "spruce_stairs.png",
-    "itemId": "minecraft:spruce_stairs",
+    "itemId": "spruce_stairs",
     "title": "Spruce Stairs"
   },
   {
     "imageUrl": "crimson_stairs.png",
-    "itemId": "minecraft:crimson_stairs",
+    "itemId": "crimson_stairs",
     "title": "Crimson Stairs"
   },
   {
     "imageUrl": "warped_stairs.png",
-    "itemId": "minecraft:warped_stairs",
+    "itemId": "warped_stairs",
     "title": "Warped Stairs"
   },
   {
     "imageUrl": "stone.png",
-    "itemId": "minecraft:stone",
+    "itemId": "stone",
     "title": "Stone"
   },
   {
     "imageUrl": "stone_stairs.png",
-    "itemId": "minecraft:stone_stairs",
+    "itemId": "stone_stairs",
     "title": "Stone Stairs"
   },
   {
     "imageUrl": "mossy_cobblestone.png",
-    "itemId": "minecraft:mossy_cobblestone",
+    "itemId": "mossy_cobblestone",
     "title": "Mossy Cobblestone"
   },
   {
     "imageUrl": "mossy_cobblestone_stairs.png",
-    "itemId": "minecraft:mossy_cobblestone_stairs",
+    "itemId": "mossy_cobblestone_stairs",
     "title": "Mossy Cobblestone Stairs"
   },
   {
-    "itemId": "minecraft:stonebrick",
+    "itemId": "stonebrick",
     "imageUrl": "stone_bricks.png",
     "title": "Stone Bricks"
   },
   {
     "imageUrl": "stone_brick_stairs.png",
-    "itemId": "minecraft:stone_brick_stairs",
+    "itemId": "stone_brick_stairs",
     "title": "Stone Brick Stairs"
   },
   {
     "imageUrl": "mossy_stone_bricks.png",
-    "itemId": "minecraft:mossy_stone_bricks",
+    "itemId": "mossy_stone_bricks",
     "title": "Mossy Stone Bricks"
   },
   {
     "imageUrl": "mossy_stone_brick_stairs.png",
-    "itemId": "minecraft:mossy_stone_brick_stairs",
+    "itemId": "mossy_stone_brick_stairs",
     "title": "Mossy Stone Brick Stairs"
   },
   {
     "imageUrl": "andesite_stairs.png",
-    "itemId": "minecraft:andesite_stairs",
+    "itemId": "andesite_stairs",
     "title": "Andesite Stairs"
   },
   {
     "imageUrl": "polished_andesite_stairs.png",
-    "itemId": "minecraft:polished_andesite_stairs",
+    "itemId": "polished_andesite_stairs",
     "title": "Polished Andesite Stairs"
   },
   {
     "imageUrl": "diorite_stairs.png",
-    "itemId": "minecraft:diorite_stairs",
+    "itemId": "diorite_stairs",
     "title": "Diorite Stairs"
   },
   {
     "imageUrl": "polished_diorite.png",
-    "itemId": "minecraft:polished_diorite",
+    "itemId": "polished_diorite",
     "title": "Polished Diorite"
   },
   {
     "imageUrl": "polished_diorite_stairs.png",
-    "itemId": "minecraft:polished_diorite_stairs",
+    "itemId": "polished_diorite_stairs",
     "title": "Polished Diorite Stairs"
   },
   {
     "imageUrl": "granite_stairs.png",
-    "itemId": "minecraft:granite_stairs",
+    "itemId": "granite_stairs",
     "title": "Granite Stairs"
   },
   {
     "imageUrl": "polished_granite_stairs.png",
-    "itemId": "minecraft:polished_granite_stairs",
+    "itemId": "polished_granite_stairs",
     "title": "Polished Granite Stairs"
   },
   {
     "imageUrl": "sandstone.png",
-    "itemId": "minecraft:sandstone",
+    "itemId": "sandstone",
     "title": "Sandstone"
   },
   {
     "imageUrl": "sandstone_stairs.png",
-    "itemId": "minecraft:sandstone_stairs",
+    "itemId": "sandstone_stairs",
     "title": "Sandstone Stairs"
   },
   {
     "imageUrl": "red_sandstone.png",
-    "itemId": "minecraft:red_sandstone",
+    "itemId": "red_sandstone",
     "title": "Red Sandstone"
   },
   {
     "imageUrl": "red_sandstone_stairs.png",
-    "itemId": "minecraft:red_sandstone_stairs",
+    "itemId": "red_sandstone_stairs",
     "title": "Red Sandstone Stairs"
   },
   {
     "imageUrl": "smooth_sandstone.png",
-    "itemId": "minecraft:smooth_sandstone",
+    "itemId": "smooth_sandstone",
     "title": "Smooth Sandstone"
   },
   {
     "imageUrl": "smooth_sandstone_stairs.png",
-    "itemId": "minecraft:smooth_sandstone_stairs",
+    "itemId": "smooth_sandstone_stairs",
     "title": "Smooth Sandstone Stairs"
   },
   {
     "imageUrl": "smooth_red_sandstone.png",
-    "itemId": "minecraft:smooth_red_sandstone",
+    "itemId": "smooth_red_sandstone",
     "title": "Smooth Red Sandstone"
   },
   {
     "imageUrl": "smooth_red_sandstone_stairs.png",
-    "itemId": "minecraft:smooth_red_sandstone_stairs",
+    "itemId": "smooth_red_sandstone_stairs",
     "title": "Smooth Red Sandstone Stairs"
   },
   {
-    "itemId": "minecraft:brick_block",
+    "itemId": "brick_block",
     "imageUrl": "brick.png",
     "title": "Brick"
   },
   {
     "imageUrl": "brick_stairs.png",
-    "itemId": "minecraft:brick_stairs",
+    "itemId": "brick_stairs",
     "title": "Brick Stairs"
   },
   {
     "imageUrl": "prismarine_stairs.png",
-    "itemId": "minecraft:prismarine_stairs",
+    "itemId": "prismarine_stairs",
     "title": "Prismarine Stairs"
   },
   {
-    "itemId": "minecraft:prismarine_bricks_stairs",
+    "itemId": "prismarine_bricks_stairs",
     "imageUrl": "prismarine_brick_stairs.png",
     "title": "Prismarine Brick Stairs"
   },
   {
     "imageUrl": "dark_prismarine_stairs.png",
-    "itemId": "minecraft:dark_prismarine_stairs",
+    "itemId": "dark_prismarine_stairs",
     "title": "Dark Prismarine Stairs"
   },
   {
     "imageUrl": "nether_brick_stairs.png",
-    "itemId": "minecraft:nether_brick_stairs",
+    "itemId": "nether_brick_stairs",
     "title": "Nether Brick Stairs"
   },
   {
-    "itemId": "minecraft:red_nether_brick",
+    "itemId": "red_nether_brick",
     "imageUrl": "red_nether_bricks.png",
     "title": "Red Nether Bricks"
   },
   {
     "imageUrl": "red_nether_brick_stairs.png",
-    "itemId": "minecraft:red_nether_brick_stairs",
+    "itemId": "red_nether_brick_stairs",
     "title": "Red Nether Brick Stairs"
   },
   {
     "imageUrl": "quartz_stairs.png",
-    "itemId": "minecraft:quartz_stairs",
+    "itemId": "quartz_stairs",
     "title": "Quartz Stairs"
   },
   {
-    "itemId": "minecraft:smooth_quartz_block",
+    "itemId": "smooth_quartz_block",
     "imageUrl": "smooth_quartz.png",
     "title": "Smooth Quartz"
   },
   {
     "imageUrl": "smooth_quartz_stairs.png",
-    "itemId": "minecraft:smooth_quartz_stairs",
+    "itemId": "smooth_quartz_stairs",
     "title": "Smooth Quartz Stairs"
   },
   {
     "imageUrl": "purpur_stairs.png",
-    "itemId": "minecraft:purpur_stairs",
+    "itemId": "purpur_stairs",
     "title": "Purpur Stairs"
   },
   {
-    "itemId": "minecraft:end_brick_stairs",
+    "itemId": "end_brick_stairs",
     "imageUrl": "end_stone_brick_stairs.png",
     "title": "End Stone Brick Stairs"
   },
   {
     "imageUrl": "blackstone_stairs.png",
-    "itemId": "minecraft:blackstone_stairs",
+    "itemId": "blackstone_stairs",
     "title": "Blackstone Stairs"
   },
   {
     "imageUrl": "polished_blackstone_stairs.png",
-    "itemId": "minecraft:polished_blackstone_stairs",
+    "itemId": "polished_blackstone_stairs",
     "title": "Polished Blackstone Stairs"
   },
   {
     "imageUrl": "polished_blackstone_brick_stairs.png",
-    "itemId": "minecraft:polished_blackstone_brick_stairs",
+    "itemId": "polished_blackstone_brick_stairs",
     "title": "Polished Blackstone Brick Stairs"
   },
   {
     "imageUrl": "cut_copper.png",
-    "itemId": "minecraft:cut_copper",
+    "itemId": "cut_copper",
     "title": "Cut Copper"
   },
   {
     "imageUrl": "cut_copper_stairs.png",
-    "itemId": "minecraft:cut_copper_stairs",
+    "itemId": "cut_copper_stairs",
     "title": "Cut Copper Stairs"
   },
   {
     "imageUrl": "exposed_cut_copper.png",
-    "itemId": "minecraft:exposed_cut_copper",
+    "itemId": "exposed_cut_copper",
     "title": "Exposed Cut Copper"
   },
   {
     "imageUrl": "exposed_cut_copper_stairs.png",
-    "itemId": "minecraft:exposed_cut_copper_stairs",
+    "itemId": "exposed_cut_copper_stairs",
     "title": "Exposed Cut Copper Stairs"
   },
   {
     "imageUrl": "weathered_cut_copper.png",
-    "itemId": "minecraft:weathered_cut_copper",
+    "itemId": "weathered_cut_copper",
     "title": "Weathered Cut Copper"
   },
   {
     "imageUrl": "weathered_cut_copper_stairs.png",
-    "itemId": "minecraft:weathered_cut_copper_stairs",
+    "itemId": "weathered_cut_copper_stairs",
     "title": "Weathered Cut Copper Stairs"
   },
   {
     "imageUrl": "oxidized_cut_copper.png",
-    "itemId": "minecraft:oxidized_cut_copper",
+    "itemId": "oxidized_cut_copper",
     "title": "Oxidized Cut Copper"
   },
   {
     "imageUrl": "oxidized_cut_copper_stairs.png",
-    "itemId": "minecraft:oxidized_cut_copper_stairs",
+    "itemId": "oxidized_cut_copper_stairs",
     "title": "Oxidized Cut Copper Stairs"
   },
   {
     "imageUrl": "waxed_cut_copper.png",
-    "itemId": "minecraft:waxed_cut_copper",
+    "itemId": "waxed_cut_copper",
     "title": "Waxed Cut Copper"
   },
   {
     "imageUrl": "waxed_cut_copper_stairs.png",
-    "itemId": "minecraft:waxed_cut_copper_stairs",
+    "itemId": "waxed_cut_copper_stairs",
     "title": "Waxed Cut Copper Stairs"
   },
   {
     "imageUrl": "waxed_exposed_cut_copper.png",
-    "itemId": "minecraft:waxed_exposed_cut_copper",
+    "itemId": "waxed_exposed_cut_copper",
     "title": "Waxed Exposed Cut Copper"
   },
   {
     "imageUrl": "waxed_exposed_cut_copper_stairs.png",
-    "itemId": "minecraft:waxed_exposed_cut_copper_stairs",
+    "itemId": "waxed_exposed_cut_copper_stairs",
     "title": "Waxed Exposed Cut Copper Stairs"
   },
   {
     "imageUrl": "waxed_weathered_cut_copper.png",
-    "itemId": "minecraft:waxed_weathered_cut_copper",
+    "itemId": "waxed_weathered_cut_copper",
     "title": "Waxed Weathered Cut Copper"
   },
   {
     "imageUrl": "waxed_weathered_cut_copper_stairs.png",
-    "itemId": "minecraft:waxed_weathered_cut_copper_stairs",
+    "itemId": "waxed_weathered_cut_copper_stairs",
     "title": "Waxed Weathered Cut Copper Stairs"
   },
   {
     "imageUrl": "waxed_oxidized_cut_copper.png",
-    "itemId": "minecraft:waxed_oxidized_cut_copper",
+    "itemId": "waxed_oxidized_cut_copper",
     "title": "Waxed Oxidized Cut Copper"
   },
   {
     "imageUrl": "waxed_oxidized_cut_copper_stairs.png",
-    "itemId": "minecraft:waxed_oxidized_cut_copper_stairs",
+    "itemId": "waxed_oxidized_cut_copper_stairs",
     "title": "Waxed Oxidized Cut Copper Stairs"
   },
   {
     "imageUrl": "honeycomb.png",
-    "itemId": "minecraft:honeycomb",
+    "itemId": "honeycomb",
     "title": "Honeycomb"
   },
   {
     "imageUrl": "cobbled_deepslate.png",
-    "itemId": "minecraft:cobbled_deepslate",
+    "itemId": "cobbled_deepslate",
     "title": "Cobbled Deepslate"
   },
   {
     "imageUrl": "cobbled_deepslate_stairs.png",
-    "itemId": "minecraft:cobbled_deepslate_stairs",
+    "itemId": "cobbled_deepslate_stairs",
     "title": "Cobbled Deepslate Stairs"
   },
   {
     "imageUrl": "polished_deepslate.png",
-    "itemId": "minecraft:polished_deepslate",
+    "itemId": "polished_deepslate",
     "title": "Polished Deepslate"
   },
   {
     "imageUrl": "polished_deepslate_stairs.png",
-    "itemId": "minecraft:polished_deepslate_stairs",
+    "itemId": "polished_deepslate_stairs",
     "title": "Polished Deepslate Stairs"
   },
   {
     "imageUrl": "deepslate_bricks.png",
-    "itemId": "minecraft:deepslate_bricks",
+    "itemId": "deepslate_bricks",
     "title": "Deepslate Bricks"
   },
   {
     "imageUrl": "deepslate_brick_stairs.png",
-    "itemId": "minecraft:deepslate_brick_stairs",
+    "itemId": "deepslate_brick_stairs",
     "title": "Deepslate Brick Stairs"
   },
   {
     "imageUrl": "deepslate_tiles.png",
-    "itemId": "minecraft:deepslate_tiles",
+    "itemId": "deepslate_tiles",
     "title": "Deepslate Tiles"
   },
   {
     "imageUrl": "deepslate_tile_stairs.png",
-    "itemId": "minecraft:deepslate_tile_stairs",
+    "itemId": "deepslate_tile_stairs",
     "title": "Deepslate Tile Stairs"
   },
   {
     "imageUrl": "brick.png",
-    "itemId": "minecraft:brick",
+    "itemId": "brick",
     "title": "Brick"
   },
   {
     "imageUrl": "crimson_planks.png",
-    "itemId": "minecraft:crimson_planks",
+    "itemId": "crimson_planks",
     "title": "Crimson Planks"
   },
   {
     "imageUrl": "book.png",
-    "itemId": "minecraft:book",
+    "itemId": "book",
     "title": "Book"
   },
   {
     "imageUrl": "bookshelf.png",
-    "itemId": "minecraft:bookshelf",
+    "itemId": "bookshelf",
     "title": "Bookshelf"
   },
   {
     "imageUrl": "acacia_planks.png",
-    "itemId": "minecraft:acacia_planks",
+    "itemId": "acacia_planks",
     "title": "Acacia Planks"
   },
   {
     "imageUrl": "birch_planks.png",
-    "itemId": "minecraft:birch_planks",
+    "itemId": "birch_planks",
     "title": "Birch Planks"
   },
   {
     "imageUrl": "dark_oak_planks.png",
-    "itemId": "minecraft:dark_oak_planks",
+    "itemId": "dark_oak_planks",
     "title": "Dark Oak Planks"
   },
   {
     "imageUrl": "jungle_planks.png",
-    "itemId": "minecraft:jungle_planks",
+    "itemId": "jungle_planks",
     "title": "Jungle Planks"
   },
   {
     "imageUrl": "oak_planks.png",
-    "itemId": "minecraft:oak_planks",
+    "itemId": "oak_planks",
     "title": "Oak Planks"
   },
   {
     "imageUrl": "spruce_planks.png",
-    "itemId": "minecraft:spruce_planks",
+    "itemId": "spruce_planks",
     "title": "Spruce Planks"
   },
   {
     "imageUrl": "warped_planks.png",
-    "itemId": "minecraft:warped_planks",
+    "itemId": "warped_planks",
     "title": "Warped Planks"
   },
   {
     "imageUrl": "snowball.png",
-    "itemId": "minecraft:snowball",
+    "itemId": "snowball",
     "title": "Snowball"
   },
   {
     "imageUrl": "snow.png",
-    "itemId": "minecraft:snow",
+    "itemId": "snow",
     "title": "Snow"
   },
   {
     "imageUrl": "clay_ball.png",
-    "itemId": "minecraft:clay_ball",
+    "itemId": "clay_ball",
     "title": "Clay Ball"
   },
   {
     "imageUrl": "clay.png",
-    "itemId": "minecraft:clay",
+    "itemId": "clay",
     "title": "Clay"
   },
   {
     "imageUrl": "torch.png",
-    "itemId": "minecraft:torch",
+    "itemId": "torch",
     "title": "Torch"
   },
   {
     "imageUrl": "carved_pumpkin.png",
-    "itemId": "minecraft:carved_pumpkin",
+    "itemId": "carved_pumpkin",
     "title": "Carved Pumpkin"
   },
   {
-    "itemId": "minecraft:lit_pumpkin",
+    "itemId": "lit_pumpkin",
     "imageUrl": "pumpkin.png",
     "title": "Pumpkin"
   },
   {
     "imageUrl": "glowstone_dust.png",
-    "itemId": "minecraft:glowstone_dust",
+    "itemId": "glowstone_dust",
     "title": "Glowstone Dust"
   },
   {
     "imageUrl": "lapis_block.png",
-    "itemId": "minecraft:lapis_block",
+    "itemId": "lapis_block",
     "title": "Lapis Block"
   },
   {
     "imageUrl": "red_sand.png",
-    "itemId": "minecraft:red_sand",
+    "itemId": "red_sand",
     "title": "Red Sand"
   },
   {
     "imageUrl": "cut_sandstone.png",
-    "itemId": "minecraft:cut_sandstone",
+    "itemId": "cut_sandstone",
     "title": "Cut Sandstone"
   },
   {
     "imageUrl": "cut_red_sandstone.png",
-    "itemId": "minecraft:cut_red_sandstone",
+    "itemId": "cut_red_sandstone",
     "title": "Cut Red Sandstone"
   },
   {
     "imageUrl": "sandstone_slab.png",
-    "itemId": "minecraft:sandstone_slab",
+    "itemId": "sandstone_slab",
     "title": "Sandstone Slab"
   },
   {
     "imageUrl": "chiseled_sandstone.png",
-    "itemId": "minecraft:chiseled_sandstone",
+    "itemId": "chiseled_sandstone",
     "title": "Chiseled Sandstone"
   },
   {
     "imageUrl": "red_sandstone_slab.png",
-    "itemId": "minecraft:red_sandstone_slab",
+    "itemId": "red_sandstone_slab",
     "title": "Red Sandstone Slab"
   },
   {
     "imageUrl": "chiseled_red_sandstone.png",
-    "itemId": "minecraft:chiseled_red_sandstone",
+    "itemId": "chiseled_red_sandstone",
     "title": "Chiseled Red Sandstone"
   },
   {
     "imageUrl": "dark_oak_slab.png",
-    "itemId": "minecraft:dark_oak_slab",
+    "itemId": "dark_oak_slab",
     "title": "Dark Oak Slab"
   },
   {
     "imageUrl": "acacia_slab.png",
-    "itemId": "minecraft:acacia_slab",
+    "itemId": "acacia_slab",
     "title": "Acacia Slab"
   },
   {
     "imageUrl": "birch_slab.png",
-    "itemId": "minecraft:birch_slab",
+    "itemId": "birch_slab",
     "title": "Birch Slab"
   },
   {
     "imageUrl": "jungle_slab.png",
-    "itemId": "minecraft:jungle_slab",
+    "itemId": "jungle_slab",
     "title": "Jungle Slab"
   },
   {
     "imageUrl": "oak_slab.png",
-    "itemId": "minecraft:oak_slab",
+    "itemId": "oak_slab",
     "title": "Oak Slab"
   },
   {
     "imageUrl": "spruce_slab.png",
-    "itemId": "minecraft:spruce_slab",
+    "itemId": "spruce_slab",
     "title": "Spruce Slab"
   },
   {
     "imageUrl": "crimson_slab.png",
-    "itemId": "minecraft:crimson_slab",
+    "itemId": "crimson_slab",
     "title": "Crimson Slab"
   },
   {
     "imageUrl": "warped_slab.png",
-    "itemId": "minecraft:warped_slab",
+    "itemId": "warped_slab",
     "title": "Warped Slab"
   },
   {
     "imageUrl": "stone_slab.png",
-    "itemId": "minecraft:stone_slab",
+    "itemId": "stone_slab",
     "title": "Stone Slab"
   },
   {
     "imageUrl": "smooth_stone.png",
-    "itemId": "minecraft:smooth_stone",
+    "itemId": "smooth_stone",
     "title": "Smooth Stone"
   },
   {
     "imageUrl": "smooth_stone_slab.png",
-    "itemId": "minecraft:smooth_stone_slab",
+    "itemId": "smooth_stone_slab",
     "title": "Smooth Stone Slab"
   },
   {
     "imageUrl": "cobblestone_slab.png",
-    "itemId": "minecraft:cobblestone_slab",
+    "itemId": "cobblestone_slab",
     "title": "Cobblestone Slab"
   },
   {
     "imageUrl": "mossy_cobblestone_slab.png",
-    "itemId": "minecraft:mossy_cobblestone_slab",
+    "itemId": "mossy_cobblestone_slab",
     "title": "Mossy Cobblestone Slab"
   },
   {
     "imageUrl": "stone_brick_slab.png",
-    "itemId": "minecraft:stone_brick_slab",
+    "itemId": "stone_brick_slab",
     "title": "Stone Brick Slab"
   },
   {
     "imageUrl": "mossy_stone_brick_slab.png",
-    "itemId": "minecraft:mossy_stone_brick_slab",
+    "itemId": "mossy_stone_brick_slab",
     "title": "Mossy Stone Brick Slab"
   },
   {
     "imageUrl": "andesite_slab.png",
-    "itemId": "minecraft:andesite_slab",
+    "itemId": "andesite_slab",
     "title": "Andesite Slab"
   },
   {
     "imageUrl": "polished_andesite_slab.png",
-    "itemId": "minecraft:polished_andesite_slab",
+    "itemId": "polished_andesite_slab",
     "title": "Polished Andesite Slab"
   },
   {
     "imageUrl": "diorite_slab.png",
-    "itemId": "minecraft:diorite_slab",
+    "itemId": "diorite_slab",
     "title": "Diorite Slab"
   },
   {
     "imageUrl": "polished_diorite_slab.png",
-    "itemId": "minecraft:polished_diorite_slab",
+    "itemId": "polished_diorite_slab",
     "title": "Polished Diorite Slab"
   },
   {
     "imageUrl": "granite_slab.png",
-    "itemId": "minecraft:granite_slab",
+    "itemId": "granite_slab",
     "title": "Granite Slab"
   },
   {
     "imageUrl": "polished_granite_slab.png",
-    "itemId": "minecraft:polished_granite_slab",
+    "itemId": "polished_granite_slab",
     "title": "Polished Granite Slab"
   },
   {
     "imageUrl": "cut_sandstone_slab.png",
-    "itemId": "minecraft:cut_sandstone_slab",
+    "itemId": "cut_sandstone_slab",
     "title": "Cut Sandstone Slab"
   },
   {
     "imageUrl": "cut_red_sandstone_slab.png",
-    "itemId": "minecraft:cut_red_sandstone_slab",
+    "itemId": "cut_red_sandstone_slab",
     "title": "Cut Red Sandstone Slab"
   },
   {
     "imageUrl": "smooth_sandstone_slab.png",
-    "itemId": "minecraft:smooth_sandstone_slab",
+    "itemId": "smooth_sandstone_slab",
     "title": "Smooth Sandstone Slab"
   },
   {
     "imageUrl": "smooth_red_sandstone_slab.png",
-    "itemId": "minecraft:smooth_red_sandstone_slab",
+    "itemId": "smooth_red_sandstone_slab",
     "title": "Smooth Red Sandstone Slab"
   },
   {
     "imageUrl": "brick_slab.png",
-    "itemId": "minecraft:brick_slab",
+    "itemId": "brick_slab",
     "title": "Brick Slab"
   },
   {
     "imageUrl": "prismarine_slab.png",
-    "itemId": "minecraft:prismarine_slab",
+    "itemId": "prismarine_slab",
     "title": "Prismarine Slab"
   },
   {
     "imageUrl": "prismarine_brick_slab.png",
-    "itemId": "minecraft:prismarine_brick_slab",
+    "itemId": "prismarine_brick_slab",
     "title": "Prismarine Brick Slab"
   },
   {
     "imageUrl": "dark_prismarine_slab.png",
-    "itemId": "minecraft:dark_prismarine_slab",
+    "itemId": "dark_prismarine_slab",
     "title": "Dark Prismarine Slab"
   },
   {
     "imageUrl": "red_nether_brick_slab.png",
-    "itemId": "minecraft:red_nether_brick_slab",
+    "itemId": "red_nether_brick_slab",
     "title": "Red Nether Brick Slab"
   },
   {
     "imageUrl": "smooth_quartz_slab.png",
-    "itemId": "minecraft:smooth_quartz_slab",
+    "itemId": "smooth_quartz_slab",
     "title": "Smooth Quartz Slab"
   },
   {
     "imageUrl": "end_stone_brick_slab.png",
-    "itemId": "minecraft:end_stone_brick_slab",
+    "itemId": "end_stone_brick_slab",
     "title": "End Stone Brick Slab"
   },
   {
     "imageUrl": "blackstone_slab.png",
-    "itemId": "minecraft:blackstone_slab",
+    "itemId": "blackstone_slab",
     "title": "Blackstone Slab"
   },
   {
     "imageUrl": "polished_blackstone_brick_slab.png",
-    "itemId": "minecraft:polished_blackstone_brick_slab",
+    "itemId": "polished_blackstone_brick_slab",
     "title": "Polished Blackstone Brick Slab"
   },
   {
     "imageUrl": "cut_copper_slab.png",
-    "itemId": "minecraft:cut_copper_slab",
+    "itemId": "cut_copper_slab",
     "title": "Cut Copper Slab"
   },
   {
     "imageUrl": "exposed_cut_copper_slab.png",
-    "itemId": "minecraft:exposed_cut_copper_slab",
+    "itemId": "exposed_cut_copper_slab",
     "title": "Exposed Cut Copper Slab"
   },
   {
     "imageUrl": "weathered_cut_copper_slab.png",
-    "itemId": "minecraft:weathered_cut_copper_slab",
+    "itemId": "weathered_cut_copper_slab",
     "title": "Weathered Cut Copper Slab"
   },
   {
     "imageUrl": "oxidized_cut_copper_slab.png",
-    "itemId": "minecraft:oxidized_cut_copper_slab",
+    "itemId": "oxidized_cut_copper_slab",
     "title": "Oxidized Cut Copper Slab"
   },
   {
     "imageUrl": "waxed_cut_copper_slab.png",
-    "itemId": "minecraft:waxed_cut_copper_slab",
+    "itemId": "waxed_cut_copper_slab",
     "title": "Waxed Cut Copper Slab"
   },
   {
     "imageUrl": "waxed_exposed_cut_copper_slab.png",
-    "itemId": "minecraft:waxed_exposed_cut_copper_slab",
+    "itemId": "waxed_exposed_cut_copper_slab",
     "title": "Waxed Exposed Cut Copper Slab"
   },
   {
     "imageUrl": "waxed_weathered_cut_copper_slab.png",
-    "itemId": "minecraft:waxed_weathered_cut_copper_slab",
+    "itemId": "waxed_weathered_cut_copper_slab",
     "title": "Waxed Weathered Cut Copper Slab"
   },
   {
     "imageUrl": "waxed_oxidized_cut_copper_slab.png",
-    "itemId": "minecraft:waxed_oxidized_cut_copper_slab",
+    "itemId": "waxed_oxidized_cut_copper_slab",
     "title": "Waxed Oxidized Cut Copper Slab"
   },
   {
     "imageUrl": "cobbled_deepslate_slab.png",
-    "itemId": "minecraft:cobbled_deepslate_slab",
+    "itemId": "cobbled_deepslate_slab",
     "title": "Cobbled Deepslate Slab"
   },
   {
     "imageUrl": "polished_deepslate_slab.png",
-    "itemId": "minecraft:polished_deepslate_slab",
+    "itemId": "polished_deepslate_slab",
     "title": "Polished Deepslate Slab"
   },
   {
     "imageUrl": "deepslate_brick_slab.png",
-    "itemId": "minecraft:deepslate_brick_slab",
+    "itemId": "deepslate_brick_slab",
     "title": "Deepslate Brick Slab"
   },
   {
     "imageUrl": "deepslate_tile_slab.png",
-    "itemId": "minecraft:deepslate_tile_slab",
+    "itemId": "deepslate_tile_slab",
     "title": "Deepslate Tile Slab"
   },
   {
     "imageUrl": "melon_slice.png",
-    "itemId": "minecraft:melon_slice",
+    "itemId": "melon_slice",
     "title": "Melon Slice"
   },
   {
-    "itemId": "minecraft:melon_block",
+    "itemId": "melon_block",
     "imageUrl": "melon.png",
     "title": "Melon"
   },
   {
     "imageUrl": "vine.png",
-    "itemId": "minecraft:vine",
+    "itemId": "vine",
     "title": "Vine"
   },
   {
     "imageUrl": "moss_block.png",
-    "itemId": "minecraft:moss_block",
+    "itemId": "moss_block",
     "title": "Moss Block"
   },
   {
     "imageUrl": "chiseled_stone_bricks.png",
-    "itemId": "minecraft:chiseled_stone_bricks",
+    "itemId": "chiseled_stone_bricks",
     "title": "Chiseled Stone Bricks"
   },
   {
     "imageUrl": "iron_block.png",
-    "itemId": "minecraft:iron_block",
+    "itemId": "iron_block",
     "title": "Iron Block"
   },
   {
     "imageUrl": "amethyst_shard.png",
-    "itemId": "minecraft:amethyst_shard",
+    "itemId": "amethyst_shard",
     "title": "Amethyst Shard"
   },
   {
     "imageUrl": "tinted_glass.png",
-    "itemId": "minecraft:tinted_glass",
+    "itemId": "tinted_glass",
     "title": "Tinted Glass"
   },
   {
     "imageUrl": "amethyst_block.png",
-    "itemId": "minecraft:amethyst_block",
+    "itemId": "amethyst_block",
     "title": "Amethyst Block"
   },
   {
     "imageUrl": "string.png",
-    "itemId": "minecraft:string",
+    "itemId": "string",
     "title": "String"
   },
   {
     "imageUrl": "white_wool.png",
-    "itemId": "minecraft:white_wool",
+    "itemId": "white_wool",
     "title": "White Wool"
   },
   {
     "imageUrl": "red_wool.png",
-    "itemId": "minecraft:red_wool",
+    "itemId": "red_wool",
     "title": "Red Wool"
   },
   {
     "imageUrl": "orange_wool.png",
-    "itemId": "minecraft:orange_wool",
+    "itemId": "orange_wool",
     "title": "Orange Wool"
   },
   {
     "imageUrl": "black_wool.png",
-    "itemId": "minecraft:black_wool",
+    "itemId": "black_wool",
     "title": "Black Wool"
   },
   {
     "imageUrl": "green_wool.png",
-    "itemId": "minecraft:green_wool",
+    "itemId": "green_wool",
     "title": "Green Wool"
   },
   {
     "imageUrl": "brown_wool.png",
-    "itemId": "minecraft:brown_wool",
+    "itemId": "brown_wool",
     "title": "Brown Wool"
   },
   {
     "imageUrl": "blue_wool.png",
-    "itemId": "minecraft:blue_wool",
+    "itemId": "blue_wool",
     "title": "Blue Wool"
   },
   {
     "imageUrl": "purple_wool.png",
-    "itemId": "minecraft:purple_wool",
+    "itemId": "purple_wool",
     "title": "Purple Wool"
   },
   {
     "imageUrl": "cyan_wool.png",
-    "itemId": "minecraft:cyan_wool",
+    "itemId": "cyan_wool",
     "title": "Cyan Wool"
   },
   {
-    "itemId": "minecraft:silver_wool",
+    "itemId": "silver_wool",
     "imageUrl": "gray_wool.png",
     "title": "Gray Wool"
   },
   {
     "imageUrl": "gray_wool.png",
-    "itemId": "minecraft:gray_wool",
+    "itemId": "gray_wool",
     "title": "Gray Wool"
   },
   {
     "imageUrl": "pink_wool.png",
-    "itemId": "minecraft:pink_wool",
+    "itemId": "pink_wool",
     "title": "Pink Wool"
   },
   {
     "imageUrl": "lime_wool.png",
-    "itemId": "minecraft:lime_wool",
+    "itemId": "lime_wool",
     "title": "Lime Wool"
   },
   {
     "imageUrl": "yellow_wool.png",
-    "itemId": "minecraft:yellow_wool",
+    "itemId": "yellow_wool",
     "title": "Yellow Wool"
   },
   {
     "imageUrl": "light_blue_wool.png",
-    "itemId": "minecraft:light_blue_wool",
+    "itemId": "light_blue_wool",
     "title": "Light Blue Wool"
   },
   {
     "imageUrl": "magenta_wool.png",
-    "itemId": "minecraft:magenta_wool",
+    "itemId": "magenta_wool",
     "title": "Magenta Wool"
   },
   {
     "imageUrl": "bamboo.png",
-    "itemId": "minecraft:bamboo",
+    "itemId": "bamboo",
     "title": "Bamboo"
   },
   {
     "imageUrl": "scaffolding.png",
-    "itemId": "minecraft:scaffolding",
+    "itemId": "scaffolding",
     "title": "Scaffolding"
   },
   {
     "imageUrl": "pointed_dripstone.png",
-    "itemId": "minecraft:pointed_dripstone",
+    "itemId": "pointed_dripstone",
     "title": "Pointed Dripstone"
   },
   {
     "imageUrl": "dripstone_block.png",
-    "itemId": "minecraft:dripstone_block",
+    "itemId": "dripstone_block",
     "title": "Dripstone Block"
   },
   {
     "imageUrl": "blue_ice.png",
-    "itemId": "minecraft:blue_ice",
+    "itemId": "blue_ice",
     "title": "Blue Ice"
   },
   {
     "imageUrl": "chiseled_deepslate.png",
-    "itemId": "minecraft:chiseled_deepslate",
+    "itemId": "chiseled_deepslate",
     "title": "Chiseled Deepslate"
   },
   {
     "imageUrl": "copper_ingot.png",
-    "itemId": "minecraft:copper_ingot",
+    "itemId": "copper_ingot",
     "title": "Copper Ingot"
   },
   {
     "imageUrl": "copper_block.png",
-    "itemId": "minecraft:copper_block",
+    "itemId": "copper_block",
     "title": "Copper Block"
   },
   {
     "imageUrl": "exposed_copper.png",
-    "itemId": "minecraft:exposed_copper",
+    "itemId": "exposed_copper",
     "title": "Exposed Copper"
   },
   {
     "imageUrl": "weathered_copper.png",
-    "itemId": "minecraft:weathered_copper",
+    "itemId": "weathered_copper",
     "title": "Weathered Copper"
   },
   {
     "imageUrl": "oxidized_copper.png",
-    "itemId": "minecraft:oxidized_copper",
+    "itemId": "oxidized_copper",
     "title": "Oxidized Copper"
   },
   {
-    "itemId": "minecraft:waxed_copper",
+    "itemId": "waxed_copper",
     "imageUrl": "waxed_copper_block.png",
     "title": "Waxed Copper Block"
   },
   {
     "imageUrl": "waxed_exposed_copper.png",
-    "itemId": "minecraft:waxed_exposed_copper",
+    "itemId": "waxed_exposed_copper",
     "title": "Waxed Exposed Copper"
   },
   {
     "imageUrl": "waxed_weathered_copper.png",
-    "itemId": "minecraft:waxed_weathered_copper",
+    "itemId": "waxed_weathered_copper",
     "title": "Waxed Weathered Copper"
   },
   {
     "imageUrl": "waxed_oxidized_copper.png",
-    "itemId": "minecraft:waxed_oxidized_copper",
+    "itemId": "waxed_oxidized_copper",
     "title": "Waxed Oxidized Copper"
   },
   {
     "imageUrl": "raw_gold.png",
-    "itemId": "minecraft:raw_gold",
+    "itemId": "raw_gold",
     "title": "Raw Gold"
   },
   {
     "imageUrl": "raw_gold_block.png",
-    "itemId": "minecraft:raw_gold_block",
+    "itemId": "raw_gold_block",
     "title": "Raw Gold Block"
   },
   {
     "imageUrl": "raw_iron.png",
-    "itemId": "minecraft:raw_iron",
+    "itemId": "raw_iron",
     "title": "Raw Iron"
   },
   {
     "imageUrl": "raw_iron_block.png",
-    "itemId": "minecraft:raw_iron_block",
+    "itemId": "raw_iron_block",
     "title": "Raw Iron Block"
   },
   {
     "imageUrl": "diamond.png",
-    "itemId": "minecraft:diamond",
+    "itemId": "diamond",
     "title": "Diamond"
   },
   {
     "imageUrl": "diamond_block.png",
-    "itemId": "minecraft:diamond_block",
+    "itemId": "diamond_block",
     "title": "Diamond Block"
   },
   {
     "imageUrl": "raw_copper.png",
-    "itemId": "minecraft:raw_copper",
+    "itemId": "raw_copper",
     "title": "Raw Copper"
   },
   {
     "imageUrl": "raw_copper_block.png",
-    "itemId": "minecraft:raw_copper_block",
+    "itemId": "raw_copper_block",
     "title": "Raw Copper Block"
   },
   {
     "imageUrl": "cobblestone_wall.png",
-    "itemId": "minecraft:cobblestone_wall",
+    "itemId": "cobblestone_wall",
     "title": "Cobblestone Wall"
   },
   {
     "imageUrl": "mossy_cobblestone_wall.png",
-    "itemId": "minecraft:mossy_cobblestone_wall",
+    "itemId": "mossy_cobblestone_wall",
     "title": "Mossy Cobblestone Wall"
   },
   {
     "imageUrl": "stone_brick_wall.png",
-    "itemId": "minecraft:stone_brick_wall",
+    "itemId": "stone_brick_wall",
     "title": "Stone Brick Wall"
   },
   {
     "imageUrl": "mossy_stone_brick_wall.png",
-    "itemId": "minecraft:mossy_stone_brick_wall",
+    "itemId": "mossy_stone_brick_wall",
     "title": "Mossy Stone Brick Wall"
   },
   {
     "imageUrl": "andesite_wall.png",
-    "itemId": "minecraft:andesite_wall",
+    "itemId": "andesite_wall",
     "title": "Andesite Wall"
   },
   {
     "imageUrl": "diorite_wall.png",
-    "itemId": "minecraft:diorite_wall",
+    "itemId": "diorite_wall",
     "title": "Diorite Wall"
   },
   {
     "imageUrl": "granite_wall.png",
-    "itemId": "minecraft:granite_wall",
+    "itemId": "granite_wall",
     "title": "Granite Wall"
   },
   {
     "imageUrl": "sandstone_wall.png",
-    "itemId": "minecraft:sandstone_wall",
+    "itemId": "sandstone_wall",
     "title": "Sandstone Wall"
   },
   {
     "imageUrl": "red_sandstone_wall.png",
-    "itemId": "minecraft:red_sandstone_wall",
+    "itemId": "red_sandstone_wall",
     "title": "Red Sandstone Wall"
   },
   {
     "imageUrl": "brick_wall.png",
-    "itemId": "minecraft:brick_wall",
+    "itemId": "brick_wall",
     "title": "Brick Wall"
   },
   {
     "imageUrl": "prismarine_wall.png",
-    "itemId": "minecraft:prismarine_wall",
+    "itemId": "prismarine_wall",
     "title": "Prismarine Wall"
   },
   {
     "imageUrl": "nether_brick_wall.png",
-    "itemId": "minecraft:nether_brick_wall",
+    "itemId": "nether_brick_wall",
     "title": "Nether Brick Wall"
   },
   {
-    "itemId": "minecraft:end_brick_wall",
+    "itemId": "end_brick_wall",
     "imageUrl": "end_stone_brick_wall.png",
     "title": "End Stone Brick Wall"
   },
   {
     "imageUrl": "blackstone_wall.png",
-    "itemId": "minecraft:blackstone_wall",
+    "itemId": "blackstone_wall",
     "title": "Blackstone Wall"
   },
   {
     "imageUrl": "polished_blackstone_wall.png",
-    "itemId": "minecraft:polished_blackstone_wall",
+    "itemId": "polished_blackstone_wall",
     "title": "Polished Blackstone Wall"
   },
   {
     "imageUrl": "polished_blackstone_brick_wall.png",
-    "itemId": "minecraft:polished_blackstone_brick_wall",
+    "itemId": "polished_blackstone_brick_wall",
     "title": "Polished Blackstone Brick Wall"
   },
   {
     "imageUrl": "cobbled_deepslate_wall.png",
-    "itemId": "minecraft:cobbled_deepslate_wall",
+    "itemId": "cobbled_deepslate_wall",
     "title": "Cobbled Deepslate Wall"
   },
   {
     "imageUrl": "polished_deepslate_wall.png",
-    "itemId": "minecraft:polished_deepslate_wall",
+    "itemId": "polished_deepslate_wall",
     "title": "Polished Deepslate Wall"
   },
   {
     "imageUrl": "deepslate_brick_wall.png",
-    "itemId": "minecraft:deepslate_brick_wall",
+    "itemId": "deepslate_brick_wall",
     "title": "Deepslate Brick Wall"
   },
   {
     "imageUrl": "deepslate_tile_wall.png",
-    "itemId": "minecraft:deepslate_tile_wall",
+    "itemId": "deepslate_tile_wall",
     "title": "Deepslate Tile Wall"
   },
   {
     "imageUrl": "chest.png",
-    "itemId": "minecraft:chest",
+    "itemId": "chest",
     "title": "Chest"
   },
   {
     "imageUrl": "tripwire_hook.png",
-    "itemId": "minecraft:tripwire_hook",
+    "itemId": "tripwire_hook",
     "title": "Tripwire Hook"
   },
   {
     "imageUrl": "trapped_chest.png",
-    "itemId": "minecraft:trapped_chest",
+    "itemId": "trapped_chest",
     "title": "Trapped Chest"
   },
   {
     "imageUrl": "stick.png",
-    "itemId": "minecraft:stick",
+    "itemId": "stick",
     "title": "Stick"
   },
   {
     "imageUrl": "leather.png",
-    "itemId": "minecraft:leather",
+    "itemId": "leather",
     "title": "Leather"
   },
   {
-    "itemId": "minecraft:frame",
+    "itemId": "frame",
     "imageUrl": "item_frame.png",
     "title": "Item Frame"
   },
   {
     "imageUrl": "glow_ink_sac.png",
-    "itemId": "minecraft:glow_ink_sac",
+    "itemId": "glow_ink_sac",
     "title": "Glow Ink Sac"
   },
   {
-    "itemId": "minecraft:glow_frame",
+    "itemId": "glow_frame",
     "imageUrl": "glow_item_frame.png",
     "title": "Glow Item Frame"
   },
   {
     "imageUrl": "white_bed.png",
-    "itemId": "minecraft:white_bed",
+    "itemId": "white_bed",
     "title": "White Bed"
   },
   {
     "imageUrl": "orange_bed.png",
-    "itemId": "minecraft:orange_bed",
+    "itemId": "orange_bed",
     "title": "Orange Bed"
   },
   {
     "imageUrl": "magenta_bed.png",
-    "itemId": "minecraft:magenta_bed",
+    "itemId": "magenta_bed",
     "title": "Magenta Bed"
   },
   {
     "imageUrl": "light_blue_bed.png",
-    "itemId": "minecraft:light_blue_bed",
+    "itemId": "light_blue_bed",
     "title": "Light Blue Bed"
   },
   {
     "imageUrl": "yellow_bed.png",
-    "itemId": "minecraft:yellow_bed",
+    "itemId": "yellow_bed",
     "title": "Yellow Bed"
   },
   {
     "imageUrl": "lime_bed.png",
-    "itemId": "minecraft:lime_bed",
+    "itemId": "lime_bed",
     "title": "Lime Bed"
   },
   {
     "imageUrl": "pink_bed.png",
-    "itemId": "minecraft:pink_bed",
+    "itemId": "pink_bed",
     "title": "Pink Bed"
   },
   {
     "imageUrl": "gray_bed.png",
-    "itemId": "minecraft:gray_bed",
+    "itemId": "gray_bed",
     "title": "Gray Bed"
   },
   {
     "imageUrl": "light_gray_bed.png",
-    "itemId": "minecraft:light_gray_bed",
+    "itemId": "light_gray_bed",
     "title": "Light Gray Bed"
   },
   {
     "imageUrl": "cyan_bed.png",
-    "itemId": "minecraft:cyan_bed",
+    "itemId": "cyan_bed",
     "title": "Cyan Bed"
   },
   {
     "imageUrl": "purple_bed.png",
-    "itemId": "minecraft:purple_bed",
+    "itemId": "purple_bed",
     "title": "Purple Bed"
   },
   {
     "imageUrl": "blue_bed.png",
-    "itemId": "minecraft:blue_bed",
+    "itemId": "blue_bed",
     "title": "Blue Bed"
   },
   {
     "imageUrl": "brown_bed.png",
-    "itemId": "minecraft:brown_bed",
+    "itemId": "brown_bed",
     "title": "Brown Bed"
   },
   {
     "imageUrl": "green_bed.png",
-    "itemId": "minecraft:green_bed",
+    "itemId": "green_bed",
     "title": "Green Bed"
   },
   {
     "imageUrl": "red_bed.png",
-    "itemId": "minecraft:red_bed",
+    "itemId": "red_bed",
     "title": "Red Bed"
   },
   {
     "imageUrl": "black_bed.png",
-    "itemId": "minecraft:black_bed",
+    "itemId": "black_bed",
     "title": "Black Bed"
   },
   {
     "imageUrl": "white_banner.png",
-    "itemId": "minecraft:white_banner",
+    "itemId": "white_banner",
     "title": "White Banner"
   },
   {
     "imageUrl": "orange_banner.png",
-    "itemId": "minecraft:orange_banner",
+    "itemId": "orange_banner",
     "title": "Orange Banner"
   },
   {
     "imageUrl": "magenta_banner.png",
-    "itemId": "minecraft:magenta_banner",
+    "itemId": "magenta_banner",
     "title": "Magenta Banner"
   },
   {
     "imageUrl": "light_blue_banner.png",
-    "itemId": "minecraft:light_blue_banner",
+    "itemId": "light_blue_banner",
     "title": "Light Blue Banner"
   },
   {
     "imageUrl": "yellow_banner.png",
-    "itemId": "minecraft:yellow_banner",
+    "itemId": "yellow_banner",
     "title": "Yellow Banner"
   },
   {
     "imageUrl": "lime_banner.png",
-    "itemId": "minecraft:lime_banner",
+    "itemId": "lime_banner",
     "title": "Lime Banner"
   },
   {
     "imageUrl": "pink_banner.png",
-    "itemId": "minecraft:pink_banner",
+    "itemId": "pink_banner",
     "title": "Pink Banner"
   },
   {
     "imageUrl": "gray_banner.png",
-    "itemId": "minecraft:gray_banner",
+    "itemId": "gray_banner",
     "title": "Gray Banner"
   },
   {
     "imageUrl": "light_gray_banner.png",
-    "itemId": "minecraft:light_gray_banner",
+    "itemId": "light_gray_banner",
     "title": "Light Gray Banner"
   },
   {
     "imageUrl": "cyan_banner.png",
-    "itemId": "minecraft:cyan_banner",
+    "itemId": "cyan_banner",
     "title": "Cyan Banner"
   },
   {
     "imageUrl": "purple_banner.png",
-    "itemId": "minecraft:purple_banner",
+    "itemId": "purple_banner",
     "title": "Purple Banner"
   },
   {
     "imageUrl": "blue_banner.png",
-    "itemId": "minecraft:blue_banner",
+    "itemId": "blue_banner",
     "title": "Blue Banner"
   },
   {
     "imageUrl": "brown_banner.png",
-    "itemId": "minecraft:brown_banner",
+    "itemId": "brown_banner",
     "title": "Brown Banner"
   },
   {
     "imageUrl": "green_banner.png",
-    "itemId": "minecraft:green_banner",
+    "itemId": "green_banner",
     "title": "Green Banner"
   },
   {
     "imageUrl": "red_banner.png",
-    "itemId": "minecraft:red_banner",
+    "itemId": "red_banner",
     "title": "Red Banner"
   },
   {
     "imageUrl": "black_banner.png",
-    "itemId": "minecraft:black_banner",
+    "itemId": "black_banner",
     "title": "Black Banner"
   },
   {
     "imageUrl": "slime_ball.png",
-    "itemId": "minecraft:slime_ball",
+    "itemId": "slime_ball",
     "title": "Slime Ball"
   },
   {
     "imageUrl": "slime_block.png",
-    "itemId": "minecraft:slime_block",
+    "itemId": "slime_block",
     "title": "Slime Block"
   },
   {
     "imageUrl": "campfire.png",
-    "itemId": "minecraft:campfire",
+    "itemId": "campfire",
     "title": "Campfire"
   },
   {
     "imageUrl": "charcoal.png",
-    "itemId": "minecraft:charcoal",
+    "itemId": "charcoal",
     "title": "Charcoal"
   },
   {
     "imageUrl": "soul_sand.png",
-    "itemId": "minecraft:soul_sand",
+    "itemId": "soul_sand",
     "title": "Soul Sand"
   },
   {
     "imageUrl": "soul_campfire.png",
-    "itemId": "minecraft:soul_campfire",
+    "itemId": "soul_campfire",
     "title": "Soul Campfire"
   },
   {
     "imageUrl": "soul_soil.png",
-    "itemId": "minecraft:soul_soil",
+    "itemId": "soul_soil",
     "title": "Soul Soil"
   },
   {
     "imageUrl": "barrel.png",
-    "itemId": "minecraft:barrel",
+    "itemId": "barrel",
     "title": "Barrel"
   },
   {
     "imageUrl": "white_stained_glass_pane.png",
-    "itemId": "minecraft:white_stained_glass_pane",
+    "itemId": "white_stained_glass_pane",
     "title": "White Stained Glass Pane"
   },
   {
     "imageUrl": "orange_stained_glass_pane.png",
-    "itemId": "minecraft:orange_stained_glass_pane",
+    "itemId": "orange_stained_glass_pane",
     "title": "Orange Stained Glass Pane"
   },
   {
     "imageUrl": "magenta_stained_glass_pane.png",
-    "itemId": "minecraft:magenta_stained_glass_pane",
+    "itemId": "magenta_stained_glass_pane",
     "title": "Magenta Stained Glass Pane"
   },
   {
     "imageUrl": "light_blue_stained_glass_pane.png",
-    "itemId": "minecraft:light_blue_stained_glass_pane",
+    "itemId": "light_blue_stained_glass_pane",
     "title": "Light Blue Stained Glass Pane"
   },
   {
     "imageUrl": "yellow_stained_glass_pane.png",
-    "itemId": "minecraft:yellow_stained_glass_pane",
+    "itemId": "yellow_stained_glass_pane",
     "title": "Yellow Stained Glass Pane"
   },
   {
     "imageUrl": "lime_stained_glass_pane.png",
-    "itemId": "minecraft:lime_stained_glass_pane",
+    "itemId": "lime_stained_glass_pane",
     "title": "Lime Stained Glass Pane"
   },
   {
     "imageUrl": "pink_stained_glass_pane.png",
-    "itemId": "minecraft:pink_stained_glass_pane",
+    "itemId": "pink_stained_glass_pane",
     "title": "Pink Stained Glass Pane"
   },
   {
     "imageUrl": "gray_stained_glass_pane.png",
-    "itemId": "minecraft:gray_stained_glass_pane",
+    "itemId": "gray_stained_glass_pane",
     "title": "Gray Stained Glass Pane"
   },
   {
     "imageUrl": "light_gray_stained_glass_pane.png",
-    "itemId": "minecraft:light_gray_stained_glass_pane",
+    "itemId": "light_gray_stained_glass_pane",
     "title": "Light Gray Stained Glass Pane"
   },
   {
     "imageUrl": "cyan_stained_glass_pane.png",
-    "itemId": "minecraft:cyan_stained_glass_pane",
+    "itemId": "cyan_stained_glass_pane",
     "title": "Cyan Stained Glass Pane"
   },
   {
     "imageUrl": "purple_stained_glass_pane.png",
-    "itemId": "minecraft:purple_stained_glass_pane",
+    "itemId": "purple_stained_glass_pane",
     "title": "Purple Stained Glass Pane"
   },
   {
     "imageUrl": "blue_stained_glass_pane.png",
-    "itemId": "minecraft:blue_stained_glass_pane",
+    "itemId": "blue_stained_glass_pane",
     "title": "Blue Stained Glass Pane"
   },
   {
     "imageUrl": "brown_stained_glass_pane.png",
-    "itemId": "minecraft:brown_stained_glass_pane",
+    "itemId": "brown_stained_glass_pane",
     "title": "Brown Stained Glass Pane"
   },
   {
     "imageUrl": "green_stained_glass_pane.png",
-    "itemId": "minecraft:green_stained_glass_pane",
+    "itemId": "green_stained_glass_pane",
     "title": "Green Stained Glass Pane"
   },
   {
     "imageUrl": "red_stained_glass_pane.png",
-    "itemId": "minecraft:red_stained_glass_pane",
+    "itemId": "red_stained_glass_pane",
     "title": "Red Stained Glass Pane"
   },
   {
     "imageUrl": "black_stained_glass_pane.png",
-    "itemId": "minecraft:black_stained_glass_pane",
+    "itemId": "black_stained_glass_pane",
     "title": "Black Stained Glass Pane"
   },
   {
     "imageUrl": "glass_pane.png",
-    "itemId": "minecraft:glass_pane",
+    "itemId": "glass_pane",
     "title": "Glass Pane"
   },
   {
     "imageUrl": "flower_pot.png",
-    "itemId": "minecraft:flower_pot",
+    "itemId": "flower_pot",
     "title": "Flower Pot"
   },
   {
     "imageUrl": "armor_stand.png",
-    "itemId": "minecraft:armor_stand",
+    "itemId": "armor_stand",
     "title": "Armor Stand"
   },
   {
     "imageUrl": "lantern.png",
-    "itemId": "minecraft:lantern",
+    "itemId": "lantern",
     "title": "Lantern"
   },
   {
     "imageUrl": "soul_torch.png",
-    "itemId": "minecraft:soul_torch",
+    "itemId": "soul_torch",
     "title": "Soul Torch"
   },
   {
     "imageUrl": "soul_lantern.png",
-    "itemId": "minecraft:soul_lantern",
+    "itemId": "soul_lantern",
     "title": "Soul Lantern"
   },
   {
     "imageUrl": "furnace.png",
-    "itemId": "minecraft:furnace",
+    "itemId": "furnace",
     "title": "Furnace"
   },
   {
     "imageUrl": "honey_bottle.png",
-    "itemId": "minecraft:honey_bottle",
+    "itemId": "honey_bottle",
     "title": "Honey Bottle"
   },
   {
     "imageUrl": "honey_block.png",
-    "itemId": "minecraft:honey_block",
+    "itemId": "honey_block",
     "title": "Honey Block"
   },
   {
     "imageUrl": "beehive.png",
-    "itemId": "minecraft:beehive",
+    "itemId": "beehive",
     "title": "Beehive"
   },
   {
     "imageUrl": "anvil.png",
-    "itemId": "minecraft:anvil",
+    "itemId": "anvil",
     "title": "Anvil"
   },
   {
     "imageUrl": "blaze_rod.png",
-    "itemId": "minecraft:blaze_rod",
+    "itemId": "blaze_rod",
     "title": "Blaze Rod"
   },
   {
     "imageUrl": "end_rod.png",
-    "itemId": "minecraft:end_rod",
+    "itemId": "end_rod",
     "title": "End Rod"
   },
   {
     "imageUrl": "painting.png",
-    "itemId": "minecraft:painting",
+    "itemId": "painting",
     "title": "Painting"
   },
   {
     "imageUrl": "ladder.png",
-    "itemId": "minecraft:ladder",
+    "itemId": "ladder",
     "title": "Ladder"
   },
   {
     "imageUrl": "oak_sign.png",
-    "itemId": "minecraft:oak_sign",
+    "itemId": "oak_sign",
     "title": "Oak Sign"
   },
   {
     "imageUrl": "spruce_sign.png",
-    "itemId": "minecraft:spruce_sign",
+    "itemId": "spruce_sign",
     "title": "Spruce Sign"
   },
   {
     "imageUrl": "birch_sign.png",
-    "itemId": "minecraft:birch_sign",
+    "itemId": "birch_sign",
     "title": "Birch Sign"
   },
   {
     "imageUrl": "jungle_sign.png",
-    "itemId": "minecraft:jungle_sign",
+    "itemId": "jungle_sign",
     "title": "Jungle Sign"
   },
   {
     "imageUrl": "acacia_sign.png",
-    "itemId": "minecraft:acacia_sign",
+    "itemId": "acacia_sign",
     "title": "Acacia Sign"
   },
   {
     "imageUrl": "dark_oak_sign.png",
-    "itemId": "minecraft:dark_oak_sign",
+    "itemId": "dark_oak_sign",
     "title": "Dark Oak Sign"
   },
   {
     "imageUrl": "crimson_sign.png",
-    "itemId": "minecraft:crimson_sign",
+    "itemId": "crimson_sign",
     "title": "Crimson Sign"
   },
   {
     "imageUrl": "warped_sign.png",
-    "itemId": "minecraft:warped_sign",
+    "itemId": "warped_sign",
     "title": "Warped Sign"
   },
   {
-    "itemId": "minecraft:snow_layer",
+    "itemId": "snow_layer",
     "imageUrl": "snow.png",
     "title": "Snow"
   },
   {
     "imageUrl": "jukebox.png",
-    "itemId": "minecraft:jukebox",
+    "itemId": "jukebox",
     "title": "Jukebox"
   },
   {
     "imageUrl": "oak_fence.png",
-    "itemId": "minecraft:oak_fence",
+    "itemId": "oak_fence",
     "title": "Oak Fence"
   },
   {
     "imageUrl": "spruce_fence.png",
-    "itemId": "minecraft:spruce_fence",
+    "itemId": "spruce_fence",
     "title": "Spruce Fence"
   },
   {
     "imageUrl": "birch_fence.png",
-    "itemId": "minecraft:birch_fence",
+    "itemId": "birch_fence",
     "title": "Birch Fence"
   },
   {
     "imageUrl": "jungle_fence.png",
-    "itemId": "minecraft:jungle_fence",
+    "itemId": "jungle_fence",
     "title": "Jungle Fence"
   },
   {
     "imageUrl": "acacia_fence.png",
-    "itemId": "minecraft:acacia_fence",
+    "itemId": "acacia_fence",
     "title": "Acacia Fence"
   },
   {
     "imageUrl": "dark_oak_fence.png",
-    "itemId": "minecraft:dark_oak_fence",
+    "itemId": "dark_oak_fence",
     "title": "Dark Oak Fence"
   },
   {
     "imageUrl": "crimson_fence.png",
-    "itemId": "minecraft:crimson_fence",
+    "itemId": "crimson_fence",
     "title": "Crimson Fence"
   },
   {
     "imageUrl": "warped_fence.png",
-    "itemId": "minecraft:warped_fence",
+    "itemId": "warped_fence",
     "title": "Warped Fence"
   },
   {
     "imageUrl": "nether_brick_fence.png",
-    "itemId": "minecraft:nether_brick_fence",
+    "itemId": "nether_brick_fence",
     "title": "Nether Brick Fence"
   },
   {
     "imageUrl": "iron_bars.png",
-    "itemId": "minecraft:iron_bars",
+    "itemId": "iron_bars",
     "title": "Iron Bars"
   },
   {
     "imageUrl": "obsidian.png",
-    "itemId": "minecraft:obsidian",
+    "itemId": "obsidian",
     "title": "Obsidian"
   },
   {
     "imageUrl": "enchanting_table.png",
-    "itemId": "minecraft:enchanting_table",
+    "itemId": "enchanting_table",
     "title": "Enchanting Table"
   },
   {
     "imageUrl": "grindstone.png",
-    "itemId": "minecraft:grindstone",
+    "itemId": "grindstone",
     "title": "Grindstone"
   },
   {
     "imageUrl": "moss_carpet.png",
-    "itemId": "minecraft:moss_carpet",
+    "itemId": "moss_carpet",
     "title": "Moss Carpet"
   },
   {
     "imageUrl": "honeycomb_block.png",
-    "itemId": "minecraft:honeycomb_block",
+    "itemId": "honeycomb_block",
     "title": "Honeycomb Block"
   },
   {
     "imageUrl": "flint.png",
-    "itemId": "minecraft:flint",
+    "itemId": "flint",
     "title": "Flint"
   },
   {
     "imageUrl": "fletching_table.png",
-    "itemId": "minecraft:fletching_table",
+    "itemId": "fletching_table",
     "title": "Fletching Table"
   },
   {
     "imageUrl": "paper.png",
-    "itemId": "minecraft:paper",
+    "itemId": "paper",
     "title": "Paper"
   },
   {
     "imageUrl": "cartography_table.png",
-    "itemId": "minecraft:cartography_table",
+    "itemId": "cartography_table",
     "title": "Cartography Table"
   },
   {
     "imageUrl": "stonecutter.png",
-    "itemId": "minecraft:stonecutter",
+    "itemId": "stonecutter",
     "title": "Stonecutter"
   },
   {
     "imageUrl": "smoker.png",
-    "itemId": "minecraft:smoker",
+    "itemId": "smoker",
     "title": "Smoker"
   },
   {
     "imageUrl": "loom.png",
-    "itemId": "minecraft:loom",
+    "itemId": "loom",
     "title": "Loom"
   },
   {
     "imageUrl": "smithing_table.png",
-    "itemId": "minecraft:smithing_table",
+    "itemId": "smithing_table",
     "title": "Smithing Table"
   },
   {
     "imageUrl": "shulker_shell.png",
-    "itemId": "minecraft:shulker_shell",
+    "itemId": "shulker_shell",
     "title": "Shulker Shell"
   },
   {
     "imageUrl": "shulker_box.png",
-    "itemId": "minecraft:shulker_box",
+    "itemId": "shulker_box",
     "title": "Shulker Box"
   },
   {
     "imageUrl": "white_shulker_box.png",
-    "itemId": "minecraft:white_shulker_box",
+    "itemId": "white_shulker_box",
     "title": "White Shulker Box"
   },
   {
     "imageUrl": "orange_shulker_box.png",
-    "itemId": "minecraft:orange_shulker_box",
+    "itemId": "orange_shulker_box",
     "title": "Orange Shulker Box"
   },
   {
     "imageUrl": "magenta_shulker_box.png",
-    "itemId": "minecraft:magenta_shulker_box",
+    "itemId": "magenta_shulker_box",
     "title": "Magenta Shulker Box"
   },
   {
     "imageUrl": "light_blue_shulker_box.png",
-    "itemId": "minecraft:light_blue_shulker_box",
+    "itemId": "light_blue_shulker_box",
     "title": "Light Blue Shulker Box"
   },
   {
     "imageUrl": "yellow_shulker_box.png",
-    "itemId": "minecraft:yellow_shulker_box",
+    "itemId": "yellow_shulker_box",
     "title": "Yellow Shulker Box"
   },
   {
     "imageUrl": "lime_shulker_box.png",
-    "itemId": "minecraft:lime_shulker_box",
+    "itemId": "lime_shulker_box",
     "title": "Lime Shulker Box"
   },
   {
     "imageUrl": "pink_shulker_box.png",
-    "itemId": "minecraft:pink_shulker_box",
+    "itemId": "pink_shulker_box",
     "title": "Pink Shulker Box"
   },
   {
     "imageUrl": "gray_shulker_box.png",
-    "itemId": "minecraft:gray_shulker_box",
+    "itemId": "gray_shulker_box",
     "title": "Gray Shulker Box"
   },
   {
     "imageUrl": "light_gray_shulker_box.png",
-    "itemId": "minecraft:light_gray_shulker_box",
+    "itemId": "light_gray_shulker_box",
     "title": "Light Gray Shulker Box"
   },
   {
     "imageUrl": "cyan_shulker_box.png",
-    "itemId": "minecraft:cyan_shulker_box",
+    "itemId": "cyan_shulker_box",
     "title": "Cyan Shulker Box"
   },
   {
     "imageUrl": "purple_shulker_box.png",
-    "itemId": "minecraft:purple_shulker_box",
+    "itemId": "purple_shulker_box",
     "title": "Purple Shulker Box"
   },
   {
     "imageUrl": "blue_shulker_box.png",
-    "itemId": "minecraft:blue_shulker_box",
+    "itemId": "blue_shulker_box",
     "title": "Blue Shulker Box"
   },
   {
     "imageUrl": "brown_shulker_box.png",
-    "itemId": "minecraft:brown_shulker_box",
+    "itemId": "brown_shulker_box",
     "title": "Brown Shulker Box"
   },
   {
     "imageUrl": "green_shulker_box.png",
-    "itemId": "minecraft:green_shulker_box",
+    "itemId": "green_shulker_box",
     "title": "Green Shulker Box"
   },
   {
     "imageUrl": "red_shulker_box.png",
-    "itemId": "minecraft:red_shulker_box",
+    "itemId": "red_shulker_box",
     "title": "Red Shulker Box"
   },
   {
     "imageUrl": "black_shulker_box.png",
-    "itemId": "minecraft:black_shulker_box",
+    "itemId": "black_shulker_box",
     "title": "Black Shulker Box"
   },
   {
     "imageUrl": "crafting_table.png",
-    "itemId": "minecraft:crafting_table",
+    "itemId": "crafting_table",
     "title": "Crafting Table"
   },
   {
     "imageUrl": "ghast_tear.png",
-    "itemId": "minecraft:ghast_tear",
+    "itemId": "ghast_tear",
     "title": "Ghast Tear"
   },
   {
     "imageUrl": "ender_eye.png",
-    "itemId": "minecraft:ender_eye",
+    "itemId": "ender_eye",
     "title": "Ender Eye"
   },
   {
     "imageUrl": "end_crystal.png",
-    "itemId": "minecraft:end_crystal",
+    "itemId": "end_crystal",
     "title": "End Crystal"
   },
   {
     "imageUrl": "ender_chest.png",
-    "itemId": "minecraft:ender_chest",
+    "itemId": "ender_chest",
     "title": "Ender Chest"
   },
   {
     "imageUrl": "glowstone.png",
-    "itemId": "minecraft:glowstone",
+    "itemId": "glowstone",
     "title": "Glowstone"
   },
   {
     "imageUrl": "crying_obsidian.png",
-    "itemId": "minecraft:crying_obsidian",
+    "itemId": "crying_obsidian",
     "title": "Crying Obsidian"
   },
   {
     "imageUrl": "respawn_anchor.png",
-    "itemId": "minecraft:respawn_anchor",
+    "itemId": "respawn_anchor",
     "title": "Respawn Anchor"
   },
   {
     "imageUrl": "blast_furnace.png",
-    "itemId": "minecraft:blast_furnace",
+    "itemId": "blast_furnace",
     "title": "Blast Furnace"
   },
   {
     "imageUrl": "white_candle.png",
-    "itemId": "minecraft:white_candle",
+    "itemId": "white_candle",
     "title": "White Candle"
   },
   {
     "imageUrl": "orange_candle.png",
-    "itemId": "minecraft:orange_candle",
+    "itemId": "orange_candle",
     "title": "Orange Candle"
   },
   {
     "imageUrl": "magenta_candle.png",
-    "itemId": "minecraft:magenta_candle",
+    "itemId": "magenta_candle",
     "title": "Magenta Candle"
   },
   {
     "imageUrl": "light_blue_candle.png",
-    "itemId": "minecraft:light_blue_candle",
+    "itemId": "light_blue_candle",
     "title": "Light Blue Candle"
   },
   {
     "imageUrl": "yellow_candle.png",
-    "itemId": "minecraft:yellow_candle",
+    "itemId": "yellow_candle",
     "title": "Yellow Candle"
   },
   {
     "imageUrl": "lime_candle.png",
-    "itemId": "minecraft:lime_candle",
+    "itemId": "lime_candle",
     "title": "Lime Candle"
   },
   {
     "imageUrl": "pink_candle.png",
-    "itemId": "minecraft:pink_candle",
+    "itemId": "pink_candle",
     "title": "Pink Candle"
   },
   {
     "imageUrl": "gray_candle.png",
-    "itemId": "minecraft:gray_candle",
+    "itemId": "gray_candle",
     "title": "Gray Candle"
   },
   {
     "imageUrl": "light_gray_candle.png",
-    "itemId": "minecraft:light_gray_candle",
+    "itemId": "light_gray_candle",
     "title": "Light Gray Candle"
   },
   {
     "imageUrl": "cyan_candle.png",
-    "itemId": "minecraft:cyan_candle",
+    "itemId": "cyan_candle",
     "title": "Cyan Candle"
   },
   {
     "imageUrl": "purple_candle.png",
-    "itemId": "minecraft:purple_candle",
+    "itemId": "purple_candle",
     "title": "Purple Candle"
   },
   {
     "imageUrl": "blue_candle.png",
-    "itemId": "minecraft:blue_candle",
+    "itemId": "blue_candle",
     "title": "Blue Candle"
   },
   {
     "imageUrl": "brown_candle.png",
-    "itemId": "minecraft:brown_candle",
+    "itemId": "brown_candle",
     "title": "Brown Candle"
   },
   {
     "imageUrl": "green_candle.png",
-    "itemId": "minecraft:green_candle",
+    "itemId": "green_candle",
     "title": "Green Candle"
   },
   {
     "imageUrl": "red_candle.png",
-    "itemId": "minecraft:red_candle",
+    "itemId": "red_candle",
     "title": "Red Candle"
   },
   {
     "imageUrl": "black_candle.png",
-    "itemId": "minecraft:black_candle",
+    "itemId": "black_candle",
     "title": "Black Candle"
   },
   {
     "imageUrl": "lodestone.png",
-    "itemId": "minecraft:lodestone",
+    "itemId": "lodestone",
     "title": "Lodestone"
   },
   {
     "imageUrl": "redstone.png",
-    "itemId": "minecraft:redstone",
+    "itemId": "redstone",
     "title": "Redstone"
   },
   {
     "imageUrl": "dropper.png",
-    "itemId": "minecraft:dropper",
+    "itemId": "dropper",
     "title": "Dropper"
   },
   {
     "imageUrl": "daylight_detector.png",
-    "itemId": "minecraft:daylight_detector",
+    "itemId": "daylight_detector",
     "title": "Daylight Detector"
   },
   {
     "imageUrl": "piston.png",
-    "itemId": "minecraft:piston",
+    "itemId": "piston",
     "title": "Piston"
   },
   {
     "imageUrl": "sticky_piston.png",
-    "itemId": "minecraft:sticky_piston",
+    "itemId": "sticky_piston",
     "title": "Sticky Piston"
   },
   {
     "imageUrl": "redstone_block.png",
-    "itemId": "minecraft:redstone_block",
+    "itemId": "redstone_block",
     "title": "Redstone Block"
   },
   {
-    "itemId": "minecraft:wooden_door",
+    "itemId": "wooden_door",
     "imageUrl": "oak_door.png",
     "title": "Oak Door"
   },
   {
     "imageUrl": "spruce_door.png",
-    "itemId": "minecraft:spruce_door",
+    "itemId": "spruce_door",
     "title": "Spruce Door"
   },
   {
     "imageUrl": "birch_door.png",
-    "itemId": "minecraft:birch_door",
+    "itemId": "birch_door",
     "title": "Birch Door"
   },
   {
     "imageUrl": "jungle_door.png",
-    "itemId": "minecraft:jungle_door",
+    "itemId": "jungle_door",
     "title": "Jungle Door"
   },
   {
     "imageUrl": "acacia_door.png",
-    "itemId": "minecraft:acacia_door",
+    "itemId": "acacia_door",
     "title": "Acacia Door"
   },
   {
     "imageUrl": "dark_oak_door.png",
-    "itemId": "minecraft:dark_oak_door",
+    "itemId": "dark_oak_door",
     "title": "Dark Oak Door"
   },
   {
     "imageUrl": "crimson_door.png",
-    "itemId": "minecraft:crimson_door",
+    "itemId": "crimson_door",
     "title": "Crimson Door"
   },
   {
     "imageUrl": "warped_door.png",
-    "itemId": "minecraft:warped_door",
+    "itemId": "warped_door",
     "title": "Warped Door"
   },
   {
     "imageUrl": "iron_door.png",
-    "itemId": "minecraft:iron_door",
+    "itemId": "iron_door",
     "title": "Iron Door"
   },
   {
     "imageUrl": "hopper.png",
-    "itemId": "minecraft:hopper",
+    "itemId": "hopper",
     "title": "Hopper"
   },
   {
     "imageUrl": "lectern.png",
-    "itemId": "minecraft:lectern",
+    "itemId": "lectern",
     "title": "Lectern"
   },
   {
     "imageUrl": "redstone_torch.png",
-    "itemId": "minecraft:redstone_torch",
+    "itemId": "redstone_torch",
     "title": "Redstone Torch"
   },
   {
     "imageUrl": "comparator.png",
-    "itemId": "minecraft:comparator",
+    "itemId": "comparator",
     "title": "Comparator"
   },
   {
     "imageUrl": "target.png",
-    "itemId": "minecraft:target",
+    "itemId": "target",
     "title": "Target"
   },
   {
     "imageUrl": "lever.png",
-    "itemId": "minecraft:lever",
+    "itemId": "lever",
     "title": "Lever"
   },
   {
-    "itemId": "minecraft:wooden_button",
+    "itemId": "wooden_button",
     "imageUrl": "oak_button.png",
     "title": "Oak Button"
   },
   {
     "imageUrl": "spruce_button.png",
-    "itemId": "minecraft:spruce_button",
+    "itemId": "spruce_button",
     "title": "Spruce Button"
   },
   {
     "imageUrl": "birch_button.png",
-    "itemId": "minecraft:birch_button",
+    "itemId": "birch_button",
     "title": "Birch Button"
   },
   {
     "imageUrl": "jungle_button.png",
-    "itemId": "minecraft:jungle_button",
+    "itemId": "jungle_button",
     "title": "Jungle Button"
   },
   {
     "imageUrl": "acacia_button.png",
-    "itemId": "minecraft:acacia_button",
+    "itemId": "acacia_button",
     "title": "Acacia Button"
   },
   {
     "imageUrl": "dark_oak_button.png",
-    "itemId": "minecraft:dark_oak_button",
+    "itemId": "dark_oak_button",
     "title": "Dark Oak Button"
   },
   {
     "imageUrl": "crimson_button.png",
-    "itemId": "minecraft:crimson_button",
+    "itemId": "crimson_button",
     "title": "Crimson Button"
   },
   {
     "imageUrl": "warped_button.png",
-    "itemId": "minecraft:warped_button",
+    "itemId": "warped_button",
     "title": "Warped Button"
   },
   {
     "imageUrl": "stone_button.png",
-    "itemId": "minecraft:stone_button",
+    "itemId": "stone_button",
     "title": "Stone Button"
   },
   {
     "imageUrl": "polished_blackstone_button.png",
-    "itemId": "minecraft:polished_blackstone_button",
+    "itemId": "polished_blackstone_button",
     "title": "Polished Blackstone Button"
   },
   {
     "imageUrl": "stone_pressure_plate.png",
-    "itemId": "minecraft:stone_pressure_plate",
+    "itemId": "stone_pressure_plate",
     "title": "Stone Pressure Plate"
   },
   {
-    "itemId": "minecraft:wooden_pressure_plate",
+    "itemId": "wooden_pressure_plate",
     "imageUrl": "oak_pressure_plate.png",
     "title": "Oak Pressure Plate"
   },
   {
     "imageUrl": "spruce_pressure_plate.png",
-    "itemId": "minecraft:spruce_pressure_plate",
+    "itemId": "spruce_pressure_plate",
     "title": "Spruce Pressure Plate"
   },
   {
     "imageUrl": "birch_pressure_plate.png",
-    "itemId": "minecraft:birch_pressure_plate",
+    "itemId": "birch_pressure_plate",
     "title": "Birch Pressure Plate"
   },
   {
     "imageUrl": "jungle_pressure_plate.png",
-    "itemId": "minecraft:jungle_pressure_plate",
+    "itemId": "jungle_pressure_plate",
     "title": "Jungle Pressure Plate"
   },
   {
     "imageUrl": "acacia_pressure_plate.png",
-    "itemId": "minecraft:acacia_pressure_plate",
+    "itemId": "acacia_pressure_plate",
     "title": "Acacia Pressure Plate"
   },
   {
     "imageUrl": "dark_oak_pressure_plate.png",
-    "itemId": "minecraft:dark_oak_pressure_plate",
+    "itemId": "dark_oak_pressure_plate",
     "title": "Dark Oak Pressure Plate"
   },
   {
     "imageUrl": "crimson_pressure_plate.png",
-    "itemId": "minecraft:crimson_pressure_plate",
+    "itemId": "crimson_pressure_plate",
     "title": "Crimson Pressure Plate"
   },
   {
     "imageUrl": "warped_pressure_plate.png",
-    "itemId": "minecraft:warped_pressure_plate",
+    "itemId": "warped_pressure_plate",
     "title": "Warped Pressure Plate"
   },
   {
     "imageUrl": "polished_blackstone_pressure_plate.png",
-    "itemId": "minecraft:polished_blackstone_pressure_plate",
+    "itemId": "polished_blackstone_pressure_plate",
     "title": "Polished Blackstone Pressure Plate"
   },
   {
     "imageUrl": "heavy_weighted_pressure_plate.png",
-    "itemId": "minecraft:heavy_weighted_pressure_plate",
+    "itemId": "heavy_weighted_pressure_plate",
     "title": "Heavy Weighted Pressure Plate"
   },
   {
     "imageUrl": "light_weighted_pressure_plate.png",
-    "itemId": "minecraft:light_weighted_pressure_plate",
+    "itemId": "light_weighted_pressure_plate",
     "title": "Light Weighted Pressure Plate"
   },
   {
     "imageUrl": "crimson_trapdoor.png",
-    "itemId": "minecraft:crimson_trapdoor",
+    "itemId": "crimson_trapdoor",
     "title": "Crimson Trapdoor"
   },
   {
     "imageUrl": "warped_trapdoor.png",
-    "itemId": "minecraft:warped_trapdoor",
+    "itemId": "warped_trapdoor",
     "title": "Warped Trapdoor"
   },
   {
     "imageUrl": "oak_trapdoor.png",
-    "itemId": "minecraft:oak_trapdoor",
+    "itemId": "oak_trapdoor",
     "title": "Oak Trapdoor"
   },
   {
     "imageUrl": "spruce_trapdoor.png",
-    "itemId": "minecraft:spruce_trapdoor",
+    "itemId": "spruce_trapdoor",
     "title": "Spruce Trapdoor"
   },
   {
     "imageUrl": "birch_trapdoor.png",
-    "itemId": "minecraft:birch_trapdoor",
+    "itemId": "birch_trapdoor",
     "title": "Birch Trapdoor"
   },
   {
     "imageUrl": "jungle_trapdoor.png",
-    "itemId": "minecraft:jungle_trapdoor",
+    "itemId": "jungle_trapdoor",
     "title": "Jungle Trapdoor"
   },
   {
     "imageUrl": "acacia_trapdoor.png",
-    "itemId": "minecraft:acacia_trapdoor",
+    "itemId": "acacia_trapdoor",
     "title": "Acacia Trapdoor"
   },
   {
     "imageUrl": "dark_oak_trapdoor.png",
-    "itemId": "minecraft:dark_oak_trapdoor",
+    "itemId": "dark_oak_trapdoor",
     "title": "Dark Oak Trapdoor"
   },
   {
     "imageUrl": "iron_trapdoor.png",
-    "itemId": "minecraft:iron_trapdoor",
+    "itemId": "iron_trapdoor",
     "title": "Iron Trapdoor"
   },
   {
     "imageUrl": "repeater.png",
-    "itemId": "minecraft:repeater",
+    "itemId": "repeater",
     "title": "Repeater"
   },
   {
-    "itemId": "minecraft:fence_gate",
+    "itemId": "fence_gate",
     "imageUrl": "oak_fence_gate.png",
     "title": "Oak Fence Gate"
   },
   {
     "imageUrl": "spruce_fence_gate.png",
-    "itemId": "minecraft:spruce_fence_gate",
+    "itemId": "spruce_fence_gate",
     "title": "Spruce Fence Gate"
   },
   {
     "imageUrl": "birch_fence_gate.png",
-    "itemId": "minecraft:birch_fence_gate",
+    "itemId": "birch_fence_gate",
     "title": "Birch Fence Gate"
   },
   {
     "imageUrl": "jungle_fence_gate.png",
-    "itemId": "minecraft:jungle_fence_gate",
+    "itemId": "jungle_fence_gate",
     "title": "Jungle Fence Gate"
   },
   {
     "imageUrl": "acacia_fence_gate.png",
-    "itemId": "minecraft:acacia_fence_gate",
+    "itemId": "acacia_fence_gate",
     "title": "Acacia Fence Gate"
   },
   {
     "imageUrl": "dark_oak_fence_gate.png",
-    "itemId": "minecraft:dark_oak_fence_gate",
+    "itemId": "dark_oak_fence_gate",
     "title": "Dark Oak Fence Gate"
   },
   {
     "imageUrl": "crimson_fence_gate.png",
-    "itemId": "minecraft:crimson_fence_gate",
+    "itemId": "crimson_fence_gate",
     "title": "Crimson Fence Gate"
   },
   {
     "imageUrl": "warped_fence_gate.png",
-    "itemId": "minecraft:warped_fence_gate",
+    "itemId": "warped_fence_gate",
     "title": "Warped Fence Gate"
   },
   {
     "imageUrl": "bow.png",
-    "itemId": "minecraft:bow",
+    "itemId": "bow",
     "title": "Bow"
   },
   {
     "imageUrl": "dispenser.png",
-    "itemId": "minecraft:dispenser",
+    "itemId": "dispenser",
     "title": "Dispenser"
   },
   {
     "imageUrl": "lightning_rod.png",
-    "itemId": "minecraft:lightning_rod",
+    "itemId": "lightning_rod",
     "title": "Lightning Rod"
   },
   {
     "imageUrl": "gunpowder.png",
-    "itemId": "minecraft:gunpowder",
+    "itemId": "gunpowder",
     "title": "Gunpowder"
   },
   {
     "imageUrl": "tnt.png",
-    "itemId": "minecraft:tnt",
+    "itemId": "tnt",
     "title": "Tnt"
   },
   {
     "imageUrl": "redstone_lamp.png",
-    "itemId": "minecraft:redstone_lamp",
+    "itemId": "redstone_lamp",
     "title": "Redstone Lamp"
   },
   {
     "imageUrl": "note_block.png",
-    "itemId": "minecraft:note_block",
+    "itemId": "note_block",
     "title": "Note Block"
   },
   {
     "imageUrl": "carrot.png",
-    "itemId": "minecraft:carrot",
+    "itemId": "carrot",
     "title": "Carrot"
   },
   {
     "imageUrl": "fishing_rod.png",
-    "itemId": "minecraft:fishing_rod",
+    "itemId": "fishing_rod",
     "title": "Fishing Rod"
   },
   {
     "imageUrl": "carrot_on_a_stick.png",
-    "itemId": "minecraft:carrot_on_a_stick",
+    "itemId": "carrot_on_a_stick",
     "title": "Carrot On A Stick"
   },
   {
     "imageUrl": "minecart.png",
-    "itemId": "minecraft:minecart",
+    "itemId": "minecart",
     "title": "Minecart"
   },
   {
     "imageUrl": "tnt_minecart.png",
-    "itemId": "minecraft:tnt_minecart",
+    "itemId": "tnt_minecart",
     "title": "Tnt Minecart"
   },
   {
     "imageUrl": "activator_rail.png",
-    "itemId": "minecraft:activator_rail",
+    "itemId": "activator_rail",
     "title": "Activator Rail"
   },
   {
     "imageUrl": "hopper_minecart.png",
-    "itemId": "minecraft:hopper_minecart",
+    "itemId": "hopper_minecart",
     "title": "Hopper Minecart"
   },
   {
     "imageUrl": "wooden_shovel.png",
-    "itemId": "minecraft:wooden_shovel",
+    "itemId": "wooden_shovel",
     "title": "Wooden Shovel"
   },
   {
     "imageUrl": "oak_boat.png",
-    "itemId": "minecraft:oak_boat",
+    "itemId": "oak_boat",
     "title": "Oak Boat"
   },
   {
     "imageUrl": "spruce_boat.png",
-    "itemId": "minecraft:spruce_boat",
+    "itemId": "spruce_boat",
     "title": "Spruce Boat"
   },
   {
     "imageUrl": "birch_boat.png",
-    "itemId": "minecraft:birch_boat",
+    "itemId": "birch_boat",
     "title": "Birch Boat"
   },
   {
     "imageUrl": "jungle_boat.png",
-    "itemId": "minecraft:jungle_boat",
+    "itemId": "jungle_boat",
     "title": "Jungle Boat"
   },
   {
     "imageUrl": "acacia_boat.png",
-    "itemId": "minecraft:acacia_boat",
+    "itemId": "acacia_boat",
     "title": "Acacia Boat"
   },
   {
     "imageUrl": "dark_oak_boat.png",
-    "itemId": "minecraft:dark_oak_boat",
+    "itemId": "dark_oak_boat",
     "title": "Dark Oak Boat"
   },
   {
     "imageUrl": "rail.png",
-    "itemId": "minecraft:rail",
+    "itemId": "rail",
     "title": "Rail"
   },
   {
     "imageUrl": "chest_minecart.png",
-    "itemId": "minecraft:chest_minecart",
+    "itemId": "chest_minecart",
     "title": "Chest Minecart"
   },
   {
     "imageUrl": "furnace_minecart.png",
-    "itemId": "minecraft:furnace_minecart",
+    "itemId": "furnace_minecart",
     "title": "Furnace Minecart"
   },
   {
     "imageUrl": "warped_fungus.png",
-    "itemId": "minecraft:warped_fungus",
+    "itemId": "warped_fungus",
     "title": "Warped Fungus"
   },
   {
     "imageUrl": "warped_fungus_on_a_stick.png",
-    "itemId": "minecraft:warped_fungus_on_a_stick",
+    "itemId": "warped_fungus_on_a_stick",
     "title": "Warped Fungus On A Stick"
   },
   {
     "imageUrl": "gold_nugget.png",
-    "itemId": "minecraft:gold_nugget",
+    "itemId": "gold_nugget",
     "title": "Gold Nugget"
   },
   {
     "imageUrl": "golden_carrot.png",
-    "itemId": "minecraft:golden_carrot",
+    "itemId": "golden_carrot",
     "title": "Golden Carrot"
   },
   {
     "imageUrl": "milk_bucket.png",
-    "itemId": "minecraft:milk_bucket",
+    "itemId": "milk_bucket",
     "title": "Milk Bucket"
   },
   {
     "imageUrl": "egg.png",
-    "itemId": "minecraft:egg",
+    "itemId": "egg",
     "title": "Egg"
   },
   {
     "imageUrl": "sugar.png",
-    "itemId": "minecraft:sugar",
+    "itemId": "sugar",
     "title": "Sugar"
   },
   {
     "imageUrl": "cake.png",
-    "itemId": "minecraft:cake",
+    "itemId": "cake",
     "title": "Cake"
   },
   {
     "imageUrl": "beetroot.png",
-    "itemId": "minecraft:beetroot",
+    "itemId": "beetroot",
     "title": "Beetroot"
   },
   {
     "imageUrl": "bowl.png",
-    "itemId": "minecraft:bowl",
+    "itemId": "bowl",
     "title": "Bowl"
   },
   {
     "imageUrl": "beetroot_soup.png",
-    "itemId": "minecraft:beetroot_soup",
+    "itemId": "beetroot_soup",
     "title": "Beetroot Soup"
   },
   {
     "imageUrl": "glass_bottle.png",
-    "itemId": "minecraft:glass_bottle",
+    "itemId": "glass_bottle",
     "title": "Glass Bottle"
   },
   {
     "imageUrl": "brown_mushroom.png",
-    "itemId": "minecraft:brown_mushroom",
+    "itemId": "brown_mushroom",
     "title": "Brown Mushroom"
   },
   {
     "imageUrl": "baked_potato.png",
-    "itemId": "minecraft:baked_potato",
+    "itemId": "baked_potato",
     "title": "Baked Potato"
   },
   {
     "imageUrl": "cooked_rabbit.png",
-    "itemId": "minecraft:cooked_rabbit",
+    "itemId": "cooked_rabbit",
     "title": "Cooked Rabbit"
   },
   {
     "imageUrl": "rabbit_stew.png",
-    "itemId": "minecraft:rabbit_stew",
+    "itemId": "rabbit_stew",
     "title": "Rabbit Stew"
   },
   {
     "imageUrl": "red_mushroom.png",
-    "itemId": "minecraft:red_mushroom",
+    "itemId": "red_mushroom",
     "title": "Red Mushroom"
   },
   {
     "imageUrl": "bread.png",
-    "itemId": "minecraft:bread",
+    "itemId": "bread",
     "title": "Bread"
   },
   {
     "imageUrl": "mushroom_stew.png",
-    "itemId": "minecraft:mushroom_stew",
+    "itemId": "mushroom_stew",
     "title": "Mushroom Stew"
   },
   {
     "imageUrl": "cookie.png",
-    "itemId": "minecraft:cookie",
+    "itemId": "cookie",
     "title": "Cookie"
   },
   {
     "imageUrl": "suspicious_stew.png",
-    "itemId": "minecraft:suspicious_stew",
+    "itemId": "suspicious_stew",
     "title": "Suspicious Stew"
   },
   {
     "imageUrl": "poppy.png",
-    "itemId": "minecraft:poppy",
+    "itemId": "poppy",
     "title": "Poppy"
   },
   {
     "imageUrl": "blue_orchid.png",
-    "itemId": "minecraft:blue_orchid",
+    "itemId": "blue_orchid",
     "title": "Blue Orchid"
   },
   {
     "imageUrl": "allium.png",
-    "itemId": "minecraft:allium",
+    "itemId": "allium",
     "title": "Allium"
   },
   {
     "imageUrl": "azure_bluet.png",
-    "itemId": "minecraft:azure_bluet",
+    "itemId": "azure_bluet",
     "title": "Azure Bluet"
   },
   {
     "imageUrl": "red_tulip.png",
-    "itemId": "minecraft:red_tulip",
+    "itemId": "red_tulip",
     "title": "Red Tulip"
   },
   {
     "imageUrl": "orange_tulip.png",
-    "itemId": "minecraft:orange_tulip",
+    "itemId": "orange_tulip",
     "title": "Orange Tulip"
   },
   {
     "imageUrl": "white_tulip.png",
-    "itemId": "minecraft:white_tulip",
+    "itemId": "white_tulip",
     "title": "White Tulip"
   },
   {
     "imageUrl": "pink_tulip.png",
-    "itemId": "minecraft:pink_tulip",
+    "itemId": "pink_tulip",
     "title": "Pink Tulip"
   },
   {
     "imageUrl": "oxeye_daisy.png",
-    "itemId": "minecraft:oxeye_daisy",
+    "itemId": "oxeye_daisy",
     "title": "Oxeye Daisy"
   },
   {
     "imageUrl": "cornflower.png",
-    "itemId": "minecraft:cornflower",
+    "itemId": "cornflower",
     "title": "Cornflower"
   },
   {
     "imageUrl": "lily_of_the_valley.png",
-    "itemId": "minecraft:lily_of_the_valley",
+    "itemId": "lily_of_the_valley",
     "title": "Lily Of The Valley"
   },
   {
     "imageUrl": "wither_rose.png",
-    "itemId": "minecraft:wither_rose",
+    "itemId": "wither_rose",
     "title": "Wither Rose"
   },
   {
     "imageUrl": "apple.png",
-    "itemId": "minecraft:apple",
+    "itemId": "apple",
     "title": "Apple"
   },
   {
     "imageUrl": "golden_apple.png",
-    "itemId": "minecraft:golden_apple",
+    "itemId": "golden_apple",
     "title": "Golden Apple"
   },
   {
     "imageUrl": "pumpkin.png",
-    "itemId": "minecraft:pumpkin",
+    "itemId": "pumpkin",
     "title": "Pumpkin"
   },
   {
     "imageUrl": "pumpkin_pie.png",
-    "itemId": "minecraft:pumpkin_pie",
+    "itemId": "pumpkin_pie",
     "title": "Pumpkin Pie"
   },
   {
     "imageUrl": "flint_and_steel.png",
-    "itemId": "minecraft:flint_and_steel",
+    "itemId": "flint_and_steel",
     "title": "Flint And Steel"
   },
   {
     "imageUrl": "diamond_hoe.png",
-    "itemId": "minecraft:diamond_hoe",
+    "itemId": "diamond_hoe",
     "title": "Diamond Hoe"
   },
   {
     "imageUrl": "iron_hoe.png",
-    "itemId": "minecraft:iron_hoe",
+    "itemId": "iron_hoe",
     "title": "Iron Hoe"
   },
   {
     "imageUrl": "golden_hoe.png",
-    "itemId": "minecraft:golden_hoe",
+    "itemId": "golden_hoe",
     "title": "Golden Hoe"
   },
   {
     "imageUrl": "wooden_hoe.png",
-    "itemId": "minecraft:wooden_hoe",
+    "itemId": "wooden_hoe",
     "title": "Wooden Hoe"
   },
   {
     "imageUrl": "stone_hoe.png",
-    "itemId": "minecraft:stone_hoe",
+    "itemId": "stone_hoe",
     "title": "Stone Hoe"
   },
   {
     "imageUrl": "diamond_axe.png",
-    "itemId": "minecraft:diamond_axe",
+    "itemId": "diamond_axe",
     "title": "Diamond Axe"
   },
   {
     "imageUrl": "iron_axe.png",
-    "itemId": "minecraft:iron_axe",
+    "itemId": "iron_axe",
     "title": "Iron Axe"
   },
   {
     "imageUrl": "golden_axe.png",
-    "itemId": "minecraft:golden_axe",
+    "itemId": "golden_axe",
     "title": "Golden Axe"
   },
   {
     "imageUrl": "stone_axe.png",
-    "itemId": "minecraft:stone_axe",
+    "itemId": "stone_axe",
     "title": "Stone Axe"
   },
   {
     "imageUrl": "wooden_axe.png",
-    "itemId": "minecraft:wooden_axe",
+    "itemId": "wooden_axe",
     "title": "Wooden Axe"
   },
   {
     "imageUrl": "diamond_shovel.png",
-    "itemId": "minecraft:diamond_shovel",
+    "itemId": "diamond_shovel",
     "title": "Diamond Shovel"
   },
   {
     "imageUrl": "iron_shovel.png",
-    "itemId": "minecraft:iron_shovel",
+    "itemId": "iron_shovel",
     "title": "Iron Shovel"
   },
   {
     "imageUrl": "golden_shovel.png",
-    "itemId": "minecraft:golden_shovel",
+    "itemId": "golden_shovel",
     "title": "Golden Shovel"
   },
   {
     "imageUrl": "stone_shovel.png",
-    "itemId": "minecraft:stone_shovel",
+    "itemId": "stone_shovel",
     "title": "Stone Shovel"
   },
   {
     "imageUrl": "clock.png",
-    "itemId": "minecraft:clock",
+    "itemId": "clock",
     "title": "Clock"
   },
   {
     "imageUrl": "lead.png",
-    "itemId": "minecraft:lead",
+    "itemId": "lead",
     "title": "Lead"
   },
   {
     "imageUrl": "compass.png",
-    "itemId": "minecraft:compass",
+    "itemId": "compass",
     "title": "Compass"
   },
   {
     "imageUrl": "shears.png",
-    "itemId": "minecraft:shears",
+    "itemId": "shears",
     "title": "Shears"
   },
   {
     "imageUrl": "diamond_pickaxe.png",
-    "itemId": "minecraft:diamond_pickaxe",
+    "itemId": "diamond_pickaxe",
     "title": "Diamond Pickaxe"
   },
   {
     "imageUrl": "iron_pickaxe.png",
-    "itemId": "minecraft:iron_pickaxe",
+    "itemId": "iron_pickaxe",
     "title": "Iron Pickaxe"
   },
   {
     "imageUrl": "golden_pickaxe.png",
-    "itemId": "minecraft:golden_pickaxe",
+    "itemId": "golden_pickaxe",
     "title": "Golden Pickaxe"
   },
   {
     "imageUrl": "wooden_pickaxe.png",
-    "itemId": "minecraft:wooden_pickaxe",
+    "itemId": "wooden_pickaxe",
     "title": "Wooden Pickaxe"
   },
   {
     "imageUrl": "stone_pickaxe.png",
-    "itemId": "minecraft:stone_pickaxe",
+    "itemId": "stone_pickaxe",
     "title": "Stone Pickaxe"
   },
   {
     "imageUrl": "spyglass.png",
-    "itemId": "minecraft:spyglass",
+    "itemId": "spyglass",
     "title": "Spyglass"
   },
   {
     "imageUrl": "feather.png",
-    "itemId": "minecraft:feather",
+    "itemId": "feather",
     "title": "Feather"
   },
   {
     "imageUrl": "arrow.png",
-    "itemId": "minecraft:arrow",
+    "itemId": "arrow",
     "title": "Arrow"
   },
   {
     "imageUrl": "leather_boots.png",
-    "itemId": "minecraft:leather_boots",
+    "itemId": "leather_boots",
     "title": "Leather Boots"
   },
   {
     "imageUrl": "diamond_boots.png",
-    "itemId": "minecraft:diamond_boots",
+    "itemId": "diamond_boots",
     "title": "Diamond Boots"
   },
   {
     "imageUrl": "iron_boots.png",
-    "itemId": "minecraft:iron_boots",
+    "itemId": "iron_boots",
     "title": "Iron Boots"
   },
   {
     "imageUrl": "golden_boots.png",
-    "itemId": "minecraft:golden_boots",
+    "itemId": "golden_boots",
     "title": "Golden Boots"
   },
   {
     "imageUrl": "diamond_chestplate.png",
-    "itemId": "minecraft:diamond_chestplate",
+    "itemId": "diamond_chestplate",
     "title": "Diamond Chestplate"
   },
   {
     "imageUrl": "iron_chestplate.png",
-    "itemId": "minecraft:iron_chestplate",
+    "itemId": "iron_chestplate",
     "title": "Iron Chestplate"
   },
   {
     "imageUrl": "golden_chestplate.png",
-    "itemId": "minecraft:golden_chestplate",
+    "itemId": "golden_chestplate",
     "title": "Golden Chestplate"
   },
   {
     "imageUrl": "leather_chestplate.png",
-    "itemId": "minecraft:leather_chestplate",
+    "itemId": "leather_chestplate",
     "title": "Leather Chestplate"
   },
   {
     "imageUrl": "crossbow.png",
-    "itemId": "minecraft:crossbow",
+    "itemId": "crossbow",
     "title": "Crossbow"
   },
   {
     "imageUrl": "diamond_helmet.png",
-    "itemId": "minecraft:diamond_helmet",
+    "itemId": "diamond_helmet",
     "title": "Diamond Helmet"
   },
   {
     "imageUrl": "iron_helmet.png",
-    "itemId": "minecraft:iron_helmet",
+    "itemId": "iron_helmet",
     "title": "Iron Helmet"
   },
   {
     "imageUrl": "golden_helmet.png",
-    "itemId": "minecraft:golden_helmet",
+    "itemId": "golden_helmet",
     "title": "Golden Helmet"
   },
   {
     "imageUrl": "leather_helmet.png",
-    "itemId": "minecraft:leather_helmet",
+    "itemId": "leather_helmet",
     "title": "Leather Helmet"
   },
   {
     "imageUrl": "scute.png",
-    "itemId": "minecraft:scute",
+    "itemId": "scute",
     "title": "Scute"
   },
   {
     "imageUrl": "turtle_helmet.png",
-    "itemId": "minecraft:turtle_helmet",
+    "itemId": "turtle_helmet",
     "title": "Turtle Helmet"
   },
   {
     "imageUrl": "diamond_leggings.png",
-    "itemId": "minecraft:diamond_leggings",
+    "itemId": "diamond_leggings",
     "title": "Diamond Leggings"
   },
   {
     "imageUrl": "iron_leggings.png",
-    "itemId": "minecraft:iron_leggings",
+    "itemId": "iron_leggings",
     "title": "Iron Leggings"
   },
   {
     "imageUrl": "golden_leggings.png",
-    "itemId": "minecraft:golden_leggings",
+    "itemId": "golden_leggings",
     "title": "Golden Leggings"
   },
   {
     "imageUrl": "leather_leggings.png",
-    "itemId": "minecraft:leather_leggings",
+    "itemId": "leather_leggings",
     "title": "Leather Leggings"
   },
   {
     "imageUrl": "shield.png",
-    "itemId": "minecraft:shield",
+    "itemId": "shield",
     "title": "Shield"
   },
   {
     "imageUrl": "wooden_sword.png",
-    "itemId": "minecraft:wooden_sword",
+    "itemId": "wooden_sword",
     "title": "Wooden Sword"
   },
   {
     "imageUrl": "diamond_sword.png",
-    "itemId": "minecraft:diamond_sword",
+    "itemId": "diamond_sword",
     "title": "Diamond Sword"
   },
   {
     "imageUrl": "iron_sword.png",
-    "itemId": "minecraft:iron_sword",
+    "itemId": "iron_sword",
     "title": "Iron Sword"
   },
   {
     "imageUrl": "golden_sword.png",
-    "itemId": "minecraft:golden_sword",
+    "itemId": "golden_sword",
     "title": "Golden Sword"
   },
   {
     "imageUrl": "stone_sword.png",
-    "itemId": "minecraft:stone_sword",
+    "itemId": "stone_sword",
     "title": "Stone Sword"
   },
   {
     "imageUrl": "blaze_powder.png",
-    "itemId": "minecraft:blaze_powder",
+    "itemId": "blaze_powder",
     "title": "Blaze Powder"
   },
   {
     "imageUrl": "glistering_melon_slice.png",
-    "itemId": "minecraft:glistering_melon_slice",
+    "itemId": "glistering_melon_slice",
     "title": "Glistering Melon Slice"
   },
   {
     "imageUrl": "spider_eye.png",
-    "itemId": "minecraft:spider_eye",
+    "itemId": "spider_eye",
     "title": "Spider Eye"
   },
   {
     "imageUrl": "fermented_spider_eye.png",
-    "itemId": "minecraft:fermented_spider_eye",
+    "itemId": "fermented_spider_eye",
     "title": "Fermented Spider Eye"
   },
   {
     "imageUrl": "cauldron.png",
-    "itemId": "minecraft:cauldron",
+    "itemId": "cauldron",
     "title": "Cauldron"
   },
   {
     "imageUrl": "brewing_stand.png",
-    "itemId": "minecraft:brewing_stand",
+    "itemId": "brewing_stand",
     "title": "Brewing Stand"
   },
   {
     "imageUrl": "melon_seeds.png",
-    "itemId": "minecraft:melon_seeds",
+    "itemId": "melon_seeds",
     "title": "Melon Seeds"
   },
   {
     "imageUrl": "pumpkin_seeds.png",
-    "itemId": "minecraft:pumpkin_seeds",
+    "itemId": "pumpkin_seeds",
     "title": "Pumpkin Seeds"
   },
   {
     "imageUrl": "nether_star.png",
-    "itemId": "minecraft:nether_star",
+    "itemId": "nether_star",
     "title": "Nether Star"
   },
   {
     "imageUrl": "beacon.png",
-    "itemId": "minecraft:beacon",
+    "itemId": "beacon",
     "title": "Beacon"
   }
 ]
