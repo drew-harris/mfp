@@ -2,7 +2,6 @@ import { gql } from "../__generated__";
 import { LogType } from "../__generated__/graphql";
 import { User } from "../components/contexts/UserContext";
 import { client } from "./client";
-import { useObjectiveStore } from "../stores/objectiveStore";
 import { Connection, Edge, Node } from "reactflow";
 import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 import { allRecipes } from "../hardcoded/recipes";
@@ -15,9 +14,6 @@ mutation SubmitLog($input: LogInput!) {
     id
   }
 }`);
-
-//const currentTask = useObjectiveStore((s) => s.currentTask)?.id || "no task";
-
 export const sendLog = (
   type: LogType,
   attributes?: Record<string, string | number>,
@@ -32,7 +28,6 @@ export const sendLog = (
   } else {
     console.log("LOGGING with id:", user.id, "and log type:", type);
   }
-
 
   client.mutate({
     mutation: SUBMIT_LOG,

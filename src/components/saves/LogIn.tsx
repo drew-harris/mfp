@@ -3,16 +3,18 @@ import { Button } from "../basic/Button";
 import { UserContext } from "../contexts/UserContext";
 import { sendLog } from "../../api/logs";
 import { LogType } from "../../__generated__/graphql";
+import { useObjectiveStore } from "../../stores/objectiveStore";
 
 export default function LogIn() {
   const [codeInput, setCodeInput] = useState("");
   const { logIn, loading } = useContext(UserContext);
+  const currentTask = useObjectiveStore((s) => s.currentTask)?.id;
 
   const handleLogIn = (e: FormEvent) => {
     e.preventDefault();
     logIn(codeInput);
     setCodeInput("");
-    sendLog(LogType.MfpLogIn);
+    sendLog(LogType.MfpLogIn, {task: currentTask});
   };
 
   return (

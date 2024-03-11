@@ -49,8 +49,14 @@ export const useObjectiveStore = create<ObjectiveState>((set, get) => ({
     set({
       currentTask: currentMission.tasks[currentIndex + 1],
     });
+
+    const reqString = currentMission.tasks[currentIndex + 1].itemRequirements.map(
+      req => `${req.itemId}: ${req.rate}`
+    ).join(', ');
+
     sendLog(LogType.MfpNextTask, {
       task: currentMission.tasks[currentIndex + 1].id,
+      requirements: reqString,
     });
   },
 
