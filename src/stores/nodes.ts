@@ -98,24 +98,32 @@ export const useNodeStore = create<RFState>((set, get)=> ({
   },
 
   onEdgesChange: (changes: EdgeChange[]) => {
+    // for (const change of changes) {
+    //   let edge;
+    //
+    //   if (change.type === "remove") {
+    //     edge = getEdgeById(change.id);
+    //   } else if (change.type === "add") {
+    //     edge = change.item;
+    //   }
+    //
+    //   if (!edge) continue;
+    //   logEdge(LogType.MfpBreakNodeConnection, edge);
+    // }
+    console.log("add edge")
     for (const change of changes) {
-      let edge;
 
-      if (change.type === "remove") {
-        edge = getEdgeById(change.id);
-      } else if (change.type === "add") {
-        edge = change.item;
+      if (change.type === "add") {
+        if (!change.item) continue;
+        logEdge(LogType.MfpConnectNodes, change.item);
       }
-
-      console.log("edge:", edge)
-
-      if (!edge) continue;
-      logEdge(LogType.MfpBreakNodeConnection, edge);
     }
     set({
       edges: applyEdgeChanges(changes, get().edges),
       workDone: true,
     });
+
+
   },
 
   updateEdgeSpeeds() {
@@ -174,7 +182,6 @@ export const useNodeStore = create<RFState>((set, get)=> ({
     const nodes = get().nodes;
     const sourceNode = nodes.find((node) => node.id === connection.source);
     const targetNode = nodes.find((node) => node.id === connection.target);
-    console.log("edge connection attempted")
     if (!targetNode || !sourceNode) {
       console.log("connection aborted")
       return;
@@ -184,11 +191,6 @@ export const useNodeStore = create<RFState>((set, get)=> ({
       sourceNode.data.dataType === MCNodeType.order ||
       sourceNode.data.dataType === MCNodeType.builder
     ) {
-      console.log("connection aborted")
-      return;
-    }
-
-    if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
       console.log("connection aborted")
       return;
     }
@@ -223,6 +225,11 @@ export const useNodeStore = create<RFState>((set, get)=> ({
         get().edges
       ),
     });
+
+    if (!checkIfNodesConnect(sourceNode, targetNode, connection)) {
+      console.log("connection aborted")
+      return;
+    }
   },
 
   addNode: (node: Node<MCNode>) => {

@@ -3,7 +3,7 @@ import { LogType } from "../__generated__/graphql";
 import { User } from "../components/contexts/UserContext";
 import { client } from "./client";
 import { useObjectiveStore } from "../stores/objectiveStore";
-import { Edge, Node } from "reactflow";
+import { Connection, Edge, Node } from "reactflow";
 import { MCEdge, MCNode, MCNodeType } from "../types/MCNodes";
 import { allRecipes } from "../hardcoded/recipes";
 import { idToItem } from "../utils/idToItem"
@@ -127,7 +127,36 @@ export function logEdge(logType: LogType, edge: Edge<MCEdge>): void {
   }
 
   for (const attr in targetAttributes) {
+    const newKey = "target" + attr.charAt(0).toUpperCase() + attr.slice(1);
+    attributes[newKey] = targetAttributes[attr];
+  }
+
+  sendLog(logType, attributes);
+}
+
+export function logConnection(logType: LogType, edge: Connection): void {
+  // if (!edge || !edge.sourceNode || !edge.targetNode) {
+  //   console.log("ERROR: Edge or edge's nodes are undefined!")
+  //   console.log(edge)
+  //   return;
+  // }
+  const sourceNode = getNodeById(edge.source)
+  const targetNode = getNodeById(edge.target)
+  const sourceAttributes = getNodeAttributes(sourceNode);
+  const targetAttributes = getNodeAttributes(targetNode);
+  const attributes: Record<string, string | number> = {
+    edgeItem: sourceNode.data.item.title
+  };
+
+  if (!sourceAttributes || !targetAttributes) return;
+
+  for (const attr in sourceAttributes) {
     const newKey = "source" + attr.charAt(0).toUpperCase() + attr.slice(1);
+    attributes[newKey] = sourceAttributes[attr];
+  }
+
+  for (const attr in targetAttributes) {
+    const newKey = "target" + attr.charAt(0).toUpperCase() + attr.slice(1);
     attributes[newKey] = targetAttributes[attr];
   }
 
