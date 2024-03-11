@@ -25,7 +25,6 @@ export const crafterItems: MCPickerItem[] = items
       dataType: MCNodeType.crafter,
       itemId: item.itemId,
       imageUrl: item.imageUrl,
-
       title: item.title,
     };
   })

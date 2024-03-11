@@ -33,3 +33,9 @@ export const getNodeById = (id: string) => {
 
   return nodes.find((n) => n.id === id);
 };
+
+export const getEdgeById = (id: string) => {
+  const { edges } = useNodeStore.getState();
+
+  return edges.find((e) => e.id === id);
+};

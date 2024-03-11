@@ -54,8 +54,6 @@ async function buildItems(filenames: string[], ids: string[]) {
 
   for (const id of ids) {
     let prefill = id
-      .replace("minecraft:", "")
-      .replace("item.", "")
       .replaceAll(":", "");
 
     const opts = {

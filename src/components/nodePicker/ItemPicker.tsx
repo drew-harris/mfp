@@ -1,6 +1,6 @@
 import { faArrowsSplitUpAndLeft, faGears } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { crafterItems, resourceItems } from "../../hardcoded/resourceItems";
 import { useObjectiveStore } from "../../stores/objectiveStore";
 import { MCNodeType } from "../../types/MCNodes";
@@ -64,9 +64,9 @@ const createItemSearchList = (
       (item) =>
         ({
           payload: { item, type: MCNodeType.crafter },
+          mainLabel: item.title,
           topLabel: "Crafter",
           image: <SpriteDisplay url={item.imageUrl} />,
-          mainLabel: item.title,
         } as DraggableProps)
     )
   );
@@ -102,20 +102,19 @@ export default function ItemPicker() {
       }
 
       if (selectOption !== "all") {
-        sendLog(LogType.MfpLoadFilter)
         switch (selectOption) {
           case "resource": {
-            if (prop.payload.type === MCNodeType.resource) return true;
-            return false;
+            return prop.payload.type === MCNodeType.resource;
+
           }
           case "crafter": {
-            if (prop.payload.type === MCNodeType.crafter) return true;
-            return false;
+            return prop.payload.type === MCNodeType.crafter;
+
           }
           case "utility": {
             if (prop.payload.type === MCNodeType.splitter) return true;
-            if (prop.payload.type === MCNodeType.builder) return true;
-            return false;
+            return prop.payload.type === MCNodeType.builder;
+
           }
           case "custom": {
             if (prop.payload.type === MCNodeType.custom) return true;
