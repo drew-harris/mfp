@@ -35,6 +35,7 @@ export const SpriteDisplay: React.FC<SpriteDisplayProps> = ({
                 height: size,
               }}
               className={className}
+              alt={`${u}-block-image`}
             ></img>
           )
         })
