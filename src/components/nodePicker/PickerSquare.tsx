@@ -58,7 +58,7 @@ export default function PickerSquare(props: DraggableProps) {
         zIndex: 0,
       }}
     >
-      <div className="text-center text-xs">{props.topLabel}</div>
+      <div className="text-center text-xs pb-1">{props.topLabel}</div>
       {props.image}
       <div className="text-center font-bold">{props.mainLabel}</div>
     </div>
