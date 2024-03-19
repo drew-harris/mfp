@@ -108,7 +108,7 @@ export const TaskSidebar = () => {
 
   if (currentTask) {
     return (
-      <div className="flex h-full flex-col items-center">
+      <div className="flex h-3/5 flex-col items-center">
         <div className="mb-2 w-full text-left text-xl text-black/50">
           {currentMission?.title}
         </div>
@@ -150,7 +150,7 @@ export const TaskSidebar = () => {
     );
   } else {
     return (
-      <div className="">
+      <div className="overflow-y-auto h-[calc(100vh-70px)]">
         <div className="flex flex-col gap-2">
           {allMissions.map((mission) => (
             <MissionCard
