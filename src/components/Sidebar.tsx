@@ -10,7 +10,7 @@ export default function Sidebar() {
           <TabsTrigger value="tasks">Tasks</TabsTrigger>
           <TabsTrigger value="saves">Saves</TabsTrigger>
         </TabsList>
-        <TabsContent value="tasks" className="h-3/5">
+        <TabsContent value="tasks" className="h-full">
           <TaskSidebar />
         </TabsContent>
         <TabsContent value="saves" className="h-[calc(100vh-46px)]">

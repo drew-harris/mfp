@@ -1083,6 +1083,158 @@ export const allMissions: Mission[] = [
     ],
   },
 
+  // //Todo: Dummy objs, DELETE!!!!!!
+  // {
+  //   title: "Unit 1, Lesson 2",
+  //   id: "u1l2",
+  //   tasks: [
+  //     {
+  //       id: "u1l2-planks",
+  //       title: "Planks",
+  //       description: "Produce 8 oak planks per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "oak_planks",
+  //           rate: 8,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-stick",
+  //       title: "Sticks",
+  //       description: "Produce 32 sticks per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "stick",
+  //           rate: 32,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-diamond-axe",
+  //       title: "Diamond Axe",
+  //       description: "Produce 1 diamond axe per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "diamond_axe",
+  //           rate: 1,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-chest",
+  //       title: "Chests",
+  //       description: "Produce 10 chests per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "chest",
+  //           rate: 10,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Unit 1, Lesson 2",
+  //   id: "u1l2",
+  //   tasks: [
+  //     {
+  //       id: "u1l2-planks",
+  //       title: "Planks",
+  //       description: "Produce 8 oak planks per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "oak_planks",
+  //           rate: 8,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-stick",
+  //       title: "Sticks",
+  //       description: "Produce 32 sticks per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "stick",
+  //           rate: 32,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-diamond-axe",
+  //       title: "Diamond Axe",
+  //       description: "Produce 1 diamond axe per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "diamond_axe",
+  //           rate: 1,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-chest",
+  //       title: "Chests",
+  //       description: "Produce 10 chests per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "chest",
+  //           rate: 10,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Unit 1, Lesson 2",
+  //   id: "u1l2",
+  //   tasks: [
+  //     {
+  //       id: "u1l2-planks",
+  //       title: "Planks",
+  //       description: "Produce 8 oak planks per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "oak_planks",
+  //           rate: 8,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-stick",
+  //       title: "Sticks",
+  //       description: "Produce 32 sticks per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "stick",
+  //           rate: 32,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-diamond-axe",
+  //       title: "Diamond Axe",
+  //       description: "Produce 1 diamond axe per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "diamond_axe",
+  //           rate: 1,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "u1l2-chest",
+  //       title: "Chests",
+  //       description: "Produce 10 chests per minute",
+  //       itemRequirements: [
+  //         {
+  //           itemId: "chest",
+  //           rate: 10,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+
 
 
 
