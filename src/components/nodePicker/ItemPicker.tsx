@@ -10,6 +10,7 @@ import { PickerSelect } from "./TypeSelect";
 import { useCustomNodeList } from "../../hooks/useCustomNodeList";
 import { sendLog } from "../../api/logs";
 import { LogType } from "../../__generated__/graphql";
+import { CustomRecipe } from "../../types/CustomNodes";
 
 export type SelectOption =
   | "all"
@@ -37,13 +38,16 @@ const createItemSearchList = (
       image: <FontAwesomeIcon icon={faGears} size="2x" />,
     },
     ...customNodes.map((cn) => {
+      const urls = cn.recipeData.recipes.map((r: CustomRecipe) => r.item.imageUrl);
+      console.log(urls);
       return {
         payload: {
           type: MCNodeType.custom,
           queryData: cn
         },
         topLabel: "Custom Node",
-        mainLabel: cn.name
+        mainLabel: cn.name,
+        image: <SpriteDisplay url={urls} />,
       } satisfies DraggableProps;
     }),
   ];
@@ -152,9 +156,11 @@ export default function ItemPicker() {
 
       {/* BUG:  Not sure why 1vh works */}
       <div className="grid max-h-[1vh] grid-cols-6 gap-2 px-2">
-        {filteredItems.map((i) => (
-          <PickerSquare {...i} key={JSON.stringify(i.payload)} />
-        ))}
+        {
+          filteredItems.map((i) => {
+            return <PickerSquare {...i} key={JSON.stringify(i.payload)} />
+          }
+        )}
       </div>
     </>
   );
