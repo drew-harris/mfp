@@ -14,15 +14,18 @@ export const SpriteDisplay: React.FC<SpriteDisplayProps> = ({
   ...props
 }: SpriteDisplayProps) => {
   let urls;
+  let flex = "col";
   if (Array.isArray(url)) {
     urls = url;
-    if (urls.length > 4)
+    flex = "row";
+    if (urls.length > 4) {
       urls.length = 4;
+    }
   } else {
     urls = [url];
   }
   return (
-    <div className="flex flex-row items-center gap-x-3">
+    <div className={`flex flex-${flex} items-center gap-x-3`}>
       {
         urls.map((u) => {
           return ( 

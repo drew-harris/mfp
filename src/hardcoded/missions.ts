@@ -104,7 +104,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-recipe-connect",
         title: "Adjusting the Rate",
         description:
-          "Try adjusting the rate of cobblestone in the resource node by in a number.",
+          "Try adjusting the rate of cobblestone in the resource node by entering a number.",
         idPool: ["furnace", "cobblestone"],
         stateRequirement(state) {
           return Boolean(
@@ -127,7 +127,7 @@ export const allMissions: Mission[] = [
         id: "tutorial-edge-delete",
         title: "Deleting Edges",
         description:
-          "Now, let's modify our factory plan to craft cobblestone slabs.\n\nLet's start by selecting and deleting " +
+          "Now, let's modify our factory plan to craft cobblestone slabs.\n\nStart by clicking and deleting " +
           "the path between the nodes.\n\nRemember that you can delete nodes using the backspace key or the trash " +
           "can button in the bottom right.",
         idPool: ["furnace", "cobblestone"],
@@ -170,9 +170,9 @@ export const allMissions: Mission[] = [
         id: "tutorial-splitter-connect",
         title: "Splitter Node",
         description:
-          "You can use the input box of the splitter node to adjust the ratio of items that the outputs receive. For" +
-          " example, the splitting pattern \"AAABB\" will allocate three cobblestone to output \"A\" for every two" +
-          " cobblestone given to output \"B\".\n\nEnter the splitting pattern into the splitter node and connect all" +
+          "You can use the input box of the splitter node to adjust the ratio of items that the outputs receive.\n\n" +
+          "For example, the splitting pattern \"AAABB\" will allocate three cobblestone to output \"A\" for every two" +
+          " cobblestone given to output \"B\".\n\nEnter a splitting pattern into the splitter node and connect all" +
           " 4 nodes.",
         idPool: [
           "furnace",
@@ -196,7 +196,7 @@ export const allMissions: Mission[] = [
         title: "Graph",
         description:
           "The graph shows the production rate of every item on the canvas. You can turn it on by " +
-          "clicking the \"Open Graph\" button at the top left of the canvas. Individual items can be hidden by " +
+          "clicking the \"Open Graph\" button at the top left of the canvas.\n\nIndividual items can be hidden by " +
           "pressing the checkbox next to an item's name.",
         idPool: ["furnace", "cobblestone"],
         continuation: true,
@@ -231,7 +231,7 @@ export const allMissions: Mission[] = [
             itemId: "furnace",
           },
           {
-            rate: 8,
+            rate: 24,
             itemId: "cobblestone_slab",
           },
         ],
