@@ -53,7 +53,7 @@ export const TaskSidebar = () => {
         // NOTE: Happens too often
         // sendNotification("Task Complete!");
         sendLog(LogType.MfpTaskComplete, {
-          task: currentTask.id,
+          task: currentTask.id
         });
       } else {
         sendNotification("Lesson Complete", "success");
@@ -75,22 +75,24 @@ export const TaskSidebar = () => {
             Back
           </Button>
         }
-        <Button
-          onClick={() => {
-            nextTask();
-            removeOrder();
-          }}
-          className={!data.taskComplete && disabled}
-        >
-          Next
-        </Button>
+        {hasNextTask && (
+          <Button
+            onClick={() => {
+              nextTask();
+              removeOrder();
+            }}
+            className={!data.taskComplete && disabled}
+          >
+            Next
+          </Button>
+        )}
         {!hasNextTask && (
           <Button
-            className="mx-auto"
+            className={!data.taskComplete && disabled}
             onClick={() => {
               alert(currentMission.completeMessage ?? "Assignment Submitted!");
               sendLog(LogType.MfpAssignmentSubmitted, {
-                task: currentMission.id,
+                task: currentMission.id
               });
               cancelMission();
             }}
@@ -119,7 +121,7 @@ export const TaskSidebar = () => {
               Efficiency:{" "}
               {data.efficiency ? (data.efficiency * 100).toFixed(2) : 0}%
             </div>
-            { data.efficiency < 1 && infoModeEnabled && (
+            {data.efficiency < 1 && infoModeEnabled && (
               <div className="text-sm text-black/75">
                 Deficit:{" "}
                 {Number.isNaN(data.deficit)
@@ -177,7 +179,7 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
   return (
     <div className="flex flex-col items-center gap-4 p-2">
       <div className="text-center text-xl font-bold">{task.title}</div>
-      <div className="text-left text-mc-700 whitespace-pre-line">{task.description}</div>
+      <div className="text-left text-mc-700 whitespace-pre-line pb-2">{task.description}</div>
       {!hasOrderNodeAlready && task.itemRequirements?.length > 0 && (
         <PickerSquare
           className="max-w-[200px]"
@@ -192,7 +194,7 @@ const SideTaskView = ({ task }: SideTaskViewProperties) => {
           ))}
           payload={{
             task: task,
-            type: MCNodeType.order,
+            type: MCNodeType.order
           }}
         />
       )}
