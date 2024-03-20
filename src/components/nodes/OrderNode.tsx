@@ -6,6 +6,7 @@ import { MCEdge, MCOrderNode } from "../../types/MCNodes";
 import { ItemRequirement } from "../../types/tasks";
 import { RequirementView } from "../tasks/RequirementView";
 import { BaseNode } from "./BaseNode";
+import { useObjectiveStore } from "../../stores/objectiveStore";
 
 interface OrderNodeProps {
   data: MCOrderNode;
@@ -15,6 +16,14 @@ export default function OrderNode({ data }: OrderNodeProps) {
   const incomingEdges = useNodeStore((store) =>
     store.edges.filter((edge) => edge.target === data.id)
   );
+
+  const currentTask = useObjectiveStore((s) => s.currentTask);
+
+  const removeNodeById = useNodeStore((s) => s.removeNodeById);
+
+  if (!currentTask || data.task !== currentTask) {
+    removeNodeById(data.id);
+  }
 
   return (
     <BaseNode data={data} innerClassName="py-0 px-0">
