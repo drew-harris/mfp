@@ -6,6 +6,7 @@ query GetCustomNodes($playerId:String){
     id
     name
     recipeData
+    updatedAt
   }
 }`);
 
