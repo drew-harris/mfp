@@ -199,6 +199,8 @@ const SubmitCustomNode = ({
               className="inset bg-mc-300 p-1 text-white outline-none placeholder:text-mc-200 focus-visible:border-white/80"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              minLength = {1}
+              maxLength={21}
             ></input>
             <Button disabled={name.length <= 0} className="p-1">
               Create

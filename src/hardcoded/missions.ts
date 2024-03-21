@@ -8,211 +8,211 @@ export const allMissions: Mission[] = [
     id: "tutorial",
     completeMessage: "Well done! You completed the beginner tutorial!",
     tasks: [
-      {
-        id: "tutorial-resource",
-        title: "Resource Node",
-        description: "Drag a diamond resource node to the canvas.",
-        idPool: ["diamond"],
-        stateRequirement: (state) => {
-          return Boolean(
-            state.nodes.some(
-              (n) =>
-                n.data.dataType === "resource" &&
-                n.data.item.itemId === "diamond"
-            )
-          );
-        },
-      },
-      {
-        id: "tutorial-resource-desc",
-        title: "Resource Node",
-        description:
-          "This is a resource node. It represents an infinite supply of a basic item needed for crafting.\n\nYou can" +
-          " adjust the output amount by entering a number into its input box.",
-        idPool: ["diamond"],
-        continuation: true,
-      },
-      {
-        id: "tutorial-delete",
-        title: "Deleting Nodes",
-        description:
-          "Delete the resource node.\n\nTo do this, click the node to select it. Then, click the trash can button" +
-          " in the bottom right or press the backspace key to delete it.",
-        idPool: ["diamond"],
-        stateRequirement: (state) => {
-          return !state.nodes.some(
-            (n) =>
-              n.data.dataType === "resource" &&
-              n.data.item.itemId === "diamond"
-          );
-        },
-      },
-      {
-        id: "tutorial-recipe",
-        title: "Crafter Node",
-        description:
-          "Crafter nodes create new items by using resources. In this example, we will craft a furnace using 8" +
-          " cobblestone.\n\nDrag the furnace crafter node to the canvas.",
-        idPool: ["furnace"],
-        stateRequirement: (state) => {
-          return Boolean(
-            state.nodes.some((n) => n.data.dataType === MCNodeType.crafter)
-          );
-        },
-      },
-      {
-        id: "tutorial-recipe-multiple",
-        title: "Crafter Node",
-        description:
-          "Some items can be crafted from different resources by using different crafting recipes. You can change" +
-          " the recipe by clicking the arrows at the top of the node.\n\nFor now, just use the cobblestone recipe.",
-        idPool: ["furnace"],
-        continuation: true,
-      },
-      {
-        id: "tutorial-recipe-bring-in",
-        title: "Connecting Nodes",
-        description: "Drag a cobblestone node to the canvas.",
-        idPool: ["furnace", "cobblestone"],
-        stateRequirement(state) {
-          return Boolean(
-            state.nodes.some(
-              (n) =>
-                n.data.dataType === MCNodeType.resource &&
-                n.data.item.itemId === "cobblestone"
-            )
-          );
-        },
-      },
-      {
-        id: "tutorial-recipe-connect",
-        title: "Connecting Nodes",
-        description:
-          "Find the circle icon on the right side of the resource node. This is the resource node's output.\n\n" +
-          "Then, find the circle icon on the left side of the crafter node. This is the crafter node's input.\n\n" +
-          "Click and drag the output of the resource node to the input of the crafter node.",
-        idPool: ["furnace", "cobblestone"],
-        stateRequirement(state) {
-          return Boolean(
-            state.edges.some(
-              (n) => (n.data.item.itemId === "cobblestone")
-            )
-          );
-        },
-      },
-      {
-        id: "tutorial-recipe-connect",
-        title: "Adjusting the Rate",
-        description:
-          "Try adjusting the rate of cobblestone in the resource node by entering a number.",
-        idPool: ["furnace", "cobblestone"],
-        stateRequirement(state) {
-          return Boolean(
-            state.edges.some(
-              (n) => (n.data.item.itemId === "cobblestone" && n.data.outputRate)
-            )
-          );
-        },
-      },
-      {
-        id: "tutorial-info-mode",
-        title: "Info Mode",
-        description:
-          "Info mode shows the flow of items on the canvas and other additional details. You can turn it on by " +
-          "clicking the \"Info Mode\" button at the top left of the canvas.",
-        idPool: ["furnace", "cobblestone"],
-        continuation: true,
-      },
-      {
-        id: "tutorial-edge-delete",
-        title: "Deleting Edges",
-        description:
-          "Now, let's modify our factory plan to craft cobblestone slabs.\n\nStart by clicking and deleting " +
-          "the path between the nodes.\n\nRemember that you can delete nodes using the backspace key or the trash " +
-          "can button in the bottom right.",
-        idPool: ["furnace", "cobblestone"],
-        stateRequirement(state) {
-          return state.edges.length === 0;
-        },
-      },
-      {
-        id: "tutorial-splitter-delete",
-        title: "Splitter Node",
-        description:
-          "Drag the splitter node to the canvas and place it between the two nodes.",
-        idPool: ["furnace", "cobblestone"],
-        stateRequirement(state) {
-          return Boolean(
-            state.nodes.some((n) => n.data.dataType === MCNodeType.splitter)
-          );
-        },
-      },
-      {
-        id: "tutorial-splitter-crafter",
-        title: "Splitter Node",
-        description: "Drag the cobblestone slab crafter to the canvas and place it under the furnace crafter.",
-        idPool: [
-          "furnace",
-          "cobblestone",
-          "cobblestone_slab",
-        ],
-        stateRequirement(state) {
-          return Boolean(
-            state.nodes.some(
-              (n) =>
-                n.data.dataType === MCNodeType.crafter &&
-                n.data.item.itemId === "cobblestone_slab"
-            )
-          );
-        },
-      },
-      {
-        id: "tutorial-splitter-connect",
-        title: "Splitter Node",
-        description:
-          "You can use the input box of the splitter node to adjust the ratio of items that the outputs receive.\n\n" +
-          "For example, the splitting pattern \"AAABB\" will allocate three cobblestone to output \"A\" for every two" +
-          " cobblestone given to output \"B\".\n\nEnter a splitting pattern into the splitter node and connect all" +
-          " 4 nodes.",
-        idPool: [
-          "furnace",
-          "cobblestone",
-          "cobblestone_slab",
-        ],
-        stateRequirement(state) {
-          return state.edges.length === 3 && state.nodes.some(
-            (n) =>
-              n.data.dataType === MCNodeType.crafter &&
-              n.data.item.itemId === "cobblestone_slab"
-          ) && state.nodes.some(
-            (n) =>
-              n.data.dataType === MCNodeType.crafter &&
-              n.data.item.itemId === "furnace"
-          );
-        },
-      },
-      {
-        id: "tutorial-graph",
-        title: "Graph",
-        description:
-          "The graph shows the production rate of every item on the canvas. You can turn it on by " +
-          "clicking the \"Open Graph\" button at the top left of the canvas.\n\nIndividual items can be hidden by " +
-          "pressing the checkbox next to an item's name.",
-        idPool: ["furnace", "cobblestone"],
-        continuation: true,
-      },
-      {
-        id: "tutorial-splitter-order",
-        title: "Order Node",
-        description:
-          "An order node shows the amount of items your factory plan should make.",
-        idPool: [
-          "furnace",
-          "cobblestone",
-          "cobblestone_slab",
-        ],
-        continuation: true,
-      },
+      // {
+      //   id: "tutorial-resource",
+      //   title: "Resource Node",
+      //   description: "Drag a diamond resource node to the canvas.",
+      //   idPool: ["diamond"],
+      //   stateRequirement: (state) => {
+      //     return Boolean(
+      //       state.nodes.some(
+      //         (n) =>
+      //           n.data.dataType === "resource" &&
+      //           n.data.item.itemId === "diamond"
+      //       )
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-resource-desc",
+      //   title: "Resource Node",
+      //   description:
+      //     "This is a resource node. It represents an infinite supply of a basic item needed for crafting.\n\nYou can" +
+      //     " adjust the output amount by entering a number into its input box.",
+      //   idPool: ["diamond"],
+      //   continuation: true,
+      // },
+      // {
+      //   id: "tutorial-delete",
+      //   title: "Deleting Nodes",
+      //   description:
+      //     "Delete the resource node.\n\nTo do this, click the node to select it. Then, click the trash can button" +
+      //     " in the bottom right or press the backspace key to delete it.",
+      //   idPool: ["diamond"],
+      //   stateRequirement: (state) => {
+      //     return !state.nodes.some(
+      //       (n) =>
+      //         n.data.dataType === "resource" &&
+      //         n.data.item.itemId === "diamond"
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-recipe",
+      //   title: "Crafter Node",
+      //   description:
+      //     "Crafter nodes create new items by using resources. In this example, we will craft a furnace using 8" +
+      //     " cobblestone.\n\nDrag the furnace crafter node to the canvas.",
+      //   idPool: ["furnace"],
+      //   stateRequirement: (state) => {
+      //     return Boolean(
+      //       state.nodes.some((n) => n.data.dataType === MCNodeType.crafter)
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-recipe-multiple",
+      //   title: "Crafter Node",
+      //   description:
+      //     "Some items can be crafted from different resources by using different crafting recipes. You can change" +
+      //     " the recipe by clicking the arrows at the top of the node.\n\nFor now, just use the cobblestone recipe.",
+      //   idPool: ["furnace"],
+      //   continuation: true,
+      // },
+      // {
+      //   id: "tutorial-recipe-bring-in",
+      //   title: "Connecting Nodes",
+      //   description: "Drag a cobblestone node to the canvas.",
+      //   idPool: ["furnace", "cobblestone"],
+      //   stateRequirement(state) {
+      //     return Boolean(
+      //       state.nodes.some(
+      //         (n) =>
+      //           n.data.dataType === MCNodeType.resource &&
+      //           n.data.item.itemId === "cobblestone"
+      //       )
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-recipe-connect",
+      //   title: "Connecting Nodes",
+      //   description:
+      //     "Find the circle icon on the right side of the resource node. This is the resource node's output.\n\n" +
+      //     "Then, find the circle icon on the left side of the crafter node. This is the crafter node's input.\n\n" +
+      //     "Click and drag the output of the resource node to the input of the crafter node.",
+      //   idPool: ["furnace", "cobblestone"],
+      //   stateRequirement(state) {
+      //     return Boolean(
+      //       state.edges.some(
+      //         (n) => (n.data.item.itemId === "cobblestone")
+      //       )
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-recipe-connect",
+      //   title: "Adjusting the Rate",
+      //   description:
+      //     "Try adjusting the rate of cobblestone in the resource node by in a number.",
+      //   idPool: ["furnace", "cobblestone"],
+      //   stateRequirement(state) {
+      //     return Boolean(
+      //       state.edges.some(
+      //         (n) => (n.data.item.itemId === "cobblestone" && n.data.outputRate)
+      //       )
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-info-mode",
+      //   title: "Info Mode",
+      //   description:
+      //     "Info mode shows the flow of items on the canvas and other additional details. You can turn it on by " +
+      //     "clicking the \"Info Mode\" button at the top left of the canvas.",
+      //   idPool: ["furnace", "cobblestone"],
+      //   continuation: true,
+      // },
+      // {
+      //   id: "tutorial-edge-delete",
+      //   title: "Deleting Edges",
+      //   description:
+      //     "Now, let's modify our factory plan to craft cobblestone slabs.\n\nLet's start by selecting and deleting " +
+      //     "the path between the nodes.\n\nRemember that you can delete nodes using the backspace key or the trash " +
+      //     "can button in the bottom right.",
+      //   idPool: ["furnace", "cobblestone"],
+      //   stateRequirement(state) {
+      //     return state.edges.length === 0;
+      //   },
+      // },
+      // {
+      //   id: "tutorial-splitter-delete",
+      //   title: "Splitter Node",
+      //   description:
+      //     "Drag the splitter node to the canvas and place it between the two nodes.",
+      //   idPool: ["furnace", "cobblestone"],
+      //   stateRequirement(state) {
+      //     return Boolean(
+      //       state.nodes.some((n) => n.data.dataType === MCNodeType.splitter)
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-splitter-crafter",
+      //   title: "Splitter Node",
+      //   description: "Drag the cobblestone slab crafter to the canvas and place it under the furnace crafter.",
+      //   idPool: [
+      //     "furnace",
+      //     "cobblestone",
+      //     "cobblestone_slab",
+      //   ],
+      //   stateRequirement(state) {
+      //     return Boolean(
+      //       state.nodes.some(
+      //         (n) =>
+      //           n.data.dataType === MCNodeType.crafter &&
+      //           n.data.item.itemId === "cobblestone_slab"
+      //       )
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-splitter-connect",
+      //   title: "Splitter Node",
+      //   description:
+      //     "You can use the input box of the splitter node to adjust the ratio of items that the outputs receive. For" +
+      //     " example, the splitting pattern \"AAABB\" will allocate three cobblestone to output \"A\" for every two" +
+      //     " cobblestone given to output \"B\".\n\nEnter the splitting pattern into the splitter node and connect all" +
+      //     " 4 nodes.",
+      //   idPool: [
+      //     "furnace",
+      //     "cobblestone",
+      //     "cobblestone_slab",
+      //   ],
+      //   stateRequirement(state) {
+      //     return state.edges.length === 3 && state.nodes.some(
+      //       (n) =>
+      //         n.data.dataType === MCNodeType.crafter &&
+      //         n.data.item.itemId === "cobblestone_slab"
+      //     ) && state.nodes.some(
+      //       (n) =>
+      //         n.data.dataType === MCNodeType.crafter &&
+      //         n.data.item.itemId === "furnace"
+      //     );
+      //   },
+      // },
+      // {
+      //   id: "tutorial-graph",
+      //   title: "Graph",
+      //   description:
+      //     "The graph shows the production rate of every item on the canvas. You can turn it on by " +
+      //     "clicking the \"Open Graph\" button at the top left of the canvas. Individual items can be hidden by " +
+      //     "pressing the checkbox next to an item's name.",
+      //   idPool: ["furnace", "cobblestone"],
+      //   continuation: true,
+      // },
+      // {
+      //   id: "tutorial-splitter-order",
+      //   title: "Order Node",
+      //   description:
+      //     "An order node shows the amount of items your factory plan should make.",
+      //   idPool: [
+      //     "furnace",
+      //     "cobblestone",
+      //     "cobblestone_slab",
+      //   ],
+      //   continuation: true,
+      // },
       {
         id: "tutorial-splitter-finish",
         title: "Order Node",
@@ -231,7 +231,7 @@ export const allMissions: Mission[] = [
             itemId: "furnace",
           },
           {
-            rate: 24,
+            rate: 8,
             itemId: "cobblestone_slab",
           },
         ],

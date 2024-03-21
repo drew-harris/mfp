@@ -16,7 +16,10 @@ export const useCustomNodeList = () => {
     },
     onCompleted(data) {
       console.log("got custom nodes");
-      _setCustomNodes(data.customNodes);
+      _setCustomNodes(data.customNodes?.slice().sort(
+        (a: { updatedAt: string | number | Date; }, b: { updatedAt: string | number | Date; }) => {
+          return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+        }));
     },
     skip: !user?.id,
     onError() {
